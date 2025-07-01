@@ -1,6 +1,5 @@
 using DevNote;
 using DG.Tweening;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -93,9 +92,8 @@ public class LocationsView : MonoBehaviour
         }
 
         _levelExampleImage.sprite = data.Image;
-
-        //TODO
         _completedLevelsText.text = $"{0} / {data.LevelCount}";
+        //_completedLevelsText.text = $"{GameState.CompletedLevels.Value[_currentLocationIndex]} / {data.LevelCount}";
     }
 
     private void OnPreviousLevelButtonClicked()

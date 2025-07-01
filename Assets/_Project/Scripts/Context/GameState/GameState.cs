@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 namespace DevNote
 {
     public static class GameState
@@ -9,6 +11,7 @@ namespace DevNote
 
         public static ReactiveValue<bool> AdsEnabled;
         public static ReactiveValue<int> StarCount;
+        public static ReactiveValue<List<int>> CompletedLevels;
     }
 }
 
