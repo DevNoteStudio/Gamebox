@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6622ecf587b50d4f8eca7987f941e86, type: 3}
+  m_Name: Locations
+  m_EditorClassIdentifier: 
+  _maxDifficulty: 10
+  _locations:
+  - Type: 0
+    LevelCount: 6
+    Image: {fileID: 0}
+    Background: {r: 0.2991723, g: 0.7830189, b: 0.6972267, a: 0}
+    Difficulty: 1
+    StarsToUnlock: 0
+  - Type: 1
+    LevelCount: 10
+    Image: {fileID: 0}
+    Background: {r: 1, g: 0.7971698, b: 0.7971698, a: 0}
+    Difficulty: 3
+    StarsToUnlock: 10
+  - Type: 2
+    LevelCount: 10
+    Image: {fileID: 0}
+    Background: {r: 0.79607844, g: 0.8028941, b: 1, a: 0}
+    Difficulty: 5
+    StarsToUnlock: 20
