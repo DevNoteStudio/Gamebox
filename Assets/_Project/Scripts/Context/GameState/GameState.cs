@@ -8,7 +8,7 @@ namespace DevNote
 
 
         public static ReactiveValue<bool> AdsEnabled;
-
+        public static ReactiveValue<int> StarCount;
     }
 }
 

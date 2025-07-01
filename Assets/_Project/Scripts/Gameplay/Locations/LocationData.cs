@@ -5,13 +5,13 @@ using UnityEngine;
 public class LocationData
 {
     public LocationType Type;
-    [Min(1)] public int LevelCount;
     public Sprite Image;
-    public Color Background;
-    [Min(0)] public int Difficulty;
+    public Color BackgroundColor;
+    [Min(1)] public int LevelCount;
+    [Min(0)] public float Difficulty;
     [Min(0)] public int StarsToUnlock;
 
-    private int _lastDifficultyInput = 0;
+    private float _lastDifficultyInput = 0;
 
     public void Validate()
     {
