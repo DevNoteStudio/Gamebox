@@ -93,7 +93,7 @@ public class LocationsView : MonoBehaviour
 
         _levelExampleImage.sprite = data.Image;
         _completedLevelsText.text = $"{0} / {data.LevelCount}";
-        //_completedLevelsText.text = $"{GameState.CompletedLevels.Value[_currentLocationIndex]} / {data.LevelCount}";
+        _completedLevelsText.text = $"{GameState.CompletedLevels.Value[_currentLocationIndex]} / {data.LevelCount}";
     }
 
     private void OnPreviousLevelButtonClicked()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DevNote
 {
@@ -18,11 +19,10 @@ namespace DevNote
             GameState.StarCount = new ReactiveValue<int>
                 (data.ContainsKey(STAR_COUNT) ? int.Parse(data[STAR_COUNT]) : 0);
 
-            //TODO
-            //GameState.CompletedLevels = new ReactiveValue<List<int>>
-            //    (data.ContainsKey(COMPLETED_LEVELS) ?
-            //        new List<int>(Array.ConvertAll(data[COMPLETED_LEVELS].Split(','), int.Parse)) :
-            //        new List<int>(Enum.GetValues(typeof(LocationType)).Length));
+            GameState.CompletedLevels = new ReactiveValue<List<int>>
+                (data.ContainsKey(COMPLETED_LEVELS) ?
+                    new List<int>(Array.ConvertAll(data[COMPLETED_LEVELS].Split(','), int.Parse)) :
+                    Enumerable.Repeat(0, (Enum.GetValues(typeof(LocationType)).Length)).ToList());
         }
 
         public static Dictionary<string, string> ToDataString()
@@ -31,9 +31,7 @@ namespace DevNote
 
             data.Add(ADS_ENABLED_KEY, GameState.AdsEnabled.Value.ToString());
             data.Add(STAR_COUNT, GameState.StarCount.Value.ToString());
-
-            //TODO
-            //data.Add(COMPLETED_LEVELS, string.Join(",", GameState.CompletedLevels.Value));
+            data.Add(COMPLETED_LEVELS, string.Join(",", GameState.CompletedLevels.Value));
 
             return data;
         }
