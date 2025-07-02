@@ -1,5 +1,7 @@
 using DevNote;
 using DG.Tweening;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +13,7 @@ public class LocationsView : MonoBehaviour
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private RectTransform _contentParent;
     [SerializeField] private TextMeshProUGUI _starCountText;
+    [SerializeField] private Button _closeButton;
     [SerializeField] private TextMeshProUGUI _locationNameText;
     [SerializeField] private RectTransform _difficultyItemsShadowParent;
     [SerializeField] private RectTransform _difficultyItemsParent;
@@ -21,18 +24,43 @@ public class LocationsView : MonoBehaviour
     [SerializeField] private Button _levelsButton;
     [SerializeField] private Button _playButton;
 
+    private List<Image> _difficultyItems = new List<Image>();
     private int _currentLocationIndex = 0;
     private Tween _backgroundTween;
     private Tween _contentTween;
 
+    private void Awake()
+    {
+        for (int i = 0; i < Configs.Locations.MaxDifficulty; i++)
+        {
+            var shadowItem = SceneInjector.InstantiateFromPrefabComponent(
+                Configs.Locations.DifficultyItemPrefab,
+                _difficultyItemsShadowParent);
+
+            shadowItem.color = Color.black;
+            shadowItem.fillAmount = 1f;
+
+            var item = SceneInjector.InstantiateFromPrefabComponent(
+                Configs.Locations.DifficultyItemPrefab,
+                _difficultyItemsParent);
+
+            item.color = Color.white;
+            _difficultyItems.Add(item);
+        }
+    }
+
     private void Start()
     {
+        _closeButton.onClick.AddListener(() => gameObject.SetActive(false));
         _previousLocationButton.onClick.AddListener(OnPreviousLevelButtonClicked);
         _nextLocationButton.onClick.AddListener(OnNextLevelButtonClicked);
         _levelsButton.onClick.AddListener(OnLevelsButtonClicked);
         _playButton.onClick.AddListener(OnPlayButtonClicked);
         GameState.StarCount.OnChanged += OnStarCountChanged;
+    }
 
+    private void OnEnable()
+    {
         Display();
     }
 
@@ -65,35 +93,14 @@ public class LocationsView : MonoBehaviour
 
     private void ChangeContent(LocationData data)
     {
+        for (int i = 0; i < _difficultyItems.Count; i++)
+            _difficultyItems[i].fillAmount = data.Difficulty - i;
+
         _starCountText.text = GameState.StarCount.Value.ToString();
         _locationNameText.text = Localization.GetLocalizedText(data.Type.ToString());
-
-        foreach (Transform child in _difficultyItemsShadowParent)
-            Destroy(child.gameObject);
-        
-        foreach (Transform child in _difficultyItemsParent)
-            Destroy(child.gameObject);
-
-        for (int i = 0; i < Configs.Locations.MaxDifficulty; i++)
-        {
-            var shadowItem = SceneInjector.InstantiateFromPrefabComponent(
-                Configs.Locations.DifficultyItemPrefab,
-                _difficultyItemsShadowParent);
-
-            shadowItem.color = Color.black;
-            shadowItem.fillAmount = 1f;
-
-            var item = SceneInjector.InstantiateFromPrefabComponent(
-                Configs.Locations.DifficultyItemPrefab,
-                _difficultyItemsParent);
-
-            item.color = Color.white;
-            item.fillAmount = data.Difficulty - i;
-        }
-
         _levelExampleImage.sprite = data.Image;
         _completedLevelsText.text = $"{0} / {data.LevelCount}";
-        _completedLevelsText.text = $"{GameState.CompletedLevels.Value[_currentLocationIndex]} / {data.LevelCount}";
+        _completedLevelsText.text = $"{GameState.CompletedLevels.Value[_currentLocationIndex].LastOrDefault(stars => stars == 0)} / {data.LevelCount}";
     }
 
     private void OnPreviousLevelButtonClicked()
@@ -112,7 +119,8 @@ public class LocationsView : MonoBehaviour
 
     private void OnLevelsButtonClicked()
     {
-        
+        SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelsViewPrefab, transform.parent).
+            Display(_currentLocationIndex, GameState.CompletedLevels.Value[_currentLocationIndex].LastOrDefault(stars => stars == 0));
     }
 
     private void OnPlayButtonClicked()

@@ -17,6 +17,6 @@ public class LocationsConfig : ScriptableObject
     private void OnValidate()
     {
         foreach (var location in _locationsList)
-            location.Validate();
+            location.Validate(MaxDifficulty);
     }
 }

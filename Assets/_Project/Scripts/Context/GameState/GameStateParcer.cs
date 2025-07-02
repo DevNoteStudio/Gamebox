@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,10 +18,28 @@ namespace DevNote
             GameState.StarCount = new ReactiveValue<int>
                 (data.ContainsKey(STAR_COUNT) ? int.Parse(data[STAR_COUNT]) : 0);
 
-            GameState.CompletedLevels = new ReactiveValue<List<int>>
-                (data.ContainsKey(COMPLETED_LEVELS) ?
-                    new List<int>(Array.ConvertAll(data[COMPLETED_LEVELS].Split(','), int.Parse)) :
-                    Enumerable.Repeat(0, (Enum.GetValues(typeof(LocationType)).Length)).ToList());
+            GameState.CompletedLevels = new ReactiveValue<List<List<int>>>(new List<List<int>>());
+
+            if (data.ContainsKey(COMPLETED_LEVELS))
+            {
+                var completedLevels = data[COMPLETED_LEVELS]
+                    .Split(',')
+                    .Select(location => location.Split(':')
+                        .Select(int.Parse)
+                        .ToList())
+                    .ToList();
+                GameState.CompletedLevels.Value = completedLevels;
+            }
+            else
+            {
+                GameState.CompletedLevels.Value = new List<List<int>>();
+
+                for (int i = 0; i < Configs.Locations.List.Count; i++)
+                {
+                    GameState.CompletedLevels.Value.
+                        Add(Enumerable.Repeat(0, Configs.Locations.List[i].LevelCount).ToList());
+                }
+            }
         }
 
         public static Dictionary<string, string> ToDataString()
@@ -31,7 +48,8 @@ namespace DevNote
 
             data.Add(ADS_ENABLED_KEY, GameState.AdsEnabled.Value.ToString());
             data.Add(STAR_COUNT, GameState.StarCount.Value.ToString());
-            data.Add(COMPLETED_LEVELS, string.Join(",", GameState.CompletedLevels.Value));
+            data.Add(COMPLETED_LEVELS, string.Join(",", 
+                GameState.CompletedLevels.Value.Select(level => string.Join(":", level))));
 
             return data;
         }

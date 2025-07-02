@@ -1,4 +1,3 @@
-using DevNote;
 using UnityEngine;
 
 [System.Serializable]
@@ -13,9 +12,9 @@ public class LocationData
 
     private float _lastDifficultyInput = 0;
 
-    public void Validate()
+    public void Validate(int maxDifficulty)
     {
-        if (Difficulty > Configs.Locations.MaxDifficulty)
+        if (Difficulty > maxDifficulty)
             Difficulty = _lastDifficultyInput;
         else
             _lastDifficultyInput = Difficulty;

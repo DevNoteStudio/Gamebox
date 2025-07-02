@@ -11,7 +11,7 @@ namespace DevNote
 
         public static ReactiveValue<bool> AdsEnabled;
         public static ReactiveValue<int> StarCount;
-        public static ReactiveValue<List<int>> CompletedLevels;
+        public static ReactiveValue<List<List<int>>> CompletedLevels;
     }
 }
 
