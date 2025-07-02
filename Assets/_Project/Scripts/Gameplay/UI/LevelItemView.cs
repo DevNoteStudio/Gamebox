@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class LevelItemView : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class LevelItemView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelNumberText;
     [SerializeField] private Button _playButton;
 
+    [Inject] private readonly LevelController levelController;
+
+    private int _locationNumber;
+    private int _levelNumber;
     private List<Image> _stars;
 
     private void Start()
@@ -20,6 +25,8 @@ public class LevelItemView : MonoBehaviour
 
     public void Display(int locationNumber, int levelNumber, bool isActive)
     {
+        _locationNumber = locationNumber;
+        _levelNumber = levelNumber;
         _levelNumberText.text = (levelNumber + 1).ToString();
 
         _stars = _starsParent.GetComponentsInChildren<Image>(true).ToList();
@@ -42,6 +49,6 @@ public class LevelItemView : MonoBehaviour
 
     private void OnPlayButtonClicked()
     {
-
+        levelController.StartLevel(_locationNumber, _levelNumber);
     }
 }

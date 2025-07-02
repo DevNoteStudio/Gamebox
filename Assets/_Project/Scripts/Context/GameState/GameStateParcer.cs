@@ -7,6 +7,8 @@ namespace DevNote
     {
         private const string ADS_ENABLED_KEY = "adsEnabled";
         private const string STAR_COUNT = "starCount";
+        private const string CURRENT_LOCATION = "currentLocation";
+        private const string CURRENT_LEVEL = "currentLevel";
         private const string COMPLETED_LEVELS = "completedLevels";
 
 
@@ -17,6 +19,12 @@ namespace DevNote
 
             GameState.StarCount = new ReactiveValue<int>
                 (data.ContainsKey(STAR_COUNT) ? int.Parse(data[STAR_COUNT]) : 0);
+
+            GameState.CurrentLocation = new ReactiveValue<int>
+                (data.ContainsKey(CURRENT_LOCATION) ? int.Parse(data[CURRENT_LOCATION]) : 0);
+
+            GameState.CurrentLevel = new ReactiveValue<int>
+                (data.ContainsKey(CURRENT_LEVEL) ? int.Parse(data[CURRENT_LEVEL]) : 0);
 
             GameState.CompletedLevels = new ReactiveValue<List<List<int>>>(new List<List<int>>());
 
@@ -48,6 +56,8 @@ namespace DevNote
 
             data.Add(ADS_ENABLED_KEY, GameState.AdsEnabled.Value.ToString());
             data.Add(STAR_COUNT, GameState.StarCount.Value.ToString());
+            data.Add(CURRENT_LOCATION, GameState.CurrentLocation.Value.ToString());
+            data.Add(CURRENT_LEVEL, GameState.CurrentLevel.Value.ToString());
             data.Add(COMPLETED_LEVELS, string.Join(",", 
                 GameState.CompletedLevels.Value.Select(level => string.Join(":", level))));
 

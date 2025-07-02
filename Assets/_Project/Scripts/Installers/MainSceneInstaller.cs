@@ -7,7 +7,7 @@ public class MainSceneInstaller : MonoInstaller
     {
         new SceneInjector(Container);
 
-
+        Bind(new LevelController());
 
     }
 

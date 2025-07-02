@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class LocationsView : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class LocationsView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _completedLevelsText;
     [SerializeField] private Button _levelsButton;
     [SerializeField] private Button _playButton;
+
+    [Inject] private readonly LevelController levelController;
 
     private List<Image> _difficultyItems = new List<Image>();
     private int _currentLocationIndex = 0;
@@ -56,6 +59,7 @@ public class LocationsView : MonoBehaviour
         _nextLocationButton.onClick.AddListener(OnNextLevelButtonClicked);
         _levelsButton.onClick.AddListener(OnLevelsButtonClicked);
         _playButton.onClick.AddListener(OnPlayButtonClicked);
+        levelController.LevelStarted += () => gameObject.SetActive(false);
         GameState.StarCount.OnChanged += OnStarCountChanged;
     }
 
@@ -99,8 +103,17 @@ public class LocationsView : MonoBehaviour
         _starCountText.text = GameState.StarCount.Value.ToString();
         _locationNameText.text = Localization.GetLocalizedText(data.Type.ToString());
         _levelExampleImage.sprite = data.Image;
-        _completedLevelsText.text = $"{0} / {data.LevelCount}";
-        _completedLevelsText.text = $"{GameState.CompletedLevels.Value[_currentLocationIndex].LastOrDefault(stars => stars == 0)} / {data.LevelCount}";
+
+        if (GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0) == -1)
+        {
+            _completedLevelsText.text =
+                $"{data.LevelCount} / {data.LevelCount}";
+        }
+        else
+        {
+            _completedLevelsText.text =
+                $"{GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0)} / {data.LevelCount}";
+        }
     }
 
     private void OnPreviousLevelButtonClicked()
@@ -119,13 +132,31 @@ public class LocationsView : MonoBehaviour
 
     private void OnLevelsButtonClicked()
     {
-        SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelsViewPrefab, transform.parent).
-            Display(_currentLocationIndex, GameState.CompletedLevels.Value[_currentLocationIndex].LastOrDefault(stars => stars == 0));
+        if (GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0) == -1)
+        {
+            SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelsViewPrefab, transform.parent).
+                Display(_currentLocationIndex, Configs.Locations.List[_currentLocationIndex].LevelCount - 1);
+        }
+        else
+        {
+            SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelsViewPrefab, transform.parent).
+                Display(
+                    _currentLocationIndex,
+                    GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0));
+        }
     }
 
     private void OnPlayButtonClicked()
     {
-
+        if (GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0) == -1)
+        {
+            levelController.StartLevel(_currentLocationIndex, Configs.Locations.List[_currentLocationIndex].LevelCount - 1);
+        }
+        else
+        {
+            levelController.StartLevel(_currentLocationIndex,
+                GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0));
+        }
     }
 
     private void OnStarCountChanged()
