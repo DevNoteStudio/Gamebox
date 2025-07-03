@@ -15,7 +15,7 @@ public class LevelsView : MonoBehaviour
     private void Start()
     {
         _closeButton.onClick.AddListener(() => Destroy(gameObject));
-        levelController.LevelStarted += OnLevelStarted;
+        levelController.OnLevelStarted += OnLevelStarted;
     }
 
     public void Display(int locationNumber, int lastAvailableLevel)
@@ -39,6 +39,6 @@ public class LevelsView : MonoBehaviour
 
     private void OnDestroy()
     {
-        levelController.LevelStarted -= OnLevelStarted;
+        levelController.OnLevelStarted -= OnLevelStarted;
     }
 }

@@ -1,12 +1,12 @@
+using System;
 using DevNote;
+using Zenject;
 
-public class LevelController : Zenject.IInitializable
+public class LevelController : IInitializable
 {
-    public LevelController() { }
+    public event Action OnLevelStarted;
 
-    public event System.Action LevelStarted;
-
-    public void Initialize()
+    void IInitializable.Initialize()
     {
         StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value);
     }
@@ -16,19 +16,19 @@ public class LevelController : Zenject.IInitializable
         GameState.CurrentLocation.Value = location;
         GameState.CurrentLevel.Value = level;
 
-        LevelStarted?.Invoke();
+        OnLevelStarted?.Invoke();
     }
 
     public void WinWith(int starCount)
     {
         if (starCount < 1 || starCount > 3)
-            throw new System.ArgumentOutOfRangeException(nameof(starCount), "Star count must be between 1 and 3.");
+            throw new ArgumentOutOfRangeException(nameof(starCount), "Star count must be between 1 and 3.");
 
         GameState.CompletedLevels.Value[GameState.CurrentLocation.Value][GameState.CurrentLevel.Value] = starCount;
 
         if (Configs.Locations.List[GameState.CurrentLocation.Value].LevelCount - 1 == GameState.CurrentLevel.Value)
             StartLevel(GameState.CurrentLocation.Value + 1, 0);
-        else
-            StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value + 1);
+
+        else StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value + 1);
     }
 }

@@ -59,7 +59,7 @@ public class LocationsView : MonoBehaviour
         _nextLocationButton.onClick.AddListener(OnNextLevelButtonClicked);
         _levelsButton.onClick.AddListener(OnLevelsButtonClicked);
         _playButton.onClick.AddListener(OnPlayButtonClicked);
-        levelController.LevelStarted += () => gameObject.SetActive(false);
+        levelController.OnLevelStarted += () => gameObject.SetActive(false);
         GameState.StarCount.OnChanged += OnStarCountChanged;
     }
 
@@ -134,8 +134,9 @@ public class LocationsView : MonoBehaviour
     {
         if (GameState.CompletedLevels.Value[_currentLocationIndex].FindIndex(stars => stars == 0) == -1)
         {
-            SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelsViewPrefab, transform.parent).
-                Display(_currentLocationIndex, Configs.Locations.List[_currentLocationIndex].LevelCount - 1);
+            var levelsView = SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelsViewPrefab, transform.parent);
+            int lastAvailableLevel = Configs.Locations.List[_currentLocationIndex].LevelCount - 1;
+            levelsView.Display(_currentLocationIndex, lastAvailableLevel);
         }
         else
         {
