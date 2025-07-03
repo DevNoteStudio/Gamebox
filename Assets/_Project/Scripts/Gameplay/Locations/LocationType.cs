@@ -1,6 +1,9 @@
-public enum LocationType
+namespace DevNote.Modules.Levels
 {
-    Location1,
-    Location2,
-    Location3,
+    public enum LocationType
+    {
+        Location1,
+        Location2,
+        Location3,
+    }
 }

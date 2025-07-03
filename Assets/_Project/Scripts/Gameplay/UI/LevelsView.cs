@@ -1,44 +1,52 @@
-using DevNote;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class LevelsView : MonoBehaviour
+namespace DevNote.Modules.Levels
 {
-    [SerializeField] private Button _closeButton;
-    [SerializeField] private Image _backgroundImage;
-    [SerializeField] private RectTransform _levelItemsParent;
-
-    [Inject] private readonly LevelController levelController;
-
-    private void Start()
+    public class LevelsView : MonoBehaviour
     {
-        _closeButton.onClick.AddListener(() => Destroy(gameObject));
-        levelController.LevelStarted += OnLevelStarted;
-    }
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private Image _backgroundImage;
+        [SerializeField] private RectTransform _levelItemsParent;
 
-    public void Display(int locationNumber, int lastAvailableLevel)
-    {
-        _backgroundImage.color = Configs.Locations.List[locationNumber].BackgroundColor;
+        [Inject] private readonly LevelController levelController;
 
-        List<LevelItemView> levelItems = new List<LevelItemView>();
-
-        for (int i = 0; i < Configs.Locations.List[locationNumber].LevelCount; i++)
+        private void Start()
         {
-            levelItems.Add(SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelItemPrefab, _levelItemsParent));
-
-            levelItems[i].Display(locationNumber, i, i <= lastAvailableLevel);
+            _closeButton.onClick.AddListener(() => Destroy(gameObject));
         }
-    }
 
-    private void OnLevelStarted()
-    {
-        Destroy(gameObject);
-    }
+        private void OnEnable()
+        {
+            levelController.OnLevelStarted += OnLevelStarted;
+        }
 
-    private void OnDestroy()
-    {
-        levelController.LevelStarted -= OnLevelStarted;
+        private void OnDisable()
+        {
+            levelController.OnLevelStarted -= OnLevelStarted;
+        }
+
+        public void Display(int locationNumber, int lastAvailableLevel)
+        {
+            _backgroundImage.color = Configs.Locations.List[locationNumber].BackgroundColor;
+
+            List<LevelItemView> levelItems = new List<LevelItemView>();
+
+            for (int i = 0; i < Configs.Locations.List[locationNumber].LevelCount; i++)
+            {
+                LevelItemView levelItem =
+                    SceneInjector.InstantiateFromPrefabComponent(Configs.LevelsUI.LevelItemPrefab, _levelItemsParent);
+
+                levelItems.Add(levelItem);
+                levelItem.Display(locationNumber, i, i <= lastAvailableLevel);
+            }
+        }
+
+        private void OnLevelStarted()
+        {
+            Destroy(gameObject);
+        }
     }
 }

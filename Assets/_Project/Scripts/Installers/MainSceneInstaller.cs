@@ -1,4 +1,5 @@
 using DevNote;
+using DevNote.Modules.Levels;
 using Zenject;
 
 public class MainSceneInstaller : MonoInstaller

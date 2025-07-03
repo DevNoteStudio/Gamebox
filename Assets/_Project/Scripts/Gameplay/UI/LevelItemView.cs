@@ -1,54 +1,47 @@
-using DevNote;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Zenject;
 
-public class LevelItemView : MonoBehaviour
+namespace DevNote.Modules.Levels
 {
-    [SerializeField] private RectTransform _starsParent;
-    [SerializeField] private TextMeshProUGUI _levelNumberText;
-    [SerializeField] private Button _playButton;
-
-    [Inject] private readonly LevelController levelController;
-
-    private int _locationNumber;
-    private int _levelNumber;
-    private List<Image> _stars;
-
-    private void Start()
+    public class LevelItemView : MonoBehaviour
     {
-        _playButton.onClick.AddListener(OnPlayButtonClicked);
-    }
+        [SerializeField] private RectTransform _starsParent;
+        [SerializeField] private TextMeshProUGUI _levelNumberText;
+        [SerializeField] private Button _playButton;
 
-    public void Display(int locationNumber, int levelNumber, bool isActive)
-    {
-        _locationNumber = locationNumber;
-        _levelNumber = levelNumber;
-        _levelNumberText.text = (levelNumber + 1).ToString();
+        [Inject] private readonly LevelController levelController;
 
-        _stars = _starsParent.GetComponentsInChildren<Image>(true).ToList();
-        int stars = GameState.CompletedLevels.Value[locationNumber][levelNumber];
+        private int _locationNumber;
+        private int _levelNumber;
+        private List<Image> _stars;
 
-        for (int i = 0; i < _stars.Count; i++)
-            _stars[i].color = i < stars ? Color.yellow : Color.black;
-
-        if (isActive)
+        private void Start()
         {
-            _playButton.interactable = true;
-            _starsParent.gameObject.SetActive(true);
+            _playButton.onClick.AddListener(OnPlayButtonClicked);
         }
-        else
-        {
-            _playButton.interactable = false;
-            _starsParent.gameObject.SetActive(false);
-        }
-    }
 
-    private void OnPlayButtonClicked()
-    {
-        levelController.StartLevel(_locationNumber, _levelNumber);
+        public void Display(int locationNumber, int levelNumber, bool isActive)
+        {
+            _locationNumber = locationNumber;
+            _levelNumber = levelNumber;
+            _levelNumberText.text = (levelNumber + 1).ToString();
+            _playButton.interactable = isActive;
+            _starsParent.gameObject.SetActive(isActive);
+            _stars = _starsParent.GetComponentsInChildren<Image>(true).ToList();
+
+            int stars = GameState.CompletedLevels.Value[locationNumber][levelNumber];
+
+            for (int i = 0; i < _stars.Count; i++)
+                _stars[i].color = i < stars ? Color.yellow : Color.black;
+        }
+
+        private void OnPlayButtonClicked()
+        {
+            levelController.StartLevel(_locationNumber, _levelNumber);
+        }
     }
 }

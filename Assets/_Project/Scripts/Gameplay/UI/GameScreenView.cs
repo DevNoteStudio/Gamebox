@@ -1,9 +1,10 @@
-using DevNote;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Zenject;
+using DevNote;
+using DevNote.Modules.Levels;
 
 public class GameScreenView : MonoBehaviour
 {
@@ -25,22 +26,31 @@ public class GameScreenView : MonoBehaviour
         _winWith3StarButton.onClick.AddListener(WinWith3Star);
         _levelsButton.onClick.AddListener(OnLevelsButtonClicked);
         ChangeContent();
+    }
+
+    private void OnEnable()
+    {
         GameState.CurrentLevel.OnChanged += ChangeContent;
+    }
+
+    private void OnDisable()
+    {
+        GameState.CurrentLevel.OnChanged -= ChangeContent;
     }
 
     private void WinWith1Star()
     {
-        levelController.WinWith(1);
+        levelController.Win(1);
     }
 
     private void WinWith2Star()
     {
-        levelController.WinWith(2);
+        levelController.Win(2);
     }
 
     private void WinWith3Star()
     {
-        levelController.WinWith(3);
+        levelController.Win(3);
     }
 
     private void OnLevelsButtonClicked()

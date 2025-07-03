@@ -1,34 +1,54 @@
-using DevNote;
+using System;
+using Zenject;
 
-public class LevelController : Zenject.IInitializable
+namespace DevNote.Modules.Levels
 {
-    public LevelController() { }
-
-    public event System.Action LevelStarted;
-
-    public void Initialize()
+    public class LevelController : IInitializable
     {
-        StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value);
-    }
+        public event Action OnLevelStarted;
 
-    public void StartLevel(int location, int level)
-    {
-        GameState.CurrentLocation.Value = location;
-        GameState.CurrentLevel.Value = level;
+        void IInitializable.Initialize()
+        {
+            StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value);
+        }
 
-        LevelStarted?.Invoke();
-    }
+        public void StartLevel(int location, int level)
+        {
+            GameState.CurrentLocation.Value = location;
+            GameState.CurrentLevel.Value = level;
 
-    public void WinWith(int starCount)
-    {
-        if (starCount < 1 || starCount > 3)
-            throw new System.ArgumentOutOfRangeException(nameof(starCount), "Star count must be between 1 and 3.");
+            SetupLevel();
 
-        GameState.CompletedLevels.Value[GameState.CurrentLocation.Value][GameState.CurrentLevel.Value] = starCount;
+            OnLevelStarted?.Invoke();
+        }
 
-        if (Configs.Locations.List[GameState.CurrentLocation.Value].LevelCount - 1 == GameState.CurrentLevel.Value)
-            StartLevel(GameState.CurrentLocation.Value + 1, 0);
-        else
-            StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value + 1);
+        public void Win(int starCount)
+        {
+            SetStarsOnLevel(starCount);
+
+            if (Configs.Locations.List[GameState.CurrentLocation.Value].LevelCount - 1 == GameState.CurrentLevel.Value)
+                StartLevel(GameState.CurrentLocation.Value + 1, 0);
+            else
+                StartLevel(GameState.CurrentLocation.Value, GameState.CurrentLevel.Value + 1);
+        }
+
+        public void Lose()
+        {
+
+        }
+
+        private void SetupLevel()
+        {
+
+        }
+
+        private void SetStarsOnLevel(int starCount)
+        {
+            if (starCount < 1 || starCount > 3)
+                throw new ArgumentOutOfRangeException(nameof(starCount), "Star count must be between 1 and 3.");
+
+            if (GameState.CompletedLevels.Value[GameState.CurrentLocation.Value][GameState.CurrentLevel.Value] == 0)
+                GameState.CompletedLevels.Value[GameState.CurrentLocation.Value][GameState.CurrentLevel.Value] = starCount;
+        }
     }
 }
