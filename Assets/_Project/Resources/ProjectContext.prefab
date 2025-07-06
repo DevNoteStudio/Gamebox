@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLanguage: 1
-  _controlType: 0
+  _deviceType: 0
 --- !u!114 &6608646393400013635
 MonoBehaviour:
   m_ObjectHideFlags: 0
