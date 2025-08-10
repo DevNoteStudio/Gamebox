@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [AddComponentMenu("UI/Effects/Gradient")]
@@ -12,9 +10,12 @@ public class UIGradient : BaseMeshEffect
     public float m_angle = 0f;
     public bool m_ignoreRatio = true;
 
+
+    public void UpdateMesh() => graphic.SetVerticesDirty();
+
     public override void ModifyMesh(VertexHelper vh)
     {
-        if(enabled)
+        if (enabled)
         {
             Rect rect = graphic.rectTransform.rect;
             Vector2 dir = UIGradientUtils.RotationDir(m_angle);
