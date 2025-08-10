@@ -7,7 +7,15 @@ namespace DevNote.LevelUp
     [RequireComponent(typeof(Image))]
     public class ImagePaletteColor : MonoBehaviour
     {
-        [field: SerializeField] public ImagePaletteColorConfig ColorConfig;
+        [field: SerializeField] public ImagePaletteColorConfig ColorConfig { get; private set; }
+
+
+        public void SetColorConfig(ImagePaletteColorConfig config)
+        {
+            ColorConfig = config;
+            ApplyColor();
+        }
+
 
 
         public void ApplyColor()
@@ -23,8 +31,8 @@ namespace DevNote.LevelUp
 
         public void RemoveUnusedComponents()
         {
-            if (ColorConfig.UseSingleColor && TryGetComponent<UIGradient>(out var gradient))
-                DestroyImmediate(gradient);
+            if (this != null && ColorConfig != null && ColorConfig.UseSingleColor && TryGetComponent<UIGradient>(out var gradient))
+                DestroyImmediate(gradient, true);
 
         }
 

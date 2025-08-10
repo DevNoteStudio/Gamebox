@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cb49b598172db44dbff15d10ab95fa5, type: 3}
-  m_Name: Menu
+  m_Name: OtherButton
   m_EditorClassIdentifier: 
   _colorType: 0
-  <Color>k__BackingField: {r: 0.93207544, g: 0.5430908, b: 0, a: 1}
-  <Color1>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-  <Color2>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Color>k__BackingField: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
+  <Color1>k__BackingField: {r: 0.80784315, g: 1, b: 0.6784314, a: 1}
+  <Color2>k__BackingField: {r: 0.47843137, g: 1, b: 0, a: 1}
   <Angle>k__BackingField: 0

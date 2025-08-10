@@ -27,17 +27,49 @@ namespace DevNote.LevelUp
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            foreach (var image in FindObjectsOfType<ImagePaletteColor>(true))
+            UnityEditor.EditorApplication.delayCall += () =>
             {
-                if (image.ColorConfig == this)
+                // Scenes
+                foreach (var image in FindObjectsOfType<ImagePaletteColor>(true))
                 {
-                    image.ApplyColor();
-                    UnityEditor.EditorApplication.delayCall += image.RemoveUnusedComponents;
+                    if (image.ColorConfig == this)
+                    {
+                        image.ApplyColor();
+                        UnityEditor.EditorApplication.delayCall += image.RemoveUnusedComponents;
+                    }
+
                 }
-            }
+
+                // Prefabs
+                string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Prefab");
+                foreach (string guid in guids)
+                {
+                    string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
+                    GameObject prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                    if (prefab == null) continue;
+
+                    bool changed = false;
+
+                    // Ищем все ImageListener в префабе
+                    foreach (var image in prefab.GetComponentsInChildren<ImagePaletteColor>(true))
+                    {
+                        image.ApplyColor();
+                        image.RemoveUnusedComponents();
+                        UnityEditor.EditorUtility.SetDirty(image);
+                        changed = true;
+                    }
+
+                    if (changed)
+                        UnityEditor.AssetDatabase.SaveAssets();
+                }
+            };
+
+
             
+
         }
 #endif
+
 
     }
 }
