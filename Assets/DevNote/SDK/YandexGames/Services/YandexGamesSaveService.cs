@@ -7,7 +7,7 @@ namespace DevNote.Services.YandexGames
 {
     public class YandexGamesSaveService : MonoBehaviour, ISave
     {
-        public event Action onSavesDeleted;
+        public event Action OnSavesDeleted;
 
 
         private bool _initialized = false;
@@ -17,9 +17,9 @@ namespace DevNote.Services.YandexGames
         
         bool ISelectableService.Available => YG_Sdk.ServicesIsSupported;
 
-        bool IProjectInitializable.Initialized => _initialized;
+        bool IInitializable.Initialized => _initialized;
 
-        async void IProjectInitializable.Initialize()
+        async void IInitializable.Initialize()
         {
             await UniTask.WaitUntil(() => YG_Saves.available);
             YG_Saves.InitializePlayer();
@@ -57,7 +57,7 @@ namespace DevNote.Services.YandexGames
                 if (success)
                 {
                     onSuccess?.Invoke();
-                    onSavesDeleted?.Invoke();
+                    OnSavesDeleted?.Invoke();
                 }
                 else onError?.Invoke();
             });

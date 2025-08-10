@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DevNote.YandexGamesSDK;
 using UnityEngine;
-using Zenject;
 
 namespace DevNote.Services.YandexGames
 {
@@ -17,16 +16,16 @@ namespace DevNote.Services.YandexGames
         private List<string> _purchasedProductIds;
         private Dictionary<string, string> _productPrices;
 
-        [Inject] private readonly ISave save;
+        private readonly Holder<ISave> save = new();
 
         bool ISelectableService.Available => YG_Sdk.ServicesIsSupported;
-        bool IProjectInitializable.Initialized => _initialized;
+        bool IInitializable.Initialized => _initialized;
 
-        async void IProjectInitializable.Initialize()
+        async void IInitializable.Initialize()
         {
-            await UniTask.WaitUntil(() => YG_Purchases.available && save.Initialized);
+            await UniTask.WaitUntil(() => YG_Purchases.available && save.Item.Initialized);
 
-            save.onSavesDeleted += OnSavesDeleted;
+            save.Item.OnSavesDeleted += OnSavesDeleted;
 
             YG_Purchases.InitializePayments();
 

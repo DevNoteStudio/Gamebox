@@ -7,7 +7,7 @@ using UnityEngine;
 namespace DevNote
 {
 
-    public class Localization : MonoBehaviour, IProjectInitializable
+    public class Localization : MonoBehaviour, IInitializable
     {
         public static event Action OnLanguageChanged;
         public static Language CurrentLanguage { get; private set; }
@@ -26,14 +26,14 @@ namespace DevNote
 
         
 
-        bool IProjectInitializable.Initialized => _initialized;
+        bool IInitializable.Initialized => _initialized;
 
-        async void IProjectInitializable.Initialize()
+        async void IInitializable.Initialize()
         {
             _instance = this;
             _config = Resources.Load<LocalizationConfig>("Localization");
 
-            await UniTask.WaitUntil(() => (_googleTables as IProjectInitializable).Initialized);
+            await UniTask.WaitUntil(() => (_googleTables as IInitializable).Initialized);
 
             foreach (var translation in _config.Translations)
                 _tranlationDictionary.Add(translation.key, translation);
@@ -54,7 +54,7 @@ namespace DevNote
         {
             if (_instance._tranlationDictionary.ContainsKey(key) == false)
             {
-                Debug.LogWarning($"{Const.LOG_PREFIX} Translation key \"{key}\" does'nt exist!");
+                Debug.LogWarning($"{Info.Prefix} Translation key \"{key}\" does'nt exist!");
                 return key;
             }
 

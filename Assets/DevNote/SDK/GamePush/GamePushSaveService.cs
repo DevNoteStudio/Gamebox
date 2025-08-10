@@ -2,14 +2,13 @@ using System;
 using Cysharp.Threading.Tasks;
 using GamePush;
 using UnityEngine;
-using Zenject;
 
 
 namespace DevNote.Services.GamePush
 {
     public class GamePushSaveService : MonoBehaviour, ISave
     {
-        public event Action onSavesDeleted;
+        public event Action OnSavesDeleted;
 
         private bool _initialized = false;
 
@@ -18,14 +17,14 @@ namespace DevNote.Services.GamePush
         private const string LAST_SAVE_TIME_KEY = "time";
 
 
-        [Inject] private readonly IEnvironment environment;
+        private readonly Holder<IEnvironment> environment = new();
 
 
         bool ISelectableService.Available => GamePushEnvironmentService.ServicesIsAvailable;
 
 
-        bool IProjectInitializable.Initialized => _initialized;
-        async void IProjectInitializable.Initialize()
+        bool IInitializable.Initialized => _initialized;
+        async void IInitializable.Initialize()
         {
             await UniTask.WaitUntil(() => GP_Init.isReady);
 
@@ -55,7 +54,7 @@ namespace DevNote.Services.GamePush
             var encodedData = GameState.GetEncodedData();
 
             GP_Player.Set(DATA_KEY, encodedData);
-            GP_Player.Set(LAST_SAVE_TIME_KEY, environment.ServerTime.ToString());
+            GP_Player.Set(LAST_SAVE_TIME_KEY, environment.Item.ServerTime.ToString());
             GP_Player.Sync();
 
             onSuccess?.Invoke();
@@ -66,7 +65,7 @@ namespace DevNote.Services.GamePush
             var encodedData = GameState.GetEncodedData();
 
             PlayerPrefs.SetString(DATA_KEY, encodedData);
-            PlayerPrefs.SetString(LAST_SAVE_TIME_KEY, environment.ServerTime.ToString());
+            PlayerPrefs.SetString(LAST_SAVE_TIME_KEY, environment.Item.ServerTime.ToString());
             PlayerPrefs.Save();
 
             onSuccess?.Invoke();
@@ -75,15 +74,15 @@ namespace DevNote.Services.GamePush
         void ISave.DeleteSaves(Action onSuccess, Action onError)
         {
             PlayerPrefs.SetString(DATA_KEY, string.Empty);
-            PlayerPrefs.SetString(LAST_SAVE_TIME_KEY, environment.ServerTime.ToString());
+            PlayerPrefs.SetString(LAST_SAVE_TIME_KEY, environment.Item.ServerTime.ToString());
 
             GP_Player.Set(DATA_KEY, string.Empty);
-            GP_Player.Set(LAST_SAVE_TIME_KEY, environment.ServerTime.ToString());
+            GP_Player.Set(LAST_SAVE_TIME_KEY, environment.Item.ServerTime.ToString());
 
             PlayerPrefs.Save();
             GP_Player.Sync();
 
-            onSavesDeleted?.Invoke();
+            OnSavesDeleted?.Invoke();
         }
     }
 }

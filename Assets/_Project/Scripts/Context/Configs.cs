@@ -1,11 +1,14 @@
-using DevNote.Modules.Levels;
+using DevNote.LevelUp;
 using UnityEngine;
 
 namespace DevNote
 {
     public static class Configs
     {
-        public static LevelsConfig Levels => Resources.Load<LevelsConfig>("[Levels]");
+        public static LevelUpConfig LevelUp => Resources.Load<LevelUpConfig>("[LevelUp]");
+
+
+
 
     }
 }

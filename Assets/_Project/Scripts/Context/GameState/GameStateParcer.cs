@@ -1,32 +1,37 @@
 using System.Collections.Generic;
-using DevNote.Modules.Levels;
 
 namespace DevNote
 {
     public static class GameStateParcer
     {
-        private const string ADS_ENABLED_KEY = "adsEnabled";
-        private const string LEVEL_PROGRESS = "levelProgress";
+        public const string NO_ADS_PURCHASED_KEY = "noAdsPurchased";
+        public const string LEVELS = "levels";
+
 
         public static void Parse(Dictionary<string, string> data)
         {
-            GameState.AdsEnabled = new ReactiveValue<bool>
-                (data.ContainsKey(ADS_ENABLED_KEY) ? bool.Parse(data[ADS_ENABLED_KEY]) : true);
+            bool noAdsPurchased = bool.Parse(data.GetValueOrDefault(NO_ADS_PURCHASED_KEY, "false"));
+            GameState.NoAdsPurchased = new (noAdsPurchased);
 
-            var levelProgressData = data.ContainsKey(LEVEL_PROGRESS) ? data[LEVEL_PROGRESS] : string.Empty;
-            GameState.LevelProgress = new LevelProgress(levelProgressData);
+            string levels = data.GetValueOrDefault(LEVELS, string.Empty);
+            GameState.Levels = new (levels);
+
+
         }
+
 
         public static Dictionary<string, string> ToDataString()
         {
             var data = new Dictionary<string, string>
             {
-                { ADS_ENABLED_KEY, GameState.AdsEnabled.ToString() },
-                { LEVEL_PROGRESS, GameState.LevelProgress.ToString() },
+                { NO_ADS_PURCHASED_KEY, GameState.NoAdsPurchased.ToString() },
+                { LEVELS, GameState.Levels.ToString() }
             };
 
             return data;
         }
+
+
     }
 }
 

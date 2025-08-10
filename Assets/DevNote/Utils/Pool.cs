@@ -9,10 +9,16 @@ namespace DevNote
         private List<T> _poolObjects;
 
 
-        public Pool(T prefab)
+        public Pool(T prefab, bool instanced = false)
         {
             _prefab = prefab;
             _poolObjects = new();
+
+            if (instanced)
+            {
+                prefab.gameObject.SetActive(false);
+                _poolObjects.Add(prefab);
+            }
         }
 
         public T Get()
@@ -24,7 +30,7 @@ namespace DevNote
 
             else
             {
-                poolObject = SceneInjector.InstantiateFromPrefabComponent(_prefab);
+                poolObject = Object.Instantiate(_prefab);
                 _poolObjects.Add(poolObject);
             }
 
@@ -43,5 +49,6 @@ namespace DevNote
 
     }
 }
+
 
 
