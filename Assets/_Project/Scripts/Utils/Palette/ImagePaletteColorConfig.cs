@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DevNote.LevelUp
 {
 
-    [CreateAssetMenu(menuName = "Configs/LevelUp/Image Palette", fileName = "ImagePalette")]
+    [CreateAssetMenu(menuName = "LevelUp/Image Palette", fileName = "ImagePalette")]
     public class ImagePaletteColorConfig : ScriptableObject
     {
         private enum ColorType { Single, Gradient }
@@ -27,6 +27,8 @@ namespace DevNote.LevelUp
 #if UNITY_EDITOR
         private void OnValidate()
         {
+            if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode) return;
+
             UnityEditor.EditorApplication.delayCall += () =>
             {
                 // Scenes

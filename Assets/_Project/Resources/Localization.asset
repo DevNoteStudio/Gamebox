@@ -27,19 +27,3 @@ MonoBehaviour:
     ru: "\u041F\u043E\u043B\u0443\u0447\u0438 \u0431\u043E\u043D\u0443\u0441!"
     en: Get bonus!
     tr: "Bonus kazan\u0131n!"
-  - key: Location1
-    ru: "\u0414\u0435\u0442\u0441\u043A\u0430\u044F \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0430"
-    en: Playground
-    tr: "Oyun Alan\u0131"
-  - key: Location2
-    ru: "\u0421\u0442\u0440\u043E\u0439\u043A\u0430"
-    en: Construction
-    tr: "\u0130n\u015Faat"
-  - key: Location3
-    ru: "\u041A\u043E\u043D\u0444\u0435\u0442\u043D\u044B\u0439 \u043F\u0430\u0437\u043B"
-    en: Candy puzzle
-    tr: "\u015Eeker bulmacas\u0131"
-  - key: Level
-    ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
-    en: Level
-    tr: Seviye

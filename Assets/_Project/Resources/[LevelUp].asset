@@ -9,20 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2facc14fe3834dc44ba93325dfbb50c4, type: 3}
+  m_Script: {fileID: 11500000, guid: e19a5cd07d4f01842bf648821761dc00, type: 3}
   m_Name: '[LevelUp]'
   m_EditorClassIdentifier: 
-  <LevelCatalogScreenPrefab>k__BackingField: {fileID: 0}
-  <LocationCatalogScreenPrefab>k__BackingField: {fileID: 0}
-  <MaxDifficulty>k__BackingField: 0
+  _resources:
+    levelCatalogScreenPrefab: {fileID: 0}
+    locationCatalogScreenPrefab: {fileID: 0}
+  <MaxDifficulty>k__BackingField: 5
   <LocationDataList>k__BackingField:
-  - nameLocalizationKey: 
+  - nameLocalizationKey: 1323
     previewSprite: {fileID: 0}
-    backgroundColor:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    levels: 0
-    difficulty: 0
-    starsToUnlock: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    levels: 4
+    difficulty: 3
+    starsToUnlock: 1

@@ -125,7 +125,6 @@ namespace DevNote.LevelUp
             if (data.Length > 0) 
                 data = data.Remove(data.Length - 1);
 
-            Debug.Log($"Save {data}");
             return data;
         }
 
