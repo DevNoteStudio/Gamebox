@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace DevNote
 {
-    [RequireComponent(typeof(ContextStartup))]
     public abstract class SceneContext : MonoBehaviour
     {
         private List<Type> _registeredTypes = new();
