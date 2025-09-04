@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Button
+  m_Name: ExpLabel
   m_Shader: {fileID: 4800000, guid: f09fa9266effe9a4bbd19a0b6fccd232, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -28,20 +28,17 @@ Material:
     m_Floats:
     - _Angle: 270
     - _ColorCount: 2
-    - _NumColors: 5
     - _Pos0: 0
-    - _Pos1: 1
+    - _Pos1: 0.789
     - _Pos2: 0
     - _Pos3: 0
     - _Pos4: 0
-    - _Pos5: 1
     - _Vertical: 0.81
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.84699225, g: 1, b: 0.65471697, a: 1}
-    - _Color1: {r: 0.4610448, g: 1, b: 0, a: 1}
-    - _Color2: {r: 0, g: 0, b: 0, a: 0}
+    - _Color0: {r: 0.51886785, g: 0.9562302, b: 1, a: 1}
+    - _Color1: {r: 0.096226394, g: 0.6338476, b: 1, a: 1}
+    - _Color2: {r: 0.14509805, g: 0.7882353, b: 1, a: 1}
     - _Color3: {r: 0, g: 0, b: 0, a: 0}
     - _Color4: {r: 0, g: 0, b: 0, a: 0}
-    - _Color5: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

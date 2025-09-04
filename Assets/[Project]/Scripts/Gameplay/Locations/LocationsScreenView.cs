@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DanielLochner.Assets.SimpleScrollSnap;
 using DG.Tweening;
@@ -8,7 +7,7 @@ using UnityEngine.UI;
 
 namespace DevNote.Gamebox
 {
-    public class LocationCatalogScreenView : MonoBehaviour
+    public class LocationsScreenView : MonoBehaviour
     {
         [Header("Main:")]
         [SerializeField] private Image _locationPreviewImage;

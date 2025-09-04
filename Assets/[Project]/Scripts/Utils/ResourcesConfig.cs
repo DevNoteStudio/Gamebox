@@ -8,12 +8,12 @@ namespace DevNote.Gamebox
         [Serializable] private struct ResourcesData
         {
             public LevelCatalogScreenView levelCatalogScreenPrefab;
-            public LocationCatalogScreenView locationCatalogScreenPrefab;
+            public LocationsScreenView locationCatalogScreenPrefab;
         }
 
 
         public LevelCatalogScreenView LevelCatalogScreenPrefab => _resources.levelCatalogScreenPrefab;
-        public LocationCatalogScreenView LocationCatalogScreenPrefab => _resources.locationCatalogScreenPrefab;
+        public LocationsScreenView LocationCatalogScreenPrefab => _resources.locationCatalogScreenPrefab;
 
 
 

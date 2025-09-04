@@ -28,11 +28,13 @@ Material:
     m_Floats:
     - _Angle: 90
     - _ColorCount: 2
+    - _NumColors: 5
     - _Pos0: 0
     - _Pos1: 1
     - _Pos2: 0
     - _Pos3: 0
     - _Pos4: 0
+    - _Pos5: 1
     - _Vertical: 0.81
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -41,4 +43,5 @@ Material:
     - _Color2: {r: 0, g: 0, b: 0, a: 0}
     - _Color3: {r: 0, g: 0, b: 0, a: 0}
     - _Color4: {r: 0, g: 0, b: 0, a: 0}
+    - _Color5: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

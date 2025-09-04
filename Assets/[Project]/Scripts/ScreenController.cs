@@ -7,7 +7,7 @@ namespace DevNote.Gamebox
     {
 
         private Viewer<LevelCatalogScreenView> _levelCatalogScreenViewer;
-        private Viewer<LocationCatalogScreenView> _locationCatalogScreenViewer;
+        private Viewer<LocationsScreenView> _locationCatalogScreenViewer;
 
 
 

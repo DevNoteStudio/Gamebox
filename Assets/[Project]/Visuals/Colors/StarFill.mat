@@ -28,17 +28,20 @@ Material:
     m_Floats:
     - _Angle: 270
     - _ColorCount: 2
-    - _Pos0: 0
+    - _NumColors: 5
+    - _Pos0: 0.2
     - _Pos1: 1
     - _Pos2: 0
     - _Pos3: 0
     - _Pos4: 0
+    - _Pos5: 1
     - _Vertical: 0.81
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.007843138, g: 0.3647059, b: 0.6156863, a: 1}
-    - _Color1: {r: 0.039215688, g: 0.1882353, b: 0.34901962, a: 1}
+    - _Color0: {r: 0.9921569, g: 0.8588236, b: 0.09411766, a: 1}
+    - _Color1: {r: 0.91372555, g: 0.41960788, b: 0.019607844, a: 1}
     - _Color2: {r: 0, g: 0, b: 0, a: 0}
     - _Color3: {r: 0, g: 0, b: 0, a: 0}
     - _Color4: {r: 0, g: 0, b: 0, a: 0}
+    - _Color5: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
