@@ -9,28 +9,30 @@ namespace DevNote
         private List<T> _poolObjects;
 
 
-        public Pool(T prefab, bool instanced = false)
+        public Pool(T poolObject)
         {
-            _prefab = prefab;
+            _prefab = poolObject;
             _poolObjects = new();
 
-            if (instanced)
+            if (poolObject.gameObject.IsPrefab() == false)
             {
-                prefab.gameObject.SetActive(false);
-                _poolObjects.Add(prefab);
+                poolObject.gameObject.SetActive(false);
+                _poolObjects.Add(poolObject);
             }
         }
 
-        public T Get()
+        public T Get(Transform parent = null)
         {
             var poolObject = _poolObjects.Find(poolObject => !poolObject.gameObject.activeSelf);
 
             if (poolObject != null)
+            {
                 poolObject.gameObject.SetActive(true);
-
+                poolObject.transform.SetParent(parent);
+            }
             else
             {
-                poolObject = Object.Instantiate(_prefab);
+                poolObject = Object.Instantiate(_prefab, parent);
                 _poolObjects.Add(poolObject);
             }
 

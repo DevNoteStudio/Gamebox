@@ -20,7 +20,7 @@ namespace DevNote.Gamebox
 
         public void ShowLocationsScreen(int locationIndex)
         {
-            _locationCatalogScreenViewer.Show(UI.ScreenContainer).Display(locationIndex);
+            _locationCatalogScreenViewer.Show(UI.Container).Display(locationIndex);
         }
 
         public void HideLocationsScreen()

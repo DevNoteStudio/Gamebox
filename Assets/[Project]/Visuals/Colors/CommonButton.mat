@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Button
+  m_Name: CommonButton
   m_Shader: {fileID: 4800000, guid: f09fa9266effe9a4bbd19a0b6fccd232, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,8 +38,8 @@ Material:
     - _Vertical: 0.81
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.84699225, g: 1, b: 0.65471697, a: 1}
-    - _Color1: {r: 0.4610448, g: 1, b: 0, a: 1}
+    - _Color0: {r: 0.654902, g: 0.9446593, b: 1, a: 1}
+    - _Color1: {r: 0, g: 0.59216046, b: 1, a: 1}
     - _Color2: {r: 0, g: 0, b: 0, a: 0}
     - _Color3: {r: 0, g: 0, b: 0, a: 0}
     - _Color4: {r: 0, g: 0, b: 0, a: 0}

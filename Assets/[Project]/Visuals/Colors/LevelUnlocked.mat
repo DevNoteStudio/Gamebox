@@ -28,11 +28,17 @@ Material:
     m_Floats:
     - _Angle: 85
     - _ColorCount: 2
+    - _ColorMask: 15
     - _Pos0: 0.258
     - _Pos1: 0.8
     - _Pos2: 0
     - _Pos3: 0
     - _Pos4: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Vertical: 0.81
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
