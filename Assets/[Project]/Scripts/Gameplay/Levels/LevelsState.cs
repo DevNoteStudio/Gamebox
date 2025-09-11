@@ -1,165 +1,95 @@
-using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
-
 
 namespace DevNote.Gamebox
 {
     public class LevelsState
     {
-        private struct LocationLevelStars
+        private class LevelData
         {
-            public List<int> levelStarsAmounts;
+            public int index;
+            public int stars;
         }
 
-        public event Action OnChanged;
+        private class LocationData
+        {
+            public int index;
+            public List<LevelData> levels;
+        }
 
-        public int TotalStars { get; private set; }
-        public int LevelIndex { get; private set; } = 0;
-        public int LocationIndex { get; private set; } = 0;
-
-
-        private List<LocationLevelStars> _locationsLevelList;
-
-
-        private const char SECTION_SEPARATOR = ':';
-        private const char VALUE_SEPARATOR = ',';
-        private const char CORTEGE_SEPARATOR = '_';
-
+        private List<LocationData> _locations;
 
 
         public LevelsState(string data)
         {
-            var config = Configs.LevelUp;
-            _locationsLevelList = new();
+            Debug.Log(data);
 
-            for (int locationIndex = 0; locationIndex < config.LocationsAmount; locationIndex++)
+            string[] splitedLevelData = data.Split(S.S2);
+
+            foreach (var levelData in splitedLevelData)
             {
-                _locationsLevelList.Add(new LocationLevelStars { levelStarsAmounts = new() });
+                string[] levelDataValues = levelData.Split(S.S1);
 
-                for (int levelIndex = 0; levelIndex < config.GetLevelsAmount(locationIndex); levelIndex++)
-                    _locationsLevelList[locationIndex].levelStarsAmounts.Add(0);
-            }
+                int locationIndex = int.Parse(levelDataValues[0]);
+                int levelIndex = int.Parse(levelDataValues[1]);
+                int stars = int.Parse(levelDataValues[2]);
 
-            if (data != string.Empty)
-            {
-                string[] splitData = data.Split(SECTION_SEPARATOR);
-                string currentLocationLevelData = splitData[0];
-                string completedLevelsData = splitData[1];
-
-                int maxLocationIndex = config.LocationsAmount - 1;
-                int currentLocationIndex = int.Parse(currentLocationLevelData.Split(VALUE_SEPARATOR)[0]);
-                LocationIndex = Mathf.Min(currentLocationIndex, maxLocationIndex);
-
-                int maxLevelIndex = config.GetLevelsAmount(LocationIndex) - 1;
-                int currentLevelIndex = int.Parse(currentLocationLevelData.Split(VALUE_SEPARATOR)[1]);
-                LevelIndex = Mathf.Min(currentLevelIndex, maxLevelIndex);
-
-                if (completedLevelsData != string.Empty)
-                {
-                    string[] levelDataList = completedLevelsData.Split(VALUE_SEPARATOR);
-
-                    foreach (string levelData in levelDataList)
-                    {
-                        string[] splitLevelData = levelData.Split(CORTEGE_SEPARATOR);
-
-                        int locationIndex = int.Parse(splitLevelData[0]);
-                        int levelIndex = int.Parse(splitLevelData[1]);
-                        int starsAmount = int.Parse(splitLevelData[2]);
-
-                        if (locationIndex < config.LocationsAmount && levelIndex < config.GetLevelsAmount(locationIndex))
-                            _locationsLevelList[locationIndex].levelStarsAmounts[levelIndex] = starsAmount;
-                    }
-                }   
-            }
-
-            TotalStars = CalculateTotalStars();
-        }
-
-
-        public bool LevelIsCompleted(int locationIndex, int levelIndex)
-        {
-            CheckLevel(locationIndex, levelIndex);
-            return _locationsLevelList[locationIndex].levelStarsAmounts[levelIndex] > 0;
-        }
-
-        public int GetLevelStars(int locationIndex, int levelIndex)
-        {
-            CheckLevel(locationIndex, levelIndex);
-            return _locationsLevelList[locationIndex].levelStarsAmounts[levelIndex];
-        }
-
-        public void SetCurrentLevel(int locationIndex, int levelIndex)
-        {
-            LocationIndex = locationIndex;
-            LevelIndex = levelIndex;
-        }
-
-
-        public void CompleteLevel(int locationIndex, int levelIndex, int stars)
-        {
-            if (stars < 1 || 3 < stars)
-                throw new Exception($"Wrong stars amount! Stars must be from 1 to 3. Your value: {stars}");
-
-            CheckLevel(locationIndex, levelIndex);
-
-            int previousStarsAmount = _locationsLevelList[locationIndex].levelStarsAmounts[levelIndex];
-            if (previousStarsAmount < stars)
-            {
-                _locationsLevelList[locationIndex].levelStarsAmounts[levelIndex] = stars;
-                TotalStars = CalculateTotalStars();
-                OnChanged?.Invoke();
+                GetOrCreateLevelData(locationIndex, levelIndex).stars = stars;
             }
         }
-
 
         public override string ToString()
         {
-            var config = Configs.LevelUp;
-            string data = $"{LocationIndex}{VALUE_SEPARATOR}{LevelIndex}{SECTION_SEPARATOR}";
+            var builder = new StringBuilder();
+            var levelDataList = new List<string>();
 
-            int locationsAmount = config.LocationsAmount;
-            for (int locationIndex = 0; locationIndex < locationsAmount; locationIndex++)
+            foreach (var locationData in _locations)
             {
-                int levelsAmount = config.GetLevelsAmount(locationIndex);
-                for (int levelIndex = 0; levelIndex < levelsAmount; levelIndex++)
+                foreach (var levelData in locationData.levels)
                 {
-                    int levelStarsAmount = _locationsLevelList[locationIndex].levelStarsAmounts[levelIndex];
-
-                    if (levelStarsAmount > 0)
-                        data += $"{locationIndex}{CORTEGE_SEPARATOR}{levelIndex}{CORTEGE_SEPARATOR}{levelStarsAmount}{VALUE_SEPARATOR}";
+                    if (levelData.stars > 0)
+                        levelDataList.Add($"{locationData.index}{S.S1}{levelData.index}{S.S1}{levelData.stars}");
                 }
             }
+            builder.AppendJoin(S.S2, levelDataList);
 
-            if (data[data.Length - 1] == VALUE_SEPARATOR)
-                data = data.Remove(data.Length - 1);
-
-            return data;
+            return builder.ToString();
         }
 
+        public int GetLevelStars(int locationIndex, int levelIndex)
+            => GetOrCreateLevelData(locationIndex, levelIndex).stars;
 
-        private int CalculateTotalStars()
+        public void SetLevelStars(int locationIndex, int levelIndex, int stars)
+            => GetOrCreateLevelData(locationIndex, levelIndex).stars = stars;
+
+
+        private LocationData GetOrCreateLocationData(int locationIndex)
         {
-            int value = 0;
+            var locationData = _locations.Find(data => data.index == locationIndex);
 
-            foreach (var locationLevels in _locationsLevelList)
+            if (locationData == null)
             {
-                foreach (int levelStarsAmount in locationLevels.levelStarsAmounts)
-                    value += levelStarsAmount;
+                locationData = new LocationData { index = locationIndex, levels = new() };
+                _locations.Add(locationData);
             }
 
-            return value;
+            return locationData;
         }
 
-        private void CheckLevel(int locationIndex, int levelIndex)
+        private LevelData GetOrCreateLevelData(int locationIndex, int levelIndex)
         {
-            if (locationIndex >= _locationsLevelList.Count)
-                throw new Exception($"Wrong location - location index: {locationIndex}, level index: {levelIndex}");
+            var locationData = GetOrCreateLocationData(locationIndex);
+            var levelData = locationData.levels.Find(data => data.index == levelIndex);
 
-            if (levelIndex >= _locationsLevelList[locationIndex].levelStarsAmounts.Count)
-                throw new Exception($"Wrong level - location index: {locationIndex}, level index: {levelIndex}");
+            if (levelData == null)
+            {
+                levelData = new LevelData { index = levelIndex, stars = 0 };
+                locationData.levels.Add(levelData);
+            }
+
+            return levelData;
         }
-
 
     }
 }

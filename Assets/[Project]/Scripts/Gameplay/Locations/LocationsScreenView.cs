@@ -30,7 +30,6 @@ namespace DevNote.Gamebox
         private Sequence _showSequence;
 
         private readonly Holder<LevelController> levelController = new();
-        private readonly Holder<ScreenController> screenController = new();
 
 
         private const float COLOR_ANIMATION_DURATION = 0.4f;
@@ -81,16 +80,20 @@ namespace DevNote.Gamebox
 
         private void OnLevelsButtonClick()
         {
+            /*
             screenController.Item.ShowLevelsScreen(_currentLocationIndex);
             screenController.Item.HideLocationsScreen();
+            */
         }
 
         private void OnPlayButtonClick()
         {
+            /*
             screenController.Item.HideLocationsScreen();
 
             int levelIndex = levelController.Item.GetLastLevelIndex(_currentLocationIndex);
             levelController.Item.StartLevel(_currentLocationIndex, levelIndex);
+            */
         }
 
 

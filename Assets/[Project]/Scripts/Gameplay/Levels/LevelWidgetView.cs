@@ -14,7 +14,6 @@ namespace DevNote.Gamebox
 
 
         private readonly Holder<LevelController> levelController = new();
-        private readonly Holder<ScreenController> screenController = new();
 
 
         private int _locationIndex;
@@ -34,7 +33,7 @@ namespace DevNote.Gamebox
             _locationIndex = locationIndex;
             _levelIndex = levelIndex;
             _levelNumberText.text = (levelIndex + 1).ToString();
-
+            /*
             bool isActive = stars > 0 || levelController.Item.GetLastLevelIndex(_locationIndex) == levelIndex;
 
             _playButton.interactable = isActive;
@@ -43,12 +42,15 @@ namespace DevNote.Gamebox
 
             for (int i = 0; i < _starImages.Count; i++)
                 _starImages[i].color = i < stars ? Color.yellow : Color.black;
+            */
         }
 
         private void OnPlayButtonClick()
         {
+            /*
             screenController.Item.HideLevelsScreen();
             levelController.Item.StartLevel(_locationIndex, _levelIndex);
+            */
         }
     }
 }

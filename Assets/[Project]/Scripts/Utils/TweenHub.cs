@@ -18,10 +18,15 @@ namespace DevNote.Gamebox
 
 
         private const float FADE_DURATION = 0.5f;
-        public static Tween Fade(Image image)
+        public static Tween Fade(Image image, float duration = FADE_DURATION)
         {
             image.color = image.color.SetAlpha(0f);
-            return image.DOFade(1f, FADE_DURATION).SetEase(Ease.OutFlash);
+            return image.DOFade(1f, duration).SetEase(Ease.OutFlash);
+        }
+        public static Tween Unfade(Image image, float duration = FADE_DURATION)
+        {
+            image.color = image.color.SetAlpha(1f);
+            return image.DOFade(0f, duration).SetEase(Ease.OutFlash);
         }
 
 

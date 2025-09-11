@@ -7,10 +7,7 @@ namespace DevNote.Gamebox
 
         public static string LogPrefix => "[Gamebox]";
 
-        public const char S1 = '_';
-        public const char S2 = ',';
-        public const char S3 = ':';
-        public const char S4 = ';';
+        
 
     }
 }

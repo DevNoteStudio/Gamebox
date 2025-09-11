@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DevNote.Gamebox
 {
-    public class LevelCatalogScreenView : MonoBehaviour
+    public class LevelsScreenView : MonoBehaviour
     {
         /*
         [SerializeField] private LevelWidgetView _levelWidgetPrefab;

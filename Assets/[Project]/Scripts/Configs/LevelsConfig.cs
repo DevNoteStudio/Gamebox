@@ -3,12 +3,10 @@ using UnityEngine;
 
 namespace DevNote.Gamebox
 {
-
-    public partial class LevelUpConfig // Locations
+    public partial class GameboxConfig // Levels
     {
         [Serializable] private struct LocationData
         {
-            public string nameLocalizationKey;
             public Sprite previewSprite;
             public int levels;
             public int starRequire;
@@ -17,21 +15,18 @@ namespace DevNote.Gamebox
 
         public int LocationsAmount => _locations.Count;
 
-        public string GetLocationName(int locationIndex) 
-            => Localization.GetLocalizedText(_locations[locationIndex].nameLocalizationKey);
+        public string GetLocationName(int locationIndex)
+            => Localization.GetLocalizedText($"location_name_{locationIndex}");
 
-        public int GetLevelsAmount(int locationIndex) => _locations[locationIndex].levels;
+        public int GetLocationLevelsAmount(int locationIndex) => _locations[locationIndex].levels;
 
         public int GetLocationStarRequire(int locationIndex) => _locations[locationIndex].starRequire;
 
         public Sprite GetLocationPreviewSprite(int locationIndex) => _locations[locationIndex].previewSprite;
 
-        
-
 
     }
-
-
-
-    
 }
+
+
+

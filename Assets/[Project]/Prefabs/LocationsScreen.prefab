@@ -1203,6 +1203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5097816779820236371}
   - component: {fileID: 3214628775865162911}
+  - component: {fileID: 62416650034776354}
   m_Layer: 0
   m_Name: LocationsScreen
   m_TagString: Untagged
@@ -1254,6 +1255,18 @@ MonoBehaviour:
   _levelsButton: {fileID: 0}
   _playButton: {fileID: 0}
   _scrollSnap: {fileID: 0}
+--- !u!225 &62416650034776354
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174365937273672303}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5798846456860419084
 GameObject:
   m_ObjectHideFlags: 0

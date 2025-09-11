@@ -1,59 +1,39 @@
 
+using System;
+
 namespace DevNote.Gamebox
 {
     public class LevelController
     {
-        public delegate void OnLevelStart(int locationIndex, int levelIndex);
-        public event OnLevelStart OnLevelStarted;
+        public event Action OnLevelStarted, OnLevelLost, OnLevelCompleted;
 
-        public delegate void OnLevelComplete(int locationIndex, int levelIndex, int stars);
-        public event OnLevelComplete OnLevelCompleted;
+        public int CurrentLocationIndex { get; private set; } = -1;
+        public int CurrentLevelIndex { get; private set; } = -1;
+        public int CompletedStars { get; private set; } = -1;
+
 
 
         public void StartLevel(int locationIndex, int levelIndex)
         {
-            GameState.Levels.SetCurrentLevel(locationIndex, levelIndex);
-            OnLevelStarted?.Invoke(locationIndex, levelIndex);
+            CurrentLocationIndex = locationIndex;
+            CurrentLevelIndex = levelIndex;
+            CompletedStars = 0;
+
+            OnLevelStarted?.Invoke();
         }
 
         public void CompleteCurrentLevel(int stars)
         {
-            GameState.Levels.CompleteLevel
-                (GameState.Levels.LocationIndex, GameState.Levels.LevelIndex, stars);
+            CompletedStars = stars;
+            GameState.Levels.SetLevelStars(CurrentLocationIndex, CurrentLevelIndex, stars);
 
-            OnLevelCompleted?.Invoke(GameState.Levels.LocationIndex, GameState.Levels.LevelIndex, stars);
+            OnLevelCompleted?.Invoke();
         }
 
-        public int GetLastLevelIndex(int locationIndex)
+        public void LoseCurrentLevel()
         {
-            var levels = Configs.LevelUp.GetLevelsAmount(locationIndex);
-
-            for (int levelIndex = 0; levelIndex < levels; levelIndex++)
-            {
-                if (GameState.Levels.LevelIsCompleted(locationIndex, levelIndex) == false)
-                    return levelIndex;
-            }
-
-            return levels - 1;
+            OnLevelLost?.Invoke();
         }
-
-        public int GetCompletedLevels(int locationIndex)
-        {
-            var levels = Configs.LevelUp.GetLevelsAmount(locationIndex);
-
-            for (int levelIndex = 0; levelIndex < levels; levelIndex++)
-            {
-                if (GameState.Levels.LevelIsCompleted(locationIndex, levelIndex) == false)
-                    return levelIndex;
-            }
-
-            return levels;
-        }
-
-
-
-
-
 
     }
 }

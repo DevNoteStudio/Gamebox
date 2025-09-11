@@ -1,0 +1,34 @@
+using System;
+using DG.Tweening;
+using UnityEngine.UI;
+
+namespace DevNote.Gamebox
+{
+    public static class ScreenFade
+    {
+        private static Tween _currentTween;
+
+        private static readonly Viewer<Image> fadeViewer = new(Configs.Gamebox.ScreenFadePrefab);
+
+        private const float FADE_DURATION = 0.3f;
+
+        public static void Fade(Action onCompleted = null)
+        {
+            var fadeImage = fadeViewer.Show(UI.Container);
+
+            _currentTween?.Kill();
+            _currentTween = TweenHub.Fade(fadeImage, FADE_DURATION)
+                .OnComplete(() => onCompleted?.Invoke());
+        }
+
+        public static void Unfade()
+        {
+            if (!fadeViewer.ViewExists) return;
+
+            _currentTween?.Kill();
+            _currentTween = TweenHub.Unfade(fadeViewer.View, FADE_DURATION).OnComplete(fadeViewer.Hide);
+        }
+
+    }
+}
+

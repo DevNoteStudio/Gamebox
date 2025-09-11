@@ -4,20 +4,11 @@ namespace DevNote.Gamebox
 {
     public class UI
     {
-        private static RectTransform _container;
+        public static RectTransform Container { get; private set; }
 
-        public static RectTransform Container => _container;
+        public readonly static Vector2 TARGET_RESOLUTION = new Vector2(1080, 1920);
 
-
-        public static Vector2 TARGET_RESOLUTION = new Vector2(1080, 1920);
-
-
-
-        public UI(RectTransform container)
-        {
-            _container = container;
-        }
-
+        public UI(RectTransform container) => Container = container;
 
     }
 }

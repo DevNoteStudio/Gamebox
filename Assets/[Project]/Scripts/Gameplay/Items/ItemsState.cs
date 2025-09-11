@@ -9,33 +9,30 @@ namespace DevNote.Gamebox
     using static Common;
 
 
-    public class ItemsState<T> where T : Enum
+    public class ItemsState
     {
-        public delegate void OnChange(T type, int change);
+        public delegate void OnChange(ItemType itemType, int change);
+        public event OnChange OnSpent, OnEarned, OnChanged;
 
-        public event OnChange OnSpent;
-        public event OnChange OnEarned;
-        public event OnChange OnChanged;
-
-        private Dictionary<T, int> _amounts;
-        private Dictionary<T, int> _cheatAmounts;
+        private Dictionary<ItemType, int> _amounts;
+        private Dictionary<ItemType, int> _cheatAmounts;
 
         private const int CHEAT_AMOUNT = 99999;
 
 
         public ItemsState(string data)
         {
-            _amounts = new Dictionary<T, int>();
-            _cheatAmounts = new Dictionary<T, int>();
+            _amounts = new Dictionary<ItemType, int>();
+            _cheatAmounts = new Dictionary<ItemType, int>();
 
             if (!string.IsNullOrEmpty(data))
             {
-                string[] amountsData = data.Split(S2);
+                string[] amountsData = data.Split(S.S2);
                 foreach (var amountData in amountsData)
                 {
-                    string[] typeValueData = amountData.Split(S1);
+                    string[] typeValueData = amountData.Split(S.S1);
 
-                    var type = (T)Enum.Parse(typeof(T), typeValueData[0]);
+                    var type = (ItemType)Enum.Parse(typeof(ItemType), typeValueData[0]);
                     int value = int.Parse(typeValueData[1]);
 
                     Set(type, value);
@@ -44,55 +41,55 @@ namespace DevNote.Gamebox
         }
 
 
-        public int Get(T type)
+        public int Get(ItemType itemType)
         {
-            bool cheatModeEnabled = _cheatAmounts.ContainsKey(type);
-            return cheatModeEnabled ? _cheatAmounts[type] : _amounts.GetValueOrDefault(type, 0);
+            bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemType);
+            return cheatModeEnabled ? _cheatAmounts[itemType] : _amounts.GetValueOrDefault(itemType, 0);
         }
 
-        public void Set(T type, int value)
+        public void Set(ItemType itemType, int value)
         {
-            int previousValue = Get(type);
-            bool cheatModeEnabled = _cheatAmounts.ContainsKey(type);
+            int previousValue = Get(itemType);
+            bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemType);
 
-            if (cheatModeEnabled) _cheatAmounts[type] = value;
+            if (cheatModeEnabled) _cheatAmounts[itemType] = value;
             else
             {
-                if (!_amounts.ContainsKey(type))
-                    _amounts.Add(type, value);
+                if (!_amounts.ContainsKey(itemType))
+                    _amounts.Add(itemType, value);
 
-                else _amounts[type] = value;
+                else _amounts[itemType] = value;
             }
 
-            OnChanged?.Invoke(type, value - previousValue);
+            OnChanged?.Invoke(itemType, value - previousValue);
         }
 
-        public bool IsCheatMode(T type) => _cheatAmounts.ContainsKey(type);
+        public bool IsCheatMode(ItemType itemType) => _cheatAmounts.ContainsKey(itemType);
 
-        public void SetCheatMode(T type, bool enabled)
+        public void SetCheatMode(ItemType itemType, bool enabled)
         {
-            if (enabled && !_cheatAmounts.ContainsKey(type))
-                _cheatAmounts.Add(type, CHEAT_AMOUNT);
+            if (enabled && !_cheatAmounts.ContainsKey(itemType))
+                _cheatAmounts.Add(itemType, CHEAT_AMOUNT);
 
-            if (!enabled && _cheatAmounts.ContainsKey(type))
-                _cheatAmounts.Remove(type);
+            if (!enabled && _cheatAmounts.ContainsKey(itemType))
+                _cheatAmounts.Remove(itemType);
         }
 
-        public void Spend(T type, int value)
+        public void Spend(ItemType itemType, int value)
         {
-            int currentValue = Get(type);
+            int currentValue = Get(itemType);
 
-            if (Get(type) - value < 0)
-                Debug.LogWarning($"{LogPrefix} Not enough balance! Spend: {value}, balance: {Get(type)}");
+            if (Get(itemType) - value < 0)
+                Debug.LogWarning($"{LogPrefix} Not enough balance! Spend: {value}, balance: {Get(itemType)}");
 
-            Set(type, currentValue - value);
-            OnSpent?.Invoke(type, -value);
+            Set(itemType, currentValue - value);
+            OnSpent?.Invoke(itemType, -value);
         }
 
-        public void Earn(T type, int value)
+        public void Earn(ItemType itemType, int value)
         {
-            Set(type, Get(type) + value);
-            OnEarned?.Invoke(type, value);
+            Set(itemType, Get(itemType) + value);
+            OnEarned?.Invoke(itemType, value);
         }
 
         
@@ -105,11 +102,11 @@ namespace DevNote.Gamebox
             int i = 0;
             foreach (var itemAmount in _amounts)
             {
-                T type = itemAmount.Key;
+                ItemType type = itemAmount.Key;
                 int amount = itemAmount.Value;
 
-                builder.Append($"{Convert.ToInt32(type)}{S1}{amount}");
-                if (i < _amounts.Count - 1) builder.Append(S2);
+                builder.Append($"{Convert.ToInt32(type)}{S.S1}{amount}");
+                if (i < _amounts.Count - 1) builder.Append(S.S2);
 
                 i++;
             }

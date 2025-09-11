@@ -7,10 +7,18 @@ using System.Text;
 
 namespace DevNote
 {
+    public static class S // Separators
+    {
+        public const char S1 = '_';
+        public const char S2 = ',';
+        public const char S3 = ':';
+        public const char S4 = ';';
+    }
+
+
     public static class GameStateEncoder
     {
         private const char VERSION_DATA_SEPARATOR = ':';
-
         private const char CELL_SEPARATOR = '|';
         private const char KEY_VALUE_PAIR_SEPARATOR = '+';
 
