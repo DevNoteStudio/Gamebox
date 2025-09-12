@@ -35,5 +35,32 @@ namespace DevNote.Gamebox
             OnLevelLost?.Invoke();
         }
 
+
+        public void ShowLocationsScreen(int locationIndex)
+        {
+
+        }
+
+        public void HideLocationsScreen()
+        {
+
+        }
+
+
+
+        public void ShowLevelsScreen(int locationIndex)
+        {
+
+        }
+
+        public void HideLevelsScreen()
+        {
+
+        }
+
+
+
+
+
     }
 }
