@@ -38,7 +38,7 @@ namespace DevNote.Gamebox
 
         private void Awake()
         {
-            _rewardItemWidgetPool = new(_rewardItemWidgetPrefab);
+            _rewardItemWidgetPool = new(_rewardItemWidgetPrefab, _rewardContainer);
         }
 
 
@@ -49,10 +49,7 @@ namespace DevNote.Gamebox
 
             _rewardItemWidgetPool.Clear();
             foreach (var reward in rewards)
-                _rewardItemWidgetPool.Get(_rewardContainer).Display(reward.Item1, reward.Item2);
-
-
-
+                _rewardItemWidgetPool.Get().Display(reward.Item1, reward.Item2);
 
         }
 

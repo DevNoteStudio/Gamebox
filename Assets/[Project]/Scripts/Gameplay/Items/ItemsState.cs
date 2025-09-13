@@ -86,7 +86,7 @@ namespace DevNote.Gamebox
             OnSpent?.Invoke(itemType, -value);
         }
 
-        public void Earn(ItemType itemType, int value)
+        public void Add(ItemType itemType, int value)
         {
             Set(itemType, Get(itemType) + value);
             OnEarned?.Invoke(itemType, value);

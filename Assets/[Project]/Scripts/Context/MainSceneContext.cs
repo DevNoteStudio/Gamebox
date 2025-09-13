@@ -4,16 +4,20 @@ namespace DevNote.Gamebox
 {
     public class MainSceneContext : SceneContext
     {
-        [SerializeField] private VictoryScreenView _victoryScreen;
-        [SerializeField] private LoseWindowView _loseWindow;
-
+        [SerializeField] private RectTransform _uiContainer;
+        [SerializeField] private RectTransform _fadeContainer;
 
         public override void RegisterContext()
         {
+            new UI(_uiContainer, _fadeContainer);
+
             var level = Register(new LevelController());
 
 
-            var test = Register(new TestController(_victoryScreen, _loseWindow));
+            var start = Register(new StartController(level));
+
+
+            //var test = Register(new TestController(_victoryScreen, _loseWindow));
 
 
 

@@ -24,18 +24,22 @@ namespace DevNote.Gamebox
         public LevelsState(string data)
         {
             Debug.Log(data);
+            _locations = new List<LocationData>();
 
-            string[] splitedLevelData = data.Split(S.S2);
-
-            foreach (var levelData in splitedLevelData)
+            if (data != string.Empty)
             {
-                string[] levelDataValues = levelData.Split(S.S1);
+                string[] splitedLevelData = data.Split(S.S2);
 
-                int locationIndex = int.Parse(levelDataValues[0]);
-                int levelIndex = int.Parse(levelDataValues[1]);
-                int stars = int.Parse(levelDataValues[2]);
+                foreach (var levelData in splitedLevelData)
+                {
+                    string[] levelDataValues = levelData.Split(S.S1);
 
-                GetOrCreateLevelData(locationIndex, levelIndex).stars = stars;
+                    int locationIndex = int.Parse(levelDataValues[0]);
+                    int levelIndex = int.Parse(levelDataValues[1]);
+                    int stars = int.Parse(levelDataValues[2]);
+
+                    GetOrCreateLevelData(locationIndex, levelIndex).stars = stars;
+                }
             }
         }
 

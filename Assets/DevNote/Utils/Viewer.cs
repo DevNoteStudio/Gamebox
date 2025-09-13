@@ -23,21 +23,29 @@ namespace DevNote
             _viewInstance = isPrefab ? null : view;
         }
 
-        public T Show()
+        public T Show(Transform container = null)
         {
+            bool wasShownBefore = _viewInstance != null && _viewInstance.gameObject.activeSelf;
+
             if (_viewInstance == null)
-                _viewInstance = UnityEngine.Object.Instantiate(_prefab, null);
+                _viewInstance = UnityEngine.Object.Instantiate(_prefab, container);
 
             else _viewInstance.gameObject.SetActive(true);
+
+            _viewInstance.transform.SetAsLastSibling();
+
+            if (!wasShownBefore) OnShown?.Invoke();
 
             return _viewInstance;
         }
 
-        public T Show(RectTransform container)
+        public T ShowExpand(RectTransform container)
         {
+            bool wasShown = _viewInstance != null && _viewInstance.gameObject.activeSelf;
+
             if (_viewInstance == null)
                 _viewInstance = UnityEngine.Object.Instantiate(_prefab, container);
-            
+
             else _viewInstance.gameObject.SetActive(true);
 
             var rectTransform = _viewInstance.transform as RectTransform;
@@ -49,24 +57,25 @@ namespace DevNote
             rectTransform.offsetMax = Vector2.zero;
             rectTransform.SetAsLastSibling();
 
-            OnShown?.Invoke();
+            if (!wasShown) OnShown?.Invoke();
+
             return _viewInstance;
         }
 
 
         public void Hide()
         {
-            if (_viewInstance != null && _viewInstance.gameObject.activeSelf)
-            {
-                _viewInstance.gameObject.SetActive(false);
-                OnHidden?.Invoke();
-            }
+            if (_viewInstance == null || _viewInstance.gameObject.activeSelf == false)
+                return;
+
+            _viewInstance.gameObject.SetActive(false);
+
+            OnHidden?.Invoke();
         }
 
 
 
     }
 }
-
 
 

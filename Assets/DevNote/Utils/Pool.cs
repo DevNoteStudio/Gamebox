@@ -7,34 +7,50 @@ namespace DevNote
     {
         private T _prefab;
         private List<T> _poolObjects;
+        private Transform _container;
 
 
-        public Pool(T poolObject)
+        public Pool(T poolObject, Transform container = null)
         {
             _prefab = poolObject;
             _poolObjects = new();
+            _container = container;
 
-            if (poolObject.gameObject.IsPrefab() == false)
+            if (!poolObject.gameObject.IsPrefab())
             {
                 poolObject.gameObject.SetActive(false);
                 _poolObjects.Add(poolObject);
             }
         }
 
-        public T Get(Transform parent = null)
+        public void Expand(int amount)
         {
+            for (int i = _poolObjects.Count; i < amount; i++)
+            {
+                var poolObject = Object.Instantiate(_prefab, _container);
+                poolObject.gameObject.SetActive(false);
+                _poolObjects.Add(poolObject);
+            }
+        }
+
+
+        public T Get(Transform container = null)
+        {
+            if (container == null) container = _container;
+
             var poolObject = _poolObjects.Find(poolObject => !poolObject.gameObject.activeSelf);
 
             if (poolObject != null)
-            {
                 poolObject.gameObject.SetActive(true);
-                poolObject.transform.SetParent(parent);
-            }
+
             else
             {
-                poolObject = Object.Instantiate(_prefab, parent);
+                poolObject = Object.Instantiate(_prefab, container);
                 _poolObjects.Add(poolObject);
             }
+
+            if (poolObject.transform.parent != container)
+                poolObject.transform.SetParent(container);
 
             return poolObject;
         }
@@ -42,10 +58,10 @@ namespace DevNote
         public void Clear()
         {
             for (int i = 0; i < _poolObjects.Count; i++)
-                ReturnToPool(_poolObjects[i]);
+                Return(_poolObjects[i]);
         }
 
-        public void ReturnToPool(T poolObject) => poolObject.gameObject.SetActive(false);
+        public void Return(T poolObject) => poolObject.gameObject.SetActive(false);
 
 
 

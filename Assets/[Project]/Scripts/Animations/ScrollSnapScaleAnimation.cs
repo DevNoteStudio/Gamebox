@@ -30,8 +30,6 @@ namespace DevNote.Gamebox
 
         private void OnPanelSelected(int fromIndex)
         {
-            print(_scrollSnap.CenteredPanel);
-
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
 

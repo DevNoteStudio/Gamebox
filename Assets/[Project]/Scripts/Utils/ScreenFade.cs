@@ -10,18 +10,22 @@ namespace DevNote.Gamebox
 
         private static readonly Viewer<Image> fadeViewer = new(Configs.Gamebox.ScreenFadePrefab);
 
-        private const float FADE_DURATION = 0.3f;
+        private const float FADE_DURATION = 0.2f;
 
         public static void Fade(Action onCompleted = null)
         {
-            var fadeImage = fadeViewer.Show(UI.Container);
+            var fadeImage = fadeViewer.Show(UI.FadeContainer);
 
             _currentTween?.Kill();
-            _currentTween = TweenHub.Fade(fadeImage, FADE_DURATION)
-                .OnComplete(() => onCompleted?.Invoke());
+            _currentTween = TweenHub.Fade(fadeImage, FADE_DURATION);
+            _currentTween.onComplete += () =>
+            {
+                onCompleted?.Invoke();
+                Unfade();
+            };
         }
 
-        public static void Unfade()
+        private static void Unfade()
         {
             if (!fadeViewer.ViewExists) return;
 

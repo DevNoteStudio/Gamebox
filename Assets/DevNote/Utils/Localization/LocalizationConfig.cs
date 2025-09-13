@@ -27,7 +27,6 @@ namespace DevNote
 
                     translation.ru = table.Get(row: i, Column.B);
                     translation.en = table.Get(row: i, Column.C);
-                    translation.tr = table.Get(row: i, Column.D);
 
                     Translations.Add(translation);
                 }

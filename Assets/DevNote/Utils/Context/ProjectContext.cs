@@ -8,7 +8,7 @@ namespace DevNote
 {
     public class ProjectContext : MonoBehaviour
     {
-        [Header("--- DevNote " + Info.VERSION + " ---"), Space]
+        [Header("DevNote " + Info.VERSION), Space]
         [SerializeField] private bool _testVersion;
         [SerializeField] private EnvironmentType _environmentType;
         [Space(10)]

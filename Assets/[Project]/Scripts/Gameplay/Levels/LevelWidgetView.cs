@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,7 +11,6 @@ namespace DevNote.Gamebox
         [SerializeField] private GameObject _lockObject;
         [SerializeField] private TextMeshProUGUI _levelNumberText;
         [SerializeField] private Button _playButton;
-        [SerializeField] private Button _backButton;
         [SerializeField] private Color _fadeStarColor;
         [SerializeField] private Material _availableMaterial;
         [SerializeField] private Material _notAvailableMaterial;
@@ -26,7 +24,6 @@ namespace DevNote.Gamebox
         private void Start()
         {
             _playButton.onClick.AddListener(OnPlayButtonClick);
-            _backButton.onClick.AddListener(OnBackButtonClick);
         }
 
         public void Display(int locationIndex, int levelIndex)
@@ -52,6 +49,8 @@ namespace DevNote.Gamebox
             _starsObject.SetActive(available);
             _levelNumberText.gameObject.SetActive(available);
             _lockObject.SetActive(!available);
+            _playButton.interactable = available;
+            _playButton.image.material = available ? _availableMaterial : _notAvailableMaterial;
 
             if (available)
             {
@@ -70,17 +69,6 @@ namespace DevNote.Gamebox
             {
                 levelController.Item.HideLevelsScreen();
                 levelController.Item.StartLevel(_locationIndex, _levelIndex);
-                ScreenFade.Unfade();
-            });
-        }
-
-        private void OnBackButtonClick()
-        {
-            ScreenFade.Fade(onCompleted: () =>
-            {
-                levelController.Item.HideLevelsScreen();
-                levelController.Item.StartLevel(_locationIndex, _levelIndex);
-                ScreenFade.Unfade();
             });
         }
 

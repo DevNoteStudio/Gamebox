@@ -15,15 +15,44 @@ MonoBehaviour:
   <DefaultLanguage>k__BackingField: 1
   <AvailableLanguages>k__BackingField: 000000000100000002000000
   <Translations>k__BackingField:
-  - key: level
-    ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
-    en: Level
-    tr: "Seviye\r"
-  - key: coins
-    ru: "\u041C\u043E\u043D\u0435\u0442\u044B"
-    en: Coins
-    tr: "Paralar\r"
-  - key: bonus
-    ru: "\u041F\u043E\u043B\u0443\u0447\u0438 \u0431\u043E\u043D\u0443\u0441!"
-    en: Get bonus!
-    tr: "Bonus kazan\u0131n!"
+  - key: Main
+    ru: 
+    en: "\r"
+    tr: 
+  - key: location_number
+    ru: "\u041B\u043E\u043A\u0430\u0446\u0438\u044F {NUMBER}"
+    en: "Location {NUMBER}\r"
+    tr: 
+  - key: play_button
+    ru: "\u0418\u0433\u0440\u0430\u0442\u044C"
+    en: "Play\r"
+    tr: 
+  - key: 
+    ru: 
+    en: "\r"
+    tr: 
+  - key: 
+    ru: 
+    en: "\r"
+    tr: 
+  - key: 
+    ru: 
+    en: "\r"
+    tr: 
+  - key: Locations
+    ru: 
+    en: "\r"
+    tr: 
+  - key: location_name_0
+    ru: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u0430\u044F \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
+    en: "Start location\r"
+    tr: 
+  - key: location_name_1
+    ru: "\u041B\u043E\u043A\u0430\u0446\u0438\u044F \u043F\u043E\u0442\u044F\u0436\u0435\u043B\u0435\u0435"
+    en: "Location 2\r"
+    tr: 
+  - key: location_name_2
+    ru: "\u041A\u0430\u043F\u0435\u0446 \u0442\u044F\u0436\u0435\u043B\u0430\u044F
+      \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
+    en: Location 3
+    tr: 

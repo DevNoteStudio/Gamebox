@@ -4,8 +4,11 @@ namespace DevNote
 {
     public static partial class GameState // Saves
     {
-        public static ReactiveValue<bool> NoAdsPurchased { get; set; }
-        public static LevelsState Levels { get; set; }
+        public static ReactiveValue<bool> NoAdsPurchased { get; private set; }
+        public static LevelsState Levels { get; private set; }
+        public static ItemsState Items { get; private set; }
+        public static int CurrentLocationIndex { get; set; }
+
     }
 }
 
