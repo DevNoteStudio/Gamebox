@@ -16,13 +16,14 @@ namespace DevNote
         private static Localization _instance;
 
 
-
         [SerializeField] private GoogleTables _googleTables;
 
         private Dictionary<string, Translation> _tranlationDictionary = new();
         private LocalizationConfig _config;
 
         private bool _initialized = false;
+
+        private readonly Holder<IEnvironment> environment = new(); 
 
         
 
@@ -33,10 +34,12 @@ namespace DevNote
             _instance = this;
             _config = Resources.Load<LocalizationConfig>("Localization");
 
-            await UniTask.WaitUntil(() => (_googleTables as IInitializable).Initialized);
+            await UniTask.WaitUntil(() => (_googleTables as IInitializable).Initialized && environment.Item.Initialized);
 
             foreach (var translation in _config.Translations)
                 _tranlationDictionary[translation.key] = translation;
+
+            SetLanguage(environment.Item.CurrentLanguage);
 
             _initialized = true;
         }
