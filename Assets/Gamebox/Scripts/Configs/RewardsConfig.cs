@@ -1,24 +1,32 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DevNote.Gamebox
 {
     public partial class GameboxConfig // Rewards
     {
-        [Serializable] private struct AdditionalRewardData
+        [Serializable] private struct AdditionalLocationLevelRewardData
         {
             public int levelIndex;
             public ItemType itemType;
             public int amount;
         }
 
-        [Serializable] private struct BaseLevelRewardData
+        [Serializable] private struct RewardForTotalLevelCompletionData
         {
-            [SerializeField] private int _coinsForComplete;
-            [SerializeField] private int _coinsForStar;
+            public int completedLevels;
+            public ItemType itemType;
+            public int amount;
+        }
 
-            public int GetValue(int newStars) => _coinsForComplete + _coinsForStar * newStars;
+        [Serializable] private struct RewardsData
+        {
+            public int coinsForLevelComplete;
+            public int coinsForNewStar;
+
+            public List<RewardForTotalLevelCompletionData> rewardsForTotalLevelCompletion;
+
+            public int GetCoinsForComplete(int newStars) => coinsForLevelComplete + coinsForNewStar * newStars;
         }
 
 
@@ -28,21 +36,36 @@ namespace DevNote.Gamebox
             var rewards = new List<(ItemType, int)>();
 
             var locationData = _locations[locationIndex];
-            int rewardCoins = (int)(_baseLevelReward.GetValue(newStars) * locationData.coinsMultiplier);
 
-            rewards.Add((ItemType.Coins, rewardCoins));
+            int coins = _rewards.coinsForLevelComplete + _rewards.coinsForNewStar * newStars;
+            coins = (int)(coins * locationData.coinsMultiplier);
+
+            rewards.Add((ItemType.Coins, coins));
             if (newStars > 0) rewards.Add((ItemType.Stars, newStars));
-            
-            foreach ( var additionalReward in locationData.additionalLevelRewards )
+
+            foreach (var rewardData in _rewards.rewardsForTotalLevelCompletion)
+            {
+                if (totalCompletedLevels == rewardData.completedLevels)
+                    Put(rewards, rewardData.itemType, rewardData.amount);
+            }
+
+            foreach ( var additionalReward in locationData.additionalLevelRewards)
             {
                 if (additionalReward.levelIndex == levelIndex)
-                    rewards.Add((additionalReward.itemType, additionalReward.amount));
+                    Put(rewards, additionalReward.itemType, additionalReward.amount);
             }
 
             return rewards;
         }
 
+        private void Put(List<(ItemType, int)> rewards, ItemType itemType, int value)
+        {
+            var index = rewards.FindIndex(element => element.Item1 == itemType);
+            if (index != -1)
+                rewards[index] = new (itemType, rewards[index].Item2 + value);
 
+            else rewards.Add(new (itemType, value));
+        }
 
 
     }

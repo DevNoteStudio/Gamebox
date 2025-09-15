@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 6534107350484591515}
   - component: {fileID: 7485654210964807093}
   m_Layer: 0
-  m_Name: '[ProjectContext]'
+  m_Name: -ProjectContext-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

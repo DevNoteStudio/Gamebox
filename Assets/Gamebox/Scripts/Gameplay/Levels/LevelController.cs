@@ -64,6 +64,7 @@ namespace DevNote.Gamebox
         {
             _isLevelPlayRepeat = GameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
 
+            GameState.LastPlayLocationIndex = locationIndex;
             CurrentLocationIndex = locationIndex;
             CurrentLevelIndex = levelIndex;
             CompletedStars = 0;
@@ -90,7 +91,7 @@ namespace DevNote.Gamebox
 
             var victoryScreen = victoryScreenViewer.ShowExpand(UI.Container);
 
-            bool showBonus = Configs.Gamebox.VictoryRouletteAvailable(GameState.Levels.CompletedLevels);
+            bool showBonus = GameState.Levels.CompletedLevels >= Configs.Gamebox.VictoryRouletteFromLevel;
 
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
@@ -102,7 +103,7 @@ namespace DevNote.Gamebox
         {
             var loseWindow = loseWindowViewer.ShowExpand(UI.Container);
 
-            bool showRevive = Configs.Gamebox.ReviveAvailable(GameState.Levels.CompletedLevels);
+            bool showRevive = GameState.Levels.CompletedLevels >= Configs.Gamebox.ReviveFromLevel - 1;
 
             loseWindow.Display(showRevive);
             loseWindow.AnimateShow();

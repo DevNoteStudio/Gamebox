@@ -1,4 +1,3 @@
-using System;
 using DanielLochner.Assets.SimpleScrollSnap;
 using TMPro;
 using UnityEngine;
@@ -28,6 +27,7 @@ namespace DevNote.Gamebox
         private int _locationIndex;
 
         private readonly Holder<MenuController> menuController = new();
+        private readonly Holder<LevelController> levelController = new();
 
         private void Awake()
         {
@@ -66,7 +66,14 @@ namespace DevNote.Gamebox
 
         private void OnPlayButtonClick()
         {
-            throw new NotImplementedException();
+            ScreenFade.Fade(onCompleted: () =>
+            {
+                int levelIndex = GameState.Levels.GetLastLevelIndexForPlay(_locationIndex);
+
+                menuController.Item.HideLocationsScreen();
+                levelController.Item.StartLevel(_locationIndex, levelIndex);
+            });
+
         }
 
 

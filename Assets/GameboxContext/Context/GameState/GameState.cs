@@ -7,7 +7,7 @@ namespace DevNote
         public static ReactiveValue<bool> NoAdsPurchased { get; private set; }
         public static LevelsState Levels { get; private set; }
         public static ItemsState Items { get; private set; }
-        public static int CurrentLocationIndex { get; set; }
+        public static int LastPlayLocationIndex { get; set; }
 
     }
 }

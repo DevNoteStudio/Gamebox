@@ -16,7 +16,7 @@ namespace DevNote.Gamebox
             
 
             var test = Register(new TestController(level));
-            var start = Register(new StartController(menu));
+            var start = Register(new StartController(menu, level));
 
 
             

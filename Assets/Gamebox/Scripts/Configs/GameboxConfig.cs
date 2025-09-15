@@ -12,9 +12,11 @@ namespace DevNote.Gamebox
         [SerializeField] private TestResources _testResources;
         [SerializeField] private List<ItemData> _items;
         [SerializeField] private List<LocationData> _locations;
-        [SerializeField] private BaseLevelRewardData _baseLevelReward;
-        [SerializeField] private AdsData _ads;
+        [SerializeField] private RewardsData _rewards;
 
+        [field: SerializeField] public int LocationSelectionFromLevel { get; private set; }
+        [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
+        [field: SerializeField] public int ReviveFromLevel { get; private set; }
 
     }
 }

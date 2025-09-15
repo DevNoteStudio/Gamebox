@@ -12,7 +12,7 @@ namespace DevNote.Gamebox
             public int levels;
             public int starRequire;
             public float coinsMultiplier;
-            public List<AdditionalRewardData> additionalLevelRewards;
+            public List<AdditionalLocationLevelRewardData> additionalLevelRewards;
         }
 
 

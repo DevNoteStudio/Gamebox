@@ -10,7 +10,7 @@ namespace DevNote
         {
             public const string NO_ADS_PURCHASED_KEY = "noAdsPurchased";
             public const string LEVELS_KEY = "levels";
-            public const string CURRENT_LOCATION_INDEX = "currentLocationIndex";
+            public const string LAST_PLAY_LOCATION_INDEX = "lastPlayLocationIndex";
             public const string ITEMS_KEY = "items";
 
 
@@ -18,7 +18,7 @@ namespace DevNote
             {
                 NoAdsPurchased = new(bool.Parse(data.GetValueOrDefault(NO_ADS_PURCHASED_KEY, "false")));
                 Levels = new(data.GetValueOrDefault(LEVELS_KEY, string.Empty));
-                CurrentLocationIndex = int.Parse(data.GetValueOrDefault(CURRENT_LOCATION_INDEX, "0"));
+                LastPlayLocationIndex = int.Parse(data.GetValueOrDefault(LAST_PLAY_LOCATION_INDEX, "0"));
                 Items = new(data.GetValueOrDefault(ITEMS_KEY, string.Empty));
             }
 
@@ -28,7 +28,7 @@ namespace DevNote
                 {
                     { NO_ADS_PURCHASED_KEY, NoAdsPurchased.ToString() },
                     { LEVELS_KEY, Levels.ToString() },
-                    { CURRENT_LOCATION_INDEX, CurrentLocationIndex.ToString() },
+                    { LAST_PLAY_LOCATION_INDEX, LastPlayLocationIndex.ToString() },
                     { ITEMS_KEY, Items.ToString() }
                 };
 

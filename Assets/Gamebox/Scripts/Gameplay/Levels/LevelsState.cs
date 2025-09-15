@@ -61,6 +61,19 @@ namespace DevNote.Gamebox
             return builder.ToString();
         }
 
+        public int GetLastLevelIndexForPlay(int locationIndex)
+        {
+            int levels = Configs.Gamebox.GetLocationLevelsAmount(locationIndex);
+            for (int levelIndex = 0; levelIndex < levels; levelIndex++)
+            {
+                if (GetOrCreateLevelData(locationIndex, levelIndex).stars == 0)
+                    return levelIndex;
+            }
+
+            return levels - 1;
+        }
+
+
         public int GetLevelStars(int locationIndex, int levelIndex)
             => GetOrCreateLevelData(locationIndex, levelIndex).stars;
 

@@ -5,7 +5,7 @@ namespace DevNote
 {
     public static class Configs
     {
-        public static GameboxConfig Gamebox => Resources.Load<GameboxConfig>("[Gamebox]");
+        public static GameboxConfig Gamebox => Resources.Load<GameboxConfig>("-Gamebox-");
 
 
     }
