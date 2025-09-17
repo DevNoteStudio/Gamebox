@@ -11,6 +11,8 @@ namespace DevNote.Gamebox
         public int CurrentLevelIndex { get; private set; } = -1;
         public int CompletedStars { get; private set; } = -1;
 
+        public bool IsLevelPlaying { get; private set; } = false;
+
         private bool _isLevelPlayRepeat;
 
         private readonly Viewer<LoseWindowView> loseWindowViewer;
@@ -52,12 +54,14 @@ namespace DevNote.Gamebox
 
         public void Revive()
         {
+            IsLevelPlaying = true;
             OnRevive?.Invoke();
         }
 
 
         public void ExitLevel()
         {
+            IsLevelPlaying = false;
             OnLevelExit?.Invoke();
         }
 
@@ -71,6 +75,7 @@ namespace DevNote.Gamebox
             CurrentLevelIndex = levelIndex;
             CompletedStars = 0;
 
+            IsLevelPlaying = true;
             OnLevelStarted?.Invoke();
         }
 
@@ -100,6 +105,7 @@ namespace DevNote.Gamebox
 
             leaderboards.SetScore(LeaderboardType.Main, completedLevels);
 
+            IsLevelPlaying = false;
             OnLevelCompleted?.Invoke();
         }
 
@@ -112,6 +118,7 @@ namespace DevNote.Gamebox
             loseWindow.Display(showRevive);
             loseWindow.AnimateShow();
 
+            IsLevelPlaying = false;
             OnLevelLost?.Invoke();
         }
 
