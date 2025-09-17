@@ -53,7 +53,7 @@ namespace DevNote.Gamebox
 
 
         private const float SHOW_FROM_FADE_ROTATE_ROTATION_Z = 30f;
-        private const float SHOW_FROM_FADE_ROTATE_DURATION = 0.5f;
+        private const float SHOW_FROM_FADE_ROTATE_DURATION = 0.6f;
         private const float SHOW_FROM_FADE_ROTATE_SCALE = 2f;
         public static Tween ShowFromFadeRotate(Image image)
         {

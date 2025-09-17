@@ -9814,18 +9814,24 @@ MonoBehaviour:
   - {fileID: 7687365703670793785}
   - {fileID: 7687365704114206466}
   - {fileID: 7687365704159331389}
+  _starSounds:
+  - {fileID: 11400000, guid: 9e1329d16b9d0f041959ef4517da0a3d, type: 2}
+  - {fileID: 11400000, guid: e2ff4eb3efa9d9840ab71e6855308635, type: 2}
+  - {fileID: 11400000, guid: 52d16061625147a428c7399491702846, type: 2}
   _titleRect: {fileID: 2486470958696630397}
   _fadeImage: {fileID: 278806743479554291}
   _starsRect: {fileID: 912216374578614859}
   _rewardsRect: {fileID: 4395601512139014219}
   _bonusRect: {fileID: 7687365703328824806}
-  _bottomButtonRect: {fileID: 7687365702880516214}
   _rewardItemWidgetPrefab: {fileID: 7317469889542605962}
   _rewardContainer: {fileID: 362249983352729756}
   _roulette: {fileID: 1269242492347945889}
   _skipButton: {fileID: 7828617749280110282}
   _takeButton: {fileID: 7687365703328904914}
   _stopRouletteButton: {fileID: 7687365704000451570}
+  _victorySound: {fileID: 11400000, guid: 0e5ebe1a5fa2c51479d7c7a0c8f183cf, type: 2}
+  _confettiSound: {fileID: 11400000, guid: 5df5e0e995fbea14ab1ed978d4b77330, type: 2}
+  _rouletteStopSound: {fileID: 11400000, guid: d0967578d5ec55745a6bda2d713411b7, type: 2}
 --- !u!114 &469435801299966365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89422,6 +89428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53e255d795416140891d4efe1553c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 0
 --- !u!1 &5745320348915135428
 GameObject:
   m_ObjectHideFlags: 0
@@ -130258,6 +130265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53e255d795416140891d4efe1553c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 1
 --- !u!1 &7687365703333053632
 GameObject:
   m_ObjectHideFlags: 0
@@ -131604,6 +131612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7434ad17c683b448cb5bbcc0a2786c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 1
 --- !u!1 &7687365704019294811
 GameObject:
   m_ObjectHideFlags: 0
@@ -131655,6 +131664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b76a4fc01b62f44caa85df40ccc9181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tickSound: {fileID: 11400000, guid: cefef3f961d388c44a1c931dcdff905d, type: 2}
   _pointer: {fileID: 7687365703797269761}
   _spinAreaRect: {fileID: 7687365702896378976}
   _leftRightPadding: 15

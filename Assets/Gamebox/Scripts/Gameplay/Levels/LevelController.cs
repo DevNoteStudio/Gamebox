@@ -16,13 +16,15 @@ namespace DevNote.Gamebox
         private readonly Viewer<LoseWindowView> loseWindowViewer;
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
         private readonly MenuController menuController;
+        private readonly ILeaderboards leaderboards;
 
 
-        public LevelController(MenuController menuController)
+        public LevelController(MenuController menuController, ILeaderboards leaderboards)
         {
             loseWindowViewer = new(Configs.Gamebox.LoseWindowPrefab);
             victoryScreenViewer = new(Configs.Gamebox.VictoryScreenPrefab);
             this.menuController = menuController;
+            this.leaderboards = leaderboards;
         }
 
 
@@ -95,6 +97,8 @@ namespace DevNote.Gamebox
 
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
+
+            leaderboards.SetScore(LeaderboardType.Main, completedLevels);
 
             OnLevelCompleted?.Invoke();
         }

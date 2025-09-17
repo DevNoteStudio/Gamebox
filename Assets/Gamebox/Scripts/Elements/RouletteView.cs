@@ -17,17 +17,19 @@ namespace DevNote.Gamebox
         }
 
 
+        [SerializeField] private SoundUnit _tickSound;
         [SerializeField] private RectTransform _pointer;
         [SerializeField] private RectTransform _spinAreaRect;
         [SerializeField] private float _leftRightPadding;
         [SerializeField] private List<SectorData> _sectors;
 
         private Tween _currentTween;
+        private int _currentIndex = 0;
 
         private const float LOOP_DURATION = 1f;
         private const int SECTORS_AMOUNT = 5;
 
-        public void Start()
+        public void StartSpin()
         {
             float rightX = _spinAreaRect.sizeDelta.x - _leftRightPadding;
             float leftX = _leftRightPadding;
@@ -46,6 +48,13 @@ namespace DevNote.Gamebox
             _currentTween.OnUpdate(() =>
             {
                 int currentIndex = GetCurrentSecrorIndex();
+
+                if (currentIndex != _currentIndex)
+                {
+                    _currentIndex = currentIndex;
+                    _tickSound.Play();
+                }
+
                 for (int i = 0; i < _sectors.Count; i++)
                 {
                     bool highlight = i == currentIndex;

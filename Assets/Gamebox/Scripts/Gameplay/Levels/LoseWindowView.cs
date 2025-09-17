@@ -8,6 +8,7 @@ namespace DevNote.Gamebox
 {
     public class LoseWindowView : MonoBehaviour
     {
+        [SerializeField] private SoundUnit _loseSound;
         [SerializeField] private RectTransform _windowRect;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private Button _reviveButton;
@@ -44,6 +45,8 @@ namespace DevNote.Gamebox
 
         public void AnimateShow()
         {
+            _loseSound.Play();
+
             _windowRect.localScale = Vector3.zero;
             _skipButton.transform.localScale = Vector3.zero;
             _titleRect.localPosition = Vector3.zero;
@@ -54,10 +57,12 @@ namespace DevNote.Gamebox
             _currentTween = DOTween.Sequence().Attach(gameObject)
 
                 .Append(TweenHub.Fade(_fadeImage))
-                .Join(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
+                .Append(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
 
+                .AppendCallback(() => Configs.Gamebox.ShowSound.Play())
                 .Append(TweenHub.PopShow(_windowRect))
                 .Join(_titleRect.DOLocalMoveY(SHOW_TITLE_TO_LOCAL_Y, TITLE_MOVE_DURATION).SetEase(Ease.InOutFlash))
+                
 
                 .AppendInterval(DELAY_BEFORE_SHOW_SKIP_BUTTON)
                 .Append(TweenHub.PopShow(_skipButton.transform));

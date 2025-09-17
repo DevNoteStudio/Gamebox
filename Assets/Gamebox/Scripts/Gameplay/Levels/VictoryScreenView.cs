@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Coffee.UIExtensions;
 using DG.Tweening;
 using UnityEngine;
@@ -15,6 +13,7 @@ namespace DevNote.Gamebox
         [SerializeField] private List<UIParticle> _starFlashParticles;
         [SerializeField] private List<UIParticle> _starShineParticles;
         [SerializeField] private List<Image> _starImages;
+        [SerializeField] private List<SoundUnit> _starSounds;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private Image _fadeImage;
         [SerializeField] private RectTransform _starsRect;
@@ -26,6 +25,10 @@ namespace DevNote.Gamebox
         [SerializeField] private Button _skipButton;
         [SerializeField] private Button _takeButton;
         [SerializeField] private Button _stopRouletteButton;
+        [SerializeField] private SoundUnit _victorySound;
+        [SerializeField] private SoundUnit _confettiSound;
+        [SerializeField] private SoundUnit _rouletteStopSound;
+        
 
 
         private Pool<ItemWidgetView> _rewardItemWidgetPool;
@@ -38,7 +41,7 @@ namespace DevNote.Gamebox
         private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
 
-        private const float TITLE_DURATION = 0.6f;
+        private const float TITLE_DURATION = 0.75f;
         private const float TITLE_OFFSET_Y = 200f;
         private const float DELAY_AFTER_STARS = 1f;
         private const float DELAY_AFTER_REWARDS = 0.5f;
@@ -82,7 +85,7 @@ namespace DevNote.Gamebox
 
         public void AnimateShow()
         {
-            _confettiParticles.ForEach(particle => particle.Play());
+            _victorySound.Play();
 
             _takeButton.gameObject.SetActive(false);
 
@@ -94,7 +97,13 @@ namespace DevNote.Gamebox
             _currentTween?.Kill();
             var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDisable)
                 .Append(TweenHub.Fade(_fadeImage))
-                .Join(_titleRect.DOScaleX(1f, TITLE_DURATION).SetEase(Ease.OutBack))
+                .Append(_titleRect.DOScaleX(1f, TITLE_DURATION).SetEase(Ease.OutBack))
+
+                .AppendCallback(() =>
+                {
+                    _confettiSound.Play();
+                    _confettiParticles.ForEach(particle => particle.Play());
+                })
 
                 .Append(_titleRect.DOLocalMoveY(0f, TITLE_DURATION).SetEase(Ease.InOutFlash))
                 .Append(TweenHub.PopShow(_starsRect));
@@ -113,12 +122,14 @@ namespace DevNote.Gamebox
                     {
                         _starFlashParticles[index].Play();
                         _starShineParticles[index].Play();
+                        _starSounds[index].Play();
                     });
                 }
                 else _starImages[i].gameObject.SetActive(false);
             }
 
             sequence.AppendInterval(DELAY_AFTER_STARS);
+            sequence.AppendCallback(() => Configs.Gamebox.ShowSound.Play());
             sequence.Append(TweenHub.PopShow(_rewardsRect));
             sequence.AppendInterval(DELAY_AFTER_REWARDS);
 
@@ -129,7 +140,8 @@ namespace DevNote.Gamebox
 
             if (_showBonus)
             {
-                sequence.AppendCallback(() => _roulette.Start());
+                sequence.AppendCallback(() => _roulette.StartSpin());
+                sequence.AppendCallback(() => Configs.Gamebox.ShowSound.Play());
                 sequence.Append(TweenHub.PopShow(_bonusRect));
                 sequence.AppendInterval(DELAY_AFTER_ROULETTE);
                 sequence.Append(TweenHub.PopShow(_skipButton.transform));
@@ -154,8 +166,9 @@ namespace DevNote.Gamebox
 
         private void OnStopRouletteButtonClick()
         {
-            ads.Item.ShowRewarded(AdKey.LevelRevive, onRewarded: () =>
+            ads.Item.ShowRewarded(AdKey.VictoryRoulette, onRewarded: () =>
             {
+                _rouletteStopSound.Play();
                 _roulette.Stop(out int sectorIndex);
                 ApplyRouletteBonus(sectorIndex);
             });

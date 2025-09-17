@@ -8,6 +8,10 @@ namespace DevNote.Gamebox
     [RequireComponent(typeof(Button))]
     public class BubbleButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
+        private enum ButtonSoundType { Click, Open }
+
+        [SerializeField] private ButtonSoundType _soundType;
+
         private Button _button;
         private Tween _pointerTween;
         private Tween _clickTween;
@@ -31,6 +35,8 @@ namespace DevNote.Gamebox
         {
             if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable) return;
 
+            Configs.Gamebox.PointerEnterSound.Play();
+
             _pointerTween?.Kill();
             _pointerTween = transform.DOScale(TO_SCALE, DURATION).SetEase(Ease.OutFlash);
         }
@@ -46,6 +52,11 @@ namespace DevNote.Gamebox
 
         private void OnButtonClick()
         {
+            var sound = _soundType == ButtonSoundType.Click ?
+                Configs.Gamebox.ClickSound : Configs.Gamebox.OpenClickSound;
+
+            sound.Play();
+
             if (_clickTween.IsActive() && _clickTween.IsPlaying()) return;
 
             _clickTween?.Kill();

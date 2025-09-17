@@ -247,7 +247,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7434ad17c683b448cb5bbcc0a2786c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 1
 --- !u!1 &5519908663696919014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5c74399945a8a41b77d595bf7cbe4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loseSound: {fileID: 11400000, guid: 2616cbbab7c250447b1d6fd1b1c683da, type: 2}
   _windowRect: {fileID: 5519908664783226932}
   _titleRect: {fileID: 5519908664376731871}
   _reviveButton: {fileID: 5519908663467347584}
@@ -1317,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1360,6 +1362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53e255d795416140891d4efe1553c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 1
 --- !u!1 &5519908665026973496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,3 +1741,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53e255d795416140891d4efe1553c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 0

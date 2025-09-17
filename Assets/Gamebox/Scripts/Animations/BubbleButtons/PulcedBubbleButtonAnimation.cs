@@ -8,6 +8,12 @@ namespace DevNote.Gamebox
     [RequireComponent(typeof(Button))]
     public class PulcedBubbleButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IAnimation
     {
+        private enum ButtonSoundType { Click, Open }
+
+        [SerializeField] private ButtonSoundType _soundType;
+
+
+
         private Button _button;
         private Tween _currentTween;
 
@@ -42,6 +48,8 @@ namespace DevNote.Gamebox
         {
             if (!_button.interactable) return;
 
+            Configs.Gamebox.PointerEnterSound.Play();
+
             _currentTween?.Kill();
             _currentTween = transform.DOScale(MAX_POINTER_ENTER_SCALE, BUBBLE_DURATION).SetEase(Ease.OutFlash);
         }
@@ -58,14 +66,10 @@ namespace DevNote.Gamebox
 
         private void OnButtonClick()
         {
-            /*
-            if (_currentTween.IsActive() && _currentTween.IsPlaying()) return;
+            var sound = _soundType == ButtonSoundType.Click ?
+                Configs.Gamebox.ClickSound : Configs.Gamebox.OpenClickSound;
 
-            _currentTween?.Kill();
-            _currentTween = DOTween.Sequence()
-                .Append(transform.DOScale(MIN_MAX_PULCE_SCALE.x, BUBBLE_DURATION / 2f).SetEase(Ease.OutFlash))
-                .Append(transform.DOScale(MAX_POINTER_ENTER_SCALE, BUBBLE_DURATION / 2f).SetEase(Ease.InFlash));
-            */
+            sound.Play();
         }
 
         void IAnimation.Play() => AnimatePulce();
