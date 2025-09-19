@@ -10,12 +10,26 @@
       },
       "hash": "4b98abd7469b10d55c9c623830cb6e1518f72731"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "98538ef7c7a22f4ec22101e72f7eec4ed831c724"
+    },
     "com.dbrizov.naughtyattributes": {
       "version": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "8a8fa5a9659a6d63f196391c71e06c4286c8acd7"
+    },
+    "com.devnote": {
+      "version": "https://github.com/Valentin-Grachev/DevNote.git?path=com.devnote",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5a67d24b06d74edf0b3919fda982eafa90c9ece8"
     },
     "com.unity.2d.animation": {
       "version": "7.1.1",
@@ -122,13 +136,6 @@
         "com.unity.mathematics": "1.2.1",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.collab-proxy": {
-      "version": "2.7.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {

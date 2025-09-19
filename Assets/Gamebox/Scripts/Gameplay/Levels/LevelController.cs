@@ -103,7 +103,7 @@ namespace DevNote.Gamebox
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(LeaderboardType.Main, completedLevels);
+            leaderboards.SetScore(completedLevels, LeaderboardKey.Stars);
 
             IsLevelPlaying = false;
             OnLevelCompleted?.Invoke();
