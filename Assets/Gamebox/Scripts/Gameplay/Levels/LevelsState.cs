@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Text;
+using DevNote;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class LevelsState
     {

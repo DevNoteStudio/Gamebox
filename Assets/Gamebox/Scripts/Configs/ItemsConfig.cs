@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public partial class GameboxConfig // Items
     {

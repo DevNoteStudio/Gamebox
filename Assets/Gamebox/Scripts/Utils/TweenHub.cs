@@ -1,10 +1,11 @@
 using System.Drawing;
+using DevNote;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public static class TweenHub
     {

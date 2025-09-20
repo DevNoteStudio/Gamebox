@@ -1,9 +1,10 @@
+using DevNote;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     [RequireComponent(typeof(Button))]
     public class PulcedBubbleButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IAnimation

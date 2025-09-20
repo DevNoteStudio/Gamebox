@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public static class GameboxExtensions
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using DevNote;
-using DevNote.Gamebox;
+using Gamebox;
 
 
 public partial class GameState // Data

@@ -1,5 +1,6 @@
+using DevNote;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class TestController
     {

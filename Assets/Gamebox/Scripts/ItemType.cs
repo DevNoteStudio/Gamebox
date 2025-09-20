@@ -1,5 +1,5 @@
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public enum ItemType
     {

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using DevNote;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class ShineAnimation : MonoBehaviour
     {

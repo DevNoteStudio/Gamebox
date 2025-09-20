@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using DevNote;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class RouletteView : MonoBehaviour
     {

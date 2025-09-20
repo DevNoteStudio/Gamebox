@@ -1,7 +1,7 @@
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
-    public static class Common
+    public static class Info
     {
         public const string VERSION = "v.1.0.0";
 

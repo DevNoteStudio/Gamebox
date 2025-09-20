@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public partial class GameboxConfig // Rewards
     {

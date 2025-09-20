@@ -1,7 +1,8 @@
 using System;
+using DevNote;
 using UnityEngine;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class LevelController
     {

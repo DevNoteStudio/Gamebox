@@ -1,8 +1,9 @@
 using System;
+using DevNote;
 using DG.Tweening;
 using UnityEngine.UI;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public static class ScreenFade
     {

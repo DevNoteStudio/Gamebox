@@ -1,9 +1,9 @@
-using System;
+using DevNote;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class TestLevelView : MonoBehaviour
     {

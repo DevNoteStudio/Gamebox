@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DevNote;
 using UnityEngine;
 
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
 
     public class ItemsState
@@ -78,7 +79,7 @@ namespace DevNote.Gamebox
             int currentValue = Value(itemType);
 
             if (Value(itemType) - value < 0)
-                Debug.LogWarning($"{Common.LogPrefix} Not enough balance! Spend: {value}, balance: {Value(itemType)}");
+                Debug.LogWarning($"{Info.LogPrefix} Not enough balance! Spend: {value}, balance: {Value(itemType)}");
 
             Set(itemType, currentValue - value);
             OnSpent?.Invoke(itemType, -value);

@@ -1,7 +1,8 @@
+using DevNote;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class LevelsScreenView : MonoBehaviour
     {

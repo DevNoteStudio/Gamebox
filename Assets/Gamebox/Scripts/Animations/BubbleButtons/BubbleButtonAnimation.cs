@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     [RequireComponent(typeof(Button))]
     public class BubbleButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

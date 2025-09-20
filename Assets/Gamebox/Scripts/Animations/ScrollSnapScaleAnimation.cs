@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
 
     [RequireComponent(typeof(SimpleScrollSnap))]

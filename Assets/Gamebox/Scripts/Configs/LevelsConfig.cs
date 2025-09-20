@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using DevNote;
 using UnityEngine;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public partial class GameboxConfig // Levels
     {

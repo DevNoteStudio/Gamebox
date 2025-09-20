@@ -1,6 +1,6 @@
 using System;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public partial class GameboxConfig // Test
     {

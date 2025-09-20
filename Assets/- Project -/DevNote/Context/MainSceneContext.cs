@@ -1,5 +1,5 @@
 using DevNote;
-using DevNote.Gamebox;
+using Gamebox;
 using UnityEngine;
 
 public class MainSceneContext : SceneContext

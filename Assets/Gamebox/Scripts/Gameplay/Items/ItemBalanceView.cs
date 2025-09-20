@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     public class ItemBalanceView : MonoBehaviour
     {

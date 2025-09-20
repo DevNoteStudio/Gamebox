@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace DevNote.Gamebox
+namespace Gamebox
 {
     [CreateAssetMenu(menuName = "Gamebox/Config", fileName = "[Gamebox]")]
     public partial class GameboxConfig : ScriptableObject // Main
     {
-        [Header("Gamebox " + Common.VERSION), Space]
+        [Header("Gamebox " + Info.VERSION), Space]
         [SerializeField] private ResourcesData _resources;
         [SerializeField] private TestResources _testResources;
         [SerializeField] private List<ItemData> _items;
