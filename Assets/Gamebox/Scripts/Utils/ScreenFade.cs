@@ -9,7 +9,7 @@ namespace Gamebox
     {
         private static Tween _currentTween;
 
-        private static readonly Viewer<Image> fadeViewer = new(Configs.Gamebox.ScreenFadePrefab);
+        private static readonly Viewer<Image> fadeViewer = new(IConfigs.Gamebox.ScreenFadePrefab);
 
         private const float FADE_DURATION = 0.2f;
 

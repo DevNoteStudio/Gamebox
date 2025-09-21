@@ -26,12 +26,10 @@ MonoBehaviour:
     testEnabled: 1
     testLevelPrefab: {fileID: 5634816582875702057, guid: 8618e8c6c322b9c4ca6cb7968014770a, type: 3}
   _items:
-  - itemType: 1
+  - itemKey: Coins
     iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
-  - itemType: 2
+  - itemKey: Stars
     iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
-  - itemType: 3
-    iconSprite: {fileID: 21300000, guid: 1d34c19b013723847864a6fd148d9d2a, type: 3}
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
     levels: 15
@@ -51,13 +49,7 @@ MonoBehaviour:
   _rewards:
     coinsForLevelComplete: 10
     coinsForNewStar: 30
-    rewardsForTotalLevelCompletion:
-    - completedLevels: 4
-      itemType: 3
-      amount: 4
-    - completedLevels: 6
-      itemType: 3
-      amount: 6
+    rewardsForTotalLevelCompletion: []
   <LocationSelectionFromLevel>k__BackingField: 4
   <VictoryRouletteFromLevel>k__BackingField: 5
   <ReviveFromLevel>k__BackingField: 5

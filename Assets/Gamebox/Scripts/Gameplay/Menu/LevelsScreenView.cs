@@ -31,7 +31,7 @@ namespace Gamebox
 
             _levelWidgetPool.Clear();
 
-            int levels = Configs.Gamebox.GetLocationLevelsAmount(locationIndex);
+            int levels = IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex);
 
             for (int levelIndex = 0; levelIndex < levels; levelIndex++)
                 _levelWidgetPool.Get().Display(locationIndex, levelIndex);

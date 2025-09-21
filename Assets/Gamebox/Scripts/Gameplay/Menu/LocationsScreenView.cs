@@ -47,8 +47,8 @@ namespace Gamebox
             _locationIndex = locationIndex;
 
             _previewPool.Clear();
-            for (int index = 0; index < Configs.Gamebox.LocationsAmount; index++)
-                _previewPool.Get().sprite = Configs.Gamebox.GetLocationPreviewSprite(index);
+            for (int index = 0; index < IConfigs.Gamebox.LocationsAmount; index++)
+                _previewPool.Get().sprite = IConfigs.Gamebox.GetLocationPreviewSprite(index);
 
             _scrollSnap.StartingPanel = locationIndex;
 
@@ -69,7 +69,7 @@ namespace Gamebox
         {
             ScreenFade.Fade(onCompleted: () =>
             {
-                int levelIndex = GameState.Levels.GetLastLevelIndexForPlay(_locationIndex);
+                int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(_locationIndex);
 
                 menuController.Item.HideLocationsScreen();
                 levelController.Item.StartLevel(_locationIndex, levelIndex);
@@ -80,29 +80,29 @@ namespace Gamebox
 
         private void DisplayLocationInfo(int locationIndex)
         {
-            _locationNameText.text = Configs.Gamebox.GetLocationName(locationIndex);
+            _locationNameText.text = IConfigs.Gamebox.GetLocationName(locationIndex);
 
             _locationNumberText.text = Localization.GetLocalizedText
                 ("location_number").Replace("{NUMBER}", (locationIndex + 1).ToString());
 
-            int maxStars = GameState.Levels.GetLocationMaxStars(locationIndex);
-            int currentStars = GameState.Levels.GetLocationCurrentStars(locationIndex);
+            int maxStars = IGameState.Levels.GetLocationMaxStars(locationIndex);
+            int currentStars = IGameState.Levels.GetLocationCurrentStars(locationIndex);
 
             _starProgressText.text = $"{currentStars}/{maxStars}";
             _starProgressSlider.value = (float)currentStars / maxStars;
 
             _previousButton.interactable = locationIndex != 0;
-            _nextButton.interactable = locationIndex != Configs.Gamebox.LocationsAmount - 1;
+            _nextButton.interactable = locationIndex != IConfigs.Gamebox.LocationsAmount - 1;
 
-            int completedLevels = GameState.Levels.GetCompletedLevels(locationIndex);
-            int levelsAmount = Configs.Gamebox.GetLocationLevelsAmount(locationIndex);
+            int completedLevels = IGameState.Levels.GetCompletedLevels(locationIndex);
+            int levelsAmount = IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex);
 
             _completedLevelsText.text = Localization.GetLocalizedText("location_progress")
                 .Replace("{CURRENT}", completedLevels.ToString())
                 .Replace("{MAX}", levelsAmount.ToString());
 
-            int starsRequire = Configs.Gamebox.GetLocationStarRequire(locationIndex);
-            bool locationAvailable = GameState.Items.Value(ItemType.Stars) >= starsRequire;
+            int starsRequire = IConfigs.Gamebox.GetLocationStarRequire(locationIndex);
+            bool locationAvailable = IGameState.Items.Value(IItemKey.Stars) >= starsRequire;
 
             _lockObject.SetActive(!locationAvailable);
             _availableObject.SetActive(locationAvailable);

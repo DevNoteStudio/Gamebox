@@ -11,10 +11,10 @@ namespace Gamebox
 
         public TestController(LevelController levelController)
         {
-            testLevelViewer = new(Configs.Gamebox.TestLevelPrefab);
+            testLevelViewer = new(IConfigs.Gamebox.TestLevelPrefab);
             this.levelController = levelController;
 
-            if (Configs.Gamebox.TestEnabled)
+            if (IConfigs.Gamebox.TestEnabled)
             {
                 levelController.OnLevelStarted += OnLevelStarted;
                 levelController.OnLevelExit += OnLevelExit;

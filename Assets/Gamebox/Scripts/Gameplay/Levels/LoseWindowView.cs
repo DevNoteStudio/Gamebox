@@ -60,7 +60,7 @@ namespace Gamebox
                 .Append(TweenHub.Fade(_fadeImage))
                 .Append(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
 
-                .AppendCallback(() => Configs.Gamebox.ShowSound.Play())
+                .AppendCallback(() => IConfigs.Gamebox.ShowSound.Play())
                 .Append(TweenHub.PopShow(_windowRect))
                 .Join(_titleRect.DOLocalMoveY(SHOW_TITLE_TO_LOCAL_Y, TITLE_MOVE_DURATION).SetEase(Ease.InOutFlash))
                 
@@ -84,7 +84,7 @@ namespace Gamebox
 
         private void OnReviveButtonClick()
         {
-            ads.Item.ShowRewarded(AdKey.LevelRevive, onRewarded: () =>
+            ads.Item.ShowRewarded(IAdKey.LevelRevive, onRewarded: () =>
             {
                 levelController.Item.Revive();
                 levelController.Item.HideLoseWindow(useHideAnimation: true);

@@ -33,13 +33,13 @@ namespace Gamebox
             _locationIndex = locationIndex;
             _levelIndex = levelIndex;
 
-            int stars = GameState.Levels.GetLevelStars(locationIndex, levelIndex);
+            int stars = IGameState.Levels.GetLevelStars(locationIndex, levelIndex);
             bool isFirstLevel = levelIndex == 0;
             
             if (isFirstLevel) SetState(available: true, stars);
             else
             {
-                bool previousLevelCompleted = GameState.Levels.GetLevelStars(locationIndex, levelIndex - 1) > 0;
+                bool previousLevelCompleted = IGameState.Levels.GetLevelStars(locationIndex, levelIndex - 1) > 0;
                 bool available = previousLevelCompleted || stars > 0;
                 SetState(available, stars);
             }

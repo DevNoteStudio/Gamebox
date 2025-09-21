@@ -1,5 +1,5 @@
 
-namespace DevNote
+namespace Gamebox
 {
     public interface IAnimation
     {

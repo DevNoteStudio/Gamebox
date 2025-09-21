@@ -49,7 +49,7 @@ namespace Gamebox
         {
             if (!_button.interactable) return;
 
-            Configs.Gamebox.PointerEnterSound.Play();
+            IConfigs.Gamebox.PointerEnterSound.Play();
 
             _currentTween?.Kill();
             _currentTween = transform.DOScale(MAX_POINTER_ENTER_SCALE, BUBBLE_DURATION).SetEase(Ease.OutFlash);
@@ -68,7 +68,7 @@ namespace Gamebox
         private void OnButtonClick()
         {
             var sound = _soundType == ButtonSoundType.Click ?
-                Configs.Gamebox.ClickSound : Configs.Gamebox.OpenClickSound;
+                IConfigs.Gamebox.ClickSound : IConfigs.Gamebox.OpenClickSound;
 
             sound.Play();
         }

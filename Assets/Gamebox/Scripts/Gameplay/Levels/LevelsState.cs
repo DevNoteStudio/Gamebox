@@ -64,7 +64,7 @@ namespace Gamebox
 
         public int GetLastLevelIndexForPlay(int locationIndex)
         {
-            int levels = Configs.Gamebox.GetLocationLevelsAmount(locationIndex);
+            int levels = IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex);
             for (int levelIndex = 0; levelIndex < levels; levelIndex++)
             {
                 if (GetOrCreateLevelData(locationIndex, levelIndex).stars == 0)
@@ -82,12 +82,12 @@ namespace Gamebox
             => GetOrCreateLevelData(locationIndex, levelIndex).stars = stars;
 
         public int GetLocationMaxStars(int locationIndex)
-            => Configs.Gamebox.GetLocationLevelsAmount(locationIndex) * MAX_STARS_FOR_LEVEL;
+            => IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex) * MAX_STARS_FOR_LEVEL;
 
         public int GetLocationCurrentStars(int locationIndex)
         {
             int stars = 0;
-            for (int levelIndex = 0; levelIndex < Configs.Gamebox.GetLocationLevelsAmount(locationIndex); levelIndex++)
+            for (int levelIndex = 0; levelIndex < IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex); levelIndex++)
                 stars += GetLevelStars(locationIndex, levelIndex);
 
             return stars;
@@ -96,7 +96,7 @@ namespace Gamebox
         public int GetCompletedLevels(int locationIndex)
         {
             int levels = 0;
-            for (int levelIndex = 0; levelIndex < Configs.Gamebox.GetLocationLevelsAmount(locationIndex); levelIndex++)
+            for (int levelIndex = 0; levelIndex < IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex); levelIndex++)
                 if (GetLevelStars(locationIndex, levelIndex) > 0) levels++;
 
             return levels;

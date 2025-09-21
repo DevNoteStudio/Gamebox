@@ -35,7 +35,7 @@ namespace Gamebox
         {
             if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable) return;
 
-            Configs.Gamebox.PointerEnterSound.Play();
+            IConfigs.Gamebox.PointerEnterSound.Play();
 
             _pointerTween?.Kill();
             _pointerTween = transform.DOScale(TO_SCALE, DURATION).SetEase(Ease.OutFlash);
@@ -53,7 +53,7 @@ namespace Gamebox
         private void OnButtonClick()
         {
             var sound = _soundType == ButtonSoundType.Click ?
-                Configs.Gamebox.ClickSound : Configs.Gamebox.OpenClickSound;
+                IConfigs.Gamebox.ClickSound : IConfigs.Gamebox.OpenClickSound;
 
             sound.Play();
 

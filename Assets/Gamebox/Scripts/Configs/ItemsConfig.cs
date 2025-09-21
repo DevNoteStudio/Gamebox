@@ -7,13 +7,13 @@ namespace Gamebox
     {
         [Serializable] private struct ItemData
         {
-            public ItemType itemType;
+            public string itemKey;
             public Sprite iconSprite;
         }
 
 
-        public Sprite GetItemIconSprite(ItemType itemType)
-            => _items.Find(data => data.itemType == itemType).iconSprite;
+        public Sprite GetItemIconSprite(string itemKey)
+            => _items.Find(data => data.itemKey == itemKey).iconSprite;
 
 
     }

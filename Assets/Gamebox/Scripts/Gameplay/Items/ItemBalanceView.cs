@@ -5,25 +5,25 @@ namespace Gamebox
 {
     public class ItemBalanceView : MonoBehaviour
     {
-        [SerializeField] private ItemType _itemType;
+        [SerializeField] private string _itemKey;
         [SerializeField] private TextMeshProUGUI _valueText;
 
         private void OnEnable()
         {
-            GameState.Items.OnChanged += OnItemsChanged;
+            IGameState.Items.OnChanged += OnItemsChanged;
             Display();
         }
 
         private void OnDisable()
         {
-            GameState.Items.OnChanged -= OnItemsChanged;
+            IGameState.Items.OnChanged -= OnItemsChanged;
         }
 
 
-        private void OnItemsChanged(ItemType itemType, int change) => Display();
+        private void OnItemsChanged(string itemKey, int change) => Display();
 
 
-        private void Display() => _valueText.text = GameState.Items.Value(_itemType).ToString();
+        private void Display() => _valueText.text = IGameState.Items.Value(_itemKey).ToString();
 
 
 

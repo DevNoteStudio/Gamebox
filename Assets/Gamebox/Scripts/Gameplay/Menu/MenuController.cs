@@ -12,8 +12,8 @@ namespace Gamebox
 
         public MenuController()
         {
-            locationsScreenViewer = new(Configs.Gamebox.LocationsScreenPrefab);
-            levelsScreenViewer = new(Configs.Gamebox.LevelsScreenPrefab);
+            locationsScreenViewer = new(IConfigs.Gamebox.LocationsScreenPrefab);
+            levelsScreenViewer = new(IConfigs.Gamebox.LevelsScreenPrefab);
         }
 
 

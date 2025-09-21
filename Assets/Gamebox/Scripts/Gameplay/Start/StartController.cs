@@ -16,16 +16,15 @@ namespace Gamebox
 
         void IStartHandler.Start()
         {
-            int locationIndex = GameState.LastPlayLocationIndex;
-            bool showLocationSelection = GameState.Levels.CompletedLevels >= Configs.Gamebox.LocationSelectionFromLevel - 1;
-
+            int locationIndex = IGameState.LastPlayLocationIndex.Value;
+            bool showLocationSelection = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.LocationSelectionFromLevel - 1;
 
             if (showLocationSelection)
                 menuController.ShowLocationsScreen(locationIndex);
 
             else
             {
-                int levelIndex = GameState.Levels.GetLastLevelIndexForPlay(locationIndex);
+                int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(locationIndex);
                 levelController.StartLevel(locationIndex, levelIndex);
              }
 

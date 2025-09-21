@@ -8,14 +8,14 @@ namespace Gamebox
         [Serializable] private struct AdditionalLocationLevelRewardData
         {
             public int levelIndex;
-            public ItemType itemType;
+            public string itemKey;
             public int amount;
         }
 
         [Serializable] private struct RewardForTotalLevelCompletionData
         {
             public int completedLevels;
-            public ItemType itemType;
+            public string itemKey;
             public int amount;
         }
 
@@ -30,41 +30,41 @@ namespace Gamebox
         }
 
 
-        public List<(ItemType, int)> GetLevelRewards(int locationIndex, int levelIndex, 
+        public List<ItemPack> GetLevelRewards(int locationIndex, int levelIndex, 
             int newStars, bool isRepeatComplete, int totalCompletedLevels)
         {
-            var rewards = new List<(ItemType, int)>();
+            var rewards = new List<ItemPack>();
 
             var locationData = _locations[locationIndex];
 
             int coins = _rewards.coinsForLevelComplete + _rewards.coinsForNewStar * newStars;
             coins = (int)(coins * locationData.coinsMultiplier);
 
-            rewards.Add((ItemType.Coins, coins));
-            if (newStars > 0) rewards.Add((ItemType.Stars, newStars));
+            rewards.Add(new ItemPack(IItemKey.Coins, coins));
+            if (newStars > 0) rewards.Add(new ItemPack(IItemKey.Stars, newStars));
 
             foreach (var rewardData in _rewards.rewardsForTotalLevelCompletion)
             {
                 if (totalCompletedLevels == rewardData.completedLevels)
-                    Put(rewards, rewardData.itemType, rewardData.amount);
+                    Put(rewards, rewardData.itemKey, rewardData.amount);
             }
 
             foreach ( var additionalReward in locationData.additionalLevelRewards)
             {
                 if (additionalReward.levelIndex == levelIndex)
-                    Put(rewards, additionalReward.itemType, additionalReward.amount);
+                    Put(rewards, additionalReward.itemKey, additionalReward.amount);
             }
 
             return rewards;
         }
 
-        private void Put(List<(ItemType, int)> rewards, ItemType itemType, int value)
+        private void Put(List<ItemPack> rewards, string itemKey, int value)
         {
-            var index = rewards.FindIndex(element => element.Item1 == itemType);
+            var index = rewards.FindIndex(itemPack => itemPack.itemKey == itemKey);
             if (index != -1)
-                rewards[index] = new (itemType, rewards[index].Item2 + value);
+                rewards[index] = new ItemPack(itemKey, rewards[index].amount + value);
 
-            else rewards.Add(new (itemType, value));
+            else rewards.Add(new ItemPack(itemKey, value));
         }
 
 

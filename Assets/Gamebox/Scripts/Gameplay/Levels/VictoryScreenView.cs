@@ -42,6 +42,8 @@ namespace Gamebox
         private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
 
+        private const float FADE_DURATION = 0.8f;
+        private const float DELAY_BEFORE_VICTORY_SOUND = 0.3f;
         private const float TITLE_DURATION = 0.75f;
         private const float TITLE_OFFSET_Y = 200f;
         private const float DELAY_AFTER_STARS = 1f;
@@ -63,7 +65,7 @@ namespace Gamebox
             _stopRouletteButton.onClick.AddListener(OnStopRouletteButtonClick);
         }
 
-        public void Display(int stars, List<(ItemType, int)> rewards, bool showBonus)
+        public void Display(int stars, List<ItemPack> rewards, bool showBonus)
         {
             _stars = stars;
             _showBonus = showBonus;
@@ -73,11 +75,11 @@ namespace Gamebox
             foreach (var reward in rewards)
             {
                 var widget = _rewardItemWidgetPool.Get();
-                widget.Display(reward.Item1, reward.Item2);
+                widget.Display(reward.itemKey, reward.amount);
 
-                if (reward.Item1 == ItemType.Coins)
+                if (reward.itemKey == IItemKey.Coins)
                 {
-                    _originRewardCoins = reward.Item2;
+                    _originRewardCoins = reward.amount;
                     _coinItemWidget = widget;
                 }
             }
@@ -86,7 +88,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            _victorySound.Play();
+            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => _victorySound.Play());
 
             _takeButton.gameObject.SetActive(false);
 
@@ -97,7 +99,7 @@ namespace Gamebox
 
             _currentTween?.Kill();
             var sequence = DOTween.Sequence().SetLink(gameObject, LinkBehaviour.KillOnDisable)
-                .Append(TweenHub.Fade(_fadeImage))
+                .Append(TweenHub.Fade(_fadeImage, FADE_DURATION))
                 .Append(_titleRect.DOScaleX(1f, TITLE_DURATION).SetEase(Ease.OutBack))
 
                 .AppendCallback(() =>
@@ -130,7 +132,7 @@ namespace Gamebox
             }
 
             sequence.AppendInterval(DELAY_AFTER_STARS);
-            sequence.AppendCallback(() => Configs.Gamebox.ShowSound.Play());
+            sequence.AppendCallback(() => IConfigs.Gamebox.ShowSound.Play());
             sequence.Append(TweenHub.PopShow(_rewardsRect));
             sequence.AppendInterval(DELAY_AFTER_REWARDS);
 
@@ -142,7 +144,7 @@ namespace Gamebox
             if (_showBonus)
             {
                 sequence.AppendCallback(() => _roulette.StartSpin());
-                sequence.AppendCallback(() => Configs.Gamebox.ShowSound.Play());
+                sequence.AppendCallback(() => IConfigs.Gamebox.ShowSound.Play());
                 sequence.Append(TweenHub.PopShow(_bonusRect));
                 sequence.AppendInterval(DELAY_AFTER_ROULETTE);
                 sequence.Append(TweenHub.PopShow(_skipButton.transform));
@@ -167,7 +169,7 @@ namespace Gamebox
 
         private void OnStopRouletteButtonClick()
         {
-            ads.Item.ShowRewarded(AdKey.VictoryRoulette, onRewarded: () =>
+            ads.Item.ShowRewarded(IAdKey.VictoryRoulette, onRewarded: () =>
             {
                 _rouletteStopSound.Play();
                 _roulette.Stop(out int sectorIndex);
@@ -201,7 +203,7 @@ namespace Gamebox
                 _ => 0
             };
 
-            GameState.Items.Add(ItemType.Coins, _originRewardCoins * (multiplier - 1));
+            IGameState.Items.Add(IItemKey.Coins, _originRewardCoins * (multiplier - 1));
             _coinItemWidget.AnimateIncrease(_originRewardCoins * multiplier);
         }
 

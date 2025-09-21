@@ -24,8 +24,8 @@ namespace Gamebox
 
         public LevelController(MenuController menuController, ILeaderboards leaderboards)
         {
-            loseWindowViewer = new(Configs.Gamebox.LoseWindowPrefab);
-            victoryScreenViewer = new(Configs.Gamebox.VictoryScreenPrefab);
+            loseWindowViewer = new(IConfigs.Gamebox.LoseWindowPrefab);
+            victoryScreenViewer = new(IConfigs.Gamebox.VictoryScreenPrefab);
             this.menuController = menuController;
             this.leaderboards = leaderboards;
         }
@@ -33,13 +33,13 @@ namespace Gamebox
 
         public void StartNextLevelOrShowLevelSelection()
         {
-            bool isLastLevel = CurrentLevelIndex == Configs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
+            bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
             if (!_isLevelPlayRepeat)
             {
                 if (isLastLevel)
                 {
-                    int nextLocationIndex = (CurrentLocationIndex + 1) % Configs.Gamebox.LocationsAmount;
+                    int nextLocationIndex = (CurrentLocationIndex + 1) % IConfigs.Gamebox.LocationsAmount;
                     menuController.ShowLocationsScreen(nextLocationIndex);
                     OnLevelExit?.Invoke();
                 }
@@ -69,9 +69,9 @@ namespace Gamebox
 
         public void StartLevel(int locationIndex, int levelIndex)
         {
-            _isLevelPlayRepeat = GameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
+            _isLevelPlayRepeat = IGameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
 
-            GameState.LastPlayLocationIndex = locationIndex;
+            IGameState.LastPlayLocationIndex.Value = locationIndex;
             CurrentLocationIndex = locationIndex;
             CurrentLevelIndex = levelIndex;
             CompletedStars = 0;
@@ -84,27 +84,27 @@ namespace Gamebox
         {
             CompletedStars = stars;
 
-            int previousStars = GameState.Levels.GetLevelStars(CurrentLocationIndex, CurrentLevelIndex);
+            int previousStars = IGameState.Levels.GetLevelStars(CurrentLocationIndex, CurrentLevelIndex);
             int newStars = Mathf.Max(0, stars - previousStars);
 
-            GameState.Levels.SetLevelStars(CurrentLocationIndex, CurrentLevelIndex, Mathf.Max(previousStars, stars));
+            IGameState.Levels.SetLevelStars(CurrentLocationIndex, CurrentLevelIndex, Mathf.Max(previousStars, stars));
 
-            int completedLevels = GameState.Levels.CompletedLevels;
+            int completedLevels = IGameState.Levels.CompletedLevels;
 
-            var rewards = Configs.Gamebox.GetLevelRewards
+            var rewards = IConfigs.Gamebox.GetLevelRewards
                 (CurrentLocationIndex, CurrentLevelIndex, newStars, _isLevelPlayRepeat, completedLevels);
 
             foreach (var reward in rewards )
-                GameState.Items.Add(reward.Item1, reward.Item2);
+                IGameState.Items.Add(reward.itemKey, reward.amount);
 
             var victoryScreen = victoryScreenViewer.ShowExpand(UI.Container);
 
-            bool showBonus = GameState.Levels.CompletedLevels >= Configs.Gamebox.VictoryRouletteFromLevel;
+            bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel;
 
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(completedLevels, LeaderboardKey.Stars);
+            leaderboards.SetScore(IGameState.Items.Value(IItemKey.Stars), ILeaderboardKey.Stars);
 
             IsLevelPlaying = false;
             OnLevelCompleted?.Invoke();
@@ -114,7 +114,7 @@ namespace Gamebox
         {
             var loseWindow = loseWindowViewer.ShowExpand(UI.Container);
 
-            bool showRevive = GameState.Levels.CompletedLevels >= Configs.Gamebox.ReviveFromLevel - 1;
+            bool showRevive = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1;
 
             loseWindow.Display(showRevive);
             loseWindow.AnimateShow();
