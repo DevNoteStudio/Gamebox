@@ -31,6 +31,12 @@
       "dependencies": {},
       "hash": "3f35170ebf038eb7087bbd8777da1e6bd9ea3b5f"
     },
+    "com.devnote.gamebox": {
+      "version": "file:com.devnote.gamebox",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "7.1.1",
       "depth": 1,

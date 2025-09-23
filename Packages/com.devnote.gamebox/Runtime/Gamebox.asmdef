@@ -1,0 +1,21 @@
+{
+    "name": "Gamebox",
+    "rootNamespace": "",
+    "references": [
+        "NaughtyAttributes.Core",
+        "Unity.TextMeshPro",
+        "UniTask",
+        "DevNote",
+        "Coffee.UIParticle",
+        "SimpleScrollSnap"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
