@@ -1,36 +1,27 @@
 using System;
 using DevNote;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Gamebox
 {
-    public partial class GameboxConfig // Resources
+    public partial class GameboxConfig : ScriptableObject
     {
-        [Serializable] private struct ResourcesData
-        {
-            public VictoryScreenView victoryScreenPrefab;
-            public LoseWindowView loseWindowPrefab;
-            public LevelsScreenView levelsScreenPrefab;
-            public LocationsScreenView locationsScreenPrefab;
-            public Image screenFadePrefab;
-            public SoundUnit clickSound;
-            public SoundUnit openClickSound;
-            public SoundUnit pointerEnterSound;
-            public SoundUnit showSound;
-        }
-
-        public VictoryScreenView VictoryScreenPrefab => _resources.victoryScreenPrefab;
-        public LoseWindowView LoseWindowPrefab => _resources.loseWindowPrefab;
-        public LevelsScreenView LevelsScreenPrefab => _resources.levelsScreenPrefab;
-        public LocationsScreenView LocationsScreenPrefab => _resources.locationsScreenPrefab;
-        public Image ScreenFadePrefab => _resources.screenFadePrefab;
+        public VictoryScreenView VictoryScreenPrefab => Resources.Load<VictoryScreenView>("VictoryScreen");
+        public LoseWindowView LoseWindowPrefab => Resources.Load<LoseWindowView>("LoseWindow");
+        public LevelsScreenView LevelsScreenPrefab => Resources.Load<LevelsScreenView>("LevelsScreen");
+        public LocationsScreenView LocationsScreenPrefab => Resources.Load<LocationsScreenView>("LocationsScreen");
+        public NoAdsWindowView NoAdsWindowPrefab => Resources.Load<NoAdsWindowView>("NoAdsWindow");
+        public TestLevelView TestLevelPrefab => Resources.Load<TestLevelView>("TestLevel");
+        public Image ScreenFadePrefab => Resources.Load<Image>("ScreenFade");
 
 
-        public SoundUnit ClickSound => _resources.clickSound;
-        public SoundUnit OpenClickSound => _resources.openClickSound;
-        public SoundUnit PointerEnterSound => _resources.pointerEnterSound;
-        public SoundUnit ShowSound => _resources.showSound;
 
+        public SoundUnit ClickSound => Resources.Load<SoundUnit>("Click");
+        public SoundUnit OpenClickSound => Resources.Load<SoundUnit>("OpenClick");
+        public SoundUnit PointerEnterSound => Resources.Load<SoundUnit>("PointerEnter");
+        public SoundUnit ShowSound => Resources.Load<SoundUnit>("Show");
+        public SoundUnit HideSound => Resources.Load<SoundUnit>("Hide");
 
     }
 }

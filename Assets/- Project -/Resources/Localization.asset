@@ -112,12 +112,19 @@ MonoBehaviour:
         \u043E\u0442\u043A\u0440\u044B\u0442\u044C"
     - language: 1
       value: "Earn <sprite=0>{STARS},\nto open location\r"
-  - key: 
+  - key: no_ads_title
     _values:
     - language: 0
-      value: 
+      value: "\u0411\u0435\u0437 \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
     - language: 1
-      value: "\r"
+      value: "Disable ads\r"
+  - key: no_ads_description
+    _values:
+    - language: 0
+      value: "\u0418\u0433\u0440\u0430\u0439 \u0431\u0435\u0437 \u0440\u0435\u043A\u043B\u0430\u043C\u044B
+        \u043C\u0435\u0436\u0434\u0443 \u0443\u0440\u043E\u0432\u043D\u044F\u043C\u0438!"
+    - language: 1
+      value: "Play without ads between levels!\r"
   - key: 
     _values:
     - language: 0

@@ -61,12 +61,12 @@ namespace Gamebox
                 .Append(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
 
                 .AppendCallback(() => IConfigs.Gamebox.ShowSound.Play())
-                .Append(TweenHub.PopShow(_windowRect))
+                .Append(TweenHub.Show(_windowRect))
                 .Join(_titleRect.DOLocalMoveY(SHOW_TITLE_TO_LOCAL_Y, TITLE_MOVE_DURATION).SetEase(Ease.InOutFlash))
                 
 
                 .AppendInterval(DELAY_BEFORE_SHOW_SKIP_BUTTON)
-                .Append(TweenHub.PopShow(_skipButton.transform));
+                .Append(TweenHub.Show(_skipButton.transform));
         }
 
         public void AnimateHide(Action onCompleted)

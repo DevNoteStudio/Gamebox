@@ -24,6 +24,8 @@ namespace Gamebox
                 onCompleted?.Invoke();
                 Unfade();
             };
+
+            _currentTween.SetUpdate(true);
         }
 
         private static void Unfade()
@@ -32,6 +34,7 @@ namespace Gamebox
 
             _currentTween?.Kill();
             _currentTween = TweenHub.Unfade(fadeViewer.View, FADE_DURATION).OnComplete(fadeViewer.Hide);
+            _currentTween.SetUpdate(true);
         }
 
     }

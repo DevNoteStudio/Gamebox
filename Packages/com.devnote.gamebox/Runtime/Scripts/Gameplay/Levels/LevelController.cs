@@ -21,7 +21,6 @@ namespace Gamebox
         private readonly MenuController menuController;
         private readonly ILeaderboards leaderboards;
 
-
         public LevelController(MenuController menuController, ILeaderboards leaderboards)
         {
             loseWindowViewer = new(IConfigs.Gamebox.LoseWindowPrefab);

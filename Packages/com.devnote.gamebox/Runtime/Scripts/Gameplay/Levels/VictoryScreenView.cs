@@ -109,7 +109,7 @@ namespace Gamebox
                 })
 
                 .Append(_titleRect.DOLocalMoveY(0f, TITLE_DURATION).SetEase(Ease.InOutFlash))
-                .Append(TweenHub.PopShow(_starsRect));
+                .Append(TweenHub.Show(_starsRect));
 
             for (int i = 0; i < _starImages.Count; i++)
             {
@@ -133,7 +133,7 @@ namespace Gamebox
 
             sequence.AppendInterval(DELAY_AFTER_STARS);
             sequence.AppendCallback(() => IConfigs.Gamebox.ShowSound.Play());
-            sequence.Append(TweenHub.PopShow(_rewardsRect));
+            sequence.Append(TweenHub.Show(_rewardsRect));
             sequence.AppendInterval(DELAY_AFTER_REWARDS);
 
             _skipButton.gameObject.SetActive(_showBonus);
@@ -145,13 +145,13 @@ namespace Gamebox
             {
                 sequence.AppendCallback(() => _roulette.StartSpin());
                 sequence.AppendCallback(() => IConfigs.Gamebox.ShowSound.Play());
-                sequence.Append(TweenHub.PopShow(_bonusRect));
+                sequence.Append(TweenHub.Show(_bonusRect));
                 sequence.AppendInterval(DELAY_AFTER_ROULETTE);
-                sequence.Append(TweenHub.PopShow(_skipButton.transform));
+                sequence.Append(TweenHub.Show(_skipButton.transform));
             }
             else
             {
-                sequence.Append(TweenHub.PopShow(_takeButton.transform));
+                sequence.Append(TweenHub.Show(_takeButton.transform));
             }
 
             
@@ -192,7 +192,7 @@ namespace Gamebox
                     _stopRouletteButton.gameObject.SetActive(false);
                     _takeButton.gameObject.SetActive(true);
                 })
-                .Append(TweenHub.PopShow(_takeButton.transform));
+                .Append(TweenHub.Show(_takeButton.transform));
 
             int multiplier = sectorIndex switch
             {

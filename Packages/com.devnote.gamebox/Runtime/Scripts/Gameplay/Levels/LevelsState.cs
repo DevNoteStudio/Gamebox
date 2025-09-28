@@ -116,6 +116,9 @@ namespace Gamebox
             }
         }
 
+        public int CurrentLevelNumber => CompletedLevels + 1;
+
+
 
         private LocationData GetOrCreateLocationData(int locationIndex)
         {

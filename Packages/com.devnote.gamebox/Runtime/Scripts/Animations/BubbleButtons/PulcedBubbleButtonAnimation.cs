@@ -9,7 +9,7 @@ namespace Gamebox
     [RequireComponent(typeof(Button))]
     public class PulcedBubbleButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IAnimation
     {
-        private enum ButtonSoundType { Click, Open }
+        private enum ButtonSoundType { Click, Open, None }
 
         [SerializeField] private ButtonSoundType _soundType;
 
@@ -19,9 +19,9 @@ namespace Gamebox
         private Tween _currentTween;
 
         private readonly Vector2 MIN_MAX_PULCE_SCALE = new Vector2(0.85f, 1f);
-        private readonly float MAX_POINTER_ENTER_SCALE = 1.05f;
+        private const float MAX_POINTER_ENTER_SCALE = 1.05f;
         private const float BUBBLE_DURATION = 0.2f;
-        private readonly float PULCE_DURATION = 1.2f;
+        private const float PULCE_DURATION = 1.3f;
 
 
         private void Awake() => _button = GetComponent<Button>();
@@ -67,6 +67,8 @@ namespace Gamebox
 
         private void OnButtonClick()
         {
+            if (_soundType == ButtonSoundType.None) return;
+
             var sound = _soundType == ButtonSoundType.Click ?
                 IConfigs.Gamebox.ClickSound : IConfigs.Gamebox.OpenClickSound;
 
