@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291a78e1424717943931cbfd73509fa1, type: 3}
+  m_Name: '- Gamebox -'
+  m_EditorClassIdentifier: 
+  <TestEnabled>k__BackingField: 1
+  _items:
+  - itemKey: Coins
+    iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
+  - itemKey: Stars
+    iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
+  _locations:
+  - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
+    levels: 15
+    starRequire: 0
+    coinsMultiplier: 1
+    additionalLevelRewards: []
+  - previewSprite: {fileID: 21300000, guid: a8fb20a5e5dbeda499d7249d1cf6ad95, type: 3}
+    levels: 20
+    starRequire: 15
+    coinsMultiplier: 2
+    additionalLevelRewards: []
+  - previewSprite: {fileID: 21300000, guid: 7425ebf01d90bf9498c2aa19ce76665e, type: 3}
+    levels: 25
+    starRequire: 30
+    coinsMultiplier: 3
+    additionalLevelRewards: []
+  _rewards:
+    coinsForLevelComplete: 10
+    coinsForNewStar: 30
+    rewardsForTotalLevelCompletion: []
+  <LocationSelectionFromLevel>k__BackingField: 4
+  <VictoryRouletteFromLevel>k__BackingField: 5
+  <ReviveFromLevel>k__BackingField: 5
+  <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3
+  <InterstitialsFromLevel>k__BackingField: 5

@@ -1,13 +1,16 @@
 {
   "dependencies": {
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
-    "com.unity.collab-proxy": "2.7.1",
+    "com.devnote": "https://github.com/Valentin-Grachev/DevNote.git?path=com.devnote",
+    "com.unity.ai.navigation": "1.1.6",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.ide.visualstudio": "2.0.23",
     "com.unity.recorder": "4.0.3",
     "com.unity.textmeshpro": "3.0.9",
     "com.unity.ugui": "1.0.0",
+    "com.wooshii.hierarchydecorator": "https://github.com/WooshiiDev/HierarchyDecorator.git",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

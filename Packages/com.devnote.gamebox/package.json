@@ -1,0 +1,9 @@
+{
+  "name": "com.devnote.gamebox",
+  "displayName": "Gamebox",
+  "version": "1.2.1",
+  "author": {
+    "name": "DevNote Studio"
+  },
+  "unity": "2021.3"
+}
