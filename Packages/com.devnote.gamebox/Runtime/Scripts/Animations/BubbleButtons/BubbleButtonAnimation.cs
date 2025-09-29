@@ -38,7 +38,7 @@ namespace Gamebox
             IConfigs.Gamebox.PointerEnterSound.Play();
 
             _pointerTween?.Kill();
-            _pointerTween = transform.DOScale(TO_SCALE, DURATION).SetEase(Ease.OutFlash);
+            _pointerTween = transform.DOScale(TO_SCALE, DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
         }
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
@@ -46,7 +46,7 @@ namespace Gamebox
             if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable) return;
 
             _pointerTween?.Kill();
-            _pointerTween = transform.DOScale(1f, DURATION).SetEase(Ease.OutFlash);
+            _pointerTween = transform.DOScale(1f, DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
         }
 
 
@@ -60,7 +60,7 @@ namespace Gamebox
             if (_clickTween.IsActive() && _clickTween.IsPlaying()) return;
 
             _clickTween?.Kill();
-            _clickTween = TweenHub.PopDown(transform);
+            _clickTween = TweenHub.PopDown(transform).SetUpdate(true);
         }
 
 

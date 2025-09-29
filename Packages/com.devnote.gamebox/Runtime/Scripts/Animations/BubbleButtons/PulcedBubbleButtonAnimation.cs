@@ -42,7 +42,8 @@ namespace Gamebox
             _currentTween = DOTween.Sequence()
                 .Append(transform.DOScale(MIN_MAX_PULCE_SCALE.y, PULCE_DURATION / 2f).SetEase(Ease.InOutFlash))
                 .Append(transform.DOScale(MIN_MAX_PULCE_SCALE.x, PULCE_DURATION / 2f).SetEase(Ease.InOutFlash))
-                .SetLoops(-1, LoopType.Restart);
+                .SetLoops(-1, LoopType.Restart)
+                .SetUpdate(true);
         }
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
@@ -52,7 +53,7 @@ namespace Gamebox
             IConfigs.Gamebox.PointerEnterSound.Play();
 
             _currentTween?.Kill();
-            _currentTween = transform.DOScale(MAX_POINTER_ENTER_SCALE, BUBBLE_DURATION).SetEase(Ease.OutFlash);
+            _currentTween = transform.DOScale(MAX_POINTER_ENTER_SCALE, BUBBLE_DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
         }
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
@@ -61,6 +62,7 @@ namespace Gamebox
 
             _currentTween?.Kill();
             _currentTween = transform.DOScale(MIN_MAX_PULCE_SCALE.x, PULCE_DURATION / 2f).SetEase(Ease.OutFlash)
+                .SetUpdate(true)
                 .OnComplete(() => AnimatePulce());
         }
 
