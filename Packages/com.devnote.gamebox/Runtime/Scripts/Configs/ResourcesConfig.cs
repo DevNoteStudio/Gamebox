@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 namespace Gamebox
 {
-    public partial class GameboxConfig : ScriptableObject
+    public partial class GameboxConfig
     {
         public VictoryScreenView VictoryScreenPrefab => Resources.Load<VictoryScreenView>("VictoryScreen");
         public LoseWindowView LoseWindowPrefab => Resources.Load<LoseWindowView>("LoseWindow");
         public LevelsScreenView LevelsScreenPrefab => Resources.Load<LevelsScreenView>("LevelsScreen");
         public LocationsScreenView LocationsScreenPrefab => Resources.Load<LocationsScreenView>("LocationsScreen");
         public NoAdsWindowView NoAdsWindowPrefab => Resources.Load<NoAdsWindowView>("NoAdsWindow");
+        public ItemTutorialWindowView ItemTutorialWindowPrefab => Resources.Load<ItemTutorialWindowView>("ItemTutorialWindow");
         public TestLevelView TestLevelPrefab => Resources.Load<TestLevelView>("TestLevel");
         public Image ScreenFadePrefab => Resources.Load<Image>("ScreenFade");
 

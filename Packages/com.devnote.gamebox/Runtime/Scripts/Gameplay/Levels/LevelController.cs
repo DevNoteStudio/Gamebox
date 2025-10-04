@@ -20,13 +20,15 @@ namespace Gamebox
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
         private readonly MenuController menuController;
         private readonly ILeaderboards leaderboards;
+        private readonly IAds ads;
 
-        public LevelController(MenuController menuController, ILeaderboards leaderboards)
+        public LevelController(MenuController menuController, ILeaderboards leaderboards, IAds ads)
         {
             loseWindowViewer = new(IConfigs.Gamebox.LoseWindowPrefab);
             victoryScreenViewer = new(IConfigs.Gamebox.VictoryScreenPrefab);
             this.menuController = menuController;
             this.leaderboards = leaderboards;
+            this.ads = ads;
         }
 
 
@@ -77,6 +79,8 @@ namespace Gamebox
 
             IsLevelPlaying = true;
             OnLevelStarted?.Invoke();
+
+            ads.ShowInterstitial(IAdKey.LevelStartInterstitial);
         }
 
         public void CompleteCurrentLevel(int stars)
@@ -103,7 +107,7 @@ namespace Gamebox
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(IGameState.Items.Value(IItemKey.Stars), ILeaderboardKey.Stars);
+            leaderboards.SetScore(IGameState.Items.Get(IItemKey.Stars), ILeaderboardKey.Stars);
 
             IsLevelPlaying = false;
             OnLevelCompleted?.Invoke();

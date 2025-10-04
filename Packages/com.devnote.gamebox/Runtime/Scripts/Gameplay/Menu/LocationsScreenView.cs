@@ -102,7 +102,7 @@ namespace Gamebox
                 .Replace("{MAX}", levelsAmount.ToString());
 
             int starsRequire = IConfigs.Gamebox.GetLocationStarRequire(locationIndex);
-            bool locationAvailable = IGameState.Items.Value(IItemKey.Stars) >= starsRequire;
+            bool locationAvailable = IGameState.Items.Get(IItemKey.Stars) >= starsRequire;
 
             _lockObject.SetActive(!locationAvailable);
             _availableObject.SetActive(locationAvailable);

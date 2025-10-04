@@ -18,6 +18,8 @@ MonoBehaviour:
     iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
   - itemKey: Stars
     iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
+  - itemKey: LocationsUnlocked
+    iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
     levels: 15
@@ -37,7 +39,12 @@ MonoBehaviour:
   _rewards:
     coinsForLevelComplete: 10
     coinsForNewStar: 30
-    rewardsForTotalLevelCompletion: []
+    rewardsForTotalLevelCompletion:
+    - completedLevels: 4
+      itemKey: LocationsUnlocked
+      amount: 1
+  <TutorialItems>k__BackingField:
+  - LocationsUnlocked
   <LocationSelectionFromLevel>k__BackingField: 4
   <VictoryRouletteFromLevel>k__BackingField: 5
   <ReviveFromLevel>k__BackingField: 5

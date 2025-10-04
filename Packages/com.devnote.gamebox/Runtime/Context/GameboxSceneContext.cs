@@ -17,7 +17,7 @@ namespace Gamebox
             new UI(_uiContainer, _fadeContainer);
 
             var menu = Register(new MenuController());
-            var level = Register(new LevelController(menu, leaderboards.Item));
+            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item));
             var test = Register(new TestController(level));
             var start = Register(new StartController(menu, level));
             var ads2 = Register(new AdsController(level, ads.Item));

@@ -39,9 +39,7 @@ namespace Gamebox
 
         private void ShowNoAdsWindow()
         {
-            var window = noAdsWindowViewer.ShowExpand(UI.Container);
-            window.Display();
-            window.AnimateShow();
+            noAdsWindowViewer.ShowExpand(UI.Container).Display().AnimateShow();
         }
 
         public void HideNoAdsWindow()

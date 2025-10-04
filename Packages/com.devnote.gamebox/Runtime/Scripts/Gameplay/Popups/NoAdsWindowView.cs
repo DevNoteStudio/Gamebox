@@ -27,9 +27,10 @@ namespace Gamebox
             _closeButton.onClick.AddListener(OnCloseButtonClick);
         }
 
-        public void Display()
+        public NoAdsWindowView Display()
         {
             _priceText.text = purchase.Item.GetPriceString(IProductKey.NoAds);
+            return this;
         }
 
         private void OnCloseButtonClick()

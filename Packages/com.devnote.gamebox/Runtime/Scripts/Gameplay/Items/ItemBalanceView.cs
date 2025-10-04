@@ -23,7 +23,7 @@ namespace Gamebox
         private void OnItemsChanged(string itemKey, int change) => Display();
 
 
-        private void Display() => _valueText.text = IGameState.Items.Value(_itemKey).ToString();
+        private void Display() => _valueText.text = IGameState.Items.Get(_itemKey).ToString();
 
 
 

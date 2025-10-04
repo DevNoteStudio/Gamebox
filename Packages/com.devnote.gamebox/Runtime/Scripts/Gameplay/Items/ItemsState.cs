@@ -40,7 +40,7 @@ namespace Gamebox
         }
 
 
-        public int Value(string itemKey)
+        public int Get(string itemKey)
         {
             bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemKey);
             return cheatModeEnabled ? _cheatAmounts[itemKey] : _amounts.GetValueOrDefault(itemKey, 0);
@@ -48,7 +48,7 @@ namespace Gamebox
 
         public void Set(string itemKey, int value)
         {
-            int previousValue = Value(itemKey);
+            int previousValue = Get(itemKey);
             bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemKey);
 
             if (cheatModeEnabled) _cheatAmounts[itemKey] = value;
@@ -76,10 +76,10 @@ namespace Gamebox
 
         public void Spend(string itemKey, int value)
         {
-            int currentValue = Value(itemKey);
+            int currentValue = Get(itemKey);
 
-            if (Value(itemKey) - value < 0)
-                Debug.LogWarning($"{Info.LogPrefix} Not enough balance! Spend: {value}, balance: {Value(itemKey)}");
+            if (Get(itemKey) - value < 0)
+                Debug.LogWarning($"{Info.LogPrefix} Not enough balance! Spend: {value}, balance: {Get(itemKey)}");
 
             Set(itemKey, currentValue - value);
             OnSpent?.Invoke(itemKey, -value);
@@ -87,11 +87,11 @@ namespace Gamebox
 
         public void Add(string itemKey, int value)
         {
-            Set(itemKey, Value(itemKey) + value);
+            Set(itemKey, Get(itemKey) + value);
             OnEarned?.Invoke(itemKey, value);
         }
 
-        
+        public bool Has(string itemKey) => Get(itemKey) > 0;
 
 
         public override string ToString()
