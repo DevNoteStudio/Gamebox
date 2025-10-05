@@ -25,11 +25,11 @@
       "hash": "8a8fa5a9659a6d63f196391c71e06c4286c8acd7"
     },
     "com.devnote": {
-      "version": "https://github.com/Valentin-Grachev/DevNote.git?path=com.devnote",
+      "version": "https://github.com/Valentin-Grachev/DevNote.git?path=com.devnote#dev",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "1f1f02ae0f38be2c2c5039bd773f0d3c9592507e"
+      "hash": "65e54ab81423cf3c62419223fc06f98dc9e9be1f"
     },
     "com.devnote.gamebox": {
       "version": "file:com.devnote.gamebox",

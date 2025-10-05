@@ -74,10 +74,13 @@ namespace Gamebox
             _rewardItemWidgetPool.Clear();
             foreach (var reward in rewards)
             {
+                if (IConfigs.Gamebox.IsRewardItem(reward.itemKey) == false) 
+                    continue;
+
                 var widget = _rewardItemWidgetPool.Get();
                 widget.Display(reward.itemKey, reward.amount);
 
-                if (reward.itemKey == IItemKey.Coins)
+                if (reward.itemKey == ItemKey.Coins)
                 {
                     _originRewardCoins = reward.amount;
                     _coinItemWidget = widget;
@@ -169,7 +172,7 @@ namespace Gamebox
 
         private void OnStopRouletteButtonClick()
         {
-            ads.Item.ShowRewarded(IAdKey.VictoryRoulette, onRewarded: () =>
+            ads.Item.ShowRewarded(AdKey.VictoryRoulette, onRewarded: () =>
             {
                 _rouletteStopSound.Play();
                 _roulette.Stop(out int sectorIndex);
@@ -203,7 +206,7 @@ namespace Gamebox
                 _ => 0
             };
 
-            IGameState.Items.Add(IItemKey.Coins, _originRewardCoins * (multiplier - 1));
+            IGameState.Items.Add(ItemKey.Coins, _originRewardCoins * (multiplier - 1));
             _coinItemWidget.AnimateIncrease(_originRewardCoins * multiplier);
         }
 

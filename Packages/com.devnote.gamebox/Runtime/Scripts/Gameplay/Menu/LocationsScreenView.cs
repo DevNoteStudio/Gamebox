@@ -102,7 +102,7 @@ namespace Gamebox
                 .Replace("{MAX}", levelsAmount.ToString());
 
             int starsRequire = IConfigs.Gamebox.GetLocationStarRequire(locationIndex);
-            bool locationAvailable = IGameState.Items.Get(IItemKey.Stars) >= starsRequire;
+            bool locationAvailable = IGameState.Items.Get(ItemKey.Stars) >= starsRequire;
 
             _lockObject.SetActive(!locationAvailable);
             _availableObject.SetActive(locationAvailable);
@@ -110,7 +110,7 @@ namespace Gamebox
             _levelsButton.gameObject.SetActive(locationAvailable);
 
             _lockedText.text = Localization.GetLocalizedText("location_locked")
-                .Replace("{STARS}", starsRequire.ToString());
+                .Replace("{STARS}", $"<sprite=0>{starsRequire}");
         }
 
         private void OnPanelSelected(int index)

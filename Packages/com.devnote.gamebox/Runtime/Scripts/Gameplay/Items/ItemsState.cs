@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DevNote;
-using UnityEngine;
 
 
 namespace Gamebox
@@ -10,19 +9,17 @@ namespace Gamebox
 
     public class ItemsState
     {
-        public delegate void OnChange(string itemKey, int change);
-        public event OnChange OnSpent, OnEarned, OnChanged;
+        public event Action<ItemKey> OnChanged;
 
-        private Dictionary<string, int> _amounts;
-        private Dictionary<string, int> _cheatAmounts;
-
-        private const int CHEAT_AMOUNT = 99999;
+        private Dictionary<ItemKey, int> _amounts;
+        private Dictionary<ItemKey, int> _cheatAmounts;
+        private Dictionary<ItemKey, Action> _changeActions = new();
 
 
         public ItemsState(string data)
         {
-            _amounts = new Dictionary<string, int>();
-            _cheatAmounts = new Dictionary<string, int>();
+            _amounts = new Dictionary<ItemKey, int>();
+            _cheatAmounts = new Dictionary<ItemKey, int>();
 
             if (!string.IsNullOrEmpty(data))
             {
@@ -31,7 +28,7 @@ namespace Gamebox
                 {
                     string[] keyValueData = amountData.Split(S.S1);
 
-                    string key = keyValueData[0];
+                    ItemKey key = (ItemKey)int.Parse(keyValueData[0]);
                     int value = int.Parse(keyValueData[1]);
 
                     Set(key, value);
@@ -40,15 +37,14 @@ namespace Gamebox
         }
 
 
-        public int Get(string itemKey)
+        public int Get(ItemKey itemKey)
         {
             bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemKey);
             return cheatModeEnabled ? _cheatAmounts[itemKey] : _amounts.GetValueOrDefault(itemKey, 0);
         }
 
-        public void Set(string itemKey, int value)
+        public void Set(ItemKey itemKey, int value)
         {
-            int previousValue = Get(itemKey);
             bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemKey);
 
             if (cheatModeEnabled) _cheatAmounts[itemKey] = value;
@@ -60,39 +56,45 @@ namespace Gamebox
                 else _amounts[itemKey] = value;
             }
 
-            OnChanged?.Invoke(itemKey, value - previousValue);
+            OnChanged?.Invoke(itemKey);
         }
 
-        public bool IsCheatMode(string itemKey) => _cheatAmounts.ContainsKey(itemKey);
+        public bool IsCheatMode(ItemKey itemKey) => _cheatAmounts.ContainsKey(itemKey);
 
-        public void SetCheatMode(string itemKey, bool enabled)
+        public void SetCheatMode(ItemKey itemKey, bool enabled, int cheatAmount = 99999)
         {
             if (enabled && !_cheatAmounts.ContainsKey(itemKey))
-                _cheatAmounts.Add(itemKey, CHEAT_AMOUNT);
+                _cheatAmounts.Add(itemKey, cheatAmount);
 
             if (!enabled && _cheatAmounts.ContainsKey(itemKey))
                 _cheatAmounts.Remove(itemKey);
         }
 
-        public void Spend(string itemKey, int value)
+        public void Spend(ItemKey itemKey, int value) => Set(itemKey, Get(itemKey) - value);
+        public void Add(ItemKey itemKey, int value) => Set(itemKey, Get(itemKey) + value);
+        public bool Has(ItemKey itemKey) => Get(itemKey) > 0;
+
+
+        public void Subscribe(ItemKey itemKey, Action onChanged)
         {
-            int currentValue = Get(itemKey);
-
-            if (Get(itemKey) - value < 0)
-                Debug.LogWarning($"{Info.LogPrefix} Not enough balance! Spend: {value}, balance: {Get(itemKey)}");
-
-            Set(itemKey, currentValue - value);
-            OnSpent?.Invoke(itemKey, -value);
+            var action = GetChangeAction(itemKey);
+            action += onChanged;
         }
 
-        public void Add(string itemKey, int value)
+        public void Dispose(ItemKey itemKey, Action onChanged)
         {
-            Set(itemKey, Get(itemKey) + value);
-            OnEarned?.Invoke(itemKey, value);
+            var action = GetChangeAction(itemKey);
+            action -= onChanged;
         }
 
-        public bool Has(string itemKey) => Get(itemKey) > 0;
 
+        private Action GetChangeAction(ItemKey itemKey)
+        {
+            if (!_changeActions.ContainsKey(itemKey))
+                _changeActions.Add(itemKey, null);
+
+            return _changeActions[itemKey];
+        }
 
         public override string ToString()
         {
@@ -101,10 +103,10 @@ namespace Gamebox
             int i = 0;
             foreach (var itemAmount in _amounts)
             {
-                string key = itemAmount.Key;
+                ItemKey key = itemAmount.Key;
                 int amount = itemAmount.Value;
 
-                builder.Append($"{key}{S.S1}{amount}");
+                builder.Append($"{(int)key}{S.S1}{amount}");
                 if (i < _amounts.Count - 1) builder.Append(S.S2);
 
                 i++;

@@ -14,12 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TestEnabled>k__BackingField: 1
   _items:
-  - itemKey: Coins
+  - itemKey: 0
+    hasTutorial: 0
+    showInRewards: 1
     iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
-  - itemKey: Stars
+  - itemKey: 1
+    hasTutorial: 0
+    showInRewards: 1
     iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
-  - itemKey: LocationsUnlocked
-    iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
+  - itemKey: 2
+    hasTutorial: 1
+    showInRewards: 0
+    iconSprite: {fileID: 21300000, guid: e68a01ab68087e24eb33d47949f4976b, type: 3}
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
     levels: 15
@@ -41,12 +47,9 @@ MonoBehaviour:
     coinsForNewStar: 30
     rewardsForTotalLevelCompletion:
     - completedLevels: 4
-      itemKey: LocationsUnlocked
+      itemKey: 2
       amount: 1
-  <TutorialItems>k__BackingField:
-  - LocationsUnlocked
-  <LocationSelectionFromLevel>k__BackingField: 4
   <VictoryRouletteFromLevel>k__BackingField: 5
   <ReviveFromLevel>k__BackingField: 5
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3
-  <InterstitialsFromLevel>k__BackingField: 5
+  _interstitialsFromLevel: 5

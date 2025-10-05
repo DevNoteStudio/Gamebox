@@ -12,7 +12,7 @@ namespace Gamebox
         [SerializeField] private TMP_ColorGradient _increasedTextGradient;
 
 
-        public void Display(string itemKey, int amount)
+        public void Display(ItemKey itemKey, int amount)
         {
             _iconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemKey);
             _amountText.text = amount.ToString();

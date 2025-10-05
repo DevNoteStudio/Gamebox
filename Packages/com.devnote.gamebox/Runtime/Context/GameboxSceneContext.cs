@@ -20,7 +20,7 @@ namespace Gamebox
             var level = Register(new LevelController(menu, leaderboards.Item, ads.Item));
             var test = Register(new TestController(level));
             var start = Register(new StartController(menu, level));
-            var ads2 = Register(new AdsController(level, ads.Item));
+            var popup = Register(new PopupController(level, ads.Item));
 
         }
 

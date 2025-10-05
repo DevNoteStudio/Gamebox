@@ -14,13 +14,14 @@ namespace Gamebox
         [SerializeField] private List<ItemData> _items;
         [SerializeField] private List<LocationData> _locations;
         [SerializeField] private RewardsData _rewards;
-        [field: SerializeField] public List<string> TutorialItems { get; private set; }
         [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
         [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
-        [field: SerializeField] public int InterstitialsFromLevel { get; private set; }
+
+        [ SerializeField] private int _interstitialsFromLevel;
 
 
+        public bool CanShowInterstitial(int currentLevel) => currentLevel >= _interstitialsFromLevel; 
 
 
 

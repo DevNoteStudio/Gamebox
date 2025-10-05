@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436626babcc6c8b4fb482b0d0e11a7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemKey: Stars
+  _itemKey: 1
   _valueText: {fileID: 5798846458070116568}
 --- !u!1 &5798846457924814465
 GameObject:
@@ -2396,7 +2396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436626babcc6c8b4fb482b0d0e11a7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemKey: Coins
+  _itemKey: 0
   _valueText: {fileID: 5798846458931544062}
 --- !u!1 &5798846458900347227
 GameObject:

@@ -7,7 +7,7 @@ namespace Gamebox
     public class ItemTutorialsState
     {
 
-        private Dictionary<string, bool> _tutorialsComplete;
+        private Dictionary<ItemKey, bool> _tutorialsComplete;
 
 
 
@@ -21,7 +21,11 @@ namespace Gamebox
                 foreach (string keyValue in keyValues)
                 {
                     string[] keyValueSplit = keyValue.Split(S.S1);
-                    _tutorialsComplete.Add(keyValueSplit[0], keyValueSplit[1].FromBinaryToBool());
+
+                    ItemKey itemKey = (ItemKey)int.Parse(keyValueSplit[0]);
+                    bool completed = keyValueSplit[1].FromBinaryToBool();
+
+                    _tutorialsComplete.Add(itemKey, completed);
                 }
             }
         }
@@ -34,16 +38,16 @@ namespace Gamebox
             foreach (var tutorialComplete in _tutorialsComplete)
             {
                 if (i != 0) builder.Append(S.S2);
-                builder.Append($"{tutorialComplete.Key}{S.S1}{tutorialComplete.Value.ToBinaryString()}");
+                builder.Append($"{(int)tutorialComplete.Key}{S.S1}{tutorialComplete.Value.ToBinaryString()}");
                 i++;
             }
 
             return builder.ToString();
         }
 
-        public bool IsCompleted(string itemKey) => _tutorialsComplete.GetValueOrDefault(itemKey, false);
+        public bool IsCompleted(ItemKey itemKey) => _tutorialsComplete.GetValueOrDefault(itemKey, false);
 
-        public void SetCompleted(string itemKey, bool completed) => _tutorialsComplete[itemKey] = completed;
+        public void SetCompleted(ItemKey itemKey, bool completed) => _tutorialsComplete[itemKey] = completed;
 
 
     }

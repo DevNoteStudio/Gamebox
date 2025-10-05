@@ -84,7 +84,7 @@ namespace Gamebox
 
         private void OnReviveButtonClick()
         {
-            ads.Item.ShowRewarded(IAdKey.LevelRevive, onRewarded: () =>
+            ads.Item.ShowRewarded(AdKey.LevelRevive, onRewarded: () =>
             {
                 levelController.Item.Revive();
                 levelController.Item.HideLoseWindow(useHideAnimation: true);

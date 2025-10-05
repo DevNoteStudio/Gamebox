@@ -17,7 +17,7 @@ namespace Gamebox
 
         private Tween _currentTween;
 
-        private readonly Holder<AdsController> adsController = new();
+        private readonly Holder<PopupController> popupController = new();
         private readonly Holder<IPurchase> purchase = new();
 
 
@@ -29,19 +29,19 @@ namespace Gamebox
 
         public NoAdsWindowView Display()
         {
-            _priceText.text = purchase.Item.GetPriceString(IProductKey.NoAds);
+            _priceText.text = purchase.Item.GetPriceString(ProductKey.NoAds);
             return this;
         }
 
         private void OnCloseButtonClick()
         {
-            adsController.Item.HideNoAdsWindow();
+            popupController.Item.HideNoAdsWindow();
         }
 
         private void OnPurchaseButtonClick()
         {
-            purchase.Item.Purchase(IProductKey.NoAds, 
-                onSuccess: adsController.Item.HideNoAdsWindow);
+            purchase.Item.Purchase(ProductKey.NoAds, 
+                onSuccess: popupController.Item.HideNoAdsWindow);
         }
 
 

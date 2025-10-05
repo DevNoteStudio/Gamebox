@@ -18,7 +18,7 @@ namespace Gamebox
         {
             int locationIndex = IGameState.LastPlayLocationIndex.Value;
 
-            if (IGameState.Items.Has(IItemKey.LocationsUnlocked))
+            if (IGameState.Items.Has(ItemKey.LocationsUnlocked))
                 menuController.ShowLocationsScreen(locationIndex);
 
             else

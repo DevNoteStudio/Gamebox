@@ -11,7 +11,7 @@ namespace Gamebox
         private readonly Viewer<ItemTutorialWindowView> itemTutorialWindowViewer;
         private readonly IAds ads;
 
-        public PopupController(IAds ads)
+        public PopupController(LevelController levelController, IAds ads)
         {
             this.ads = ads;
 
@@ -21,24 +21,21 @@ namespace Gamebox
             _interstitialsLeftToShowNoAdsWindow = 1;
 
             IAds.OnInterstitialShown += OnInterstitialShown;
+            levelController.OnLevelAfterStarted += OnLevelAfterStarted;
         }
 
-        private void OnInterstitialShown(string key, AdShowStatus status)
+        private void OnLevelAfterStarted() => HandleStartLevelPopup();
+
+        private void OnInterstitialShown(AdKey key, AdShowStatus status)
         {
             if (status == AdShowStatus.Success) 
                 _interstitialsLeftToShowNoAdsWindow--;
-
-            if (key == IAdKey.LevelStartInterstitial)
-                HandleStartLevelPopup();
-
-
-            
         }
 
 
         private void HandleStartLevelPopup()
         {
-            if (TryGetItemForTutorial(out string itemKey))
+            if (TryGetItemForTutorial(out ItemKey itemKey))
                 ShowItemTutorialWindow(itemKey);
 
             else if (_interstitialsLeftToShowNoAdsWindow <= 0)
@@ -46,9 +43,9 @@ namespace Gamebox
         }
 
 
-        private bool TryGetItemForTutorial(out string resultItemKey)
+        private bool TryGetItemForTutorial(out ItemKey resultItemKey)
         {
-            foreach (var itemKey in IConfigs.Gamebox.TutorialItems)
+            foreach (var itemKey in IConfigs.Gamebox.GetTutorialItemKeys())
             {
                 if (IGameState.Items.Has(itemKey) && IGameState.ItemTutorials.IsCompleted(itemKey) == false)
                 {
@@ -56,11 +53,11 @@ namespace Gamebox
                     return true;
                 }
             }
-            resultItemKey = null; 
+            resultItemKey = ItemKey.Coins; 
             return false;
         }
 
-        private void ShowItemTutorialWindow(string itemKey) 
+        private void ShowItemTutorialWindow(ItemKey itemKey) 
             => itemTutorialWindowViewer.ShowExpand(UI.Container).Display(itemKey).AnimateShow();
 
         public void HideItemTutorialWindow() 

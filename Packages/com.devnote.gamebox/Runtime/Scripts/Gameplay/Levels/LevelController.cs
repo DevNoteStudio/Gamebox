@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Gamebox
 {
     public class LevelController
     {
-        public event Action OnLevelStarted, OnLevelLost, OnLevelCompleted, OnLevelExit, OnRevive;
+        public event Action OnLevelStarted, OnLevelAfterStarted, OnLevelLost, OnLevelCompleted, OnLevelExit, OnRevive;
 
         public int CurrentLocationIndex { get; private set; } = -1;
         public int CurrentLevelIndex { get; private set; } = -1;
@@ -80,8 +81,21 @@ namespace Gamebox
             IsLevelPlaying = true;
             OnLevelStarted?.Invoke();
 
-            ads.ShowInterstitial(IAdKey.LevelStartInterstitial);
+            if (IConfigs.Gamebox.CanShowInterstitial(IGameState.Levels.CurrentLevelNumber))
+            {
+                ads.ShowInterstitial(AdKey.LevelStartInterstitial, 
+                    callback: (status) => InvokeLevelAfterStart());
+            }
+            else InvokeLevelAfterStart();
         }
+
+        private async void InvokeLevelAfterStart()
+        {
+            await UniTask.NextFrame();
+            OnLevelAfterStarted?.Invoke();
+        }
+
+
 
         public void CompleteCurrentLevel(int stars)
         {
@@ -107,7 +121,7 @@ namespace Gamebox
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(IGameState.Items.Get(IItemKey.Stars), ILeaderboardKey.Stars);
+            leaderboards.SetScore(IGameState.Items.Get(ItemKey.Stars), LeaderboardKey.Stars);
 
             IsLevelPlaying = false;
             OnLevelCompleted?.Invoke();

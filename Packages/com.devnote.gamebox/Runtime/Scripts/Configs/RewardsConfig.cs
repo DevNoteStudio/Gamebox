@@ -8,14 +8,14 @@ namespace Gamebox
         [Serializable] private struct AdditionalLocationLevelRewardData
         {
             public int levelIndex;
-            public string itemKey;
+            public ItemKey itemKey;
             public int amount;
         }
 
         [Serializable] private struct RewardForTotalLevelCompletionData
         {
             public int completedLevels;
-            public string itemKey;
+            public ItemKey itemKey;
             public int amount;
         }
 
@@ -40,8 +40,8 @@ namespace Gamebox
             int coins = _rewards.coinsForLevelComplete + _rewards.coinsForNewStar * newStars;
             coins = (int)(coins * locationData.coinsMultiplier);
 
-            rewards.Add(new ItemPack(IItemKey.Coins, coins));
-            if (newStars > 0) rewards.Add(new ItemPack(IItemKey.Stars, newStars));
+            rewards.Add(new ItemPack(ItemKey.Coins, coins));
+            if (newStars > 0) rewards.Add(new ItemPack(ItemKey.Stars, newStars));
 
             foreach (var rewardData in _rewards.rewardsForTotalLevelCompletion)
             {
@@ -58,7 +58,7 @@ namespace Gamebox
             return rewards;
         }
 
-        private void Put(List<ItemPack> rewards, string itemKey, int value)
+        private void Put(List<ItemPack> rewards, ItemKey itemKey, int value)
         {
             var index = rewards.FindIndex(itemPack => itemPack.itemKey == itemKey);
             if (index != -1)
