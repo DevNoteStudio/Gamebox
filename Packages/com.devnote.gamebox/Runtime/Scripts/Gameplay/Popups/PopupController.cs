@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using DevNote;
 
 namespace Gamebox
@@ -6,25 +6,59 @@ namespace Gamebox
     public class PopupController
     {
         private int _interstitialsLeftToShowNoAdsWindow;
+        private PriorityPopupList _priorityPopupList;
 
         private readonly Viewer<NoAdsWindowView> noAdsWindowViewer;
         private readonly Viewer<ItemTutorialWindowView> itemTutorialWindowViewer;
         private readonly IAds ads;
+        private readonly IReview review;
 
-        public PopupController(LevelController levelController, IAds ads)
+        public PopupController(LevelController levelController, IAds ads, IReview review)
         {
+            _priorityPopupList = GetPriorityPopupList();
+
             this.ads = ads;
+            this.review = review;
 
-            noAdsWindowViewer = new(IConfigs.Gamebox.NoAdsWindowPrefab);
-            itemTutorialWindowViewer = new(IConfigs.Gamebox.ItemTutorialWindowPrefab);
+            noAdsWindowViewer = new(IConfigs.GetViewPrefab<NoAdsWindowView>());
+            itemTutorialWindowViewer = new(IConfigs.GetViewPrefab<ItemTutorialWindowView>());
 
-            _interstitialsLeftToShowNoAdsWindow = 1;
+            _interstitialsLeftToShowNoAdsWindow = IConfigs.Gamebox.InterstitialsShowsToShowNoAdsWindow;
 
             IAds.OnInterstitialShown += OnInterstitialShown;
-            levelController.OnLevelAfterStarted += OnLevelAfterStarted;
+            levelController.OnLevelStarted += OnLevelStarted;
         }
 
-        private void OnLevelAfterStarted() => HandleStartLevelPopup();
+        private PriorityPopupList GetPriorityPopupList() => new PriorityPopupList(new List<PopupData>()
+        {
+            new PopupData
+            {
+                popupType = PopupType.ItemTutorial,
+                showCondition = () => IConfigs.Gamebox.TryGetItemForTutorial(out _),
+                priority = 1,
+            },
+            new PopupData
+            {
+                popupType = PopupType.RateUs,
+                showCondition = () => IConfigs.Gamebox.RateUsNow,
+                priority = 2,
+            },
+            new PopupData
+            {
+                popupType = PopupType.NoAds,
+                showCondition = () => _interstitialsLeftToShowNoAdsWindow <= 0,
+                priority = 3,
+            },
+        });
+
+
+        private void OnLevelStarted()
+        {
+            if (IConfigs.Gamebox.CanShowInterstitial)
+                ads.ShowInterstitial(AdKey.LevelStartInterstitial, (result) => HandleShowPopup());
+
+            else HandleShowPopup();
+        }
 
         private void OnInterstitialShown(AdKey key, AdShowStatus status)
         {
@@ -33,50 +67,44 @@ namespace Gamebox
         }
 
 
-        private void HandleStartLevelPopup()
+        private void HandleShowPopup()
         {
-            if (TryGetItemForTutorial(out ItemKey itemKey))
-                ShowItemTutorialWindow(itemKey);
+            if (_priorityPopupList.TryGetNextPopup(out PopupType popupType) == false)
+                return;
 
-            else if (_interstitialsLeftToShowNoAdsWindow <= 0)
-                ShowNoAdsWindow();
-        }
-
-
-        private bool TryGetItemForTutorial(out ItemKey resultItemKey)
-        {
-            foreach (var itemKey in IConfigs.Gamebox.GetTutorialItemKeys())
+            switch (popupType)
             {
-                if (IGameState.Items.Has(itemKey) && IGameState.ItemTutorials.IsCompleted(itemKey) == false)
-                {
-                    resultItemKey = itemKey;
-                    return true;
-                }
+                case PopupType.ItemTutorial:
+                    IConfigs.Gamebox.TryGetItemForTutorial(out ItemKey itemKey);
+                    itemTutorialWindowViewer.ShowWindow(UI.Container).Display(itemKey).AnimateShow();
+                    break;
+
+                case PopupType.RateUs:
+                    break;
+
+                case PopupType.NoAds:
+                    _interstitialsLeftToShowNoAdsWindow = IConfigs.Gamebox.InterstitialsShowsToShowNoAdsWindow;
+                    noAdsWindowViewer.ShowWindow(UI.Container).Display().AnimateShow();
+                    break;
             }
-            resultItemKey = ItemKey.Coins; 
-            return false;
         }
 
-        private void ShowItemTutorialWindow(ItemKey itemKey) 
-            => itemTutorialWindowViewer.ShowExpand(UI.Container).Display(itemKey).AnimateShow();
-
-        public void HideItemTutorialWindow() 
-            => itemTutorialWindowViewer.View.AnimateHide(onCompleted: itemTutorialWindowViewer.Hide);
-
-
-
-        private void ShowNoAdsWindow()
+        public void HidePopup(PopupType popupType)
         {
-            _interstitialsLeftToShowNoAdsWindow = IConfigs.Gamebox.InterstitialsShowsToShowNoAdsWindow;
-            noAdsWindowViewer.ShowExpand(UI.Container).Display().AnimateShow();
+            switch (popupType)
+            {
+                case PopupType.ItemTutorial:
+                    itemTutorialWindowViewer.AnimateHideWindow(itemTutorialWindowViewer.View.AnimateHide);
+                    break;
+
+                case PopupType.RateUs:
+                    break;
+
+                case PopupType.NoAds:
+                    noAdsWindowViewer.AnimateHideWindow(noAdsWindowViewer.View.AnimateHide);
+                    break;
+            }
         }
-
-
-        public void HideNoAdsWindow() 
-            => noAdsWindowViewer.View.AnimateHide(onCompleted: noAdsWindowViewer.Hide);
-
-
-
 
 
     }

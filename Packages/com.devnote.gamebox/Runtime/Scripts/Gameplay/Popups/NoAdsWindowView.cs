@@ -33,22 +33,18 @@ namespace Gamebox
             return this;
         }
 
-        private void OnCloseButtonClick()
-        {
-            popupController.Item.HideNoAdsWindow();
-        }
+        private void OnCloseButtonClick() => popupController.Item.HidePopup(PopupType.NoAds);
+
 
         private void OnPurchaseButtonClick()
         {
             purchase.Item.Purchase(ProductKey.NoAds, 
-                onSuccess: popupController.Item.HideNoAdsWindow);
+                onSuccess: () => popupController.Item.HidePopup(PopupType.NoAds));
         }
 
 
         public void AnimateShow()
         {
-            TimeMode.SetActive(TimeMode.Mode.Pause, true);
-
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence().Attach(gameObject)
                 .Append(TweenHub.Show(_windowRect, playSound: true))
@@ -60,8 +56,6 @@ namespace Gamebox
 
         public void AnimateHide(Action onCompleted)
         {
-            TimeMode.SetActive(TimeMode.Mode.Pause, false);
-
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence().Attach(gameObject)
                 .Append(TweenHub.Hide(_windowRect))

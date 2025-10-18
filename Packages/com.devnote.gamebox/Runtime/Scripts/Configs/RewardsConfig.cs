@@ -31,7 +31,7 @@ namespace Gamebox
 
 
         public List<ItemPack> GetLevelRewards(int locationIndex, int levelIndex, 
-            int newStars, bool isRepeatComplete, int totalCompletedLevels)
+            int newStars, bool isRepeatComplete, int completedLevels, bool isFirstComplete)
         {
             var rewards = new List<ItemPack>();
 
@@ -43,16 +43,19 @@ namespace Gamebox
             rewards.Add(new ItemPack(ItemKey.Coins, coins));
             if (newStars > 0) rewards.Add(new ItemPack(ItemKey.Stars, newStars));
 
-            foreach (var rewardData in _rewards.rewardsForTotalLevelCompletion)
+            if (isFirstComplete)
             {
-                if (totalCompletedLevels == rewardData.completedLevels)
-                    Put(rewards, rewardData.itemKey, rewardData.amount);
-            }
+                foreach (var rewardData in _rewards.rewardsForTotalLevelCompletion)
+                {
+                    if (completedLevels == rewardData.completedLevels)
+                        Put(rewards, rewardData.itemKey, rewardData.amount);
+                }
 
-            foreach ( var additionalReward in locationData.additionalLevelRewards)
-            {
-                if (additionalReward.levelIndex == levelIndex)
-                    Put(rewards, additionalReward.itemKey, additionalReward.amount);
+                foreach (var additionalReward in locationData.additionalLevelRewards)
+                {
+                    if (additionalReward.levelIndex == levelIndex)
+                        Put(rewards, additionalReward.itemKey, additionalReward.amount);
+                }
             }
 
             return rewards;

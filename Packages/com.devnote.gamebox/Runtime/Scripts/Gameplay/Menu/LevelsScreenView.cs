@@ -40,7 +40,7 @@ namespace Gamebox
 
         private void OnBackButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 menuController.Item.HideLevelsScreen();
                 menuController.Item.ShowLocationsScreen(_locationIndex);

@@ -10,9 +10,9 @@ namespace Gamebox
         [Serializable] private struct ItemData
         {
             public ItemKey itemKey;
-            public bool hasTutorial;
-            public bool showInRewards;
             public Sprite iconSprite;
+            public bool hasTutorial;
+            public int availableFromLevel;
         }
 
 
@@ -26,8 +26,33 @@ namespace Gamebox
         public string GetItemTutorialDescription(ItemKey itemKey)
             => Localization.GetLocalizedText($"{itemKey}_tutor_desc");
 
-        public bool IsRewardItem(ItemKey itemKey) 
-            => _items.Find(data => data.itemKey == itemKey).showInRewards;
+        public bool ItemIsAvailable(ItemKey itemKey)
+        {
+            var itemData = _items.Find(data => data.itemKey == itemKey);
+            bool hasItem = IGameState.Items.Has(itemKey);
+            bool unlocked = IGameState.Levels.CurrentLevel >= itemData.availableFromLevel;
+            return hasItem || unlocked;
+        }
+
+
+        public bool TryGetItemForTutorial(out ItemKey resultItemKey)
+        {
+            foreach (var itemKey in IConfigs.Gamebox.GetTutorialItemKeys())
+            {
+                bool showTutorial = IGameState.ItemTutorials.IsCompleted(itemKey) == false
+                    && IConfigs.Gamebox.ItemIsAvailable(itemKey);
+
+                if (showTutorial)
+                {
+                    resultItemKey = itemKey;
+                    return true;
+                }
+            }
+            resultItemKey = ItemKey.Coins;
+            return false;
+        }
+
+
 
         public List<ItemKey> GetTutorialItemKeys()
         {

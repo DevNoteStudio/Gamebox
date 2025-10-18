@@ -56,6 +56,7 @@ namespace Gamebox
                 else _amounts[itemKey] = value;
             }
 
+            GetChangeAction(itemKey)?.Invoke();
             OnChanged?.Invoke(itemKey);
         }
 
@@ -78,13 +79,13 @@ namespace Gamebox
         public void Subscribe(ItemKey itemKey, Action onChanged)
         {
             var action = GetChangeAction(itemKey);
-            action += onChanged;
+            _changeActions[itemKey] = action + onChanged;
         }
 
         public void Dispose(ItemKey itemKey, Action onChanged)
         {
             var action = GetChangeAction(itemKey);
-            action -= onChanged;
+            _changeActions[itemKey] = action - onChanged;
         }
 
 

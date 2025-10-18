@@ -15,7 +15,6 @@ namespace Gamebox
         [SerializeField] private Button _reviveButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _skipButton;
-        [SerializeField] private Image _fadeImage;
 
         private Tween _currentTween;
 
@@ -52,12 +51,10 @@ namespace Gamebox
             _skipButton.transform.localScale = Vector3.zero;
             _titleRect.localPosition = Vector3.zero;
             _titleRect.localScale = new Vector3(0f, 1f, 1f);
-            _fadeImage.color = _fadeImage.color.SetAlpha(0f); 
 
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence().Attach(gameObject)
 
-                .Append(TweenHub.Fade(_fadeImage))
                 .Append(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
 
                 .AppendCallback(() => IConfigs.Gamebox.ShowSound.Play())
@@ -75,8 +72,7 @@ namespace Gamebox
 
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence().Attach(gameObject)
-                .Append(TweenHub.Unfade(_fadeImage, HIDE_DURATION))
-                .Join(_windowRect.DOScale(0f, HIDE_DURATION).SetEase(Ease.OutFlash))
+                .Append(_windowRect.DOScale(0f, HIDE_DURATION).SetEase(Ease.OutFlash))
                 .Join(_titleRect.DOScale(0f, HIDE_DURATION).SetEase(Ease.OutFlash))
                 .OnComplete(() => onCompleted?.Invoke());
         }
@@ -87,19 +83,19 @@ namespace Gamebox
             ads.Item.ShowRewarded(AdKey.LevelRevive, onRewarded: () =>
             {
                 levelController.Item.Revive();
-                levelController.Item.HideLoseWindow(useHideAnimation: true);
+                levelController.Item.HideLoseWindow(forceHide: false);
             });
         }
 
         private void OnRestartButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 int locationIndex = levelController.Item.CurrentLocationIndex;
                 int levelIndex = levelController.Item.CurrentLevelIndex;
 
                 levelController.Item.StartLevel(locationIndex, levelIndex);
-                levelController.Item.HideLoseWindow(useHideAnimation: false);
+                levelController.Item.HideLoseWindow(forceHide: true);
             });
         }
 

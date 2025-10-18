@@ -10,7 +10,6 @@ namespace Gamebox
     public class ItemTutorialWindowView : MonoBehaviour
     {
         [SerializeField] private RectTransform _windowRect;
-        [SerializeField] private Image _fadeImage;
         [SerializeField] private Image _iconImage;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private TextMeshProUGUI _descriptionText;
@@ -42,8 +41,7 @@ namespace Gamebox
         {
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence().Attach(gameObject)
-                .Append(TweenHub.Fade(_fadeImage))
-                .Join(TweenHub.Show(_windowRect, playSound: true));
+                .Append(TweenHub.Show(_windowRect, playSound: true));
         }
 
 
@@ -51,8 +49,7 @@ namespace Gamebox
         {
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence().Attach(gameObject)
-                .Append(TweenHub.Unfade(_fadeImage))
-                .Join(TweenHub.Hide(_windowRect))
+                .Append(TweenHub.Hide(_windowRect))
                 .OnComplete(() => onCompleted?.Invoke());
         }
 
@@ -60,7 +57,7 @@ namespace Gamebox
         private void OnSubmitButtonClick()
         {
             IGameState.ItemTutorials.SetCompleted(_itemKey, true);
-            popupController.Item.HideItemTutorialWindow();
+            popupController.Item.HidePopup(PopupType.ItemTutorial);
         }
 
     }

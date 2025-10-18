@@ -18,7 +18,7 @@ MonoBehaviour:
     swipeSameState: 0
     swipeSelectionOnly: 0
     depthMode: 0
-    tagLayerLayout: 0
+    tagLayerLayout: 3
     showTags: 0
     showLayers: 0
     applyChildLayers: 0
@@ -199,25 +199,25 @@ MonoBehaviour:
         m_FixedHeight: 0
         m_StretchWidth: 1
         m_StretchHeight: 0
-    - prefix: +
+    - prefix: G
       noSpaceAfterPrefix: 0
-      name: Mini Header (Centered)
+      name: Gamebox
       font: {fileID: 0}
-      fontSize: 10
-      fontAlignment: 4
+      fontSize: 11
+      fontAlignment: 3
       fontStyle: 1
       textFormatting: 0
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
+      - fontColour: {r: 1, g: 0.65471697, b: 0.8344533, a: 1}
+        backgroundColour: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
       style:
-        m_Name: Mini Header (Centered)
+        m_Name: Gamebox
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+          m_TextColor: {r: 1, g: 0.65471697, b: 0.8344533, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -267,9 +267,9 @@ MonoBehaviour:
           m_Top: 0
           m_Bottom: 0
         m_Font: {fileID: 0}
-        m_FontSize: 10
+        m_FontSize: 11
         m_FontStyle: 1
-        m_Alignment: 4
+        m_Alignment: 3
         m_WordWrap: 0
         m_RichText: 1
         m_TextClipping: 0
@@ -1544,7 +1544,7 @@ MonoBehaviour:
           m_Text: Button
           m_Image: {fileID: -2246836292574321313, guid: 0000000000000000d000000000000000, type: 0}
           m_Tooltip: Button
-        shown: 1
+        shown: 0
         excluded: 0
         isBuiltIn: 1
         script: {fileID: 0}
@@ -1568,7 +1568,7 @@ MonoBehaviour:
           m_Text: CanvasGroup
           m_Image: {fileID: 5779557562189929939, guid: 0000000000000000d000000000000000, type: 0}
           m_Tooltip: CanvasGroup
-        shown: 1
+        shown: 0
         excluded: 0
         isBuiltIn: 1
         script: {fileID: 0}
@@ -2177,6 +2177,42 @@ MonoBehaviour:
         isBuiltIn: 1
         script: {fileID: 0}
         hasToggle: 1
+      - displayName: NavMeshLink
+        name: Unity.AI.Navigation.NavMeshLink, Unity.AI.Navigation, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: NavMeshLink
+          m_Image: {fileID: 0}
+          m_Tooltip: NavMeshLink
+        shown: 0
+        excluded: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+        hasToggle: 1
+      - displayName: NavMeshModifier
+        name: Unity.AI.Navigation.NavMeshModifier, Unity.AI.Navigation, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: NavMeshModifier
+          m_Image: {fileID: 0}
+          m_Tooltip: NavMeshModifier
+        shown: 0
+        excluded: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+        hasToggle: 1
+      - displayName: NavMeshModifierVolume
+        name: Unity.AI.Navigation.NavMeshModifierVolume, Unity.AI.Navigation, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: NavMeshModifierVolume
+          m_Image: {fileID: 0}
+          m_Tooltip: NavMeshModifierVolume
+        shown: 0
+        excluded: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+        hasToggle: 1
       - displayName: NavMeshObstacle
         name: UnityEngine.AI.NavMeshObstacle, UnityEngine.AIModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -2184,6 +2220,18 @@ MonoBehaviour:
           m_Text: NavMeshObstacle
           m_Image: {fileID: -5015426118682326553, guid: 0000000000000000d000000000000000, type: 0}
           m_Tooltip: NavMeshObstacle
+        shown: 0
+        excluded: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+        hasToggle: 1
+      - displayName: NavMeshSurface
+        name: Unity.AI.Navigation.NavMeshSurface, Unity.AI.Navigation, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: NavMeshSurface
+          m_Image: {fileID: 0}
+          m_Tooltip: NavMeshSurface
         shown: 0
         excluded: 0
         isBuiltIn: 1
@@ -2517,18 +2565,6 @@ MonoBehaviour:
         hasToggle: 1
     - name: Network
       components:
-      - displayName: NetworkMatch
-        name: UnityEngine.Networking.Match.NetworkMatch, UnityEngine.UNETModule,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: NetworkMatch
-          m_Image: {fileID: 0}
-          m_Tooltip: NetworkMatch
-        shown: 0
-        excluded: 0
-        isBuiltIn: 1
-        script: {fileID: 0}
-        hasToggle: 1
       - displayName: NetworkView
         name: UnityEngine.NetworkView, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
@@ -2548,7 +2584,7 @@ MonoBehaviour:
       name: All
       components:
       - displayName: ContextStartup
-        name: DevNote.ContextStartup, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        name: DevNote.ContextStartup, DevNote, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
           m_Text: ContextStartup
@@ -2559,20 +2595,8 @@ MonoBehaviour:
         isBuiltIn: 0
         script: {fileID: 11500000, guid: e893cffeaddcc2741892939d69e2bfc2, type: 3}
         hasToggle: 1
-      - displayName: MainSceneContext
-        name: DevNote.Gamebox.MainSceneContext, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: MainSceneContext
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: MainSceneContext
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 4a576503160ec22429576e6e579938a0, type: 3}
-        hasToggle: 1
       - displayName: ProjectContext
-        name: DevNote.ProjectContext, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        name: DevNote.ProjectContext, DevNote, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
           m_Text: ProjectContext
@@ -2584,7 +2608,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 6176c153785b98845afabec94e28d980, type: 3}
         hasToggle: 1
       - displayName: ServiceSelector
-        name: DevNote.ServiceSelector, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        name: DevNote.ServiceSelector, DevNote, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
           m_Text: ServiceSelector
@@ -2595,45 +2619,8 @@ MonoBehaviour:
         isBuiltIn: 0
         script: {fileID: 11500000, guid: d2829f77477cb624ca87aa2cba29af42, type: 3}
         hasToggle: 1
-      - displayName: TestEnvironmentService
-        name: DevNote.Services.Test.TestEnvironmentService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: TestEnvironmentService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: TestEnvironmentService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 96134d3b10fef8f4092c500bcbfca534, type: 3}
-        hasToggle: 1
-      - displayName: YandexGamesEnvironmentService
-        name: DevNote.Services.YandexGames.YandexGamesEnvironmentService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: YandexGamesEnvironmentService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: YandexGamesEnvironmentService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 860623263c853b64abea09208ea26a04, type: 3}
-        hasToggle: 1
-      - displayName: GamePushEnvironmentService
-        name: DevNote.Services.GamePush.GamePushEnvironmentService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: GamePushEnvironmentService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: GamePushEnvironmentService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 15ad781438cbf804098f74f31034c597, type: 3}
-        hasToggle: 1
       - displayName: Autosave
-        name: DevNote.Autosave, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: DevNote.Autosave, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: Autosave
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2643,164 +2630,8 @@ MonoBehaviour:
         isBuiltIn: 0
         script: {fileID: 11500000, guid: b6c87936e1ebf804da5dcb607ed191d6, type: 3}
         hasToggle: 1
-      - displayName: PlayerPrefsSaveService
-        name: DevNote.Services.Test.PlayerPrefsSaveService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: PlayerPrefsSaveService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: PlayerPrefsSaveService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 63139954563d28644b8fd3671cba5285, type: 3}
-        hasToggle: 1
-      - displayName: YandexGamesSaveService
-        name: DevNote.Services.YandexGames.YandexGamesSaveService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: YandexGamesSaveService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: YandexGamesSaveService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 8144b0f7363bf7b43a2e6b3503844e83, type: 3}
-        hasToggle: 1
-      - displayName: TestAdsService
-        name: DevNote.Services.Test.TestAdsService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: TestAdsService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: TestAdsService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: c9d7b48479b501b428d03b9870137f37, type: 3}
-        hasToggle: 1
-      - displayName: YandexGamesAdsService
-        name: DevNote.Services.YandexGames.YandexGamesAdsService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: YandexGamesAdsService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: YandexGamesAdsService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: d1843a1793f4b7a4aacc75b1cc3a7d0d, type: 3}
-        hasToggle: 1
-      - displayName: GamePushAdsService
-        name: DevNote.Services.GamePush.GamePushAdsService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: GamePushAdsService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: GamePushAdsService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: bd11b2278bfdbd8408566ff5634f593e, type: 3}
-        hasToggle: 1
-      - displayName: TestPurchaseService
-        name: DevNote.Services.Test.TestPurchaseService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: TestPurchaseService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: TestPurchaseService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 74ea83fc45db38548b41fe4b6726f055, type: 3}
-        hasToggle: 1
-      - displayName: YandexGamesPurchaseService
-        name: DevNote.Services.YandexGames.YandexGamesPurchaseService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: YandexGamesPurchaseService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: YandexGamesPurchaseService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 24d9636769b309b4a94a4bbdabed2f3b, type: 3}
-        hasToggle: 1
-      - displayName: GamePushPurchaseService
-        name: DevNote.Services.GamePush.GamePushPurchaseService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: GamePushPurchaseService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: GamePushPurchaseService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: c3e17e36cc9bab841b40523048fd909a, type: 3}
-        hasToggle: 1
-      - displayName: TestAnalyticsService
-        name: DevNote.Services.Test.TestAnalyticsService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: TestAnalyticsService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: TestAnalyticsService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: b030d2a55e032df41a7a0694632cfbec, type: 3}
-        hasToggle: 1
-      - displayName: YandexMetricaAnalyticsService
-        name: DevNote.Services.YandexMetrica.YandexMetricaAnalyticsService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: YandexMetricaAnalyticsService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: YandexMetricaAnalyticsService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 4d90ccfbb62c6e7439cc6430c85b136a, type: 3}
-        hasToggle: 1
-      - displayName: TestReviewService
-        name: DevNote.Services.Test.TestReviewService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: TestReviewService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: TestReviewService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 3545ce6a880057844a3cba2f5dd17349, type: 3}
-        hasToggle: 1
-      - displayName: YandexGamesReviewService
-        name: DevNote.Services.YandexGames.YandexGamesReviewService, Assembly-CSharp,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: YandexGamesReviewService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: YandexGamesReviewService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: 2ecb0bab3609fd54f854d16f1486f243, type: 3}
-        hasToggle: 1
-      - displayName: GamePushReviewService
-        name: DevNote.Services.GamePush.GamePushReviewService, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        content:
-          m_Text: GamePushReviewService
-          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: GamePushReviewService
-        shown: 0
-        excluded: 0
-        isBuiltIn: 0
-        script: {fileID: 11500000, guid: d62e8beea2f7109479e9182cad8afebb, type: 3}
-        hasToggle: 1
       - displayName: Sound
-        name: DevNote.Sound, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        name: DevNote.Sound, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: Sound
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2811,8 +2642,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 0a8abbd746f54c84d9de5045c6db34f9, type: 3}
         hasToggle: 1
       - displayName: AudioPool
-        name: DevNote.AudioPool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: DevNote.AudioPool, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: AudioPool
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2823,8 +2653,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: fdc0fb3e645ef244a8767118e088be2d, type: 3}
         hasToggle: 1
       - displayName: GoogleTables
-        name: DevNote.GoogleTables, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: DevNote.GoogleTables, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: GoogleTables
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2835,8 +2664,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: e47176fd648b92b4e9ce31d45b6644ed, type: 3}
         hasToggle: 1
       - displayName: Localization
-        name: DevNote.Localization, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: DevNote.Localization, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: Localization
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2847,8 +2675,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: e37b48f70be74fe4bb961e236fa3f99a, type: 3}
         hasToggle: 1
       - displayName: WebHandler
-        name: DevNote.WebHandler, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: DevNote.WebHandler, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: WebHandler
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2859,7 +2686,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 527404db8acb9634d85d74fd12452f46, type: 3}
         hasToggle: 1
       - displayName: CheckServiceInitWindowView
-        name: CheckServiceInitWindowView, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        name: CheckServiceInitWindowView, DevNote, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
           m_Text: CheckServiceInitWindowView
@@ -2875,7 +2702,7 @@ MonoBehaviour:
           PublicKeyToken=null
         content:
           m_Text: TextMeshProUGUI
-          m_Image: {fileID: 0}
+          m_Image: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
           m_Tooltip: TextMeshProUGUI
         shown: 0
         excluded: 0
@@ -2883,8 +2710,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
         hasToggle: 1
       - displayName: TestLevelView
-        name: DevNote.Gamebox.TestLevelView, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: Gamebox.TestLevelView, Gamebox, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: TestLevelView
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2895,8 +2721,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 4ecaa3ffb50c25544bebf36a3e407522, type: 3}
         hasToggle: 1
       - displayName: Context
-        name: DevNote.Context, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        name: DevNote.Context, DevNote, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         content:
           m_Text: Context
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2907,8 +2732,8 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: a6bf58e5d10a9914a96c0ec8800b3b64, type: 3}
         hasToggle: 1
       - displayName: LocationsScreenView
-        name: DevNote.Gamebox.LocationsScreenView, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
+        name: Gamebox.LocationsScreenView, Gamebox, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
         content:
           m_Text: LocationsScreenView
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2919,8 +2744,8 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: ca3a3abee705b0e4a9dc0bb38b669843, type: 3}
         hasToggle: 1
       - displayName: LevelsScreenView
-        name: DevNote.Gamebox.LevelsScreenView, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
+        name: Gamebox.LevelsScreenView, Gamebox, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
         content:
           m_Text: LevelsScreenView
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2931,8 +2756,8 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 445ebc30928404c439a67544e6777e79, type: 3}
         hasToggle: 1
       - displayName: VictoryScreenView
-        name: DevNote.Gamebox.VictoryScreenView, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
+        name: Gamebox.VictoryScreenView, Gamebox, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
         content:
           m_Text: VictoryScreenView
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
@@ -2943,7 +2768,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 4d3f6c2c5b2f5194aa2e6827e5114465, type: 3}
         hasToggle: 1
       - displayName: LoseWindowView
-        name: DevNote.Gamebox.LoseWindowView, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        name: Gamebox.LoseWindowView, Gamebox, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
           m_Text: LoseWindowView
@@ -2955,7 +2780,7 @@ MonoBehaviour:
         script: {fileID: 11500000, guid: 6e5c74399945a8a41b77d595bf7cbe4a, type: 3}
         hasToggle: 1
       - displayName: ShineAnimation
-        name: DevNote.Gamebox.ShineAnimation, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        name: Gamebox.ShineAnimation, Gamebox, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
           m_Text: ShineAnimation
@@ -2966,17 +2791,29 @@ MonoBehaviour:
         isBuiltIn: 0
         script: {fileID: 11500000, guid: 59f6b575c939ef14bab9b050666d97fb, type: 3}
         hasToggle: 1
-      - displayName: ScaleAnimation
-        name: DevNote.Gamebox.ScaleAnimation, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      - displayName: GameboxSceneContext
+        name: Gamebox.GameboxSceneContext, Gamebox, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         content:
-          m_Text: ScaleAnimation
+          m_Text: GameboxSceneContext
           m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
-          m_Tooltip: ScaleAnimation
+          m_Tooltip: GameboxSceneContext
         shown: 0
         excluded: 0
         isBuiltIn: 0
-        script: {fileID: 11500000, guid: 37e9ade6664463c46afb8d5527c52677, type: 3}
+        script: {fileID: 11500000, guid: 25cf634478032e64498510b948e59844, type: 3}
         hasToggle: 1
-    unityVersion: 2021.3.45f1
-    unityCount: 186
+      - displayName: OverlayScreenView
+        name: Gamebox.OverlayScreenView, Gamebox, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        content:
+          m_Text: OverlayScreenView
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: OverlayScreenView
+        shown: 0
+        excluded: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: 0889a180d22628942af595d84f8ec65b, type: 3}
+        hasToggle: 1
+    unityVersion: 2022.3.62f1
+    unityCount: 189

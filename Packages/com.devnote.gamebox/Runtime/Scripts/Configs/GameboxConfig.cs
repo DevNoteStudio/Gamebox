@@ -18,12 +18,22 @@ namespace Gamebox
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
         [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
 
-        [ SerializeField] private int _interstitialsFromLevel;
+        [SerializeField] private int _interstitialsFromLevel;
+        [SerializeField] private List<int> _rateUsLevels;
 
 
-        public bool CanShowInterstitial(int currentLevel) => currentLevel >= _interstitialsFromLevel; 
+        public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 
 
+        public bool RateUsNow
+        {
+            get
+            {
+                foreach (int rateLevel in _rateUsLevels)
+                    if (IGameState.Levels.CurrentLevel == rateLevel) return true;
 
+                return false;
+            }
+        }
 
 
     }

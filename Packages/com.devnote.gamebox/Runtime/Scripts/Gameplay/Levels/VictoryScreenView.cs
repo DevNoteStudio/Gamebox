@@ -74,9 +74,6 @@ namespace Gamebox
             _rewardItemWidgetPool.Clear();
             foreach (var reward in rewards)
             {
-                if (IConfigs.Gamebox.IsRewardItem(reward.itemKey) == false) 
-                    continue;
-
                 var widget = _rewardItemWidgetPool.Get();
                 widget.Display(reward.itemKey, reward.amount);
 
@@ -163,7 +160,7 @@ namespace Gamebox
 
         private void OnTakeButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 levelController.Item.HideVictoryScreen();
                 levelController.Item.StartNextLevelOrShowLevelSelection();

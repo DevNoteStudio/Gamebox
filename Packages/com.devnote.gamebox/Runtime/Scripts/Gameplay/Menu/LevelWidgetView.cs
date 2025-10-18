@@ -67,7 +67,7 @@ namespace Gamebox
 
         private void OnPlayButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 menuController.Item.HideLevelsScreen();
                 levelController.Item.StartLevel(_locationIndex, _levelIndex);

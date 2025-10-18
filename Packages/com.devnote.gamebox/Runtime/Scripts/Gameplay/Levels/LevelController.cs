@@ -1,5 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace Gamebox
 {
     public class LevelController
     {
-        public event Action OnLevelStarted, OnLevelAfterStarted, OnLevelLost, OnLevelCompleted, OnLevelExit, OnRevive;
+        public event Action OnLevelStarted, OnLevelLost, OnLevelCompleted, OnLevelExit, OnRevive;
 
         public int CurrentLocationIndex { get; private set; } = -1;
         public int CurrentLevelIndex { get; private set; } = -1;
@@ -25,8 +24,8 @@ namespace Gamebox
 
         public LevelController(MenuController menuController, ILeaderboards leaderboards, IAds ads)
         {
-            loseWindowViewer = new(IConfigs.Gamebox.LoseWindowPrefab);
-            victoryScreenViewer = new(IConfigs.Gamebox.VictoryScreenPrefab);
+            loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
+            victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
             this.menuController = menuController;
             this.leaderboards = leaderboards;
             this.ads = ads;
@@ -80,58 +79,53 @@ namespace Gamebox
 
             IsLevelPlaying = true;
             OnLevelStarted?.Invoke();
-
-            if (IConfigs.Gamebox.CanShowInterstitial(IGameState.Levels.CurrentLevelNumber))
-            {
-                ads.ShowInterstitial(AdKey.LevelStartInterstitial, 
-                    callback: (status) => InvokeLevelAfterStart());
-            }
-            else InvokeLevelAfterStart();
         }
 
-        private async void InvokeLevelAfterStart()
-        {
-            await UniTask.NextFrame();
-            OnLevelAfterStarted?.Invoke();
-        }
 
 
 
         public void CompleteCurrentLevel(int stars)
         {
+            IsLevelPlaying = false;
+
+            stars = Mathf.Clamp(stars, 1, 3);
+
             CompletedStars = stars;
 
             int previousStars = IGameState.Levels.GetLevelStars(CurrentLocationIndex, CurrentLevelIndex);
             int newStars = Mathf.Max(0, stars - previousStars);
+
+            bool isFirstComplete = previousStars <= 0;
 
             IGameState.Levels.SetLevelStars(CurrentLocationIndex, CurrentLevelIndex, Mathf.Max(previousStars, stars));
 
             int completedLevels = IGameState.Levels.CompletedLevels;
 
             var rewards = IConfigs.Gamebox.GetLevelRewards
-                (CurrentLocationIndex, CurrentLevelIndex, newStars, _isLevelPlayRepeat, completedLevels);
+                (CurrentLocationIndex, CurrentLevelIndex, newStars, _isLevelPlayRepeat, completedLevels, isFirstComplete);
 
             foreach (var reward in rewards )
                 IGameState.Items.Add(reward.itemKey, reward.amount);
 
             var victoryScreen = victoryScreenViewer.ShowExpand(UI.Container);
 
-            bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel;
+            bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel
+                && ads.RewardedAvailable;
 
             victoryScreen.Display(stars, rewards, showBonus);
             victoryScreen.AnimateShow();
 
             leaderboards.SetScore(IGameState.Items.Get(ItemKey.Stars), LeaderboardKey.Stars);
 
-            IsLevelPlaying = false;
             OnLevelCompleted?.Invoke();
         }
 
         public void LoseCurrentLevel()
         {
-            var loseWindow = loseWindowViewer.ShowExpand(UI.Container);
+            var loseWindow = loseWindowViewer.ShowWindow(UI.Container);
 
-            bool showRevive = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1;
+            bool showRevive = (IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1)
+                && ads.RewardedAvailable;
 
             loseWindow.Display(showRevive);
             loseWindow.AnimateShow();
@@ -146,10 +140,10 @@ namespace Gamebox
             victoryScreenViewer.Hide();
         }
 
-        public void HideLoseWindow(bool useHideAnimation)
+        public void HideLoseWindow(bool forceHide)
         {
-            if (useHideAnimation) loseWindowViewer.View.AnimateHide(onCompleted: loseWindowViewer.Hide);
-            else loseWindowViewer.Hide(); 
+            if (forceHide) loseWindowViewer.ForceHideWindow();
+            else loseWindowViewer.AnimateHideWindow(loseWindowViewer.View.AnimateHide);
         }
 
 

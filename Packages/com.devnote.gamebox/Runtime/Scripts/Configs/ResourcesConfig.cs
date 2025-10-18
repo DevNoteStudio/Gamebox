@@ -1,21 +1,13 @@
-using System;
 using DevNote;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Gamebox
 {
-    public partial class GameboxConfig
+    public partial class GameboxConfig // Resources
     {
-        public VictoryScreenView VictoryScreenPrefab => Resources.Load<VictoryScreenView>("VictoryScreen");
-        public LoseWindowView LoseWindowPrefab => Resources.Load<LoseWindowView>("LoseWindow");
-        public LevelsScreenView LevelsScreenPrefab => Resources.Load<LevelsScreenView>("LevelsScreen");
-        public LocationsScreenView LocationsScreenPrefab => Resources.Load<LocationsScreenView>("LocationsScreen");
-        public NoAdsWindowView NoAdsWindowPrefab => Resources.Load<NoAdsWindowView>("NoAdsWindow");
-        public ItemTutorialWindowView ItemTutorialWindowPrefab => Resources.Load<ItemTutorialWindowView>("ItemTutorialWindow");
-        public TestLevelView TestLevelPrefab => Resources.Load<TestLevelView>("TestLevel");
-        public Image ScreenFadePrefab => Resources.Load<Image>("ScreenFade");
-
+        public Image ScreenFadePrefab => Resources.Load<Image>("Views/ScreenFade");
+        public Image WindowFadePrefab => Resources.Load<Image>("Views/WindowFade");
 
 
         public SoundUnit ClickSound => Resources.Load<SoundUnit>("Click");

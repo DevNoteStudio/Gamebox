@@ -15,7 +15,7 @@ namespace Gamebox
         [SerializeField] private Button _exitButton;
 
         private readonly Holder<LevelController> levelController = new();
-        private readonly Holder<MenuController> menuController = new();
+        private readonly Holder<PauseController> pauseController = new();
 
         private void Start()
         {
@@ -49,12 +49,7 @@ namespace Gamebox
 
         private void OnExitButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
-            {
-                levelController.Item.ExitLevel();
-                menuController.Item.ShowLocationsScreen(levelController.Item.CurrentLocationIndex);
-            });
-            
+            pauseController.Item.ShowPauseWindow();
         }
 
         private void OnLoseButtonClick()

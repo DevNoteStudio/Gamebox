@@ -116,7 +116,7 @@ namespace Gamebox
             }
         }
 
-        public int CurrentLevelNumber => CompletedLevels + 1;
+        public int CurrentLevel => CompletedLevels + 1;
 
 
 

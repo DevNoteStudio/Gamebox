@@ -57,7 +57,7 @@ namespace Gamebox
 
         private void OnLevelsButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 menuController.Item.ShowLevelsScreen(_locationIndex);
                 menuController.Item.HideLocationsScreen();
@@ -67,7 +67,7 @@ namespace Gamebox
 
         private void OnPlayButtonClick()
         {
-            ScreenFade.Fade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(_locationIndex);
 

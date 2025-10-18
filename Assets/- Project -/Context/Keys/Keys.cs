@@ -31,7 +31,7 @@ public enum TableKey
 
 public enum LeaderboardKey
 {
-    Default = 0,
+    Main = 0,
     Stars = 1,
 }
 

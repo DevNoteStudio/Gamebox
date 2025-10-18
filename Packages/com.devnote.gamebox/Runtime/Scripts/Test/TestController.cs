@@ -11,7 +11,7 @@ namespace Gamebox
 
         public TestController(LevelController levelController)
         {
-            testLevelViewer = new(IConfigs.Gamebox.TestLevelPrefab);
+            testLevelViewer = new(IConfigs.GetViewPrefab<TestLevelView>());
             this.levelController = levelController;
 
             if (IConfigs.Gamebox.TestEnabled)
