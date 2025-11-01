@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 namespace Gamebox
 {
-    public class RateUsWindow : Window
+    public class RateUsWindowView : Window
     {
         [SerializeField] private Button _rateButton;
         [SerializeField] private Button _closeButton;
 
         private readonly Holder<PopupController> popupController = new();
+        private readonly Holder<RewardController> rewardController = new();
         private readonly Holder<IReview> review = new();
 
 
@@ -25,7 +26,9 @@ namespace Gamebox
         private void OnRateButtonClick()
         {
             review.Item.Rate();
+            IGameState.GameRated.Value = true;
             popupController.Item.HidePopup(PopupType.RateUs);
+            rewardController.Item.ShowRewardScreen(IConfigs.Gamebox.GameRateReward);
         }
 
     }

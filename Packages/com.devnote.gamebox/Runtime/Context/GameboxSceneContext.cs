@@ -12,6 +12,8 @@ namespace Gamebox
         private readonly Holder<ILeaderboards> leaderboards = new();
         private readonly Holder<IAds> ads = new();
         private readonly Holder<IReview> review = new();
+        private readonly Holder<IPurchase> purchase = new();
+        private readonly Holder<IAnalytics> analytics = new();
 
         public override void RegisterContext()
         {
@@ -20,10 +22,13 @@ namespace Gamebox
             var menu = Register(new MenuController());
             var level = Register(new LevelController(menu, leaderboards.Item, ads.Item));
             var test = Register(new TestController(level));
-            var popup = Register(new PopupController(level, ads.Item, review.Item));
+            var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
             var pause = Register(new PauseController());
+            var reward = Register(new RewardController());
 
             var start = Register(new StartController(menu, level));
+
+            Register(new AnalyticsController(analytics.Item, level));
         }
 
 

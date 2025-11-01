@@ -25,7 +25,7 @@ MonoBehaviour:
   - itemKey: 2
     iconSprite: {fileID: 21300000, guid: e68a01ab68087e24eb33d47949f4976b, type: 3}
     hasTutorial: 1
-    availableFromLevel: 1
+    availableFromLevel: 2
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
     levels: 15
@@ -50,4 +50,7 @@ MonoBehaviour:
   <ReviveFromLevel>k__BackingField: 5
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3
   _interstitialsFromLevel: 5
+  <GameRateReward>k__BackingField:
+    itemKey: 0
+    amount: 500
   _rateUsLevels: 0200000004000000

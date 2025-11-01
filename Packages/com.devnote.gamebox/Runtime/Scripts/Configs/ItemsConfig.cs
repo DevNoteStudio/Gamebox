@@ -20,8 +20,8 @@ namespace Gamebox
             => _items.Find(data => data.itemKey == itemKey).iconSprite;
 
 
-        public string GetItemTutorialName(ItemKey itemKey)
-            => Localization.GetLocalizedText($"{itemKey}_tutor_name");
+        public string GetItemName(ItemKey itemKey)
+            => Localization.GetLocalizedText($"{itemKey}_name");
 
         public string GetItemTutorialDescription(ItemKey itemKey)
             => Localization.GetLocalizedText($"{itemKey}_tutor_desc");

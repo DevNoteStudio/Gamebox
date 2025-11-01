@@ -17,8 +17,8 @@ namespace Gamebox
         [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
         [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
-
         [SerializeField] private int _interstitialsFromLevel;
+        [field: SerializeField] public ItemPack GameRateReward { get; private set; }
         [SerializeField] private List<int> _rateUsLevels;
 
 
@@ -28,6 +28,8 @@ namespace Gamebox
         {
             get
             {
+                if (IGameState.GameRated.Value) return false;
+
                 foreach (int rateLevel in _rateUsLevels)
                     if (IGameState.Levels.CurrentLevel == rateLevel) return true;
 

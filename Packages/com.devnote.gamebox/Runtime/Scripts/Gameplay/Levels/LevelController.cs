@@ -73,6 +73,7 @@ namespace Gamebox
             _isLevelPlayRepeat = IGameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
 
             IGameState.LastPlayLocationIndex.Value = locationIndex;
+            IGameState.LastPlayLevelIndex.Value = levelIndex;
             CurrentLocationIndex = locationIndex;
             CurrentLevelIndex = levelIndex;
             CompletedStars = 0;
@@ -122,7 +123,7 @@ namespace Gamebox
 
         public void LoseCurrentLevel()
         {
-            var loseWindow = loseWindowViewer.ShowWindow(UI.Container);
+            var loseWindow = loseWindowViewer.ShowFaded(UI.Container);
 
             bool showRevive = (IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1)
                 && ads.RewardedAvailable;
@@ -142,8 +143,8 @@ namespace Gamebox
 
         public void HideLoseWindow(bool forceHide)
         {
-            if (forceHide) loseWindowViewer.ForceHideWindow();
-            else loseWindowViewer.AnimateHideWindow(loseWindowViewer.View.AnimateHide);
+            if (forceHide) loseWindowViewer.ForceFadedHide();
+            else loseWindowViewer.AnimateFadedHide(loseWindowViewer.View.AnimateHide);
         }
 
 

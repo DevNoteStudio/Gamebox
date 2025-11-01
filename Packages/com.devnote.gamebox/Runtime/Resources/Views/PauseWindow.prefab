@@ -1995,6 +1995,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 7783003006946108981, guid: cdc887c9554db7341bbf78c521783767, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 7993891560322986109, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_Name
       value: '[Menu]'
@@ -2003,6 +2007,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 3507bb5e2dbf2c94b93c9a4bda9f2b2f, type: 2}
+    - target: {fileID: 8754287541519215067, guid: cdc887c9554db7341bbf78c521783767, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: fe50edcd466c082468b511b04e44adb0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc887c9554db7341bbf78c521783767, type: 3}
 --- !u!224 &144514542114037856 stripped

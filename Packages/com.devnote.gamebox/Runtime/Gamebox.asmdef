@@ -1,6 +1,6 @@
 {
     "name": "Gamebox",
-    "rootNamespace": "",
+    "rootNamespace": "Gamebox",
     "references": [
         "NaughtyAttributes.Core",
         "Unity.TextMeshPro",

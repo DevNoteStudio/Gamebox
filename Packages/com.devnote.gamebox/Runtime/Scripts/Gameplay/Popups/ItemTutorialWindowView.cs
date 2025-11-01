@@ -30,7 +30,7 @@ namespace Gamebox
         public ItemTutorialWindowView Display(ItemKey itemKey)
         {
             _itemKey = itemKey;
-            _nameText.text = IConfigs.Gamebox.GetItemTutorialName(itemKey);
+            _nameText.text = IConfigs.Gamebox.GetItemName(itemKey);
             _descriptionText.text = IConfigs.Gamebox.GetItemTutorialDescription(itemKey);
             _iconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemKey);
 

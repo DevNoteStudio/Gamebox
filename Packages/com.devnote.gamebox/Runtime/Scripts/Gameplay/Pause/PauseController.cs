@@ -14,13 +14,13 @@ namespace Gamebox
 
 
         public void ShowPauseWindow() 
-            => pauseWindowViewer.ShowWindow(UI.Container).Display().AnimateShow();
+            => pauseWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
 
 
         public void HidePauseWindow(bool force = false)
         {
-            if (force) pauseWindowViewer.ForceHideWindow();
-            else pauseWindowViewer.AnimateHideWindow(pauseWindowViewer.View.AnimateHide);
+            if (force) pauseWindowViewer.ForceFadedHide();
+            else pauseWindowViewer.AnimateFadedHide(pauseWindowViewer.View.AnimateHide);
         }
 
 

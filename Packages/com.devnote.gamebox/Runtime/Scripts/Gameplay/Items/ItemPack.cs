@@ -1,7 +1,8 @@
+using System;
 
 namespace Gamebox
 {
-    public struct ItemPack
+    [Serializable] public struct ItemPack
     {
         public ItemKey itemKey;
         public int amount;

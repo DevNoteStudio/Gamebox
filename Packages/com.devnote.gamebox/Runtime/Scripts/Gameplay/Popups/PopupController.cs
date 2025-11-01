@@ -10,18 +10,22 @@ namespace Gamebox
 
         private readonly Viewer<NoAdsWindowView> noAdsWindowViewer;
         private readonly Viewer<ItemTutorialWindowView> itemTutorialWindowViewer;
+        private readonly Viewer<RateUsWindowView> rateUsWindowViewer;
         private readonly IAds ads;
         private readonly IReview review;
+        private readonly IPurchase purchase;
 
-        public PopupController(LevelController levelController, IAds ads, IReview review)
+        public PopupController(LevelController levelController, IAds ads, IReview review, IPurchase purchase)
         {
             _priorityPopupList = GetPriorityPopupList();
 
             this.ads = ads;
             this.review = review;
+            this.purchase = purchase;
 
             noAdsWindowViewer = new(IConfigs.GetViewPrefab<NoAdsWindowView>());
             itemTutorialWindowViewer = new(IConfigs.GetViewPrefab<ItemTutorialWindowView>());
+            rateUsWindowViewer = new(IConfigs.GetViewPrefab<RateUsWindowView>());
 
             _interstitialsLeftToShowNoAdsWindow = IConfigs.Gamebox.InterstitialsShowsToShowNoAdsWindow;
 
@@ -40,13 +44,16 @@ namespace Gamebox
             new PopupData
             {
                 popupType = PopupType.RateUs,
-                showCondition = () => IConfigs.Gamebox.RateUsNow,
+                showCondition = () => IConfigs.Gamebox.RateUsNow && review.ReviewIsAvailable,
                 priority = 2,
             },
             new PopupData
             {
                 popupType = PopupType.NoAds,
-                showCondition = () => _interstitialsLeftToShowNoAdsWindow <= 0,
+
+                showCondition = () => _interstitialsLeftToShowNoAdsWindow <= 0 
+                    && purchase.PlatformIsSupportsPurchases,
+
                 priority = 3,
             },
         });
@@ -76,15 +83,16 @@ namespace Gamebox
             {
                 case PopupType.ItemTutorial:
                     IConfigs.Gamebox.TryGetItemForTutorial(out ItemKey itemKey);
-                    itemTutorialWindowViewer.ShowWindow(UI.Container).Display(itemKey).AnimateShow();
+                    itemTutorialWindowViewer.ShowFaded(UI.Container).Display(itemKey).AnimateShow();
                     break;
 
                 case PopupType.RateUs:
+                    rateUsWindowViewer.ShowFaded(UI.Container).AnimateShow();
                     break;
 
                 case PopupType.NoAds:
                     _interstitialsLeftToShowNoAdsWindow = IConfigs.Gamebox.InterstitialsShowsToShowNoAdsWindow;
-                    noAdsWindowViewer.ShowWindow(UI.Container).Display().AnimateShow();
+                    noAdsWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
                     break;
             }
         }
@@ -94,14 +102,15 @@ namespace Gamebox
             switch (popupType)
             {
                 case PopupType.ItemTutorial:
-                    itemTutorialWindowViewer.AnimateHideWindow(itemTutorialWindowViewer.View.AnimateHide);
+                    itemTutorialWindowViewer.AnimateFadedHide(itemTutorialWindowViewer.View.AnimateHide);
                     break;
 
                 case PopupType.RateUs:
+                    rateUsWindowViewer.AnimateFadedHide(rateUsWindowViewer.View.AnimateHide);
                     break;
 
                 case PopupType.NoAds:
-                    noAdsWindowViewer.AnimateHideWindow(noAdsWindowViewer.View.AnimateHide);
+                    noAdsWindowViewer.AnimateFadedHide(noAdsWindowViewer.View.AnimateHide);
                     break;
             }
         }

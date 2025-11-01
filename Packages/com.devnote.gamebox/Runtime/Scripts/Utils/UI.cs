@@ -9,8 +9,8 @@ namespace Gamebox
     public class UI
     {
         private static Tween _screenFadeTween;
-        private static Tween _windowFadeTween;
-        private static int _windowFadePoints = 0;
+        private static Tween _fadeTween;
+        private static int _fadePoints = 0;
 
         public static RectTransform Container { get; private set; }
         public static RectTransform FadeContainer { get; private set; }
@@ -30,35 +30,35 @@ namespace Gamebox
             FadeContainer = fadeContainer;
         }
 
-        public static void AddWindowFadePoint()
+        public static void AddFadePoint()
         {
-            if (_windowFadePoints <= 0)
+            if (_fadePoints <= 0)
             {
-                _windowFadeTween?.Kill();
+                _fadeTween?.Kill();
                 var image = windowFadeViewer.ShowExpand(Container);
-                _windowFadeTween = TweenHub.Fade(image, WINDOW_FADE_DURATION);
+                _fadeTween = TweenHub.Fade(image, WINDOW_FADE_DURATION);
 
-                _windowFadePoints = 1;
+                _fadePoints = 1;
             }
-            else _windowFadePoints++;
+            else _fadePoints++;
         }
 
-        public static void RemoveWindowFadePoint(bool forceHide = false)
+        public static void RemoveFadePoint(bool forceHide = false)
         {
-            if (_windowFadePoints == 1)
+            if (_fadePoints == 1)
             {
-                _windowFadeTween?.Kill();
+                _fadeTween?.Kill();
 
                 if (forceHide) windowFadeViewer.Hide();
                 else
                 {
-                    _windowFadeTween = TweenHub.Unfade(windowFadeViewer.View, WINDOW_FADE_DURATION)
+                    _fadeTween = TweenHub.Unfade(windowFadeViewer.View, WINDOW_FADE_DURATION)
                         .OnComplete(() => windowFadeViewer.Hide());
                 }
 
-                _windowFadePoints = 0;
+                _fadePoints = 0;
             }
-            else _windowFadePoints--;
+            else _fadePoints--;
         }
 
 
