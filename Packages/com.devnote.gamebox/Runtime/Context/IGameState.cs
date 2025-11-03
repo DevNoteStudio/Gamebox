@@ -11,9 +11,11 @@ namespace Gamebox
         public static ReactiveValue<int> LastPlayLocationIndex { get; private set; }
         public static ReactiveValue<int> LastPlayLevelIndex { get; private set; }
         public static ReactiveValue<bool> GameRated { get; private set; }
+        public static ReactiveValue<int> Rating { get; private set; }
 
 
         private const string LEVELS = "levels";
+        private const string RATING = "rating";
         private const string LAST_PLAY_LOCATION_INDEX = "lastLocIndex";
         private const string LAST_PLAY_LEVEL_INDEX = "lastLevIndex";
         private const string ITEMS = "items";
@@ -29,6 +31,7 @@ namespace Gamebox
             Items = new(data.GetValueOrDefault(ITEMS, string.Empty));
             ItemTutorials = new(data.GetValueOrDefault(ITEM_TUTORIALS, string.Empty));
             GameRated = new(data.GetValueOrDefault(GAME_RATED, "0").FromBinaryToBool());
+            Rating = new(int.Parse(data.GetValueOrDefault(RATING, "0")));
         }
 
         protected static Dictionary<string, string> ToDictionary() => new()
@@ -38,7 +41,8 @@ namespace Gamebox
             { LAST_PLAY_LEVEL_INDEX, LastPlayLevelIndex.ToString() },
             { ITEMS, Items.ToString() },
             { ITEM_TUTORIALS, ItemTutorials.ToString() },
-            { GAME_RATED, GameRated.Value.ToBinaryString() }
+            { GAME_RATED, GameRated.Value.ToBinaryString() },
+            { RATING, Rating.ToString() },
         };
 
 

@@ -46,6 +46,79 @@ MonoBehaviour:
     coinsForLevelComplete: 10
     coinsForNewStar: 30
     rewardsForTotalLevelCompletion: []
+  _leagues:
+  - leagueType: 0
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
+    frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+  - leagueType: 1
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
+    frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+  - leagueType: 2
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
+    frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+  - leagueType: 3
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
+    frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
+  - leagueType: 4
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
+    frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
+  - leagueType: 5
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
+    frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
+  - leagueType: 6
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 08854551f1b57694f9f5e75f110c60d5, type: 3}
+    frameColor: {r: 1, g: 1, b: 1, a: 1}
+  - leagueType: 7
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 08854551f1b57694f9f5e75f110c60d5, type: 3}
+    frameColor: {r: 1, g: 1, b: 1, a: 1}
+  - leagueType: 8
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 08854551f1b57694f9f5e75f110c60d5, type: 3}
+    frameColor: {r: 1, g: 1, b: 1, a: 1}
+  - leagueType: 9
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 4f6b600b2e6d86e418b9bfce96939c5d, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 10
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 4f6b600b2e6d86e418b9bfce96939c5d, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 11
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 4f6b600b2e6d86e418b9bfce96939c5d, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 12
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 18b4d361c8236df418bce547096d7772, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 13
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 18b4d361c8236df418bce547096d7772, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 14
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 18b4d361c8236df418bce547096d7772, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 15
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 2eb57b803e9672042ac4c2affd39c38c, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 16
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 2eb57b803e9672042ac4c2affd39c38c, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+  - leagueType: 17
+    ratingRequire: 0
+    iconSprite: {fileID: 21300000, guid: 2eb57b803e9672042ac4c2affd39c38c, type: 3}
+    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
   <VictoryRouletteFromLevel>k__BackingField: 2
   <ReviveFromLevel>k__BackingField: 5
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3

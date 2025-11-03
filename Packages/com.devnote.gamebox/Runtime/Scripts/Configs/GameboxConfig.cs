@@ -14,6 +14,7 @@ namespace Gamebox
         [SerializeField] private List<ItemData> _items;
         [SerializeField] private List<LocationData> _locations;
         [SerializeField] private RewardsData _rewards;
+        [SerializeField] private List<LeagueData> _leagues;
         [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
         [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
