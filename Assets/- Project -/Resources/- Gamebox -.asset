@@ -17,108 +17,207 @@ MonoBehaviour:
   - itemKey: 0
     iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
     hasTutorial: 0
-    availableFromLevel: 0
-  - itemKey: 1
-    iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
-    hasTutorial: 0
-    availableFromLevel: 0
+    unlockNameLocalizationKey: 
+    requiredLeague: 0
+    startAmount: 0
   - itemKey: 2
     iconSprite: {fileID: 21300000, guid: e68a01ab68087e24eb33d47949f4976b, type: 3}
     hasTutorial: 1
-    availableFromLevel: 2
+    unlockNameLocalizationKey: locations_unlocked
+    requiredLeague: 1
+    startAmount: 0
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
     levels: 15
-    starRequire: 0
+    leagueRequire: 0
     coinsMultiplier: 1
+    ratingMultiplier: 1
     additionalLevelRewards: []
   - previewSprite: {fileID: 21300000, guid: a8fb20a5e5dbeda499d7249d1cf6ad95, type: 3}
     levels: 20
-    starRequire: 15
+    leagueRequire: 0
     coinsMultiplier: 2
+    ratingMultiplier: 2
     additionalLevelRewards: []
   - previewSprite: {fileID: 21300000, guid: 7425ebf01d90bf9498c2aa19ce76665e, type: 3}
     levels: 25
-    starRequire: 30
+    leagueRequire: 2
     coinsMultiplier: 3
+    ratingMultiplier: 3
     additionalLevelRewards: []
   _rewards:
     coinsForLevelComplete: 10
     coinsForNewStar: 30
+    ratingForLevelComplete: 10
+    ratingForNewStar: 30
     rewardsForTotalLevelCompletion: []
   _leagues:
   - leagueType: 0
     ratingRequire: 0
     iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
     frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+    rewardItems: []
   - leagueType: 1
-    ratingRequire: 0
+    ratingRequire: 300
     iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
     frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 100
   - leagueType: 2
-    ratingRequire: 0
+    ratingRequire: 400
     iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
     frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 200
   - leagueType: 3
-    ratingRequire: 0
+    ratingRequire: 500
     iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
     frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 300
   - leagueType: 4
-    ratingRequire: 0
+    ratingRequire: 700
     iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
     frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 400
   - leagueType: 5
-    ratingRequire: 0
+    ratingRequire: 1000
     iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
     frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 500
   - leagueType: 6
-    ratingRequire: 0
+    ratingRequire: 1200
     iconSprite: {fileID: 21300000, guid: 08854551f1b57694f9f5e75f110c60d5, type: 3}
     frameColor: {r: 1, g: 1, b: 1, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 600
   - leagueType: 7
-    ratingRequire: 0
+    ratingRequire: 1500
     iconSprite: {fileID: 21300000, guid: 08854551f1b57694f9f5e75f110c60d5, type: 3}
     frameColor: {r: 1, g: 1, b: 1, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 700
   - leagueType: 8
-    ratingRequire: 0
+    ratingRequire: 2000
     iconSprite: {fileID: 21300000, guid: 08854551f1b57694f9f5e75f110c60d5, type: 3}
     frameColor: {r: 1, g: 1, b: 1, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 800
   - leagueType: 9
-    ratingRequire: 0
+    ratingRequire: 2500
     iconSprite: {fileID: 21300000, guid: 4f6b600b2e6d86e418b9bfce96939c5d, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 900
   - leagueType: 10
-    ratingRequire: 0
+    ratingRequire: 5000
     iconSprite: {fileID: 21300000, guid: 4f6b600b2e6d86e418b9bfce96939c5d, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1000
   - leagueType: 11
-    ratingRequire: 0
+    ratingRequire: 7500
     iconSprite: {fileID: 21300000, guid: 4f6b600b2e6d86e418b9bfce96939c5d, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1100
   - leagueType: 12
-    ratingRequire: 0
+    ratingRequire: 10000
     iconSprite: {fileID: 21300000, guid: 18b4d361c8236df418bce547096d7772, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1200
   - leagueType: 13
-    ratingRequire: 0
+    ratingRequire: 15000
     iconSprite: {fileID: 21300000, guid: 18b4d361c8236df418bce547096d7772, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1300
   - leagueType: 14
-    ratingRequire: 0
+    ratingRequire: 25000
     iconSprite: {fileID: 21300000, guid: 18b4d361c8236df418bce547096d7772, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1400
   - leagueType: 15
-    ratingRequire: 0
+    ratingRequire: 50000
     iconSprite: {fileID: 21300000, guid: 2eb57b803e9672042ac4c2affd39c38c, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 0.8352941, g: 0.07450981, b: 1, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1500
   - leagueType: 16
-    ratingRequire: 0
+    ratingRequire: 75000
     iconSprite: {fileID: 21300000, guid: 2eb57b803e9672042ac4c2affd39c38c, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 0.8352941, g: 0.07450981, b: 1, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1600
   - leagueType: 17
-    ratingRequire: 0
+    ratingRequire: 100000
     iconSprite: {fileID: 21300000, guid: 2eb57b803e9672042ac4c2affd39c38c, type: 3}
-    frameColor: {r: 1, g: 0.7882353, b: 0, a: 1}
+    frameColor: {r: 0.8352941, g: 0.07450981, b: 1, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1700
+  - leagueType: 18
+    ratingRequire: 125000
+    iconSprite: {fileID: 21300000, guid: eb5bf7820ddaa9e41a42ae652a7871df, type: 3}
+    frameColor: {r: 1, g: 0.07450981, b: 0.2, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1800
+  - leagueType: 19
+    ratingRequire: 150000
+    iconSprite: {fileID: 21300000, guid: eb5bf7820ddaa9e41a42ae652a7871df, type: 3}
+    frameColor: {r: 1, g: 0.07450981, b: 0.2, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 1900
+  - leagueType: 20
+    ratingRequire: 200000
+    iconSprite: {fileID: 21300000, guid: eb5bf7820ddaa9e41a42ae652a7871df, type: 3}
+    frameColor: {r: 1, g: 0.07450981, b: 0.2, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 2000
+  - leagueType: 21
+    ratingRequire: 300000
+    iconSprite: {fileID: 21300000, guid: e3a588d2edfe4884496c4fdd228f13ff, type: 3}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 2100
+  - leagueType: 22
+    ratingRequire: 400000
+    iconSprite: {fileID: 21300000, guid: e3a588d2edfe4884496c4fdd228f13ff, type: 3}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 2200
+  - leagueType: 23
+    ratingRequire: 1000000
+    iconSprite: {fileID: 21300000, guid: e3a588d2edfe4884496c4fdd228f13ff, type: 3}
+    frameColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+    rewardItems:
+    - itemKey: 0
+      amount: 2300
   <VictoryRouletteFromLevel>k__BackingField: 2
   <ReviveFromLevel>k__BackingField: 5
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3

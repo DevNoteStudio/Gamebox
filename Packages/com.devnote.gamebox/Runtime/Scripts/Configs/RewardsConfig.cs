@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Gamebox
 {
@@ -23,10 +24,11 @@ namespace Gamebox
         {
             public int coinsForLevelComplete;
             public int coinsForNewStar;
-
+            [Space]
+            public int ratingForLevelComplete;
+            public int ratingForNewStar;
+            [Space]
             public List<RewardForTotalLevelCompletionData> rewardsForTotalLevelCompletion;
-
-            public int GetCoinsForComplete(int newStars) => coinsForLevelComplete + coinsForNewStar * newStars;
         }
 
 
@@ -41,7 +43,6 @@ namespace Gamebox
             coins = (int)(coins * locationData.coinsMultiplier);
 
             rewards.Add(new ItemPack(ItemKey.Coins, coins));
-            if (newStars > 0) rewards.Add(new ItemPack(ItemKey.Stars, newStars));
 
             if (isFirstComplete)
             {

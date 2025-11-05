@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Coffee.UIExtensions;
 using DevNote;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,18 +30,23 @@ namespace Gamebox
         [SerializeField] private SoundUnit _victorySound;
         [SerializeField] private SoundUnit _confettiSound;
         [SerializeField] private SoundUnit _rouletteStopSound;
+        [SerializeField] private RectTransform _leagueRect;
+        [SerializeField] private LeagueProgressView _leagueProgress;
+        [SerializeField] private TextMeshProUGUI _leaguePromptText;
+        [SerializeField] private TextMeshProUGUI _earnedRatingText;
         
-
-
         private Pool<ItemWidgetView> _rewardItemWidgetPool;
         private ItemWidgetView _coinItemWidget;
         private Tween _currentTween;
         private int _stars;
         private bool _showBonus;
         private int _originRewardCoins;
+        private int _fromRating;
+        private int _toRating;
 
         private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
+        private readonly Holder<LeagueController> leagueController = new();
 
         private const float FADE_DURATION = 0.8f;
         private const float DELAY_BEFORE_VICTORY_SOUND = 0.3f;
@@ -65,11 +71,14 @@ namespace Gamebox
             _stopRouletteButton.onClick.AddListener(OnStopRouletteButtonClick);
         }
 
-        public void Display(int stars, List<ItemPack> rewards, bool showBonus)
+        public void Display(int stars, int fromRating, int toRating, List<ItemPack> rewards, bool showBonus)
         {
             _stars = stars;
             _showBonus = showBonus;
             _bonusRect.gameObject.SetActive(showBonus);
+
+            _fromRating = fromRating; 
+            _toRating = toRating;
 
             _rewardItemWidgetPool.Clear();
             foreach (var reward in rewards)
@@ -83,6 +92,8 @@ namespace Gamebox
                     _coinItemWidget = widget;
                 }
             }
+
+            _earnedRatingText.text = $"+{(toRating - fromRating)} {Localization.GetLocalizedText("of_rating")}";
         }
 
 
@@ -132,8 +143,23 @@ namespace Gamebox
             }
 
             sequence.AppendInterval(DELAY_AFTER_STARS);
-            sequence.AppendCallback(() => IConfigs.Gamebox.ShowSound.Play());
-            sequence.Append(TweenHub.Show(_rewardsRect));
+
+            sequence.AppendCallback(() => _leagueProgress.Display(_fromRating));
+            sequence.Append(TweenHub.Show(_leagueRect));
+
+            sequence.AppendCallback(() => _leagueProgress.AnimateProgressFill(_fromRating, _toRating, 
+            onNextLeagueReached: (nextLeague) => 
+            {
+                leagueController.Item.ShowLeagueLevelUpScreen(nextLeague, 
+                    onScreenHided: () => sequence.Play());
+
+                sequence.Pause();
+            }));
+
+            sequence.AppendInterval(LeagueProgressView.FILL_DURATION);
+
+            sequence.AppendInterval(DELAY_AFTER_REWARDS);
+            sequence.Append(TweenHub.Show(_rewardsRect, playSound: true));
             sequence.AppendInterval(DELAY_AFTER_REWARDS);
 
             _skipButton.gameObject.SetActive(_showBonus);
@@ -156,7 +182,6 @@ namespace Gamebox
 
             
         }
-
 
         private void OnTakeButtonClick()
         {

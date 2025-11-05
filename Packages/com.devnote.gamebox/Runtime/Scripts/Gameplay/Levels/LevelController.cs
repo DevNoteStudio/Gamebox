@@ -113,7 +113,21 @@ namespace Gamebox
             bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel
                 && ads.RewardedAvailable;
 
-            victoryScreen.Display(stars, rewards, showBonus);
+            int rewardRating = IConfigs.Gamebox.GetRatingForLevelCompletion
+                (CurrentLocationIndex, CurrentLevelIndex, newStars);
+
+            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+            int maxRewardRating = IConfigs.Gamebox.IsLastLeague(currentLeague) ?
+                int.MaxValue : IConfigs.Gamebox.GetLeagueRatingRequire(currentLeague + 1);
+
+            rewardRating = Mathf.Min(rewardRating, maxRewardRating);
+
+            IGameState.Rating.Value += rewardRating;
+
+            int fromRating = IGameState.Rating.Value - rewardRating;
+            int toRating = IGameState.Rating.Value;
+
+            victoryScreen.Display(stars, fromRating, toRating, rewards, showBonus);
             victoryScreen.AnimateShow();
 
             leaderboards.SetScore(IGameState.Items.Get(ItemKey.Stars), LeaderboardKey.Stars);

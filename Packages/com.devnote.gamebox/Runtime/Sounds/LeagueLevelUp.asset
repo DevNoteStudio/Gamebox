@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: Hide
+  m_Name: LeagueLevelUp
   m_EditorClassIdentifier: 
   _channel: 1
   _playType: 2
-  _audioClip: {fileID: 8300000, guid: e3f93f964043ee4439503984cfa7ad35, type: 3}
+  _audioClip: {fileID: 8300000, guid: 6b8a071428f1f5f40aabe674499c383a, type: 3}
   _randomAudioClips: []
-  _volume: 0.6
+  _volume: 1
   _randomVolume: {x: 0, y: 0}
   _pitch: 1
   _randomPitch: {x: 0, y: 0}

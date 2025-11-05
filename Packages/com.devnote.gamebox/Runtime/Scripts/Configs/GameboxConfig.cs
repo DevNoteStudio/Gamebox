@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using DevNote;
 using UnityEngine;
 
 
 namespace Gamebox
 {
     [CreateAssetMenu(menuName = "Gamebox/Config", fileName = "- Gamebox -")]
-    public partial class GameboxConfig : ScriptableObject // Main
+    public partial class GameboxConfig : LoadableFromTable // Main
     {
         [field: Header("Gamebox " + Info.VERSION), Space]
         [field: SerializeField] public bool TestEnabled { get; private set; }

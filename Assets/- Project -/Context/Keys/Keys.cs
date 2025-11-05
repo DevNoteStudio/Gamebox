@@ -26,6 +26,7 @@ public enum TableKey
 {
     Localization = 0,
     GameboxLocalization = 1,
+    Leagues = 2,
 
 }
 

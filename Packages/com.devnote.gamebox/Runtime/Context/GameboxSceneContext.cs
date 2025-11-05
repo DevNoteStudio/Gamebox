@@ -25,6 +25,7 @@ namespace Gamebox
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
             var pause = Register(new PauseController());
             var reward = Register(new RewardController());
+            var league = Register(new LeagueController());
 
             var start = Register(new StartController(menu, level));
 
