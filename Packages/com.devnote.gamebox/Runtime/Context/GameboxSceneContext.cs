@@ -1,5 +1,6 @@
 using DevNote;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gamebox
 {
@@ -19,13 +20,14 @@ namespace Gamebox
         {
             new UI(_uiContainer, _fadeContainer);
 
+            var coinsRollup = Register(new CoinsRollupController());
+            var league = Register(new LeagueController());
             var menu = Register(new MenuController());
-            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item));
+            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league));
             var test = Register(new TestController(level));
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
             var pause = Register(new PauseController());
             var reward = Register(new RewardController());
-            var league = Register(new LeagueController());
 
             var start = Register(new StartController(menu, level));
 

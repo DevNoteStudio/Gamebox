@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using Coffee.UIExtensions;
 using DevNote;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 namespace Gamebox
@@ -26,8 +28,10 @@ namespace Gamebox
 
 
         private Pool<ItemWidgetView> _rewardItemWidgetsPool;
+        private List<ItemPack> _rewards;
 
         private readonly Holder<LeagueController> leagueController = new();
+        //private readonly Holder<CoinsRollupController> coinsRollupController = new();
 
         private const float SHAKE_DURATION = 1.5f;
         private const float SHOW_DELAY_1 = 1f;
@@ -105,8 +109,10 @@ namespace Gamebox
             if (showUnlockedItem)
                 _unlockedItemWidget.DisplayUnlockedItem(unlockedItemKey);
 
+            _rewards = IConfigs.Gamebox.GetLeagueRewardItems(nextLeague);
+
             _rewardItemWidgetsPool.Clear();
-            foreach (var rewardItem in IConfigs.Gamebox.GetLeagueRewardItems(nextLeague))
+            foreach (var rewardItem in _rewards)
                 _rewardItemWidgetsPool.Get().Display(rewardItem.itemKey, rewardItem.amount);
         }
 
@@ -115,6 +121,14 @@ namespace Gamebox
         private void OnTakeButtonClick()
         {
             leagueController.Item.HideLeagueLevelUpScreen();
+
+            /*
+            if (_rewards.Exists((itemPack) => itemPack.itemKey == ItemKey.Coins))
+            {
+                int coins = _rewards.Find((itemPack) => itemPack.itemKey == ItemKey.Coins).amount;
+                coinsRollupController.Item.RollupCoins(coins);
+            }
+            */
         }
 
     }

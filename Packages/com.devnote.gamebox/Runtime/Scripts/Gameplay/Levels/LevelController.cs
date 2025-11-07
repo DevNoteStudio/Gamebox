@@ -19,16 +19,19 @@ namespace Gamebox
         private readonly Viewer<LoseWindowView> loseWindowViewer;
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
         private readonly MenuController menuController;
+        private readonly LeagueController leagueController;
         private readonly ILeaderboards leaderboards;
         private readonly IAds ads;
 
-        public LevelController(MenuController menuController, ILeaderboards leaderboards, IAds ads)
+        public LevelController(MenuController menuController, ILeaderboards leaderboards, 
+            IAds ads, LeagueController leagueController)
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
             this.menuController = menuController;
             this.leaderboards = leaderboards;
             this.ads = ads;
+            this.leagueController = leagueController;
         }
 
 
@@ -123,6 +126,10 @@ namespace Gamebox
             rewardRating = Mathf.Min(rewardRating, maxRewardRating);
 
             IGameState.Rating.Value += rewardRating;
+            var currentLeagueNow = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+
+            if (currentLeagueNow > currentLeague)
+                leagueController.ApplyNewLeagueReward(currentLeagueNow);
 
             int fromRating = IGameState.Rating.Value - rewardRating;
             int toRating = IGameState.Rating.Value;

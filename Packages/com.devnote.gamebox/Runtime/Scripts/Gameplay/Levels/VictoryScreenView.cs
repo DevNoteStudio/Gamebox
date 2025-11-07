@@ -41,12 +41,14 @@ namespace Gamebox
         private int _stars;
         private bool _showBonus;
         private int _originRewardCoins;
+        private int _totalRewardCoins;
         private int _fromRating;
         private int _toRating;
 
         private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
         private readonly Holder<LeagueController> leagueController = new();
+        private readonly Holder<CoinsRollupController> coinsRollupController = new();
 
         private const float FADE_DURATION = 0.8f;
         private const float DELAY_BEFORE_VICTORY_SOUND = 0.3f;
@@ -89,6 +91,7 @@ namespace Gamebox
                 if (reward.itemKey == ItemKey.Coins)
                 {
                     _originRewardCoins = reward.amount;
+                    _totalRewardCoins = reward.amount;
                     _coinItemWidget = widget;
                 }
             }
@@ -189,6 +192,7 @@ namespace Gamebox
             {
                 levelController.Item.HideVictoryScreen();
                 levelController.Item.StartNextLevelOrShowLevelSelection();
+                coinsRollupController.Item.RollupCoins(_totalRewardCoins);
             });
         }
 
@@ -230,6 +234,8 @@ namespace Gamebox
 
             IGameState.Items.Add(ItemKey.Coins, _originRewardCoins * (multiplier - 1));
             _coinItemWidget.AnimateIncrease(_originRewardCoins * multiplier);
+
+            _totalRewardCoins = _originRewardCoins * multiplier;
         }
 
 

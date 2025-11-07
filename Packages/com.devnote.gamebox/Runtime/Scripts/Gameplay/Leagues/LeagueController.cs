@@ -17,6 +17,15 @@ namespace Gamebox
         }
 
 
+        public void ApplyNewLeagueReward(LeagueType newLeague)
+        {
+            var rewardItems = IConfigs.Gamebox.GetLeagueRewardItems(newLeague);
+
+            foreach (var itemPack in rewardItems)
+                IGameState.Items.Add(itemPack.itemKey, itemPack.amount);
+        }
+
+
         public void ShowLeagueLevelUpScreen(LeagueType nextLeague, Action onScreenHided = null)
         {
             _onLeagueLevelUpScreenHided = onScreenHided;

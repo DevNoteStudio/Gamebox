@@ -8,7 +8,8 @@
         "DevNote",
         "Coffee.UIParticle",
         "SimpleScrollSnap",
-        "Keys"
+        "Keys",
+        "ParticleImage"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

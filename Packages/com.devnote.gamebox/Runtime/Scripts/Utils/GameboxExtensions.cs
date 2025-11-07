@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
 using DevNote;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Gamebox
 {
@@ -30,6 +35,38 @@ namespace Gamebox
             UI.RemoveFadePoint();
             animation.Invoke(() => viewer.Hide());
         }
+
+
+        public static bool IsCoveredByOtherElement(this RectTransform target)
+        {
+            List<RaycastResult> allResults = new List<RaycastResult>();
+            
+            foreach (var raycaster in Object.FindObjectsOfType<GraphicRaycaster>())
+            {
+                Vector2 screenPos = RectTransformUtility.WorldToScreenPoint
+                    (raycaster.eventCamera, target.position);
+
+                PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                {
+                    position = screenPos
+                };
+
+                List<RaycastResult> results = new List<RaycastResult>();
+                raycaster.Raycast(pointerData, results);
+                allResults.AddRange(results);
+            }
+
+            allResults.Sort((a, b) =>
+            {
+                if (a.sortingLayer == b.sortingLayer)
+                    return b.sortingOrder.CompareTo(a.sortingOrder);
+
+                return b.sortingLayer.CompareTo(a.sortingLayer);
+            });
+
+            return allResults.Count > 0 ? allResults[0].gameObject != target.gameObject : false;
+        }
+
 
 
     }

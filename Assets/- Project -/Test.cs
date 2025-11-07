@@ -9,7 +9,7 @@ public class Test : MonoBehaviour
 
 
     private readonly Holder<LeagueController> leagueController = new();
-
+    private readonly Holder<CoinsRollupController> coinsRollupController = new();
 
     private void Update()
     {
@@ -32,6 +32,12 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             leagueController.Item.ShowLeagueLevelUpScreen(_leagueType);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            int add = 50;
+            IGameState.Items.Add(ItemKey.Coins, add);
+            coinsRollupController.Item.RollupCoins(add);
         }
 
     }

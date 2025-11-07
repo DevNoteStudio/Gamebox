@@ -24,6 +24,7 @@ namespace Gamebox
         private ItemPack _itemPack;
 
         private readonly Holder<RewardController> rewardController = new();
+        private readonly Holder<CoinsRollupController> coinsRollupController = new();
 
 
         private void Start()
@@ -80,6 +81,9 @@ namespace Gamebox
         {
             IGameState.Items.Add(_itemPack.itemKey, _itemPack.amount);
             rewardController.Item.HideRewardScreen();
+
+            if (_itemPack.itemKey == ItemKey.Coins)
+                coinsRollupController.Item.RollupCoins(_itemPack.amount);
         }
 
         private void OnOpenButtonClick() => AnimateChestOpening();
