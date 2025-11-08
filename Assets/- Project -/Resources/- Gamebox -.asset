@@ -58,35 +58,35 @@ MonoBehaviour:
     frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
     rewardItems: []
   - leagueType: 1
-    ratingRequire: 300
+    ratingRequire: 250
     iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
     frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
     rewardItems:
     - itemKey: 0
       amount: 100
   - leagueType: 2
-    ratingRequire: 400
+    ratingRequire: 250
     iconSprite: {fileID: 21300000, guid: e99e88dadc600744bb7417c737f1a06d, type: 3}
     frameColor: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
     rewardItems:
     - itemKey: 0
       amount: 200
   - leagueType: 3
-    ratingRequire: 500
+    ratingRequire: 400
     iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
     frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
     rewardItems:
     - itemKey: 0
       amount: 300
   - leagueType: 4
-    ratingRequire: 700
+    ratingRequire: 600
     iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
     frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
     rewardItems:
     - itemKey: 0
       amount: 400
   - leagueType: 5
-    ratingRequire: 1000
+    ratingRequire: 900
     iconSprite: {fileID: 21300000, guid: 4f8d0598ce723e24ab27c84678a227a4, type: 3}
     frameColor: {r: 0.9098039, g: 0.5529412, b: 0.07450981, a: 1}
     rewardItems:
