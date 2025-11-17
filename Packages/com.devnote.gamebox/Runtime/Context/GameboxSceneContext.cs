@@ -29,7 +29,7 @@ namespace Gamebox
             var pause = Register(new PauseController());
             var reward = Register(new RewardController());
 
-            var start = Register(new StartController(menu, level));
+            var start = Register(new StartController(menu, level, popup));
 
             Register(new AnalyticsController(analytics.Item, level));
         }

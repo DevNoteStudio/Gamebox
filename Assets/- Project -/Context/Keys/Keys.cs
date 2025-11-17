@@ -33,7 +33,6 @@ public enum TableKey
 public enum LeaderboardKey
 {
     Main = 0,
-    Stars = 1,
 }
 
 public enum ProductKey

@@ -22,9 +22,9 @@ MonoBehaviour:
     startAmount: 0
   - itemKey: 2
     iconSprite: {fileID: 21300000, guid: e68a01ab68087e24eb33d47949f4976b, type: 3}
-    hasTutorial: 1
+    hasTutorial: 0
     unlockNameLocalizationKey: locations_unlocked
-    requiredLeague: 0
+    requiredLeague: 1
     startAmount: 0
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}

@@ -6,11 +6,14 @@ namespace Gamebox
     {
         private readonly MenuController menuController;
         private readonly LevelController levelController;
+        private readonly PopupController popupController;
 
-        public StartController(MenuController menuController, LevelController levelController)
+        public StartController(MenuController menuController, LevelController levelController, 
+            PopupController popupController)
         {
             this.menuController = menuController;
             this.levelController = levelController;
+            this.popupController = popupController;
         }
 
 
@@ -21,8 +24,11 @@ namespace Gamebox
             int locationIndex = IGameState.LastPlayLocationIndex.Value;
 
             if (IConfigs.Gamebox.ItemIsAvailable(ItemKey.LocationsUnlocked))
+            {
                 menuController.ShowLocationsScreen(locationIndex);
-
+                if (IConfigs.Gamebox.LocationTutorialIsAvailable)
+                    popupController.ShowLocationsTutorialWindow();
+            }
             else
             {
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(locationIndex);

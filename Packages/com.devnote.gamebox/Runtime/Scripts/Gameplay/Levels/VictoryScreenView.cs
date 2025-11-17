@@ -49,6 +49,7 @@ namespace Gamebox
         private readonly Holder<IAds> ads = new();
         private readonly Holder<LeagueController> leagueController = new();
         private readonly Holder<CoinsRollupController> coinsRollupController = new();
+        private readonly Holder<PopupController> popupController = new();
 
         private const float FADE_DURATION = 0.8f;
         private const float DELAY_BEFORE_VICTORY_SOUND = 0.3f;
@@ -192,17 +193,27 @@ namespace Gamebox
             {
                 levelController.Item.HideVictoryScreen();
                 levelController.Item.StartNextLevelOrShowLevelSelection();
+
+                if (IConfigs.Gamebox.LocationTutorialIsAvailable)
+                    popupController.Item.ShowLocationsTutorialWindow();
+
                 coinsRollupController.Item.RollupCoins(_totalRewardCoins);
             });
         }
 
         private void OnStopRouletteButtonClick()
         {
+            _roulette.Stop(out int sectorIndex);
+
             ads.Item.ShowRewarded(AdKey.VictoryRoulette, onRewarded: () =>
             {
                 _rouletteStopSound.Play();
-                _roulette.Stop(out int sectorIndex);
                 ApplyRouletteBonus(sectorIndex);
+            }, 
+            callback: (status) =>
+            {
+                if (status != AdShowStatus.Success)
+                    _roulette.StartSpin();
             });
         }
 

@@ -39,7 +39,12 @@ namespace Gamebox
         {
             bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
-            if (!_isLevelPlayRepeat)
+            if (IConfigs.Gamebox.LocationTutorialIsAvailable)
+            {
+                menuController.ShowLocationsScreen(CurrentLocationIndex);
+                OnLevelExit?.Invoke();
+            }
+            else if (!_isLevelPlayRepeat)
             {
                 if (isLastLevel)
                 {
@@ -137,7 +142,7 @@ namespace Gamebox
             victoryScreen.Display(stars, fromRating, toRating, rewards, showBonus);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(IGameState.Items.Get(ItemKey.Stars), LeaderboardKey.Stars);
+            leaderboards.SetScore(IGameState.Rating.Value);
 
             OnLevelCompleted?.Invoke();
         }

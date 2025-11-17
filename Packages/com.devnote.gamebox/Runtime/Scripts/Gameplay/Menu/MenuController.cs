@@ -7,6 +7,7 @@ namespace Gamebox
 
         private readonly Viewer<LocationsScreenView> locationsScreenViewer;
         private readonly Viewer<LevelsScreenView> levelsScreenViewer;
+        private readonly Viewer<ItemTutorialWindowView> itemTutorialWindowViewer;
 
 
 
@@ -14,6 +15,7 @@ namespace Gamebox
         {
             locationsScreenViewer = new(IConfigs.GetViewPrefab<LocationsScreenView>());
             levelsScreenViewer = new(IConfigs.GetViewPrefab<LevelsScreenView>());
+            itemTutorialWindowViewer = new(IConfigs.GetViewPrefab<ItemTutorialWindowView>());
         }
 
 
@@ -40,8 +42,6 @@ namespace Gamebox
         {
             levelsScreenViewer.Hide();
         }
-
-
 
 
     }
