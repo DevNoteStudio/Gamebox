@@ -19,6 +19,8 @@ namespace Gamebox
         [SerializeField] private SimpleScrollSnap _scrollSnap;
         [SerializeField] private GameObject _lockObject;
         [SerializeField] private GameObject _availableObject;
+        [SerializeField] private Image _leagueRequireImage;
+        [SerializeField] private TextMeshProUGUI _leagueRequireStageText;
         [SerializeField] private Button _previousButton;
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _playButton;
@@ -34,6 +36,7 @@ namespace Gamebox
         {
             _previewPool = new(_previewPrefab, _previewContainer);
         }
+
 
         private void Start()
         {
@@ -101,16 +104,22 @@ namespace Gamebox
                 .Replace("{CURRENT}", completedLevels.ToString())
                 .Replace("{MAX}", levelsAmount.ToString());
 
-            int starsRequire = IConfigs.Gamebox.GetLocationStarRequire(locationIndex);
-            bool locationAvailable = IGameState.Items.Get(ItemKey.Stars) >= starsRequire;
+            var leagueRequire = IConfigs.Gamebox.GetLocationLeagueRequire(locationIndex);
+            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+
+            bool locationAvailable = currentLeague >= leagueRequire;
 
             _lockObject.SetActive(!locationAvailable);
             _availableObject.SetActive(locationAvailable);
             _playButton.gameObject.SetActive(locationAvailable);
             _levelsButton.gameObject.SetActive(locationAvailable);
 
-            _lockedText.text = Localization.GetLocalizedText("location_locked")
-                .Replace("{STARS}", $"<sprite=0>{starsRequire}");
+            _lockedText.text = (Localization.GetLocalizedText("location_locked")
+                + $"\n{IConfigs.Gamebox.GetLeagueName(leagueRequire)}").Replace("\r", string.Empty);
+
+            _leagueRequireImage.sprite = IConfigs.Gamebox.GetLeagueSprite(leagueRequire);
+            _leagueRequireStageText.text = IConfigs.Gamebox.GetLeagueStageSymbol(leagueRequire);
+
         }
 
         private void OnPanelSelected(int index)

@@ -21,6 +21,7 @@ namespace Gamebox
 
         public readonly static Vector2 TARGET_RESOLUTION = new Vector2(1080, 1920);
         private const float SCREEN_FADE_DURATION = 0.2f;
+        private const float SCREEN_FADE_DELAY = 0.1f;
         private const float WINDOW_FADE_DURATION = 0.3f;
 
 
@@ -72,7 +73,8 @@ namespace Gamebox
             {
                 onCompleted?.Invoke();
 
-                _screenFadeTween = TweenHub.Unfade(screenFadeViewer.View, SCREEN_FADE_DURATION)
+                _screenFadeTween = DOTween.Sequence().AppendInterval(SCREEN_FADE_DELAY)
+                    .Append(TweenHub.Unfade(screenFadeViewer.View, SCREEN_FADE_DURATION))
                     .OnComplete(screenFadeViewer.Hide);
 
                 _screenFadeTween.SetUpdate(true);

@@ -12,9 +12,28 @@ namespace Gamebox
             public ItemKey itemKey;
             public Sprite iconSprite;
             public bool hasTutorial;
-            public int availableFromLevel;
+            public string unlockNameLocalizationKey;
+            public LeagueType requiredLeague;
+            public int startAmount;
         }
 
+        public string GetItemUnlockName(ItemKey itemKey)
+        {
+            string key = _items.Find(data => data.itemKey == itemKey).unlockNameLocalizationKey;
+            return Localization.GetLocalizedText(key);
+        }
+
+        public bool TryGetUnlockedItem(LeagueType leagueType, out ItemKey itemKey)
+        {
+            int index = _items.FindIndex(data => data.requiredLeague == leagueType);
+
+            itemKey = index != -1 ? _items[index].itemKey : default;
+            return index != -1;
+        }
+
+
+        public int GetItemStartAmount(ItemKey itemKey)
+            => _items.Find(data => data.itemKey == itemKey).startAmount;
 
         public Sprite GetItemIconSprite(ItemKey itemKey)
             => _items.Find(data => data.itemKey == itemKey).iconSprite;
@@ -28,10 +47,10 @@ namespace Gamebox
 
         public bool ItemIsAvailable(ItemKey itemKey)
         {
+            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
             var itemData = _items.Find(data => data.itemKey == itemKey);
-            bool hasItem = IGameState.Items.Has(itemKey);
-            bool unlocked = IGameState.Levels.CurrentLevel >= itemData.availableFromLevel;
-            return hasItem || unlocked;
+
+            return currentLeague >= itemData.requiredLeague;
         }
 
 

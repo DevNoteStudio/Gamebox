@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DevNote;
 
 namespace Gamebox
@@ -14,6 +15,9 @@ namespace Gamebox
         private readonly IAds ads;
         private readonly IReview review;
         private readonly IPurchase purchase;
+
+        private const float SHOW_DELAY = 0.3f;
+
 
         public PopupController(LevelController levelController, IAds ads, IReview review, IPurchase purchase)
         {
@@ -74,10 +78,13 @@ namespace Gamebox
         }
 
 
-        private void HandleShowPopup()
+        private async void HandleShowPopup()
         {
             if (_priorityPopupList.TryGetNextPopup(out PopupType popupType) == false)
                 return;
+
+            await UniTask.Delay((int)(SHOW_DELAY * 1000));
+
 
             switch (popupType)
             {
@@ -114,6 +121,14 @@ namespace Gamebox
                     break;
             }
         }
+
+
+        public void ShowLocationsTutorialWindow()
+        {
+            itemTutorialWindowViewer.ShowFaded(UI.Container).
+                Display(ItemKey.LocationsUnlocked).AnimateShow();
+        }
+
 
 
     }

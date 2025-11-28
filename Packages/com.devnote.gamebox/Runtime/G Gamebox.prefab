@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cf634478032e64498510b948e59844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _graphicRaycaster: {fileID: 7027973290212207795}
   _uiContainer: {fileID: 492147473268517977}
   _fadeContainer: {fileID: 7228955970938480016}
 --- !u!1 &4717210099188058819

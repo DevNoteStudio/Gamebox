@@ -5,16 +5,21 @@ namespace Gamebox
     public class PauseController
     {
         private readonly Viewer<PauseWindowView> pauseWindowViewer;
+        private readonly IEnvironment environment;
 
 
-        public PauseController()
+        public PauseController(IEnvironment environment)
         {
             pauseWindowViewer = new(IConfigs.GetViewPrefab<PauseWindowView>());
+            this.environment = environment;
         }
 
 
-        public void ShowPauseWindow() 
-            => pauseWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
+        public void ShowPauseWindow()
+        {
+            environment.StopGameplay();
+            pauseWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
+        }
 
 
         public void HidePauseWindow(bool force = false)

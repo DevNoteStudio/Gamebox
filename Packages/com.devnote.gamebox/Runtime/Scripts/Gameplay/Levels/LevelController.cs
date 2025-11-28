@@ -19,16 +19,21 @@ namespace Gamebox
         private readonly Viewer<LoseWindowView> loseWindowViewer;
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
         private readonly MenuController menuController;
+        private readonly LeagueController leagueController;
         private readonly ILeaderboards leaderboards;
         private readonly IAds ads;
+        private readonly IEnvironment environment;
 
-        public LevelController(MenuController menuController, ILeaderboards leaderboards, IAds ads)
+        public LevelController(MenuController menuController, ILeaderboards leaderboards, 
+            IAds ads, LeagueController leagueController, IEnvironment environment)
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
             this.menuController = menuController;
             this.leaderboards = leaderboards;
             this.ads = ads;
+            this.leagueController = leagueController;
+            this.environment = environment;
         }
 
 
@@ -36,7 +41,12 @@ namespace Gamebox
         {
             bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
-            if (!_isLevelPlayRepeat)
+            if (IConfigs.Gamebox.LocationTutorialIsAvailable)
+            {
+                menuController.ShowLocationsScreen(CurrentLocationIndex);
+                OnLevelExit?.Invoke();
+            }
+            else if (!_isLevelPlayRepeat)
             {
                 if (isLastLevel)
                 {
@@ -56,6 +66,8 @@ namespace Gamebox
 
         public void Revive()
         {
+            environment.StartGameplay();
+
             IsLevelPlaying = true;
             OnRevive?.Invoke();
         }
@@ -63,6 +75,7 @@ namespace Gamebox
 
         public void ExitLevel()
         {
+            environment.StopGameplay();
             IsLevelPlaying = false;
             OnLevelExit?.Invoke();
         }
@@ -70,6 +83,8 @@ namespace Gamebox
 
         public void StartLevel(int locationIndex, int levelIndex)
         {
+            environment.StartGameplay();
+
             _isLevelPlayRepeat = IGameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
 
             IGameState.LastPlayLocationIndex.Value = locationIndex;
@@ -87,6 +102,7 @@ namespace Gamebox
 
         public void CompleteCurrentLevel(int stars)
         {
+            environment.StopGameplay();
             IsLevelPlaying = false;
 
             stars = Mathf.Clamp(stars, 1, 3);
@@ -113,16 +129,36 @@ namespace Gamebox
             bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel
                 && ads.RewardedAvailable;
 
-            victoryScreen.Display(stars, rewards, showBonus);
+            int rewardRating = IConfigs.Gamebox.GetRatingForLevelCompletion
+                (CurrentLocationIndex, CurrentLevelIndex, newStars);
+
+            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+            int maxRewardRating = IConfigs.Gamebox.IsLastLeague(currentLeague) ?
+                int.MaxValue : IConfigs.Gamebox.GetLeagueRatingRequire(currentLeague + 1);
+
+            rewardRating = Mathf.Min(rewardRating, maxRewardRating);
+
+            IGameState.Rating.Value += rewardRating;
+            var currentLeagueNow = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+
+            if (currentLeagueNow > currentLeague)
+                leagueController.ApplyNewLeagueReward(currentLeagueNow);
+
+            int fromRating = IGameState.Rating.Value - rewardRating;
+            int toRating = IGameState.Rating.Value;
+
+            victoryScreen.Display(stars, fromRating, toRating, rewards, showBonus);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(IGameState.Items.Get(ItemKey.Stars), LeaderboardKey.Stars);
+            leaderboards.SetScore(IGameState.Rating.Value);
 
             OnLevelCompleted?.Invoke();
         }
 
         public void LoseCurrentLevel()
         {
+            environment.StopGameplay();
+
             var loseWindow = loseWindowViewer.ShowFaded(UI.Container);
 
             bool showRevive = (IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1)

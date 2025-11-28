@@ -11,8 +11,9 @@ namespace Gamebox
         {
             public Sprite previewSprite;
             public int levels;
-            public int starRequire;
+            public LeagueType leagueRequire;
             public float coinsMultiplier;
+            public float ratingMultiplier;
             public List<AdditionalLocationLevelRewardData> additionalLevelRewards;
         }
 
@@ -24,9 +25,23 @@ namespace Gamebox
 
         public int GetLocationLevelsAmount(int locationIndex) => _locations[locationIndex].levels;
 
-        public int GetLocationStarRequire(int locationIndex) => _locations[locationIndex].starRequire;
+        public LeagueType GetLocationLeagueRequire(int locationIndex) 
+            => _locations[locationIndex].leagueRequire;
 
         public Sprite GetLocationPreviewSprite(int locationIndex) => _locations[locationIndex].previewSprite;
+
+        public bool TryGetUnlockedLocation(LeagueType leagueType, out int locationIndex)
+        {
+            int index = _locations.FindIndex(data => data.leagueRequire == leagueType);
+            locationIndex = index;
+
+            return index != -1;
+        }
+
+        public bool LocationTutorialIsAvailable => 
+            !IGameState.ItemTutorials.IsCompleted(ItemKey.LocationsUnlocked)
+            && ItemIsAvailable(ItemKey.LocationsUnlocked);
+
 
 
     }

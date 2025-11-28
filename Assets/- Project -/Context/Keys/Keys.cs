@@ -26,13 +26,13 @@ public enum TableKey
 {
     Localization = 0,
     GameboxLocalization = 1,
+    Leagues = 2,
 
 }
 
 public enum LeaderboardKey
 {
     Main = 0,
-    Stars = 1,
 }
 
 public enum ProductKey
