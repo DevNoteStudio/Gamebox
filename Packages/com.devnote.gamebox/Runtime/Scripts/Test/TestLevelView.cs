@@ -50,6 +50,7 @@ namespace Gamebox
         private void OnExitButtonClick()
         {
             pauseController.Item.ShowPauseWindow();
+
         }
 
         private void OnLoseButtonClick()

@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using AssetKits.ParticleImage;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Gamebox
 {
-    public class CoinsRollupController
+    public class RollupController
     {
         private List<ItemCounterView> _coinsCounters = new();
         private ParticleImage _coinsParticle;
@@ -15,8 +16,10 @@ namespace Gamebox
 
         private readonly Viewer<CommonCoinsCounterView> commonCoinsCounterViewer;
 
+        private const float ROLLUP_DELAY = 0.4f;
 
-        public CoinsRollupController()
+
+        public RollupController()
         {
             commonCoinsCounterViewer = new(IConfigs.GetViewPrefab<CommonCoinsCounterView>());
         }
@@ -33,8 +36,11 @@ namespace Gamebox
             => _coinsCounters.Remove(coinsCounter);
 
 
-        public void RollupCoins(int addAmount)
+        public async void RollupCoins(int addAmount)
         {
+            await UniTask.WaitForSeconds(ROLLUP_DELAY);
+
+
             int targetAmount = IGameState.Items.Get(ItemKey.Coins);
 
             IConfigs.Gamebox.CoinsRollupStartSound.Play();

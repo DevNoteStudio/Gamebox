@@ -48,7 +48,7 @@ namespace Gamebox
         private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
         private readonly Holder<LeagueController> leagueController = new();
-        private readonly Holder<CoinsRollupController> coinsRollupController = new();
+        private readonly Holder<RollupController> rollupController = new();
         private readonly Holder<PopupController> popupController = new();
 
         private const float FADE_DURATION = 0.8f;
@@ -197,7 +197,7 @@ namespace Gamebox
                 if (IConfigs.Gamebox.LocationTutorialIsAvailable)
                     popupController.Item.ShowLocationsTutorialWindow();
 
-                coinsRollupController.Item.RollupCoins(_totalRewardCoins);
+                rollupController.Item.RollupCoins(_totalRewardCoins);
             });
         }
 

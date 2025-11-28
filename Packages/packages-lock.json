@@ -29,7 +29,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "93ed2d004d238223186ce70a1e38a8b36f89ecf8"
+      "hash": "06b25901c6ccabf120f8e41371dad86035c00255"
     },
     "com.devnote.gamebox": {
       "version": "file:com.devnote.gamebox",

@@ -15,6 +15,7 @@ namespace Gamebox
         private readonly Holder<PauseController> pauseController = new();
         private readonly Holder<MenuController> menuController = new();
         private readonly Holder<LevelController> levelController = new();
+        private readonly Holder<IEnvironment> environment = new();
 
 
         private void Start()
@@ -61,7 +62,13 @@ namespace Gamebox
             });
         }
 
-        private void OnCloseButtonClick() => pauseController.Item.HidePauseWindow();
+        private void OnCloseButtonClick()
+        {
+            if (levelController.Item.IsLevelPlaying)
+                environment.Item.StartGameplay();
+
+            pauseController.Item.HidePauseWindow();
+        }
 
 
     }

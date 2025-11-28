@@ -9,7 +9,7 @@ namespace Gamebox
         [SerializeField] private RectTransform _uiContainer;
         [SerializeField] private RectTransform _fadeContainer;
 
-
+        private readonly Holder<IEnvironment> environment = new();
         private readonly Holder<ILeaderboards> leaderboards = new();
         private readonly Holder<IAds> ads = new();
         private readonly Holder<IReview> review = new();
@@ -20,13 +20,13 @@ namespace Gamebox
         {
             new UI(_uiContainer, _fadeContainer);
 
-            var coinsRollup = Register(new CoinsRollupController());
+            var rollup = Register(new RollupController());
             var league = Register(new LeagueController());
             var menu = Register(new MenuController());
-            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league));
+            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league, environment.Item));
             var test = Register(new TestController(level));
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
-            var pause = Register(new PauseController());
+            var pause = Register(new PauseController(environment.Item));
             var reward = Register(new RewardController());
 
             var start = Register(new StartController(menu, level, popup));

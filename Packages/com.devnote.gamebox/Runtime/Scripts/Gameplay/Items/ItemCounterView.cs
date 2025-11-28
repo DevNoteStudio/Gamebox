@@ -9,7 +9,7 @@ namespace Gamebox
         [SerializeField] private ItemKey _itemKey;
         [SerializeField] private TextMeshProUGUI _valueText;
 
-        private readonly Holder<CoinsRollupController> coinsRollupController = new();
+        private readonly Holder<RollupController> rollupController = new();
 
 
         private void OnEnable()
@@ -18,7 +18,7 @@ namespace Gamebox
             Display(IGameState.Items.Get(_itemKey));
 
             if (_itemKey == ItemKey.Coins)
-                coinsRollupController.Item.AddCoinsRollupTarget(this);
+                rollupController.Item.AddCoinsRollupTarget(this);
         }
 
         private void OnDisable()
@@ -26,7 +26,7 @@ namespace Gamebox
             IGameState.Items.Dispose(_itemKey, OnItemChanged);
 
             if (_itemKey == ItemKey.Coins)
-                coinsRollupController.Item.RemoveCoinsRollupTarget(this);
+                rollupController.Item.RemoveCoinsRollupTarget(this);
         }
 
 

@@ -9,7 +9,7 @@ public class Test : MonoBehaviour
 
 
     private readonly Holder<LeagueController> leagueController = new();
-    private readonly Holder<CoinsRollupController> coinsRollupController = new();
+    private readonly Holder<RollupController> rollupController = new();
 
     private void Update()
     {
@@ -37,7 +37,7 @@ public class Test : MonoBehaviour
         {
             int add = 50;
             IGameState.Items.Add(ItemKey.Coins, add);
-            coinsRollupController.Item.RollupCoins(add);
+            rollupController.Item.RollupCoins(add);
         }
 
     }

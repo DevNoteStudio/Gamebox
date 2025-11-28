@@ -22,9 +22,10 @@ namespace Gamebox
         private readonly LeagueController leagueController;
         private readonly ILeaderboards leaderboards;
         private readonly IAds ads;
+        private readonly IEnvironment environment;
 
         public LevelController(MenuController menuController, ILeaderboards leaderboards, 
-            IAds ads, LeagueController leagueController)
+            IAds ads, LeagueController leagueController, IEnvironment environment)
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
@@ -32,6 +33,7 @@ namespace Gamebox
             this.leaderboards = leaderboards;
             this.ads = ads;
             this.leagueController = leagueController;
+            this.environment = environment;
         }
 
 
@@ -64,6 +66,8 @@ namespace Gamebox
 
         public void Revive()
         {
+            environment.StartGameplay();
+
             IsLevelPlaying = true;
             OnRevive?.Invoke();
         }
@@ -71,6 +75,7 @@ namespace Gamebox
 
         public void ExitLevel()
         {
+            environment.StopGameplay();
             IsLevelPlaying = false;
             OnLevelExit?.Invoke();
         }
@@ -78,6 +83,8 @@ namespace Gamebox
 
         public void StartLevel(int locationIndex, int levelIndex)
         {
+            environment.StartGameplay();
+
             _isLevelPlayRepeat = IGameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
 
             IGameState.LastPlayLocationIndex.Value = locationIndex;
@@ -95,6 +102,7 @@ namespace Gamebox
 
         public void CompleteCurrentLevel(int stars)
         {
+            environment.StopGameplay();
             IsLevelPlaying = false;
 
             stars = Mathf.Clamp(stars, 1, 3);
@@ -149,6 +157,8 @@ namespace Gamebox
 
         public void LoseCurrentLevel()
         {
+            environment.StopGameplay();
+
             var loseWindow = loseWindowViewer.ShowFaded(UI.Container);
 
             bool showRevive = (IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1)

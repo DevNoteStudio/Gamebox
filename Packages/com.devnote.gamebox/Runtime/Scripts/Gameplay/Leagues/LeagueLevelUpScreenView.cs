@@ -31,7 +31,7 @@ namespace Gamebox
         private List<ItemPack> _rewards;
 
         private readonly Holder<LeagueController> leagueController = new();
-        private readonly Holder<CoinsRollupController> coinsRollupController = new();
+        private readonly Holder<RollupController> rollupController = new();
 
         private const float SHAKE_DURATION = 1.5f;
         private const float SHOW_DELAY_1 = 1f;
@@ -126,7 +126,7 @@ namespace Gamebox
             if (_rewards.Exists((itemPack) => itemPack.itemKey == ItemKey.Coins))
             {
                 int coins = _rewards.Find((itemPack) => itemPack.itemKey == ItemKey.Coins).amount;
-                coinsRollupController.Item.RollupCoins(coins);
+                rollupController.Item.RollupCoins(coins);
             }
             
         }
