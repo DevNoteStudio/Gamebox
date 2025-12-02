@@ -245,7 +245,7 @@ MonoBehaviour:
   _loadables:
   - {fileID: 11400000, guid: 6dcce3436f24d66438d0c9220a443235, type: 2}
   - {fileID: 11400000, guid: c1a6a0d045ad81a42b1797a781521bd6, type: 2}
-  _openTable: 0
+  _openTable: 1
 --- !u!1 &3464847937552810143
 GameObject:
   m_ObjectHideFlags: 0

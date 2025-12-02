@@ -4,6 +4,7 @@ public enum ItemKey
     Coins = 0,
     Stars = 1,
     LocationsUnlocked = 2,
+    Gems = 3,
 }
 
 public enum EnvironmentKey

@@ -26,11 +26,13 @@ namespace Gamebox
             if (IConfigs.Gamebox.ItemIsAvailable(ItemKey.LocationsUnlocked))
             {
                 menuController.ShowLocationsScreen(locationIndex);
+                menuController.SetTabsActive(true, TabType.Locations);
                 if (IConfigs.Gamebox.LocationTutorialIsAvailable)
                     popupController.ShowLocationsTutorialWindow();
             }
             else
             {
+                menuController.SetTabsActive(false);
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(locationIndex);
                 levelController.StartLevel(locationIndex, levelIndex);
             }

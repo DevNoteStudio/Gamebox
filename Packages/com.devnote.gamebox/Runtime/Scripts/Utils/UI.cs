@@ -16,6 +16,7 @@ namespace Gamebox
         public static RectTransform FadeContainer { get; private set; }
 
 
+
         private static readonly Viewer<Image> screenFadeViewer = new(IConfigs.Gamebox.ScreenFadePrefab);
         private static readonly Viewer<Image> windowFadeViewer = new(IConfigs.Gamebox.WindowFadePrefab);
 
@@ -30,6 +31,12 @@ namespace Gamebox
             Container = mainContainer;
             FadeContainer = fadeContainer;
         }
+
+
+        public static void HideLastView()
+            => Container.GetChild(Container.childCount - 1).gameObject.SetActive(false);
+
+
 
         public static void AddFadePoint()
         {

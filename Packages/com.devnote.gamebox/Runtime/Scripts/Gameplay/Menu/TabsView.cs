@@ -1,0 +1,75 @@
+using System.Collections.Generic;
+using DevNote;
+using DG.Tweening;
+using UnityEngine;
+
+
+namespace Gamebox
+{
+
+
+
+
+    public class TabsView : MonoBehaviour
+    {
+        [SerializeField] private List<TabButtonView> _tabButtons;
+
+        private Tween _currentTween;
+
+        private readonly Holder<MenuController> menuController = new();
+        private readonly Holder<ShopController> shopController = new();
+
+
+        private void Start()
+        {
+            foreach (var tabButton in _tabButtons)
+                tabButton.onClick.AddListener(OnTabButtonClick);
+
+        }
+
+        public void SetMarkerActive(TabType tabType, bool value)
+            => _tabButtons.Find(tab => tab.TabType == tabType).SetMarker(value);
+
+
+        public void SelectTab(TabType tabType)
+        {
+            foreach (var tabButton in _tabButtons)
+            {
+                bool selected = tabButton.TabType == tabType;
+                tabButton.SetSelected(selected);
+            }
+        }
+
+
+        private void OnTabButtonClick(TabButtonView tabButton)
+        {
+            OnTabSelected(tabButton.TabType);
+            SelectTab(tabButton.TabType);
+        }
+
+
+        private void OnTabSelected(TabType tabType)
+        {
+            UI.HideLastView();
+
+            switch (tabType)
+            {
+                case TabType.Locations:
+                    menuController.Item.ShowLocationsScreen();
+                    break;
+
+                case TabType.Shop:
+                    shopController.Item.ShowShopScreen();
+                    break;
+
+                case TabType.Cards:
+                    break;
+            }
+        }
+
+    }
+}
+
+
+
+

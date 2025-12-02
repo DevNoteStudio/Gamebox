@@ -6,6 +6,7 @@ namespace Gamebox
 {
     public class GameboxSceneContext : SceneContext
     {
+        [SerializeField] private TabsView _tabs;
         [SerializeField] private RectTransform _uiContainer;
         [SerializeField] private RectTransform _fadeContainer;
 
@@ -22,12 +23,13 @@ namespace Gamebox
 
             var rollup = Register(new RollupController());
             var league = Register(new LeagueController());
-            var menu = Register(new MenuController());
+            var menu = Register(new MenuController(_tabs));
             var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league, environment.Item));
             var test = Register(new TestController(level));
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
             var pause = Register(new PauseController(environment.Item));
             var reward = Register(new RewardController());
+            var shop = Register(new ShopController());
 
             var start = Register(new StartController(menu, level, popup));
 
