@@ -18,6 +18,7 @@ namespace Gamebox
 
         private readonly Holder<MenuController> menuController = new();
         private readonly Holder<ShopController> shopController = new();
+        private readonly Holder<CardsController> cardsController = new();
 
 
         private void Start()
@@ -63,6 +64,7 @@ namespace Gamebox
                     break;
 
                 case TabType.Cards:
+                    cardsController.Item.ShowCardsScreen();
                     break;
             }
         }

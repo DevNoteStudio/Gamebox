@@ -4,7 +4,6 @@ using DevNote;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -13,6 +12,13 @@ namespace Gamebox
 
     public static class GameboxExtensions
     {
+
+        public static T FindOrException<T>(this List<T> list, Predicate<T> predicate)
+        {
+            int index = list.FindIndex(predicate);
+            if (index == -1) throw new Exception("List doesn't contain the desired value!");
+            return list[index];
+        }
 
         public static T Attach<T>(this T tween, GameObject target) where T : Tween
             => tween.SetLink(target, LinkBehaviour.KillOnDisable);

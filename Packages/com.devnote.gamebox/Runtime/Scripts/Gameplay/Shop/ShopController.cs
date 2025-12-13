@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gamebox
 {
-    public class ShopController : MonoBehaviour
+    public class ShopController
     {
         private readonly Viewer<ShopScreenView> shopScreenViewer;
 

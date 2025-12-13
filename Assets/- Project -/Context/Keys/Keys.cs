@@ -1,4 +1,20 @@
 
+public enum CardType
+{
+    Locked = -1,
+    Empty = 0,
+
+    CoinsMultiplier = 1,
+    RatingMultiplier = 2,
+    ScoreMultiplier = 3,
+    Revive = 4,
+    GemsPerStar = 5,
+    DoubleCard = 6,
+    ShopMultiplier = 7,
+
+}
+
+
 public enum ItemKey
 {
     Coins = 0,

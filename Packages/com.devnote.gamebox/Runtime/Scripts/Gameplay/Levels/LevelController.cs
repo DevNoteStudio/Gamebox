@@ -20,12 +20,13 @@ namespace Gamebox
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
         private readonly MenuController menuController;
         private readonly LeagueController leagueController;
+        private readonly ISave save;
         private readonly ILeaderboards leaderboards;
         private readonly IAds ads;
         private readonly IEnvironment environment;
 
         public LevelController(MenuController menuController, ILeaderboards leaderboards, 
-            IAds ads, LeagueController leagueController, IEnvironment environment)
+            IAds ads, LeagueController leagueController, IEnvironment environment, ISave save)
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
@@ -34,6 +35,7 @@ namespace Gamebox
             this.ads = ads;
             this.leagueController = leagueController;
             this.environment = environment;
+            this.save = save;
         }
 
 
@@ -151,6 +153,8 @@ namespace Gamebox
             victoryScreen.AnimateShow();
 
             leaderboards.SetScore(IGameState.Rating.Value);
+
+            save.FullSave();
 
             OnLevelCompleted?.Invoke();
         }

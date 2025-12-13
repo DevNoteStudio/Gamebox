@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 3de292cc5f16b4346b373e7f156b6847, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -85,8 +85,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3054936240725278531}
+  - component: {fileID: 3464704434415400404}
   m_Layer: 0
-  m_Name: CardsScreen
+  m_Name: UpgradesScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +118,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &3464704434415400404
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054936240725278532}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3054936240957126146
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b561bd3f520f81844af9da449ab71d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 0}
   _portraitGameObjectIsActive: 1
   _landscapeGameObjectIsActive: 1
   _portraitContainer: {fileID: 0}
@@ -355,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b561bd3f520f81844af9da449ab71d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 0}
   _portraitGameObjectIsActive: 1
   _landscapeGameObjectIsActive: 1
   _portraitContainer: {fileID: 0}

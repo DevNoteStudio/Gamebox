@@ -23,6 +23,10 @@ namespace Gamebox
         [field: SerializeField] public ItemPack GameRateReward { get; private set; }
         [SerializeField] private List<int> _rateUsLevels;
 
+        [SerializeField] private List<int> _cardCellGemPrices;
+        [SerializeField] private List<RarityColor> _rarityColors;
+        [SerializeField] private List<CardData> _cardDataList;
+
 
         public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 
 

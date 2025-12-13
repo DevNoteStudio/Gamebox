@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b561bd3f520f81844af9da449ab71d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 0}
   _portraitGameObjectIsActive: 1
   _landscapeGameObjectIsActive: 1
   _portraitContainer: {fileID: 0}
@@ -166,6 +167,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3814568955977825624, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614888847736587564, guid: cdc887c9554db7341bbf78c521783767, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6614888847782335672, guid: cdc887c9554db7341bbf78c521783767, type: 3}

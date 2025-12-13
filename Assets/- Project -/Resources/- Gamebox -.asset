@@ -226,3 +226,11 @@ MonoBehaviour:
     itemKey: 0
     amount: 500
   _rateUsLevels: 0200000005000000
+  _cardCellGemPrices: 000000000000000032000000fa000000f4010000
+  _cardDataList:
+  - cardType: 1
+    rarityType: 0
+    iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
+  - cardType: 2
+    rarityType: 1
+    iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
