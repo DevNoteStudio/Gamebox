@@ -1,8 +1,9 @@
 using DevNote;
+using UnityEngine;
 
 namespace Gamebox
 {
-    public class TestController
+    public class TestController : IUpdateHandler
     {
         private readonly Viewer<TestLevelView> testLevelViewer;
         private readonly LevelController levelController;
@@ -30,11 +31,14 @@ namespace Gamebox
 
         private void OnLevelExit() => testLevelViewer.Hide();
 
-        
+        void IUpdateHandler.Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                IGameState.Cards.IncreaseAmount(CardType.CoinsMultiplier, 1);
 
-
-
-
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                IGameState.Items.Add(ItemKey.Coins, 10000);
+        }
     }
 }
 

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using DevNote;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,19 +10,14 @@ namespace Gamebox
     {
         [SerializeField] private HorizontalLayoutGroup _activeCardsGroup;
         [SerializeField] private RectTransform _inventoryContainer;
+        [SerializeField] private List<CardCellView> _cells;
 
+        private List<CardView> _inventoryCards;
 
         private const float PORTRAIT_CARDS_SPACING = -45f;
         private const float LANDSCAPE_CARDS_SPACING = 25f;
 
-
-        public void Display()
-        {
-            if (_inventoryContainer.childCount == 0)
-                CreateCards();
-        }
-
-
+        
         private void OnEnable()
         {
             ScreenState.OnOrientationChanged += OnOrientationChanged;
@@ -36,26 +33,47 @@ namespace Gamebox
             IGameState.Cards.OnCardCellChanged -= OnCardCellChanged;
         }
 
+        public void Display()
+        {
+            if (_inventoryContainer.childCount == 0)
+                CreateCards();
+
+            bool moreButtonShown = false;
+            for (int i = 0; i < _cells.Count; i++)
+            {
+                bool isLocked = IGameState.Cards.GetCellCard(i) == CardType.Locked;
+
+                _cells[i].Display(i, showMoreButton: isLocked && !moreButtonShown);
+
+                if (isLocked) moreButtonShown = true;
+            }
+                
+
+        }
+
+
+
 
         private void CreateCards()
         {
+            _inventoryCards = new List<CardView>();
+
             foreach (var cardType in IConfigs.Gamebox.GetAllCardTypes())
             {
-                Instantiate(IConfigs.GetViewPrefab<CardView>(), _inventoryContainer)
-                    .Display(cardType, isCellPlaced: false);
+                var card = Instantiate(IConfigs.GetViewPrefab<CardView>(), _inventoryContainer);
+                card.Display(cardType, isCellPlaced: false);
+                _inventoryCards.Add(card);
             }
         }
 
 
 
-        private void OnCardCellChanged(int cellIndex)
-        {
-            
-        }
+        private void OnCardCellChanged(int cellIndex) => Display();
+
 
         private void OnCardChanged(CardType cardType)
         {
-            
+            _inventoryCards.Find(card => card.CardType == cardType).Display(cardType, isCellPlaced: false);
         }
 
         
@@ -64,8 +82,6 @@ namespace Gamebox
         {
             _activeCardsGroup.spacing = ScreenState.Orientation == Orientation.Portrait ?
                 PORTRAIT_CARDS_SPACING : LANDSCAPE_CARDS_SPACING;
-
-            Debug.Log("change");
         }
 
 

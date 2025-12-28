@@ -2,7 +2,6 @@ using System;
 using DG.Tweening;
 using Gamebox;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WindowAnimation : MonoBehaviour
 {

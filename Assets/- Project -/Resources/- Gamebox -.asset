@@ -219,18 +219,33 @@ MonoBehaviour:
     - itemKey: 0
       amount: 2300
   <VictoryRouletteFromLevel>k__BackingField: 2
-  <ReviveFromLevel>k__BackingField: 5
+  <ReviveFromLevel>k__BackingField: 0
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3
   _interstitialsFromLevel: 5
   <GameRateReward>k__BackingField:
     itemKey: 0
     amount: 500
   _rateUsLevels: 0200000005000000
-  _cardCellGemPrices: 000000000000000032000000fa000000f4010000
+  _cardCellGemPrices: 000000000f00000064000000fa000000e8030000
+  _rarityColors:
+  - rarityType: 0
+    backgroundColor: {r: 0.4862745, g: 0.4862745, b: 0.4862745, a: 1}
+    textColor: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
+  - rarityType: 1
+    backgroundColor: {r: 0.29411766, g: 0.7921569, b: 1, a: 1}
+    textColor: {r: 0.40392157, g: 0.8235294, b: 1, a: 1}
+  - rarityType: 2
+    backgroundColor: {r: 0.73333335, g: 0.3764706, b: 1, a: 1}
+    textColor: {r: 1, g: 0.5882353, b: 0.94117653, a: 1}
+  - rarityType: 3
+    backgroundColor: {r: 1, g: 0.49803922, b: 0.1882353, a: 1}
+    textColor: {r: 1, g: 0.6509804, b: 0.1882353, a: 1}
   _cardDataList:
   - cardType: 1
     rarityType: 0
     iconSprite: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
+    levelPowers: 19000000320000004b000000640000007d000000
   - cardType: 2
     rarityType: 1
     iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
+    levelPowers: 14000000230000003200000041000000

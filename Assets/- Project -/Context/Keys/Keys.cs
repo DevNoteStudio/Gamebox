@@ -7,10 +7,15 @@ public enum CardType
     CoinsMultiplier = 1,
     RatingMultiplier = 2,
     ScoreMultiplier = 3,
-    Revive = 4,
-    GemsPerStar = 5,
-    DoubleCard = 6,
+    Reviver = 4,
+    GemRewarder = 5,
+    ChestMultiplier = 6,
     ShopMultiplier = 7,
+    ChestTimer = 8,
+    BonusCollector = 9,
+    FreeBooster1 = 10,
+    FreeBooster2 = 11,
+    FreeBooster3 = 12,
 
 }
 

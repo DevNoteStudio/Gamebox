@@ -121,14 +121,26 @@ namespace Gamebox
 
         public bool IsNew(CardType cardType) => GetCardData(cardType).isNew;
 
-        public void SetCardAsViewed(CardType cardType) => GetCardData(cardType).isNew = false;
+        public void SetCardAsViewed(CardType cardType)
+        {
+            GetCardData(cardType).isNew = false;
+            OnCardChanged?.Invoke(cardType);
+        }
 
         public CardType GetCellCard(int cellIndex) => _cellCards[cellIndex];
 
         public void SetCardToCell(int cellIndex, CardType cardType)
         {
+            var previousCardType = _cellCards[cellIndex];
+
             _cellCards[cellIndex] = cardType;
             OnCardCellChanged?.Invoke(cellIndex);
+
+            if (cardType != CardType.Empty && cardType != CardType.Locked)
+                OnCardChanged?.Invoke(cardType);
+
+            if (previousCardType != CardType.Empty && previousCardType != CardType.Locked)
+                OnCardChanged?.Invoke(previousCardType);
         }
 
 
@@ -162,7 +174,12 @@ namespace Gamebox
 
         public void IncreaseAmount(CardType cardType, int value)
         {
-            GetCardData(cardType).amount += value;
+            var cardData = GetCardData(cardType);
+            cardData.amount += value;
+
+            if (cardData.level == 0) 
+                cardData.level = 1;
+
             OnCardChanged?.Invoke(cardType);
         }
 

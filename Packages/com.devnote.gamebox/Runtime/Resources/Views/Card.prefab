@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4518808890624513645}
   - component: {fileID: 6525970602824247722}
   m_Layer: 0
-  m_Name: '[Open]'
+  m_Name: '[Info]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,8 +702,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 6, y: 0}
+  m_SizeDelta: {x: -12, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5683579171607328339
 CanvasRenderer:
@@ -733,10 +733,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3/<size=80%>10
+  m_text: 3<size=80%>/10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 24117b72736421548bcd3b6b8961f38a, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fe50edcd466c082468b511b04e44adb0, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 709ca91e97e36904598df330bd60121a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -760,8 +760,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38
-  m_fontSizeBase: 38
+  m_fontSize: 46
+  m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -837,8 +837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 130}
-  m_SizeDelta: {x: 250, y: 115}
+  m_AnchoredPosition: {x: 0, y: 135.60007}
+  m_SizeDelta: {x: 250, y: 119.0377}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5683579171608306779
 CanvasRenderer:
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_text: "+20% <size=75%>\n\u0437\u043E\u043B\u043E\u0442\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 24117b72736421548bcd3b6b8961f38a, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: fe50edcd466c082468b511b04e44adb0, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 709ca91e97e36904598df330bd60121a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1018,7 +1018,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 280, y: 360}
+  m_SizeDelta: {x: 270, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5222185916172661861
 MonoBehaviour:
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef26ee3d888f1554a9904213255c825b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _openButton: {fileID: 0}
+  _infoButton: {fileID: 6525970602824247722}
   _backgroundImage: {fileID: 5683579172239382332}
   _iconImage: {fileID: 5683579171850522848}
   _descriptionText: {fileID: 5683579171608306778}
@@ -1040,12 +1040,14 @@ MonoBehaviour:
   _levelObject: {fileID: 5683579172305091127}
   _shineObject: {fileID: 5683579172032028110}
   _progressObject: {fileID: 5683579170613353003}
-  _progressSlider: {fileID: 0}
-  _progressFillImage: {fileID: 0}
-  _progressIconImage: {fileID: 0}
-  _progressText: {fileID: 0}
+  _progressSlider: {fileID: 5683579170613352981}
+  _progressFillImage: {fileID: 5683579172521518756}
+  _progressIconImage: {fileID: 5683579170502856740}
+  _progressText: {fileID: 5683579171607328338}
   _newMark: {fileID: 5683579171462055333}
   _activeMark: {fileID: 6936153837542476496}
+  _progressColor: {r: 0, g: 0.9333334, b: 1, a: 1}
+  _upgradeColor: {r: 0, g: 1, b: 0.0627451, a: 1}
 --- !u!1 &5683579171850522854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,7 +1495,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 135}
+  m_SizeDelta: {x: 0, y: 140}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5683579172313730607
 CanvasRenderer:

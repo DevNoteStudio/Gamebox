@@ -8,7 +8,7 @@ namespace Gamebox
 {
     public static class TweenHub
     {
-        public static Tween Show(Transform transform, float duration = 0.6f, bool playSound = false)
+        public static Tween Show(Transform transform, float duration = 0.45f, bool playSound = false)
         {
             transform.localScale = Vector3.zero;
             return transform.DOScale(1f, duration).SetEase(Ease.OutBack).OnStart(() => 
