@@ -249,3 +249,55 @@ MonoBehaviour:
     rarityType: 1
     iconSprite: {fileID: 21300000, guid: 47de1074d3a1cff468cad8ab015f6e96, type: 3}
     levelPowers: 14000000230000003200000041000000
+  _shopBoxes:
+  - boxItemKey: 4
+    buyForGems: 0
+    price: 500
+    minMaxCommonCards: {x: 5, y: 10}
+    minMaxRareCards: {x: 0, y: 1}
+    minMaxEpicCards: {x: 0, y: 0}
+    minMaxLegendaryCards: {x: 0, y: 0}
+    minMaxBoosters: {x: 1, y: 2}
+  - boxItemKey: 5
+    buyForGems: 1
+    price: 59
+    minMaxCommonCards: {x: 10, y: 20}
+    minMaxRareCards: {x: 1, y: 5}
+    minMaxEpicCards: {x: 0, y: 1}
+    minMaxLegendaryCards: {x: 0, y: 0}
+    minMaxBoosters: {x: 3, y: 6}
+  - boxItemKey: 6
+    buyForGems: 1
+    price: 199
+    minMaxCommonCards: {x: 0, y: 0}
+    minMaxRareCards: {x: 10, y: 20}
+    minMaxEpicCards: {x: 1, y: 5}
+    minMaxLegendaryCards: {x: 0, y: 1}
+    minMaxBoosters: {x: 10, y: 20}
+  - boxItemKey: 7
+    buyForGems: 1
+    price: 19
+    minMaxCommonCards: {x: 0, y: 0}
+    minMaxRareCards: {x: 1, y: 1}
+    minMaxEpicCards: {x: 0, y: 0}
+    minMaxLegendaryCards: {x: 0, y: 0}
+    minMaxBoosters: {x: 0, y: 0}
+  - boxItemKey: 8
+    buyForGems: 1
+    price: 59
+    minMaxCommonCards: {x: 0, y: 0}
+    minMaxRareCards: {x: 0, y: 0}
+    minMaxEpicCards: {x: 1, y: 1}
+    minMaxLegendaryCards: {x: 0, y: 0}
+    minMaxBoosters: {x: 0, y: 0}
+  - boxItemKey: 9
+    buyForGems: 1
+    price: 299
+    minMaxCommonCards: {x: 0, y: 0}
+    minMaxRareCards: {x: 0, y: 0}
+    minMaxEpicCards: {x: 0, y: 0}
+    minMaxLegendaryCards: {x: 1, y: 1}
+    minMaxBoosters: {x: 0, y: 0}
+  _gemsInsideShopPacks: 1400000032000000640000002c010000e8030000b80b0000
+  _coinsInsideShopPacks: e803000088130000a8610000
+  _coinsPackPrices: 1d00000063000000c7000000

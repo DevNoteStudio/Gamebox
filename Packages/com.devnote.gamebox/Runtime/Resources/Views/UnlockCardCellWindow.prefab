@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6412316491461926036, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_lineSpacing
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6412316491461926036, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_spriteAsset

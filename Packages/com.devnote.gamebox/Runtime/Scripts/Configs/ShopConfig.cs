@@ -1,0 +1,60 @@
+using System;
+using UnityEngine;
+
+namespace Gamebox
+{
+    public partial class GameboxConfig // Shop
+    {
+
+        [Serializable] private struct ShopBoxData
+        {
+            public ItemKey boxItemKey;
+            public bool buyForGems;
+            public int price;
+            public Vector2Int minMaxCommonCards;
+            public Vector2Int minMaxRareCards;
+            public Vector2Int minMaxEpicCards;
+            public Vector2Int minMaxLegendaryCards;
+            public Vector2Int minMaxBoosters;
+        }
+
+
+        public string GetBoxDescription(ItemKey boxItemKey)
+        {
+
+            return null;
+        }
+
+
+        public int GetBoxPrice(ItemKey boxItemKey, out bool buyForGems)
+        {
+            var boxData = _shopBoxes.FindOrException(data => data.boxItemKey == boxItemKey);
+            buyForGems = boxData.buyForGems;
+            return boxData.price;
+        }
+
+        public int GetGemsInsidePack(ProductKey gemProductKey)
+        {
+            int index = gemProductKey switch
+            {
+                ProductKey.Gems1 => 0,
+                ProductKey.Gems2 => 1,
+                ProductKey.Gems3 => 2,
+                ProductKey.Gems4 => 3,
+                ProductKey.Gems5 => 4,
+                ProductKey.Gems6 => 5,
+                _ => -1
+            };
+
+            return _gemsInsideShopPacks[index];
+        }
+
+        public int GetCoinsInsidePack(int packIndex) => _coinsInsideShopPacks[packIndex];
+
+        public int GetCoinsPackPrice(int packIndex) => _coinsPackPrices[packIndex];
+
+
+
+
+    }
+}

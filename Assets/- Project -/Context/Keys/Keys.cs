@@ -26,6 +26,10 @@ public enum ItemKey
     Stars = 1,
     LocationsUnlocked = 2,
     Gems = 3,
+
+    CommonBox = 4, RareBox = 5, EpicBox = 6,
+    RareCard = 7, EpicCard = 8, LegendaryCard = 9,
+
 }
 
 public enum EnvironmentKey
@@ -49,6 +53,7 @@ public enum TableKey
     Localization = 0,
     GameboxLocalization = 1,
     Leagues = 2,
+    Shop = 3,
 
 }
 
@@ -60,6 +65,12 @@ public enum LeaderboardKey
 public enum ProductKey
 {
     NoAds = 0,
+    Gems1 = 1, 
+    Gems2 = 2, 
+    Gems3 = 3, 
+    Gems4 = 4, 
+    Gems5 = 5, 
+    Gems6 = 6,
 
 }
 

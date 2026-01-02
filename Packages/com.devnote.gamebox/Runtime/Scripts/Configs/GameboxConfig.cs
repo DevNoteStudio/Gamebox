@@ -26,6 +26,10 @@ namespace Gamebox
         [SerializeField] private List<int> _cardCellGemPrices;
         [SerializeField] private List<RarityColor> _rarityColors;
         [SerializeField] private List<CardData> _cardDataList;
+        [SerializeField] private List<ShopBoxData> _shopBoxes;
+        [SerializeField] private List<int> _gemsInsideShopPacks;
+        [SerializeField] private List<int> _coinsInsideShopPacks;
+        [SerializeField] private List<int> _coinsPackPrices;
 
 
         public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 
