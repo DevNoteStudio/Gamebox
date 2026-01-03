@@ -19,7 +19,7 @@ namespace Gamebox
 
         public void DisplayUnlockedItem(ItemKey itemKey)
         {
-            _iconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemKey);
+            _iconImage.LoadSprite(AssetLoader.LoadItemSprite(itemKey));
             _descriptionText.text = IConfigs.Gamebox.GetItemUnlockName(itemKey);
         }
 

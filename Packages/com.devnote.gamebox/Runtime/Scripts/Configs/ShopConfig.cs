@@ -1,4 +1,5 @@
 using System;
+using DevNote;
 using UnityEngine;
 
 namespace Gamebox
@@ -21,8 +22,28 @@ namespace Gamebox
 
         public string GetBoxDescription(ItemKey boxItemKey)
         {
+            string GetDescriptionPoint(Vector2Int minMax, int spriteIndex, string localizationKey) 
+                => $"<sprite={spriteIndex}>{minMax.x}-{minMax.y} {Localization.GetLocalizedText(localizationKey)}";
 
-            return null;
+            var boxData = _shopBoxes.FindOrException(data => data.boxItemKey == boxItemKey);
+            string text = $"{Localization.GetLocalizedText("contains")}:";
+
+            if (boxData.minMaxCommonCards != Vector2Int.zero)
+                text += "\n" + GetDescriptionPoint(boxData.minMaxCommonCards, spriteIndex: 3, "box_common_cards");
+
+            if (boxData.minMaxRareCards != Vector2Int.zero)
+                text += "\n" + GetDescriptionPoint(boxData.minMaxRareCards, spriteIndex: 4, "box_rare_cards");
+
+            if (boxData.minMaxEpicCards != Vector2Int.zero)
+                text += "\n" + GetDescriptionPoint(boxData.minMaxEpicCards, spriteIndex: 5, "box_epic_cards");
+
+            if (boxData.minMaxLegendaryCards != Vector2Int.zero)
+                text += "\n" + GetDescriptionPoint(boxData.minMaxLegendaryCards, spriteIndex: 6, "box_legendary_cards");
+
+            if (boxData.minMaxBoosters != Vector2Int.zero)
+                text += "\n" + GetDescriptionPoint(boxData.minMaxBoosters, spriteIndex: 2, "box_boosters");
+
+            return text;
         }
 
 

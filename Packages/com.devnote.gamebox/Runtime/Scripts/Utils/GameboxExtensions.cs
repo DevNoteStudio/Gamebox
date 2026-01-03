@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using DG.Tweening;
 using UnityEngine;
@@ -12,6 +13,13 @@ namespace Gamebox
 
     public static class GameboxExtensions
     {
+
+        public static async void LoadSprite(this Image image, UniTask<Sprite> loader)
+        {
+            image.gameObject.SetActive(false);
+            image.sprite = await loader;
+            image.gameObject.SetActive(true);
+        }
 
         public static T FindOrException<T>(this List<T> list, Predicate<T> predicate)
         {

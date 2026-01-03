@@ -33,7 +33,7 @@ namespace Gamebox
         {
             _titleText.text = Localization.GetLocalizedText($"{boxItemKey}_name");
             _descriptionText.text = IConfigs.Gamebox.GetBoxDescription(boxItemKey);
-            _boxIconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(boxItemKey);
+            _boxIconImage.LoadSprite(AssetLoader.LoadItemSprite(boxItemKey));
 
             int amount = IGameState.Items.Get(boxItemKey);
 
@@ -44,11 +44,11 @@ namespace Gamebox
                 int price = IConfigs.Gamebox.GetBoxPrice(boxItemKey, out bool buyForGems);
                 int spriteIndex = buyForGems ? 1 : 0;
 
-                string prefixText = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
-                    $"<size=75%>õ</size>10</size>\n<sprite={spriteIndex}>";
+                _openSingleButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
+                    $"<size=75%>õ</size>1</size>\n<sprite={spriteIndex}>{price}";
 
-                _openSingleButtonText.text = $"{prefixText}{price}";
-                _openMultyButtonText.text = $"{prefixText}{price * 10}";
+                _openMultyButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
+                    $"<size=75%>õ</size>10</size>\n<sprite={spriteIndex}>{price * 10}";
             }
             else
             {

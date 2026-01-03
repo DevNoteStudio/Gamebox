@@ -32,7 +32,7 @@ namespace Gamebox
             _itemKey = itemKey;
             _nameText.text = IConfigs.Gamebox.GetItemName(itemKey);
             _descriptionText.text = IConfigs.Gamebox.GetItemTutorialDescription(itemKey);
-            _iconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemKey);
+            _iconImage.LoadSprite(AssetLoader.LoadItemSprite(itemKey));
 
             return this;
         }

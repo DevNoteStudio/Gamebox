@@ -14,7 +14,7 @@ namespace Gamebox
 
         public void Display(ItemKey itemKey, int amount)
         {
-            _iconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemKey);
+            _iconImage.LoadSprite(AssetLoader.LoadItemSprite(itemKey));
             _amountText.text = amount.ToString();
             _amountText.colorGradientPreset = _commonTextGradient;
         }

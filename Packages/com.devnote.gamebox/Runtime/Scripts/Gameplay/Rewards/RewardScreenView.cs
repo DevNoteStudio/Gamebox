@@ -37,7 +37,7 @@ namespace Gamebox
         public RewardScreenView Display(ItemPack itemPack)
         {
             _itemPack = itemPack;
-            _itemImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemPack.itemKey);
+            _itemImage.LoadSprite(AssetLoader.LoadItemSprite(itemPack.itemKey));
 
             _itemNameText.text = 
                 $"{IConfigs.Gamebox.GetItemName(itemPack.itemKey)} <size=75%>x</size>{itemPack.amount}";

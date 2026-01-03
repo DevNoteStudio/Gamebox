@@ -35,9 +35,6 @@ namespace Gamebox
         public int GetItemStartAmount(ItemKey itemKey)
             => _items.Find(data => data.itemKey == itemKey).startAmount;
 
-        public Sprite GetItemIconSprite(ItemKey itemKey)
-            => _items.Find(data => data.itemKey == itemKey).iconSprite;
-
 
         public string GetItemName(ItemKey itemKey)
             => Localization.GetLocalizedText($"{itemKey}_name");

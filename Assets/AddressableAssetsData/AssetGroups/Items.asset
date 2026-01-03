@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Items
+  m_EditorClassIdentifier: 
+  m_GroupName: Items
+  m_Data:
+    m_SerializedData: []
+  m_GUID: cf84e51f02fb06c4d87f83f35e0f4c16
+  m_SerializeEntries:
+  - m_GUID: f7497d4524584d94f95d9e1c1873c8c1
+    m_Address: RareCard_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 24ee9b92f6ff43f41896669777ff3279
+    m_Address: EpicBox_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b8b8a1ac9352de44ea372dfc256dc767
+    m_Address: RareBox_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17d3534a0d0529b43bbffbc87b6556d6
+    m_Address: CommonBox_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3e06c07b0a8ee54c985a4d64920be7f
+    m_Address: Gems_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6478cfddaf7c0814db19185ac650ebc7
+    m_Address: Coins_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8ce5543f4e9f5cb4286ebf212a02b46c
+    m_Address: EpicCard_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3dc723f6b842b5f4d953a03e675cc65c
+    m_Address: LegendaryCard_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7bd45ab3430b0ab479af36ebccc2685a, type: 2}
+    - {fileID: 11400000, guid: d591fd830748a9f4abe2f74ed0715abe, type: 2}
