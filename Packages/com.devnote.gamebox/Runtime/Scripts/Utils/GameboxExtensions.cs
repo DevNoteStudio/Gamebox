@@ -16,9 +16,10 @@ namespace Gamebox
 
         public static async void LoadSprite(this Image image, UniTask<Sprite> loader)
         {
-            image.gameObject.SetActive(false);
+            float alpha = image.color.a;
+            image.color = image.color.SetAlpha(0f);
             image.sprite = await loader;
-            image.gameObject.SetActive(true);
+            image.color = image.color.SetAlpha(alpha);
         }
 
         public static T FindOrException<T>(this List<T> list, Predicate<T> predicate)

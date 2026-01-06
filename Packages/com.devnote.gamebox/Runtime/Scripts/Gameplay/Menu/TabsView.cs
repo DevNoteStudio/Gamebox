@@ -6,10 +6,6 @@ using UnityEngine;
 
 namespace Gamebox
 {
-
-
-
-
     public class TabsView : MonoBehaviour
     {
         [SerializeField] private List<TabButtonView> _tabButtons;
@@ -32,7 +28,7 @@ namespace Gamebox
             => _tabButtons.Find(tab => tab.TabType == tabType).SetMarker(value);
 
 
-        public void SelectTab(TabType tabType)
+        public void AnimateSelectTab(TabType tabType)
         {
             foreach (var tabButton in _tabButtons)
             {
@@ -45,7 +41,6 @@ namespace Gamebox
         private void OnTabButtonClick(TabButtonView tabButton)
         {
             OnTabSelected(tabButton.TabType);
-            SelectTab(tabButton.TabType);
         }
 
 

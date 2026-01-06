@@ -31,6 +31,7 @@ namespace Gamebox
             var pause = Register(new PauseController(environment.Item));
             var reward = Register(new RewardController());
             var shop = Register(new ShopController(purchase.Item));
+            var boxOpen = Register(new BoxOpenController());
             var cards = Register(new CardsController());
 
             var start = Register(new StartController(menu, level, popup));

@@ -1,4 +1,3 @@
-using System;
 using DevNote;
 using TMPro;
 using UnityEngine;
@@ -49,6 +48,7 @@ namespace Gamebox
         }
 
         
+        public enum DisplayType { Inventory, Cell, OpenBox }
         public void Display(CardType cardType, bool isCellPlaced)
         {
             CardType = cardType;

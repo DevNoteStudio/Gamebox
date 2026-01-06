@@ -1,4 +1,5 @@
 using DevNote;
+using UnityEngine;
 
 namespace Gamebox
 {
@@ -13,7 +14,7 @@ namespace Gamebox
 
         public MenuController(TabsView tabs)
         {
-            //tabsViewer = new Viewer<TabsView>(tabs);
+            tabsViewer = new(IConfigs.GetViewPrefab<TabsView>());
             locationsScreenViewer = new(IConfigs.GetViewPrefab<LocationsScreenView>());
             levelsScreenViewer = new(IConfigs.GetViewPrefab<LevelsScreenView>());
             itemTutorialWindowViewer = new(IConfigs.GetViewPrefab<ItemTutorialWindowView>());
@@ -38,17 +39,17 @@ namespace Gamebox
 
         public void HideLevelsScreen() => levelsScreenViewer.Hide();
 
-        /*
-        public void SetTabsActive(bool active, TabType selectedTab = TabType.Locations)
+        
+        public void SetTabsActive(bool active, TabType selectedTab = TabType.Locations, RectTransform screenRect = null)
         {
             if (active)
             {
-                tabsViewer.Show();
-                tabsViewer.View.SelectTab(selectedTab);
+                tabsViewer.ShowExpand(screenRect);
+                tabsViewer.View.AnimateSelectTab(selectedTab);
             }
             else tabsViewer.Hide();
         }
-        */
+        
 
 
     }

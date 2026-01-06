@@ -1528,6 +1528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5097816779820236371}
+  - component: {fileID: 7986440541378389017}
   - component: {fileID: 3214628775865162911}
   - component: {fileID: 62416650034776354}
   m_Layer: 0
@@ -1561,6 +1562,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7986440541378389017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174365937273672303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffadcb5c51eded94bad64acd1fc5272e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tabType: 0
 --- !u!114 &3214628775865162911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3057,6 +3071,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e3a588d2edfe4884496c4fdd228f13ff, type: 3}
+    - target: {fileID: 7618197948770933474, guid: 24768d3afdccbd942ad8e59a2fc436e3, type: 3}
+      propertyPath: m_fontSize
+      value: 51.95
+      objectReference: {fileID: 0}
     - target: {fileID: 7778281954248218906, guid: 24768d3afdccbd942ad8e59a2fc436e3, type: 3}
       propertyPath: m_Name
       value: ~Rating~

@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using DevNote;
 using TMPro;
 using UnityEngine;
@@ -18,7 +16,11 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _openMultyButtonText;
         [SerializeField] private Image _boxIconImage;
 
+        private ItemKey _boxItemKey;
+        private int _multiAmount;
+
         private readonly Holder<ShopController> shopController = new();
+        private readonly Holder<BoxOpenController> boxOpenController = new();
 
 
 
@@ -31,6 +33,8 @@ namespace Gamebox
 
         public BoxWindowView Display(ItemKey boxItemKey)
         {
+            _boxItemKey = boxItemKey;
+
             _titleText.text = Localization.GetLocalizedText($"{boxItemKey}_name");
             _descriptionText.text = IConfigs.Gamebox.GetBoxDescription(boxItemKey);
             _boxIconImage.LoadSprite(AssetLoader.LoadItemSprite(boxItemKey));
@@ -47,28 +51,38 @@ namespace Gamebox
                 _openSingleButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
                     $"<size=75%>õ</size>1</size>\n<sprite={spriteIndex}>{price}";
 
+                _multiAmount = 10;
                 _openMultyButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
-                    $"<size=75%>õ</size>10</size>\n<sprite={spriteIndex}>{price * 10}";
+                    $"<size=75%>õ</size>{_multiAmount}</size>\n<sprite={spriteIndex}>{price * 10}";
             }
             else
             {
+                _multiAmount = amount;
+
                 string prefixText = $"{Localization.GetLocalizedText("open_box")} <size=85%>x</size>";
                 _openSingleButtonText.text = $"{prefixText}1";
                 _openMultyButtonText.text = $"{prefixText}{amount}";
             }
             
-
             return this;
         }
 
         private void OnOpenMultyButtonClick()
         {
-            throw new NotImplementedException();
+            if (IGameState.Items.Get(_boxItemKey) < _multiAmount)
+                boxOpenController.Item.TryBuyBox(_boxItemKey, _multiAmount);
+
+            shopController.Item.HideBoxWindow();
+            boxOpenController.Item.TryOpenBox(_boxItemKey, _multiAmount);
         }
 
         private void OnOpenSingleButtonClick()
         {
-            throw new NotImplementedException();
+            if (IGameState.Items.Get(_boxItemKey) < 1)
+                boxOpenController.Item.TryBuyBox(_boxItemKey, 1);
+
+            shopController.Item.HideBoxWindow();
+            boxOpenController.Item.TryOpenBox(_boxItemKey, 1);
         }
 
         private void OnCloseButtonClick()
