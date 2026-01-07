@@ -1,4 +1,3 @@
-
 public enum CardType
 {
     Locked = -1,
@@ -6,19 +5,13 @@ public enum CardType
 
     CoinsMultiplier = 1,
     RatingMultiplier = 2,
-    ScoreMultiplier = 3,
-    Reviver = 4,
-    GemRewarder = 5,
-    ChestMultiplier = 6,
-    ShopMultiplier = 7,
-    ChestTimer = 8,
-    BonusCollector = 9,
-    FreeBooster1 = 10,
-    FreeBooster2 = 11,
-    FreeBooster3 = 12,
+    Reviver = 3,
+    GemRewarder = 4,
+    FreeBooster1 = 5,
+    FreeBooster2 = 6,
+    FreeBooster3 = 7,
 
 }
-
 
 public enum ItemKey
 {
@@ -27,10 +20,19 @@ public enum ItemKey
     LocationsUnlocked = 2,
     Gems = 3,
 
+    Booster = 10,
+
     CommonBox = 4, RareBox = 5, EpicBox = 6,
     RareCard = 7, EpicCard = 8, LegendaryCard = 9,
 
 }
+
+public static class ItemKeyExtension
+{
+    public static bool IsBooster(this ItemKey itemKey) => itemKey == ItemKey.Booster;
+}
+
+
 
 public enum EnvironmentKey
 {
@@ -54,6 +56,7 @@ public enum TableKey
     GameboxLocalization = 1,
     Leagues = 2,
     Shop = 3,
+    Cards = 4,
 
 }
 

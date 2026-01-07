@@ -12,7 +12,8 @@ namespace Gamebox
         [SerializeField] private CardView _cardView;
         [SerializeField] private BoxCardAnimation _cardAnimation;
 
-        private Dictionary<CardType, int> _generatedCards;
+        private Dictionary<CardType, int> _cards;
+        private Dictionary<ItemKey, int> _boosters;
         private bool _boxOpened = false;
 
 
@@ -21,9 +22,12 @@ namespace Gamebox
             _interactButton.onClick.AddListener(OnInteractButtonClick);
         }
 
-        public BoxOpenScreenView Display(ItemKey boxItemKey, Dictionary<CardType, int> generatedCards)
+        public BoxOpenScreenView Display(ItemKey boxItemKey, 
+            Dictionary<CardType, int> cards, Dictionary<ItemKey, int> boosters)
         {
-            _generatedCards = generatedCards;
+            _cards = cards;
+            _boosters = boosters;
+
             _boxOpened = false;
             _boxView.Display(boxItemKey);
 
@@ -51,6 +55,7 @@ namespace Gamebox
             {
                 _boxView.AnimatePushCard();
                 _cardView.gameObject.SetActive(true);
+                _cardView.Display(CardType.CoinsMultiplier, CardView.DisplayType.OpenBox);
                 _cardAnimation.AnimateShow(RarityType.Common);
             }
         }

@@ -49,6 +49,10 @@ MonoBehaviour:
     m_Address: LegendaryCard_sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: be4fc7e05570ed64b9aca45b80d3097b
+    m_Address: LocationsUnlocked_sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
   m_SchemaSet:

@@ -34,7 +34,15 @@ namespace Gamebox
 
 
         public static void HideLastView()
-            => Container.GetChild(Container.childCount - 1).gameObject.SetActive(false);
+        {
+            for (int i = Container.childCount - 1; i >= 0; i--)
+            {
+                var viewObject = Container.GetChild(i).gameObject;
+
+                if (viewObject.activeInHierarchy)
+                    viewObject.SetActive(false);
+            }
+        }
 
 
 

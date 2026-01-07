@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Gamebox
 {
 
-    public enum RarityType { Common, Rare, Epic, Legend }
+    public enum RarityType { Common, Rare, Epic, Legendary }
 
 
     public class CardView : MonoBehaviour
@@ -49,33 +49,37 @@ namespace Gamebox
 
         
         public enum DisplayType { Inventory, Cell, OpenBox }
-        public void Display(CardType cardType, bool isCellPlaced)
+        public void Display(CardType cardType, DisplayType displayType)
         {
             CardType = cardType;
 
             var config = IConfigs.Gamebox;
 
             var rarityType = config.GetCardRarity(cardType);
-            var isLocked = !IGameState.Cards.Has(cardType);
+            var isLocked = !IGameState.Cards.Has(cardType) && displayType != DisplayType.OpenBox;
 
-            _backgroundImage.color = isLocked ? LOCKED_BACKGROUND_COLOR : config.GetRarityBackgroundColor(rarityType);
+            _backgroundImage.color = isLocked ? LOCKED_BACKGROUND_COLOR : IConfigs.Internal.GetRarityBackgroundColor(rarityType);
 
-            _iconImage.sprite = config.GetCardIconSprite(cardType);
             _iconImage.color = isLocked ? LOCKED_ICON_COLOR : Color.white;
+            _iconImage.LoadSprite(AssetLoader.LoadCardSprite(cardType));
 
             _shineObject.SetActive(!isLocked);
 
-            _levelObject.SetActive(!isLocked && !isCellPlaced);
+            _levelObject.SetActive(!isLocked && displayType == DisplayType.Inventory);
             _levelText.text = IGameState.Cards.GetLevel(cardType).ToString();
 
             _descriptionText.alignment = isLocked ? TextAlignmentOptions.Center : TextAlignmentOptions.Top;
-            _descriptionText.fontSizeMax = isLocked ? LOCKED_TEXT_SIZE : isCellPlaced ? CELL_TEXT_SIZE : INVENTORY_TEXT_SIZE;
+
+            _descriptionText.fontSizeMax = 
+                isLocked ? LOCKED_TEXT_SIZE : 
+                displayType == DisplayType.Cell ? CELL_TEXT_SIZE : INVENTORY_TEXT_SIZE;
+
             _descriptionText.text = isLocked ? "?" : config.GetCardShortDescription(cardType);
 
-            _progressObject.SetActive(!isLocked && !isCellPlaced);
+            _progressObject.SetActive(!isLocked && displayType != DisplayType.Cell);
 
-            _newMark.SetActive(!isCellPlaced && !isLocked && IGameState.Cards.IsNew(cardType));
-            _activeMark.SetActive(!isCellPlaced && IGameState.Cards.IsActive(cardType));
+            _newMark.SetActive(displayType == DisplayType.Inventory && !isLocked && IGameState.Cards.IsNew(cardType));
+            _activeMark.SetActive(displayType == DisplayType.Inventory && IGameState.Cards.IsActive(cardType));
 
             _infoButton.interactable = !isLocked;
 

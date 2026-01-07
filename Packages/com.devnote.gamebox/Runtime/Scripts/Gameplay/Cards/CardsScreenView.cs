@@ -61,7 +61,7 @@ namespace Gamebox
             foreach (var cardType in IConfigs.Gamebox.GetAllCardTypes())
             {
                 var card = Instantiate(IConfigs.GetViewPrefab<CardView>(), _inventoryContainer);
-                card.Display(cardType, isCellPlaced: false);
+                card.Display(cardType, CardView.DisplayType.Inventory);
                 _inventoryCards.Add(card);
             }
         }
@@ -73,7 +73,8 @@ namespace Gamebox
 
         private void OnCardChanged(CardType cardType)
         {
-            _inventoryCards.Find(card => card.CardType == cardType).Display(cardType, isCellPlaced: false);
+            _inventoryCards.Find(card => card.CardType == cardType)
+                .Display(cardType, CardView.DisplayType.Inventory);
         }
 
         

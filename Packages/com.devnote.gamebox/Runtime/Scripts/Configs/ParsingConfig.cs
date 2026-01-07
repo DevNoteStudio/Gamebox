@@ -11,6 +11,7 @@ namespace Gamebox
         {
             ParseLeagues(tables[TableKey.Leagues]);
             ParseShop(tables[TableKey.Shop]);
+            _cardDataList = ParseCards(tables[TableKey.Cards]);
         }
 
         private void ParseLeagues(Table leaguesTable)
@@ -114,6 +115,37 @@ namespace Gamebox
 
             return boxData;
         }
+
+
+        private List<CardData> ParseCards(Table cardTable)
+        {
+            List<Column> levelColumns = new List<Column> 
+            { 
+                Column.D, Column.E, Column.F, Column.G, Column.H, Column.I,
+                Column.J, Column.K, Column.L, Column.M, Column.N, Column.O,
+                Column.P, Column.Q, Column.R, Column.S,
+            };
+
+            var result = new List<CardData>();
+
+            for (int row = 7; row <= cardTable.Rows; row++)
+            {
+                var data = new CardData
+                {
+                    cardType = cardTable.Get(row, Column.A).ToEnum<CardType>(),
+                    rarityType = cardTable.Get(row, Column.B).ToEnum<RarityType>(),
+                    levelPowers = new List<int>()
+                };
+
+                foreach (var column in levelColumns)
+                    data.levelPowers.Add(cardTable.GetInt(row, column));
+
+                result.Add(data);
+            }
+
+            return result;
+        }
+
 
 
     }

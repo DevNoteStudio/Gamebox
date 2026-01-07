@@ -46,6 +46,9 @@ namespace Gamebox
             if (IGameState.Items.Get(ItemKey.Gems) >= price)
             {
                 IGameState.Items.Spend(ItemKey.Gems, price);
+
+                int coins = IConfigs.Gamebox.GetCoinsInsidePack(coinsPackIndex);
+                IGameState.Items.Add(ItemKey.Coins, coins);
                 return true;
             }
 

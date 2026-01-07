@@ -48,7 +48,7 @@ namespace Gamebox
 
             _nameText.text = Localization.GetLocalizedText($"{cardType}_name");
             _rarityText.text = Localization.GetLocalizedText($"{rarity}_card");
-            _rarityText.color = config.GetRarityTextColor(rarity);
+            _rarityText.color = IConfigs.Internal.GetRarityTextColor(rarity);
             _descriptionText.text = Localization.GetLocalizedText($"{cardType}_desc");
 
             bool upgradeAvailable = cardsState.GetAmountOnCurrentLevel(cardType) 

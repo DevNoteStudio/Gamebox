@@ -112,7 +112,7 @@ namespace Gamebox
 
             if (data == null)
             {
-                data = new CardData(cardType, level: 0, amount: 0, isNew: true);
+                data = new CardData(cardType, level: 1, amount: 0, isNew: true);
                 _cardDataList.Add(data);
             }  
 
@@ -160,26 +160,21 @@ namespace Gamebox
         {
             int level = GetCardData(cardType).level;
             int amount = GetCardData(cardType).amount;
-            int passedCards = 1;
+            int passedCards = 0;
 
             for (int passedLevel = 1; passedLevel < level; passedLevel++)
-                passedCards += (int)Mathf.Pow(2, passedLevel - 1);
+                passedCards += (int)Mathf.Pow(2, passedLevel);
 
             return amount - passedCards;
         }
 
         public int GetRequiredCardsOnCurrentLevel(CardType cardType) 
-            => (int)Mathf.Pow(2, GetCardData(cardType).level - 1);
+            => (int)Mathf.Pow(2, GetCardData(cardType).level);
 
 
         public void IncreaseAmount(CardType cardType, int value)
         {
-            var cardData = GetCardData(cardType);
-            cardData.amount += value;
-
-            if (cardData.level == 0) 
-                cardData.level = 1;
-
+            GetCardData(cardType).amount += value;
             OnCardChanged?.Invoke(cardType);
         }
 

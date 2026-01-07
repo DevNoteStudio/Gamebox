@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 
@@ -12,6 +11,7 @@ namespace Gamebox
 
         private void OnEnable()
         {
+            Debug.Log(transform.gameObject.name);
             menuController.Item.SetTabsActive(true, _tabType, transform as RectTransform);
         }
 

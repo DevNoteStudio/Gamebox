@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DevNote;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ namespace Gamebox
         [Serializable] private struct ItemData
         {
             public ItemKey itemKey;
-            public Sprite iconSprite;
             public bool hasTutorial;
             public string unlockNameLocalizationKey;
             public LeagueType requiredLeague;
@@ -29,6 +29,12 @@ namespace Gamebox
 
             itemKey = index != -1 ? _items[index].itemKey : default;
             return index != -1;
+        }
+
+        public List<ItemKey> GetAllBoosters()
+        {
+            var allItemKeys = Enum.GetValues(typeof(ItemKey)).Cast<ItemKey>().ToList();
+            return allItemKeys.FindAll(itemKey => itemKey.IsBooster());
         }
 
 

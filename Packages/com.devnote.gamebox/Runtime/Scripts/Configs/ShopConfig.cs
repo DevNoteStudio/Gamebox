@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DevNote;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Gamebox
     public partial class GameboxConfig // Shop
     {
 
-        [Serializable] private struct ShopBoxData
+        [Serializable] public struct ShopBoxData
         {
             public ItemKey boxItemKey;
             public bool buyForGems;
@@ -45,6 +46,21 @@ namespace Gamebox
 
             return text;
         }
+
+        public ShopBoxData GetBoxData(ItemKey boxItemKey)
+            => _shopBoxes.FindOrException(data => data.boxItemKey == boxItemKey);
+
+        public List<CardType> GetAllCardsSameRarity(RarityType rarityType)
+        {
+            var cardTypes = new List<CardType>();
+            var cardDataList = _cardDataList.FindAll((data) => data.rarityType == rarityType);
+
+            foreach (var cardData in cardDataList)
+                cardTypes.Add(cardData.cardType);
+
+            return cardTypes;
+        }
+
 
 
         public int GetBoxPrice(ItemKey boxItemKey, out bool buyForGems)

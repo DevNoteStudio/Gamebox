@@ -48,7 +48,7 @@ namespace Gamebox
             bool isCard = cardType != CardType.Locked && cardType != CardType.Empty;
 
             _card.gameObject.SetActive(isCard);
-            if (isCard) _card.Display(cardType, isCellPlaced: true);
+            if (isCard) _card.Display(cardType, CardView.DisplayType.Cell);
 
             _moreButton.gameObject.SetActive(showMoreButton);
         }

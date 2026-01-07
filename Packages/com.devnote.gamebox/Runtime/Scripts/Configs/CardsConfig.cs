@@ -11,15 +11,7 @@ namespace Gamebox
         {
             public CardType cardType;
             public RarityType rarityType;
-            public Sprite iconSprite;
             public List<int> levelPowers;
-        }
-
-        [Serializable] private struct RarityColor
-        { 
-            public RarityType rarityType;
-            public Color backgroundColor;
-            public Color textColor;
         }
 
 
@@ -55,16 +47,6 @@ namespace Gamebox
 
         public RarityType GetCardRarity(CardType cardType) 
             => _cardDataList.FindOrException(data => data.cardType == cardType).rarityType;
-
-        public Color GetRarityBackgroundColor(RarityType rarityType) 
-            => _rarityColors.FindOrException(data => data.rarityType == rarityType).backgroundColor;
-
-        public Color GetRarityTextColor(RarityType rarityType)
-            => _rarityColors.FindOrException(data => data.rarityType == rarityType).textColor;
-
-
-        public Sprite GetCardIconSprite(CardType cardType)
-            => _cardDataList.FindOrException(data => data.cardType == cardType).iconSprite;
 
         public int GetCardUpgradePrice(int level)
         {

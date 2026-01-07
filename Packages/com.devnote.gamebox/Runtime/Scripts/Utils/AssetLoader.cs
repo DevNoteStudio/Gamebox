@@ -11,6 +11,9 @@ namespace Gamebox
         public static async UniTask<Sprite> LoadItemSprite(ItemKey itemKey) 
             => await Addressables.LoadAssetAsync<Sprite>($"{itemKey}_sprite");
 
+        public static async UniTask<Sprite> LoadCardSprite(CardType cardType)
+            => await Addressables.LoadAssetAsync<Sprite>($"Cards/{cardType}");
+
 
         public enum BoxSpriteType { Closed, Opened, FrontOpened }
         public static async UniTask<Sprite> LoadBoxSprite(ItemKey itemKey, BoxSpriteType spriteType)
