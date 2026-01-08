@@ -81,7 +81,7 @@ namespace Gamebox
             _newMark.SetActive(displayType == DisplayType.Inventory && !isLocked && IGameState.Cards.IsNew(cardType));
             _activeMark.SetActive(displayType == DisplayType.Inventory && IGameState.Cards.IsActive(cardType));
 
-            _infoButton.interactable = !isLocked;
+            _infoButton.image.raycastTarget = !isLocked && displayType != DisplayType.OpenBox;
 
             int cardsAmount = IGameState.Cards.GetAmountOnCurrentLevel(cardType);
             int cardsRequire = IGameState.Cards.GetRequiredCardsOnCurrentLevel(cardType);

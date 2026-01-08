@@ -1,5 +1,7 @@
+using System;
 using Coffee.UIExtensions;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +16,9 @@ namespace Gamebox
         [SerializeField] private UIParticle _flashParticle;
         [SerializeField] private RectTransform _startPositionRect;
         [SerializeField] private RectTransform _openedPositionRect;
+        [SerializeField] private GameObject _counterObject;
+        [SerializeField] private TextMeshProUGUI _itemsLeftText;
+        [SerializeField] private GameObject _promptObject;
 
         private RectTransform RectTransform => transform as RectTransform;
 
@@ -42,18 +47,24 @@ namespace Gamebox
 
         public void AnimateShow()
         {
+            _promptObject.SetActive(true);
+            _counterObject.SetActive(false);
+
             RectTransform.SetParent(_startPositionRect);
             RectTransform.localPosition = Vector3.zero;
             RectTransform.localScale = Vector3.zero;
 
             _currentTween = RectTransform.DOScale(1f, SHOW_DURATION).SetEase(Ease.OutBack);
             _currentTween.OnKill(() => RectTransform.localScale = Vector3.one);
-
         }
 
 
-        public void AnimateOpen()
+        public void AnimateOpen(int itemsLeft, Action onOpened)
         {
+            _promptObject.SetActive(false);
+
+            _itemsLeftText.text = itemsLeft.ToString();
+
             RectTransform.SetParent(_openedPositionRect);
 
             _currentTween?.Kill();
@@ -66,6 +77,8 @@ namespace Gamebox
                     _openedFrontImage.gameObject.SetActive(true);
                     _shineParticle.gameObject.SetActive(true);
                     _flashParticle.Play();
+                    _counterObject.SetActive(itemsLeft > 0);
+                    onOpened?.Invoke();
                 })
                 .Append(RectTransform.DOLocalMove(Vector3.zero, MOVE_DURATION).SetEase(Ease.OutFlash))
                 .Join(RectTransform.DOScale(MOVED_BOX_SCALE, MOVE_DURATION).SetEase(Ease.OutFlash));
@@ -73,8 +86,11 @@ namespace Gamebox
             _currentTween.OnKill(() => RectTransform.localPosition = Vector3.zero);
         }
 
-        public void AnimatePushCard()
+        public void AnimatePushCard(int itemsLeft)
         {
+            _counterObject.SetActive(itemsLeft > 0);
+            _itemsLeftText.text = itemsLeft.ToString();
+
             _flashParticle.Play();
 
             _currentTween?.Kill();

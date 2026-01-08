@@ -18,19 +18,31 @@ MonoBehaviour:
   m_GUID: 903fa343395ba314f84626e0a6cf966a
   m_SerializeEntries:
   - m_GUID: fa612b874f8efb74d8490fc83ae7a9d0
-    m_Address: GemRewarder_card
+    m_Address: Cards/GemRewarder
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 09a8531c560451a46bbffbb9ccb8dc7a
-    m_Address: Reviver_card
+    m_Address: Cards/Reviver
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: c5f9a5ef3080ec940b86b85465038551
-    m_Address: RatingMultiplier_card
+    m_Address: Cards/RatingMultiplier
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: c867abe692228d742b596824def552a2
-    m_Address: CoinsMultiplier_card
+    m_Address: Cards/CoinsMultiplier
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f976fa8d77933d41bc95e3cb3ea8cc5
+    m_Address: Cards/FreeBooster1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5dd37c7af71e3e4484135dfc2cddf3a
+    m_Address: Cards/FreeBooster2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7724d6411b33fd449afc5bf2decf5a66
+    m_Address: Cards/FreeBooster3
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

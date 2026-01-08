@@ -18,39 +18,51 @@ MonoBehaviour:
   m_GUID: cf84e51f02fb06c4d87f83f35e0f4c16
   m_SerializeEntries:
   - m_GUID: f7497d4524584d94f95d9e1c1873c8c1
-    m_Address: RareCard_sprite
+    m_Address: Items/RareCard
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 24ee9b92f6ff43f41896669777ff3279
-    m_Address: EpicBox_sprite
+    m_Address: Items/EpicBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b8b8a1ac9352de44ea372dfc256dc767
-    m_Address: RareBox_sprite
+    m_Address: Items/RareBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 17d3534a0d0529b43bbffbc87b6556d6
-    m_Address: CommonBox_sprite
+    m_Address: Items/CommonBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d3e06c07b0a8ee54c985a4d64920be7f
-    m_Address: Gems_sprite
+    m_Address: Items/Gems
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 6478cfddaf7c0814db19185ac650ebc7
-    m_Address: Coins_sprite
+    m_Address: Items/Coins
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 8ce5543f4e9f5cb4286ebf212a02b46c
-    m_Address: EpicCard_sprite
+    m_Address: Items/EpicCard
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3dc723f6b842b5f4d953a03e675cc65c
-    m_Address: LegendaryCard_sprite
+    m_Address: Items/LegendaryCard
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: be4fc7e05570ed64b9aca45b80d3097b
-    m_Address: LocationsUnlocked_sprite
+    m_Address: Items/LocationsUnlocked
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ba5f147067557448a5c69fe1a424df9
+    m_Address: Items/Booster1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a879fdb0a6b1d94a8a5bddd6a3102de
+    m_Address: Items/Booster2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 94a5b72be8156864096158212c87a805
+    m_Address: Items/Booster3
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

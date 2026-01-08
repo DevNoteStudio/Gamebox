@@ -13,17 +13,7 @@ MonoBehaviour:
   m_Name: '- Gamebox -'
   m_EditorClassIdentifier: 
   <TestEnabled>k__BackingField: 1
-  _items:
-  - itemKey: 0
-    hasTutorial: 0
-    unlockNameLocalizationKey: 
-    requiredLeague: 0
-    startAmount: 0
-  - itemKey: 2
-    hasTutorial: 0
-    unlockNameLocalizationKey: locations_unlocked
-    requiredLeague: 0
-    startAmount: 0
+  _tutorialItems: 
   _locations:
   - previewSprite: {fileID: 21300000, guid: 44ba2b80c2ed3604ea7422f5859260db, type: 3}
     levels: 15
@@ -220,6 +210,7 @@ MonoBehaviour:
   <ReviveFromLevel>k__BackingField: 0
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3
   _interstitialsFromLevel: 5
+  _menuFromLeague: 0
   <GameRateReward>k__BackingField:
     itemKey: 0
     amount: 500

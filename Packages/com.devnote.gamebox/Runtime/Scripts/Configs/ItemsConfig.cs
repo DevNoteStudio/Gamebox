@@ -17,19 +17,8 @@ namespace Gamebox
             public int startAmount;
         }
 
-        public string GetItemUnlockName(ItemKey itemKey)
-        {
-            string key = _items.Find(data => data.itemKey == itemKey).unlockNameLocalizationKey;
-            return Localization.GetLocalizedText(key);
-        }
+        public string GetItemUnlockName(ItemKey itemKey) => Localization.GetLocalizedText($"{itemKey}_unlocked");
 
-        public bool TryGetUnlockedItem(LeagueType leagueType, out ItemKey itemKey)
-        {
-            int index = _items.FindIndex(data => data.requiredLeague == leagueType);
-
-            itemKey = index != -1 ? _items[index].itemKey : default;
-            return index != -1;
-        }
 
         public List<ItemKey> GetAllBoosters()
         {
@@ -38,31 +27,19 @@ namespace Gamebox
         }
 
 
-        public int GetItemStartAmount(ItemKey itemKey)
-            => _items.Find(data => data.itemKey == itemKey).startAmount;
-
-
         public string GetItemName(ItemKey itemKey)
             => Localization.GetLocalizedText($"{itemKey}_name");
 
         public string GetItemTutorialDescription(ItemKey itemKey)
             => Localization.GetLocalizedText($"{itemKey}_tutor_desc");
 
-        public bool ItemIsAvailable(ItemKey itemKey)
-        {
-            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
-            var itemData = _items.Find(data => data.itemKey == itemKey);
-
-            return currentLeague >= itemData.requiredLeague;
-        }
-
 
         public bool TryGetItemForTutorial(out ItemKey resultItemKey)
         {
-            foreach (var itemKey in IConfigs.Gamebox.GetTutorialItemKeys())
+            foreach (var itemKey in _tutorialItems)
             {
-                bool showTutorial = IGameState.ItemTutorials.IsCompleted(itemKey) == false
-                    && IConfigs.Gamebox.ItemIsAvailable(itemKey);
+                bool showTutorial = !IGameState.ItemTutorials.IsCompleted(itemKey)
+                    && IGameState.Items.IsUnlocked(itemKey);
 
                 if (showTutorial)
                 {
@@ -74,16 +51,6 @@ namespace Gamebox
             return false;
         }
 
-
-
-        public List<ItemKey> GetTutorialItemKeys()
-        {
-            var list = new List<ItemKey>();
-            foreach (var itemData in _items)
-                if (itemData.hasTutorial) list.Add(itemData.itemKey);
-
-            return list;
-        }
 
 
     }

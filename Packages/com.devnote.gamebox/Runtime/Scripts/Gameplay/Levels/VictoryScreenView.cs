@@ -192,11 +192,7 @@ namespace Gamebox
             UI.ScreenFade(onCompleted: () =>
             {
                 levelController.Item.HideVictoryScreen();
-                levelController.Item.StartNextLevelOrShowLevelSelection();
-
-                if (IConfigs.Gamebox.LocationTutorialIsAvailable)
-                    popupController.Item.ShowLocationsTutorialWindow();
-
+                levelController.Item.StartNextLevelOrShowMenu();
                 rollupController.Item.RollupCoins(_totalRewardCoins);
             });
         }

@@ -39,11 +39,11 @@ namespace Gamebox
         }
 
 
-        public void StartNextLevelOrShowLevelSelection()
+        public void StartNextLevelOrShowMenu()
         {
             bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
-            if (IConfigs.Gamebox.LocationTutorialIsAvailable)
+            if (IConfigs.Gamebox.MenuAvailable)
             {
                 menuController.ShowLocationsScreen(CurrentLocationIndex);
                 OnLevelExit?.Invoke();

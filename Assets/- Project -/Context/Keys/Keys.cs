@@ -16,11 +16,11 @@ public enum CardType
 public enum ItemKey
 {
     Coins = 0,
-    Stars = 1,
-    LocationsUnlocked = 2,
     Gems = 3,
 
-    Booster = 10,
+    Booster1 = 10,
+    Booster2 = 11,
+    Booster3 = 12,
 
     CommonBox = 4, RareBox = 5, EpicBox = 6,
     RareCard = 7, EpicCard = 8, LegendaryCard = 9,
@@ -29,7 +29,7 @@ public enum ItemKey
 
 public static class ItemKeyExtension
 {
-    public static bool IsBooster(this ItemKey itemKey) => itemKey == ItemKey.Booster;
+    public static bool IsBooster(this ItemKey itemKey) => itemKey == ItemKey.Booster1;
 }
 
 

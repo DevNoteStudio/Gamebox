@@ -57,7 +57,6 @@ namespace Gamebox
         private void OnSubmitButtonClick()
         {
             IGameState.ItemTutorials.SetCompleted(_itemKey, true);
-            IGameState.Items.Add(_itemKey, IConfigs.Gamebox.GetItemStartAmount(_itemKey));
             popupController.Item.HidePopup(PopupType.ItemTutorial);
         }
 

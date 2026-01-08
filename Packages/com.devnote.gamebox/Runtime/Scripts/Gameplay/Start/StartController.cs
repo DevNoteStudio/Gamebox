@@ -19,20 +19,13 @@ namespace Gamebox
 
         void IStartHandler.Start()
         {
-            ConvertStarsToRating();
-
             int locationIndex = IGameState.LastPlayLocationIndex.Value;
 
-            if (IConfigs.Gamebox.ItemIsAvailable(ItemKey.LocationsUnlocked))
-            {
+            if (IConfigs.Gamebox.MenuAvailable)
                 menuController.ShowLocationsScreen(locationIndex);
-                //menuController.SetTabsActive(true, TabType.Locations);
-                if (IConfigs.Gamebox.LocationTutorialIsAvailable)
-                    popupController.ShowLocationsTutorialWindow();
-            }
+
             else
             {
-                // menuController.SetTabsActive(false);
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(locationIndex);
                 levelController.StartLevel(locationIndex, levelIndex);
             }
@@ -40,14 +33,6 @@ namespace Gamebox
             
         }
 
-
-        private void ConvertStarsToRating()
-        {
-            int stars = IGameState.Items.Get(ItemKey.Stars);
-            IGameState.Items.Set(ItemKey.Stars, 0);
-
-            IGameState.Rating.Value += stars * 50;
-        }
 
 
     }

@@ -45,6 +45,10 @@ namespace Gamebox
                 .levelPowers[level - 1];
         }
 
+        public string GetCardName(CardType cardType) => Localization.GetLocalizedText($"{cardType}_name");
+        public string GetRarityName(RarityType rarityType) => Localization.GetLocalizedText($"{rarityType}_card");
+
+
         public RarityType GetCardRarity(CardType cardType) 
             => _cardDataList.FindOrException(data => data.cardType == cardType).rarityType;
 

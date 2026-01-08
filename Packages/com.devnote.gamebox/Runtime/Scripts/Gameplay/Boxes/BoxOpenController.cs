@@ -64,13 +64,14 @@ namespace Gamebox
             foreach (var boosterAmount in boosters)
                 IGameState.Items.Add(boosterAmount.Key, boosterAmount.Value);
 
-            /*
             boxOpenScreenViewer.ShowExpand(UI.Container)
                 .Display(boxItemKey, cards, boosters).AnimateShow();
-            */
 
             return true;
         }
+
+        public void HideBoxOpenScreen() => boxOpenScreenViewer.Hide();
+
 
 
         private void GenerateBoxReward(ItemKey boxItemKey, int boxAmount, 

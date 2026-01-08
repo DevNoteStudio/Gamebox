@@ -101,14 +101,6 @@ namespace Gamebox
             if (showUnlockedLocation)
                 _unlockedLocationWidget.DisplayUnlockedLocation(unlockedLocationIndex);
 
-            bool showUnlockedItem = IConfigs.Gamebox.TryGetUnlockedItem
-                (nextLeague, out ItemKey unlockedItemKey);
-
-            _unlockedItemWidget.gameObject.SetActive(showUnlockedItem);
-
-            if (showUnlockedItem)
-                _unlockedItemWidget.DisplayUnlockedItem(unlockedItemKey);
-
             _rewards = IConfigs.Gamebox.GetLeagueRewardItems(nextLeague);
 
             _rewardItemWidgetsPool.Clear();

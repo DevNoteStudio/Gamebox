@@ -27,9 +27,7 @@ namespace Gamebox
 
         public PauseWindowView Display()
         {
-            bool locationsUnlocked = IConfigs.Gamebox.ItemIsAvailable(ItemKey.LocationsUnlocked);
-            _menuButton.gameObject.SetActive(locationsUnlocked);
-
+            _menuButton.gameObject.SetActive(IConfigs.Gamebox.MenuAvailable);
             return this;
         }
 

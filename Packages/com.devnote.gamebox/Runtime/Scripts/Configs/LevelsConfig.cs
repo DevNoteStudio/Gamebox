@@ -38,10 +38,6 @@ namespace Gamebox
             return index != -1;
         }
 
-        public bool LocationTutorialIsAvailable => 
-            !IGameState.ItemTutorials.IsCompleted(ItemKey.LocationsUnlocked)
-            && ItemIsAvailable(ItemKey.LocationsUnlocked);
-
 
 
     }

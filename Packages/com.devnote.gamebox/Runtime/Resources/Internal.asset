@@ -17,8 +17,8 @@ MonoBehaviour:
     backgroundColor: {r: 0.4862745, g: 0.4862745, b: 0.4862745, a: 1}
     textColor: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
   - rarityType: 1
-    backgroundColor: {r: 0.29411766, g: 0.7921569, b: 1, a: 1}
-    textColor: {r: 0.40392157, g: 0.8235294, b: 1, a: 1}
+    backgroundColor: {r: 0.090459146, g: 0.64192176, b: 0.87169814, a: 1}
+    textColor: {r: 0.3075471, g: 0.79499763, b: 1, a: 1}
   - rarityType: 2
     backgroundColor: {r: 0.73333335, g: 0.3764706, b: 1, a: 1}
     textColor: {r: 1, g: 0.5882353, b: 0.94117653, a: 1}
