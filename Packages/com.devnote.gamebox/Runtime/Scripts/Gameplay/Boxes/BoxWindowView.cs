@@ -35,7 +35,7 @@ namespace Gamebox
         {
             _boxItemKey = boxItemKey;
 
-            _titleText.text = Localization.GetLocalizedText($"{boxItemKey}_name");
+            _titleText.text = IConfigs.Gamebox.GetBoxName(boxItemKey);
             _descriptionText.text = IConfigs.Gamebox.GetBoxDescription(boxItemKey);
             _boxIconImage.LoadSprite(AssetLoader.LoadItemSprite(boxItemKey));
 

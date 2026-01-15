@@ -12,6 +12,8 @@ namespace Gamebox
             this.itemKey = itemKey;
             this.amount = amount;
         }
+
+        public ItemPack Set(int amount) => new ItemPack(itemKey, amount);
     }
 }
 

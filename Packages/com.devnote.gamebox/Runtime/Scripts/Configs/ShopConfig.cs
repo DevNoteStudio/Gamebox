@@ -21,6 +21,8 @@ namespace Gamebox
         }
 
 
+        public string GetBoxName(ItemKey boxItemKey) => Localization.GetLocalizedText($"{boxItemKey}_name");
+
         public string GetBoxDescription(ItemKey boxItemKey)
         {
             string GetDescriptionPoint(Vector2Int minMax, int spriteIndex, string localizationKey) 

@@ -22,12 +22,7 @@ namespace Gamebox
             image.color = image.color.SetAlpha(alpha);
         }
 
-        public static T FindOrException<T>(this List<T> list, Predicate<T> predicate)
-        {
-            int index = list.FindIndex(predicate);
-            if (index == -1) throw new Exception("List doesn't contain the desired value!");
-            return list[index];
-        }
+        
 
         public static T Attach<T>(this T tween, GameObject target) where T : Tween
             => tween.SetLink(target, LinkBehaviour.KillOnDisable);

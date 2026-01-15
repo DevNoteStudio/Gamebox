@@ -74,8 +74,11 @@ namespace Gamebox
             _stopRouletteButton.onClick.AddListener(OnStopRouletteButtonClick);
         }
 
-        public void Display(int stars, int fromRating, int toRating, List<ItemPack> rewards, bool showBonus)
+        public void Display(int stars, int fromRating, int toRating, List<ItemPack> rewards)
         {
+            bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel
+                && ads.Item.RewardedAvailable;
+
             _stars = stars;
             _showBonus = showBonus;
             _bonusRect.gameObject.SetActive(showBonus);

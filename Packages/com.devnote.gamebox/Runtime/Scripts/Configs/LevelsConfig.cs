@@ -9,7 +9,6 @@ namespace Gamebox
     {
         [Serializable] private struct LocationData
         {
-            public Sprite previewSprite;
             public int levels;
             public LeagueType leagueRequire;
             public float coinsMultiplier;
@@ -27,8 +26,6 @@ namespace Gamebox
 
         public LeagueType GetLocationLeagueRequire(int locationIndex) 
             => _locations[locationIndex].leagueRequire;
-
-        public Sprite GetLocationPreviewSprite(int locationIndex) => _locations[locationIndex].previewSprite;
 
         public bool TryGetUnlockedLocation(LeagueType leagueType, out int locationIndex)
         {

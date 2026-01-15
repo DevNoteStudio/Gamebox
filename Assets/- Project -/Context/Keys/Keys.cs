@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+
+
 public enum CardType
 {
     Locked = -1,
@@ -29,7 +32,23 @@ public enum ItemKey
 
 public static class ItemKeyExtension
 {
-    public static bool IsBooster(this ItemKey itemKey) => itemKey == ItemKey.Booster1;
+    private static readonly List<ItemKey> BOOSTERS = new List<ItemKey>() 
+    { 
+        ItemKey.Booster1, ItemKey.Booster2, ItemKey.Booster3 
+    };
+
+    private static readonly List<ItemKey> BOXES = new List<ItemKey>()
+    {
+        ItemKey.CommonBox, ItemKey.RareBox, ItemKey.RareBox,
+        ItemKey.RareCard, ItemKey.EpicCard, ItemKey.LegendaryCard,
+    };
+
+
+    public static bool IsBooster(this ItemKey itemKey) => BOOSTERS.Contains(itemKey);
+    public static bool IsBox(this ItemKey itemKey) => BOXES.Contains(itemKey);
+
+
+
 }
 
 
@@ -68,13 +87,7 @@ public enum LeaderboardKey
 public enum ProductKey
 {
     NoAds = 0,
-    Gems1 = 1, 
-    Gems2 = 2, 
-    Gems3 = 3, 
-    Gems4 = 4, 
-    Gems5 = 5, 
-    Gems6 = 6,
-
+    Gems1 = 1, Gems2 = 2, Gems3 = 3, Gems4 = 4, Gems5 = 5, Gems6 = 6
 }
 
 public enum RemoteKey

@@ -88,6 +88,14 @@ namespace Gamebox
         public void Add(ItemKey itemKey, int amount) => Set(itemKey, Get(itemKey) + amount);
         public bool Has(ItemKey itemKey) => Get(itemKey) > 0;
 
+        public void Unlock(ItemKey itemKey)
+        {
+            var itemData = GetItemData(itemKey);
+            itemData.isUnlocked = true;
+            itemData.onChanged?.Invoke();
+            OnChanged?.Invoke(itemKey);
+        }
+
 
         public void Subscribe(ItemKey itemKey, Action onChanged) 
             => GetItemData(itemKey).onChanged += onChanged;

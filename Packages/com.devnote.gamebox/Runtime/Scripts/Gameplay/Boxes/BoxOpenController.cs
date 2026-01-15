@@ -130,6 +130,12 @@ namespace Gamebox
                 }
 
                 var allBoosterTypes = IConfigs.Gamebox.GetAllBoosters();
+                ItemKey firstBooster = allBoosterTypes[0];
+                allBoosterTypes.RemoveAll(boosterItemKey => !IGameState.Items.IsUnlocked(boosterItemKey));
+
+                if (allBoosterTypes.Count == 0)
+                    allBoosterTypes.Add(firstBooster);
+
                 allBoosterTypes.Shuffle();
 
                 var selectedBoosterTypes = new List<ItemKey>();
