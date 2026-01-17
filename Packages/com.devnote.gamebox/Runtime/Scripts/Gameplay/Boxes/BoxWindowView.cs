@@ -16,6 +16,8 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _openMultyButtonText;
         [SerializeField] private Image _boxIconImage;
 
+        public Button TutorialOpenButton => _openSingleButton;
+
         private ItemKey _boxItemKey;
         private int _multiAmount;
 
@@ -49,11 +51,11 @@ namespace Gamebox
                 int spriteIndex = buyForGems ? 1 : 0;
 
                 _openSingleButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
-                    $"<size=75%>õ</size>1</size>\n<sprite={spriteIndex}>{price}";
+                    $"<size=75%>ï¿½</size>1</size>\n<sprite={spriteIndex}>{price}";
 
                 _multiAmount = 10;
                 _openMultyButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
-                    $"<size=75%>õ</size>{_multiAmount}</size>\n<sprite={spriteIndex}>{price * 10}";
+                    $"<size=75%>ï¿½</size>{_multiAmount}</size>\n<sprite={spriteIndex}>{price * 10}";
             }
             else
             {

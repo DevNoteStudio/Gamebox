@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DevNote;
 using UnityEngine;
@@ -6,6 +7,8 @@ namespace Gamebox
 {
     public class BoxOpenController
     {
+        public event Action OnBoxOpenFinished;
+
         private readonly Viewer<BoxOpenScreenView> boxOpenScreenViewer;
 
 
@@ -84,7 +87,7 @@ namespace Gamebox
 
                 int totalCardAmount = 0;
                 for (int i = 0; i < boxAmount; i++)
-                    totalCardAmount += Random.Range(minMax.x, minMax.y + 1);
+                    totalCardAmount += UnityEngine.Random.Range(minMax.x, minMax.y + 1);
 
                 int cardTypesAmount = 1;
                 for (int i = 0; i < SAME_RARE_AMOUNTS.Count; i++)
@@ -120,7 +123,7 @@ namespace Gamebox
 
                 int totalAmount = 0;
                 for (int i = 0; i < boxAmount; i++)
-                    totalAmount += Random.Range(minMax.x, minMax.y + 1);
+                    totalAmount += UnityEngine.Random.Range(minMax.x, minMax.y + 1);
 
                 int boosterTypesAmount = 1;
                 for (int i = 0; i < SAME_BOOSTER_AMOUNTS.Count; i++)

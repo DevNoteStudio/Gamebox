@@ -5,8 +5,8 @@ namespace Gamebox
 {
     public class ShopController
     {
-        private readonly Viewer<ShopScreenView> shopScreenViewer;
-        private readonly Viewer<BoxWindowView> boxWindowViewer;
+        private readonly Viewer<ShopScreenView> shopScreenViewer; public ShopScreenView ShopScreen => shopScreenViewer.View;
+        private readonly Viewer<BoxWindowView> boxWindowViewer; public BoxWindowView BoxWindow => boxWindowViewer.View;
         private readonly IPurchase purchase;
 
 

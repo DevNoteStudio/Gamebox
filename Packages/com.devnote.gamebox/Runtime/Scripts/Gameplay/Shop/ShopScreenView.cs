@@ -8,6 +8,7 @@ namespace Gamebox
     public class ShopScreenView : MonoBehaviour
     {
         [SerializeField] private Image _topPanelImage;
+        [field: SerializeField] public ShopBoxView TutorialBox { get; private set; }
         [SerializeField] private List<GridLayoutGroup> _grids;
 
         private readonly Vector2 PORTRAIT_CELL_SIZE = new Vector2(330, 400);

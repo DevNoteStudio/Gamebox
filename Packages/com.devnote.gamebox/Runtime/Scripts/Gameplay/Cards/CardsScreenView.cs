@@ -52,6 +52,8 @@ namespace Gamebox
         }
 
 
+        public CardView GetInventoryCard(CardType cardType) 
+            => _inventoryCards.FindOrException(card => card.CardType == cardType);
 
 
         private void CreateCards()

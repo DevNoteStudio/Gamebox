@@ -5,8 +5,9 @@ namespace Gamebox
 {
     public class MenuController
     {
-        private readonly Viewer<TabsView> tabsViewer;
-        private readonly Viewer<LocationsScreenView> locationsScreenViewer;
+        private readonly Viewer<TabsView> tabsViewer; public TabsView Tabs => tabsViewer.View;
+        private readonly Viewer<LocationsScreenView> locationsScreenViewer; 
+        public LocationsScreenView LocationsScreen => locationsScreenViewer.View;
         private readonly Viewer<LevelsScreenView> levelsScreenViewer;
         private readonly Viewer<ItemTutorialWindowView> itemTutorialWindowViewer;
 

@@ -11,7 +11,7 @@ namespace Gamebox
 
     public class CardView : MonoBehaviour
     {
-        [SerializeField] private Button _infoButton;
+        [SerializeField] private Button _infoButton; public Button OpenButton => _infoButton;
         [SerializeField] private Image _backgroundImage;
         [SerializeField] private Image _iconImage;
         [SerializeField] private TextMeshProUGUI _descriptionText;

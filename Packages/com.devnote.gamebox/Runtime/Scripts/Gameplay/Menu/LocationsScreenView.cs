@@ -23,7 +23,7 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _leagueRequireStageText;
         [SerializeField] private Button _previousButton;
         [SerializeField] private Button _nextButton;
-        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _playButton; public Button PlayButton => _playButton;
         [SerializeField] private Button _levelsButton;
 
         private Pool<Image> _previewPool;

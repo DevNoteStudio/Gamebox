@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using DevNote;
 using TMPro;
 using UnityEngine;
@@ -13,7 +11,7 @@ namespace Gamebox
         [SerializeField] private GameObject _amountMarker;
         [SerializeField] private TextMeshProUGUI _amountText;
         [SerializeField] private TextMeshProUGUI _openButtonText;
-        [SerializeField] private Button _openButton;
+        [SerializeField] private Button _openButton; public Button OpenButton => _openButton;
 
         private readonly Holder<ShopController> shopController = new();
 

@@ -19,8 +19,8 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private GameObject _arrowObject;
         [SerializeField] private Button _closeButton;
-        [SerializeField] private Button _upgradeButton;
-        [SerializeField] private Button _takeButton;
+        [SerializeField] private Button _upgradeButton; public Button UpgradeButton => _upgradeButton;
+        [SerializeField] private Button _takeButton; public Button TakeButton => _takeButton;
         [SerializeField] private Button _removeButton;
         [SerializeField] private Material _upgradeAvailableMaterial;
         [SerializeField] private Material _upgradeNotAvailableMaterial;

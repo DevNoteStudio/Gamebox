@@ -6,8 +6,8 @@ namespace Gamebox
     public class CardsController
     {
         
-        private readonly Viewer<CardsScreenView> cardsScreenViewer;
-        private readonly Viewer<CardInfoWindowView> cardInfoWindowViewer;
+        private readonly Viewer<CardsScreenView> cardsScreenViewer; public CardsScreenView CardsScreen => cardsScreenViewer.View;
+        private readonly Viewer<CardInfoWindowView> cardInfoWindowViewer; public CardInfoWindowView CardInfoWindow => cardInfoWindowViewer.View;
         private readonly Viewer<UnlockCardCellWindowView> unlockCardCellWindowViewer;
 
 

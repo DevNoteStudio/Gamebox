@@ -24,6 +24,10 @@ namespace Gamebox
 
         }
 
+        public TabButtonView GetTabButton(TabType tabType) 
+            => _tabButtons.FindOrException(tabButton => tabButton.TabType == tabType);
+
+
         public void SetMarkerActive(TabType tabType, bool value)
             => _tabButtons.Find(tab => tab.TabType == tabType).SetMarker(value);
 

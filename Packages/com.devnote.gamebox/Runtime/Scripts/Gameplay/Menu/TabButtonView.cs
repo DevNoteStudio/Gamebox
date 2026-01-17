@@ -13,7 +13,7 @@ namespace Gamebox
         public readonly UnityEvent<TabButtonView> onClick = new();
 
         [field: SerializeField] public TabType TabType { get; private set; }
-        [SerializeField] private Button _button;
+        [SerializeField] private Button _button; public Button Button => _button;
         [SerializeField] private RectTransform _iconRect; public RectTransform IconRect => _iconRect;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private LayoutElement _layoutElement;
