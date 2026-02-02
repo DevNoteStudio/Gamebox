@@ -20,7 +20,6 @@ namespace Gamebox
         [SerializeField] private Button _takeButton;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private RectTransform _rewardRect;
-        [SerializeField] private SoundUnit _levelUpSound;
         [Space]
         [SerializeField] private LeagueRewardView _gemRewardView;
         [SerializeField] private LeagueRewardView _boxRewardView;
@@ -52,7 +51,7 @@ namespace Gamebox
 
             _shineParticle.Clear();
             _shineParticle.Stop();
-            _levelUpSound.Play();
+            Sound.Play(SoundName.LeagueLevelUp);
 
             _leagueStageText.text = config.GetLeagueStageSymbol(previousLeague);
             _leagueIconImage.sprite = config.GetLeagueSprite(previousLeague);

@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using DevNote;
-using DG.Tweening;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,39 +47,19 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            _boxView.AnimateShow();
+            _interactButton.interactable = false;
+
+            _boxView.AnimateShow(onCompleted: () => _interactButton.interactable = true);
             _cardView.gameObject.SetActive(false);
             _boosterAnimation.gameObject.SetActive(false);
+            
         }
 
 
 
         private void OnInteractButtonClick()
         {
-            void AnimateShowNextItem()
-            {
-                if (_cardIndex < _cards.Count)
-                {
-                    var cardAmount = _cards[_cardIndex];
-
-                    _cardView.gameObject.SetActive(true);
-                    _cardView.Display(cardAmount.Item1, CardView.DisplayType.OpenBox);
-                    _cardAnimation.AnimateShowCard(cardAmount.Item1, cardAmount.Item2);
-
-                    _cardIndex++;
-                }
-                else if (_boosterIndex < _boosters.Count)
-                {
-                    var boosterAmount = _boosters[_boosterIndex];
-
-                    _cardView.gameObject.SetActive(false);
-                    _boosterAnimation.gameObject.SetActive(true);
-                    _boosterAnimation.AnimateShowBooster(boosterAmount.Item1, boosterAmount.Item2);
-
-                    _boosterIndex++;
-                }
-                else boxOpenController.Item.HideBoxOpenScreen();
-            }
+            _interactButton.interactable = false;
 
             int itemsLeft = (_cards.Count - _cardIndex) + (_boosters.Count - _boosterIndex) - 1;
 
@@ -93,6 +71,33 @@ namespace Gamebox
                 _boxView.AnimatePushCard(itemsLeft);
                 AnimateShowNextItem();
             }
+        }
+
+        private void AnimateShowNextItem()
+        {
+            if (_cardIndex < _cards.Count)
+            {
+                var cardAmount = _cards[_cardIndex];
+
+                _cardView.gameObject.SetActive(true);
+                _cardView.Display(cardAmount.Item1, CardView.DisplayType.OpenBox);
+                _cardAnimation.AnimateShowCard(cardAmount.Item1, cardAmount.Item2, _cardIndex,
+                    onCompleted: () => _interactButton.interactable = true);
+
+                _cardIndex++;
+            }
+            else if (_boosterIndex < _boosters.Count)
+            {
+                var boosterAmount = _boosters[_boosterIndex];
+
+                _cardView.gameObject.SetActive(false);
+                _boosterAnimation.gameObject.SetActive(true);
+                _boosterAnimation.AnimateShowBooster(boosterAmount.Item1, boosterAmount.Item2,
+                    onCompleted: () => _interactButton.interactable = true);
+
+                _boosterIndex++;
+            }
+            else boxOpenController.Item.HideBoxOpenScreen();
         }
 
 

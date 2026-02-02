@@ -13,6 +13,7 @@ namespace Gamebox
         public static ReactiveValue<int> LastPlayLevelIndex { get; private set; }
         public static ReactiveValue<bool> GameRated { get; private set; }
         public static ReactiveValue<int> Rating { get; private set; }
+        public static ReactiveValue<bool> BoxAndCardTutorialCompleted { get; private set; }
 
 
 
@@ -24,6 +25,7 @@ namespace Gamebox
         private const string ITEM_TUTORIALS = "tutors";
         private const string GAME_RATED = "rated";
         private const string CARDS = "cards";
+        private const string BOX_AND_CARD_TUTORIAL_COMPLETED = "boxCardTutorial";
 
 
         protected static void ParseState(Dictionary<string, string> data)
@@ -36,6 +38,7 @@ namespace Gamebox
             GameRated = new(data.GetValueOrDefault(GAME_RATED, "0").FromBinaryToBool());
             Rating = new(int.Parse(data.GetValueOrDefault(RATING, "0")));
             Cards = new(data.GetValueOrDefault(CARDS, string.Empty));
+            BoxAndCardTutorialCompleted = new(data.GetValueOrDefault(BOX_AND_CARD_TUTORIAL_COMPLETED, "0").FromBinaryToBool());
 
         }
 
@@ -49,6 +52,7 @@ namespace Gamebox
             { GAME_RATED, GameRated.Value.ToBinaryString() },
             { RATING, Rating.ToString() },
             { CARDS, Cards.ToString() },
+            { BOX_AND_CARD_TUTORIAL_COMPLETED, BoxAndCardTutorialCompleted.Value.ToBinaryString() },
         };
 
 

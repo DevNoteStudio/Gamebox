@@ -51,11 +51,11 @@ namespace Gamebox
                 int spriteIndex = buyForGems ? 1 : 0;
 
                 _openSingleButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
-                    $"<size=75%>�</size>1</size>\n<sprite={spriteIndex}>{price}";
+                    $"<size=75%>x</size>1</size>\n<sprite={spriteIndex}>{price}";
 
                 _multiAmount = 10;
                 _openMultyButtonText.text = $"<size=90%>{Localization.GetLocalizedText("buy")} " +
-                    $"<size=75%>�</size>{_multiAmount}</size>\n<sprite={spriteIndex}>{price * 10}";
+                    $"<size=75%>x</size>{_multiAmount}</size>\n<sprite={spriteIndex}>{price * 10}";
             }
             else
             {

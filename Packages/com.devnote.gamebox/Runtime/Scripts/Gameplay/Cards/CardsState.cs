@@ -119,7 +119,7 @@ namespace Gamebox
             return data;
         }
 
-        public bool IsNew(CardType cardType) => GetCardData(cardType).isNew;
+        public bool IsNew(CardType cardType) => GetCardData(cardType).isNew && Has(cardType);
 
         public void SetCardAsViewed(CardType cardType)
         {
@@ -150,6 +150,7 @@ namespace Gamebox
 
         public int GetLevel(CardType cardType) => GetCardData(cardType).level;
 
+
         public void IncreaseLevel(CardType cardType)
         {
             GetCardData(cardType).level++;
@@ -178,6 +179,20 @@ namespace Gamebox
             OnCardChanged?.Invoke(cardType);
         }
 
+        public bool UpgradeAvailable(CardType cardType)
+        {
+            int current = GetAmountOnCurrentLevel(cardType);
+            int required = GetRequiredCardsOnCurrentLevel(cardType);
+
+            return Has(cardType) && current >= required;
+        }
+
+
+        public void ResetCard(CardType cardType)
+        {
+            int index = _cardDataList.FindIndex(data => data.cardType == cardType);
+            if (index != -1) _cardDataList.RemoveAt(index);
+        }
 
 
     }

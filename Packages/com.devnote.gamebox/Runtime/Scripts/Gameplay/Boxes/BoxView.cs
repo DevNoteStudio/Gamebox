@@ -1,5 +1,6 @@
 using System;
 using Coffee.UIExtensions;
+using DevNote;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,9 @@ namespace Gamebox
         private RectTransform RectTransform => transform as RectTransform;
 
         private Tween _currentTween;
+        private bool _isBoxWithSingleCard = false;
+
+        private readonly Holder<SoundController> soundController = new();
 
 
         private const float SHOW_DURATION = 0.8f;
@@ -35,17 +39,22 @@ namespace Gamebox
         public void Display(ItemKey boxItemKey)
         {
             _closedImage.LoadSprite(AssetLoader.LoadBoxSprite(boxItemKey, AssetLoader.BoxSpriteType.Closed));
-            _openedImage.LoadSprite(AssetLoader.LoadBoxSprite(boxItemKey, AssetLoader.BoxSpriteType.Opened));
-            _openedFrontImage.LoadSprite(AssetLoader.LoadBoxSprite(boxItemKey, AssetLoader.BoxSpriteType.FrontOpened));
+
+            _isBoxWithSingleCard = boxItemKey.IsBoxWithSingleCard();
+
+            if (!_isBoxWithSingleCard)
+            {
+                _openedImage.LoadSprite(AssetLoader.LoadBoxSprite(boxItemKey, AssetLoader.BoxSpriteType.Opened));
+                _openedFrontImage.LoadSprite(AssetLoader.LoadBoxSprite(boxItemKey, AssetLoader.BoxSpriteType.FrontOpened));
+            }
 
             _closedImage.gameObject.SetActive(true);
             _openedImage.gameObject.SetActive(false);
             _openedFrontImage.gameObject.SetActive(false);
             _shineParticle.gameObject.SetActive(false);
-
         }
 
-        public void AnimateShow()
+        public void AnimateShow(Action onCompleted = null)
         {
             _promptObject.SetActive(true);
             _counterObject.SetActive(false);
@@ -56,11 +65,16 @@ namespace Gamebox
 
             _currentTween = RectTransform.DOScale(1f, SHOW_DURATION).SetEase(Ease.OutBack);
             _currentTween.OnKill(() => RectTransform.localScale = Vector3.one);
+            _currentTween.OnComplete(() => onCompleted?.Invoke());
         }
 
 
         public void AnimateOpen(int itemsLeft, Action onOpened)
         {
+            Sound.Play(SoundName.OpenLootbox);
+
+            soundController.Item.SetBoxCapacity(itemsLeft + 1);
+
             _promptObject.SetActive(false);
 
             _itemsLeftText.text = itemsLeft.ToString();
@@ -73,9 +87,14 @@ namespace Gamebox
                 .AppendCallback(() =>
                 {
                     _closedImage.gameObject.SetActive(false);
-                    _openedImage.gameObject.SetActive(true);
-                    _openedFrontImage.gameObject.SetActive(true);
-                    _shineParticle.gameObject.SetActive(true);
+
+                    if (!_isBoxWithSingleCard)
+                    {
+                        _openedImage.gameObject.SetActive(true);
+                        _openedFrontImage.gameObject.SetActive(true);
+                        _shineParticle.gameObject.SetActive(true);
+                    }
+
                     _flashParticle.Play();
                     _counterObject.SetActive(itemsLeft > 0);
                     onOpened?.Invoke();

@@ -20,7 +20,7 @@ namespace Gamebox
         public string GetItemUnlockName(ItemKey itemKey) => Localization.GetLocalizedText($"{itemKey}_unlocked");
 
 
-        public List<ItemKey> GetAllBoosters()
+        public List<ItemKey> GetAllBoosterTypes()
         {
             var allItemKeys = Enum.GetValues(typeof(ItemKey)).Cast<ItemKey>().ToList();
             return allItemKeys.FindAll(itemKey => itemKey.IsBooster());

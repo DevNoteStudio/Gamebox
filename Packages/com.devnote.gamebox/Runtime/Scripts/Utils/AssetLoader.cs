@@ -17,6 +17,10 @@ namespace Gamebox
             => await Addressables.LoadAssetAsync<Sprite>($"Locations/{locationIndex}");
 
 
+
+
+
+
         public enum BoxSpriteType { Closed, Opened, FrontOpened }
         public static async UniTask<Sprite> LoadBoxSprite(ItemKey itemKey, BoxSpriteType spriteType)
         {

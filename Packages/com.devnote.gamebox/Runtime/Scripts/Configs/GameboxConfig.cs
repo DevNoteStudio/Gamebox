@@ -18,6 +18,7 @@ namespace Gamebox
         [SerializeField] private List<LeagueData> _leagues;
         [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
+        [field: SerializeField] public int ReviveGemPrice { get; private set; }
         [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
         [SerializeField] private int _interstitialsFromLevel;
         [SerializeField] private LeagueType _menuFromLeague;

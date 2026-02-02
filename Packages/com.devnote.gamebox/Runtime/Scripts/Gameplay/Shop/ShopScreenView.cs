@@ -8,6 +8,7 @@ namespace Gamebox
     public class ShopScreenView : MonoBehaviour
     {
         [SerializeField] private Image _topPanelImage;
+        [field: SerializeField] public ScrollRect ScrollRect { get; private set; }
         [field: SerializeField] public ShopBoxView TutorialBox { get; private set; }
         [SerializeField] private List<GridLayoutGroup> _grids;
 

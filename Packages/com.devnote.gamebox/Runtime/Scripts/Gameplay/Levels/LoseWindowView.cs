@@ -1,6 +1,7 @@
 using System;
 using DevNote;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,13 @@ namespace Gamebox
 {
     public class LoseWindowView : MonoBehaviour
     {
-        [SerializeField] private SoundUnit _loseSound;
         [SerializeField] private RectTransform _windowRect;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private Button _reviveButton;
         [SerializeField] private Button _restartButton;
-        [SerializeField] private Button _skipButton;
+        [SerializeField] private Button _bottomRestartButton;
+        [SerializeField] private TextMeshProUGUI _reviveButtonText;
+        [SerializeField] private TextMeshProUGUI _revivesLeftText;
 
         private Tween _currentTween;
 
@@ -31,24 +33,47 @@ namespace Gamebox
         private void Start()
         {
             _restartButton.onClick.AddListener(OnRestartButtonClick);
-            _skipButton.onClick.AddListener(OnRestartButtonClick);
+            _bottomRestartButton.onClick.AddListener(OnRestartButtonClick);
             _reviveButton.onClick.AddListener(OnReviveButtonClick);
         }
 
-        public void Display(bool showRevive)
+        public LoseWindowView Display()
         {
-            _skipButton.gameObject.SetActive(showRevive);
-            _reviveButton.gameObject.SetActive(showRevive);
-            _restartButton.gameObject.SetActive(!showRevive);
+            bool reviveAvailable = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1;
+
+            _bottomRestartButton.gameObject.SetActive(reviveAvailable);
+            _reviveButton.gameObject.SetActive(reviveAvailable);
+            _restartButton.gameObject.SetActive(!reviveAvailable);
+
+            int revivesLeft = GetFreeRevives();
+            bool freeReviveAvailable = revivesLeft > 0;
+
+            _revivesLeftText.gameObject.SetActive(freeReviveAvailable);
+            _revivesLeftText.text = 
+                Localization.GetLocalizedText("revives_left").Replace("{VALUE}", revivesLeft.ToString());
+
+            _reviveButtonText.text = freeReviveAvailable ? 
+                Localization.GetLocalizedText("revive_button") :
+                $"{Localization.GetLocalizedText("revive_button")} <sprite=1>{IConfigs.Gamebox.ReviveGemPrice}";
+
+            return this;
+        }
+
+        private int GetFreeRevives()
+        {
+            int maxFreeRevives = IGameState.Cards.IsActive(CardType.Reviver) ?
+                IConfigs.Gamebox.GetCardPower(CardType.Reviver) : 0;
+
+            return maxFreeRevives - levelController.Item.ReviveCount;
         }
 
 
         public void AnimateShow()
         {
-            _loseSound.Play();
+            Sound.Play(SoundName.Lose);
 
             _windowRect.localScale = Vector3.zero;
-            _skipButton.transform.localScale = Vector3.zero;
+            _bottomRestartButton.transform.localScale = Vector3.zero;
             _titleRect.localPosition = Vector3.zero;
             _titleRect.localScale = new Vector3(0f, 1f, 1f);
 
@@ -57,13 +82,13 @@ namespace Gamebox
 
                 .Append(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
 
-                .AppendCallback(() => IConfigs.Gamebox.ShowSound.Play())
+                .AppendCallback(() => Sound.Play(SoundName.Show))
                 .Append(TweenHub.Show(_windowRect))
                 .Join(_titleRect.DOLocalMoveY(SHOW_TITLE_TO_LOCAL_Y, TITLE_MOVE_DURATION).SetEase(Ease.InOutFlash))
                 
 
                 .AppendInterval(DELAY_BEFORE_SHOW_SKIP_BUTTON)
-                .Append(TweenHub.Show(_skipButton.transform));
+                .Append(TweenHub.Show(_bottomRestartButton.transform));
         }
 
         public void AnimateHide(Action onCompleted)
@@ -80,11 +105,8 @@ namespace Gamebox
 
         private void OnReviveButtonClick()
         {
-            ads.Item.ShowRewarded(AdKey.LevelRevive, onRewarded: () =>
-            {
-                levelController.Item.Revive();
+            if (levelController.Item.TryRevive())
                 levelController.Item.HideLoseWindow(forceHide: false);
-            });
         }
 
         private void OnRestartButtonClick()
@@ -94,7 +116,7 @@ namespace Gamebox
                 int locationIndex = levelController.Item.CurrentLocationIndex;
                 int levelIndex = levelController.Item.CurrentLevelIndex;
 
-                levelController.Item.StartLevel(locationIndex, levelIndex);
+                levelController.Item.StartLevel(locationIndex, levelIndex, isRestart: true);
                 levelController.Item.HideLoseWindow(forceHide: true);
             });
         }

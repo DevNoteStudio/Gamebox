@@ -15,13 +15,26 @@ namespace Gamebox
 
         private readonly Holder<ShopController> shopController = new();
 
-        private void OnEnable() => Display();
+        private void OnEnable()
+        {
+            IGameState.Items.Subscribe(_boxItemKey, OnItemChanged);
+            Display();
+        }
+
+        private void OnDisable()
+        {
+            IGameState.Items.Dispose(_boxItemKey, OnItemChanged);
+        }
+
 
 
         private void Start()
         {
             _openButton.onClick.AddListener(OnOpenButtonClick);
         }
+
+        private void OnItemChanged() => Display();
+
 
         private void Display()
         {

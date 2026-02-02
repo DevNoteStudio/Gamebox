@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7569502432161496988}
   - component: {fileID: 7615870417825006230}
+  - component: {fileID: 6214095520335890917}
   - component: {fileID: 1722286435069142459}
   - component: {fileID: 8874949206293409571}
   m_Layer: 0
@@ -52,6 +53,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6214095520335890917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462574566349250821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87ec5ef73f295645bba2372c5b9c0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moreButtonActive: 0
 --- !u!114 &1722286435069142459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +111,7 @@ MonoBehaviour:
   _upgradeAvailableMaterial: {fileID: 2100000, guid: f1e238b2c2f34014dbd795e54f72912a, type: 2}
   _upgradeNotAvailableMaterial: {fileID: 2100000, guid: 3218db3fc6169d74e834a9553ca6ee91, type: 2}
   _upgradeNotAvailableText: {fileID: 8937215788254753649}
+  _upgradeTextColor: {r: 0.43529412, g: 1, b: 0.25490198, a: 1}
 --- !u!1 &3229852161856622804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,11 +1841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3673915235860360424, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3673915235860360424, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3673915235860360424, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -20,7 +20,7 @@ namespace Gamebox
 
         }
 
-        public void ShowCardsScreen() => cardsScreenViewer.ShowExpand(UI.Container).Display();
+        public void ShowCardsScreen() => cardsScreenViewer.ShowExpand(UI.Container);
         public void HideCardsScreen() => cardsScreenViewer.Hide();
 
         public void ShowUnlockCardCellWindow(int cellIndex) 

@@ -15,7 +15,6 @@ namespace Gamebox
         [SerializeField] private List<UIParticle> _starFlashParticles;
         [SerializeField] private List<UIParticle> _starShineParticles;
         [SerializeField] private List<Image> _starImages;
-        [SerializeField] private List<SoundUnit> _starSounds;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private Image _fadeImage;
         [SerializeField] private RectTransform _starsRect;
@@ -27,9 +26,6 @@ namespace Gamebox
         [SerializeField] private Button _skipButton;
         [SerializeField] private Button _takeButton;
         [SerializeField] private Button _stopRouletteButton;
-        [SerializeField] private SoundUnit _victorySound;
-        [SerializeField] private SoundUnit _confettiSound;
-        [SerializeField] private SoundUnit _rouletteStopSound;
         [SerializeField] private RectTransform _leagueRect;
         [SerializeField] private LeagueProgressView _leagueProgress;
         [SerializeField] private TextMeshProUGUI _leaguePromptText;
@@ -106,7 +102,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => _victorySound.Play());
+            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => Sound.Play(SoundName.Victory));
 
             _takeButton.gameObject.SetActive(false);
 
@@ -122,7 +118,7 @@ namespace Gamebox
 
                 .AppendCallback(() =>
                 {
-                    _confettiSound.Play();
+                    Sound.Play(SoundName.Confetti);
                     _confettiParticles.ForEach(particle => particle.Play());
                 })
 
@@ -143,7 +139,7 @@ namespace Gamebox
                     {
                         _starFlashParticles[index].Play();
                         _starShineParticles[index].Play();
-                        _starSounds[index].Play();
+                        Sound.Play(SoundName.Star(index + 1));
                     });
                 }
                 else _starImages[i].gameObject.SetActive(false);
@@ -177,7 +173,7 @@ namespace Gamebox
             if (_showBonus)
             {
                 sequence.AppendCallback(() => _roulette.StartSpin());
-                sequence.AppendCallback(() => IConfigs.Gamebox.ShowSound.Play());
+                sequence.AppendCallback(() => Sound.Play(SoundName.Show));
                 sequence.Append(TweenHub.Show(_bonusRect));
                 sequence.AppendInterval(DELAY_AFTER_ROULETTE);
                 sequence.Append(TweenHub.Show(_skipButton.transform));
@@ -206,7 +202,7 @@ namespace Gamebox
 
             ads.Item.ShowRewarded(AdKey.VictoryRoulette, onRewarded: () =>
             {
-                _rouletteStopSound.Play();
+                Sound.Play(SoundName.RouletteStop);
                 ApplyRouletteBonus(sectorIndex);
             }, 
             callback: (status) =>

@@ -42,7 +42,8 @@ namespace Gamebox
 
         private void OnBuyButtonClick()
         {
-            cardsController.Item.TryBuyCardCell(_cellIndex);
+            if (cardsController.Item.TryBuyCardCell(_cellIndex))
+                cardsController.Item.HideUnlockCardCellWindow();
         }
 
         private void OnCloseButtonClick()

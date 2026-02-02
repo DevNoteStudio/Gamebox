@@ -1,3 +1,4 @@
+using DevNote;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -35,7 +36,7 @@ namespace Gamebox
         {
             if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable) return;
 
-            IConfigs.Gamebox.PointerEnterSound.Play();
+            Sound.Play(SoundName.PointerEnter);
 
             _pointerTween?.Kill();
             _pointerTween = transform.DOScale(TO_SCALE, DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -52,10 +53,10 @@ namespace Gamebox
 
         private void OnButtonClick()
         {
-            var sound = _soundType == ButtonSoundType.Click ?
-                IConfigs.Gamebox.ClickSound : IConfigs.Gamebox.OpenClickSound;
+            var soundName = _soundType == ButtonSoundType.Click ?
+                SoundName.Click : SoundName.OpenClick;
 
-            sound.Play();
+            Sound.Play(soundName);
 
             if (_clickTween.IsActive() && _clickTween.IsPlaying()) return;
 

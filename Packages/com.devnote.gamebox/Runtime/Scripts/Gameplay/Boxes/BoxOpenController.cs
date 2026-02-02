@@ -5,9 +5,17 @@ using UnityEngine;
 
 namespace Gamebox
 {
+    public class BoxRewardData
+    {
+        public Dictionary<CardType, int> cards;
+        public Dictionary<ItemKey, int> boosters;
+    }
+
     public class BoxOpenController
     {
         public event Action OnBoxOpenFinished;
+
+        private BoxRewardData _nextBoxReward;
 
         private readonly Viewer<BoxOpenScreenView> boxOpenScreenViewer;
 
@@ -50,6 +58,7 @@ namespace Gamebox
         }
 
 
+        public void SetNextBoxReward(BoxRewardData boxRewardData) => _nextBoxReward = boxRewardData;
 
         public bool TryOpenBox(ItemKey boxItemKey, int boxAmount)
         {
@@ -58,27 +67,30 @@ namespace Gamebox
 
             IGameState.Items.Spend(boxItemKey, boxAmount);
 
-            GenerateBoxReward(boxItemKey, boxAmount, 
-                out Dictionary<CardType, int> cards, out Dictionary<ItemKey, int> boosters);
+            var boxReward = _nextBoxReward != null ? _nextBoxReward : GenerateBoxReward(boxItemKey, boxAmount);
+            _nextBoxReward = null;
 
-            foreach (var cardAmount in cards)
+            foreach (var cardAmount in boxReward.cards)
                 IGameState.Cards.IncreaseAmount(cardAmount.Key, cardAmount.Value);
 
-            foreach (var boosterAmount in boosters)
+            foreach (var boosterAmount in boxReward.boosters)
                 IGameState.Items.Add(boosterAmount.Key, boosterAmount.Value);
 
             boxOpenScreenViewer.ShowExpand(UI.Container)
-                .Display(boxItemKey, cards, boosters).AnimateShow();
+                .Display(boxItemKey, boxReward.cards, boxReward.boosters).AnimateShow();
 
             return true;
         }
 
-        public void HideBoxOpenScreen() => boxOpenScreenViewer.Hide();
+        public void HideBoxOpenScreen()
+        {
+            boxOpenScreenViewer.Hide();
+            OnBoxOpenFinished?.Invoke();
+        }
 
 
 
-        private void GenerateBoxReward(ItemKey boxItemKey, int boxAmount, 
-            out Dictionary<CardType, int> cards, out Dictionary<ItemKey, int> boosters)
+        private BoxRewardData GenerateBoxReward(ItemKey boxItemKey, int boxAmount)
         {
             Dictionary<CardType, int> GenerateCards(Vector2Int minMax, int amount, RarityType rarityType)
             {
@@ -132,7 +144,7 @@ namespace Gamebox
                         boosterTypesAmount++;
                 }
 
-                var allBoosterTypes = IConfigs.Gamebox.GetAllBoosters();
+                var allBoosterTypes = IConfigs.Gamebox.GetAllBoosterTypes();
                 ItemKey firstBooster = allBoosterTypes[0];
                 allBoosterTypes.RemoveAll(boosterItemKey => !IGameState.Items.IsUnlocked(boosterItemKey));
 
@@ -159,15 +171,18 @@ namespace Gamebox
 
             var boxData = IConfigs.Gamebox.GetBoxData(boxItemKey);
 
-            cards = new Dictionary<CardType, int>()
+            return new BoxRewardData
             {
-                GenerateCards(boxData.minMaxCommonCards, boxAmount, RarityType.Common),
-                GenerateCards(boxData.minMaxRareCards, boxAmount, RarityType.Rare),
-                GenerateCards(boxData.minMaxEpicCards, boxAmount, RarityType.Epic),
-                GenerateCards(boxData.minMaxLegendaryCards, boxAmount, RarityType.Legendary),
+                cards = new Dictionary<CardType, int>()
+                {
+                    GenerateCards(boxData.minMaxCommonCards, boxAmount, RarityType.Common),
+                    GenerateCards(boxData.minMaxRareCards, boxAmount, RarityType.Rare),
+                    GenerateCards(boxData.minMaxEpicCards, boxAmount, RarityType.Epic),
+                    GenerateCards(boxData.minMaxLegendaryCards, boxAmount, RarityType.Legendary),
+                },
+                boosters = GenerateBoosters(boxData.minMaxBoosters, boxAmount),
             };
-
-            boosters = GenerateBoosters(boxData.minMaxBoosters, boxAmount);
+            
         }
 
 

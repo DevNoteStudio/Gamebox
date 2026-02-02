@@ -51,7 +51,11 @@ namespace Gamebox
 
             _previewPool.Clear();
             for (int index = 0; index < IConfigs.Gamebox.LocationsAmount; index++)
-                _previewPool.Get().LoadSprite(AssetLoader.LoadLocationSprite(index));
+            {
+                var previewImage = _previewPool.Get();
+                previewImage.color = Color.white;
+                previewImage.LoadSprite(AssetLoader.LoadLocationSprite(index));
+            }
 
             _scrollSnap.StartingPanel = locationIndex;
 

@@ -25,8 +25,11 @@ namespace Gamebox
 
         public string GetBoxDescription(ItemKey boxItemKey)
         {
-            string GetDescriptionPoint(Vector2Int minMax, int spriteIndex, string localizationKey) 
-                => $"<sprite={spriteIndex}>{minMax.x}-{minMax.y} {Localization.GetLocalizedText(localizationKey)}";
+            string GetDescriptionPoint(Vector2Int minMax, int spriteIndex, string localizationKey)
+            {
+                string rangeText = minMax.x == minMax.y ? minMax.x.ToString() : $"{minMax.x}-{minMax.y}";
+                return $"<sprite={spriteIndex}>{rangeText} {Localization.GetLocalizedText(localizationKey)}";
+            }
 
             var boxData = _shopBoxes.FindOrException(data => data.boxItemKey == boxItemKey);
             string text = $"{Localization.GetLocalizedText("contains")}:";

@@ -1,6 +1,7 @@
 using DevNote;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gamebox
 {
@@ -8,9 +9,19 @@ namespace Gamebox
     {
         [SerializeField] private ItemKey _itemKey;
         [SerializeField] private TextMeshProUGUI _valueText;
+        [SerializeField] private Button _moreButton;
 
         private readonly Holder<RollupController> rollupController = new();
+        private readonly Holder<ShopController> shopController = new();
 
+
+        private void Start()
+        {
+            if (_moreButton != null)
+                _moreButton.onClick.AddListener(OnMoreButtonClick);
+        }
+
+        
 
         private void OnEnable()
         {
@@ -29,11 +40,11 @@ namespace Gamebox
                 rollupController.Item.RemoveCoinsRollupTarget(this);
         }
 
-
-        private void OnItemChanged() => Display(IGameState.Items.Get(_itemKey));
-
-
         public void Display(int amount) => _valueText.text = amount.ToString();
+
+
+        private void OnMoreButtonClick() => shopController.Item.GoToCurrency();
+        private void OnItemChanged() => Display(IGameState.Items.Get(_itemKey));
 
 
 

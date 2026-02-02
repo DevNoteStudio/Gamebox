@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using DevNote;
 
 namespace Gamebox
@@ -54,6 +55,15 @@ namespace Gamebox
 
             return false;
         }
+
+
+        public void GoToCurrency()
+        {
+            shopScreenViewer.ShowExpand(UI.Container)
+                .ScrollRect.verticalNormalizedPosition = 0f;
+        }
+
+
 
 
     }

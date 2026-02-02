@@ -1,4 +1,6 @@
+using System;
 using DevNote;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,8 +27,10 @@ namespace Gamebox
         [SerializeField] private Material _upgradeAvailableMaterial;
         [SerializeField] private Material _upgradeNotAvailableMaterial;
         [SerializeField] private TextMeshProUGUI _upgradeNotAvailableText;
+        [SerializeField] private Color _upgradeTextColor;
 
         private CardType _cardType;
+        private Tween _upgradeTween;
 
         private readonly Holder<CardsController> cardsController = new();
 
@@ -42,14 +46,17 @@ namespace Gamebox
         private void OnEnable()
         {
             IGameState.Cards.OnCardChanged += OnCardChanged;
+            IGameState.Items.Subscribe(ItemKey.Coins, OnCoinsChanged);
 
         }
 
         private void OnDisable()
         {
             IGameState.Cards.OnCardChanged -= OnCardChanged;
+            IGameState.Items.Dispose(ItemKey.Coins, OnCoinsChanged);
         }
 
+        private void OnCoinsChanged() => Display(_cardType);
 
         private void OnCardChanged(CardType cardType)
         {
@@ -113,6 +120,24 @@ namespace Gamebox
             return this;
         }
 
+        private void AnimateUpgrade()
+        {
+            Sound.Play(SoundName.CardUpgrade);
+
+            const float TO_SCALE = 1.3f;
+            const float DURATION = 0.4f;
+
+            _currentFeatureText.color = _upgradeTextColor;
+
+            _upgradeTween?.Kill();
+            _upgradeTween = DOTween.Sequence()
+                .Append(_currentFeatureText.transform.DOScale(TO_SCALE, DURATION / 2f).SetEase(Ease.OutQuad))
+                .Append(_currentFeatureText.transform.DOScale(1f, DURATION / 2f).SetEase(Ease.InQuad))
+                .OnComplete(() => _currentFeatureText.color = Color.white);
+
+        }
+
+
 
         private void OnCloseButtonClick() => cardsController.Item.HideCardInfoWindow();
 
@@ -125,7 +150,8 @@ namespace Gamebox
 
         private void OnUpgradeButtonClick()
         {
-            cardsController.Item.TryUpgradeCard(_cardType);
+            if (cardsController.Item.TryUpgradeCard(_cardType))
+                AnimateUpgrade();
         }
 
         private void OnRemoveButtonClick()

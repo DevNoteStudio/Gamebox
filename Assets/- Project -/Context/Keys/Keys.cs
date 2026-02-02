@@ -43,10 +43,16 @@ public static class ItemKeyExtension
         ItemKey.RareCard, ItemKey.EpicCard, ItemKey.LegendaryCard,
     };
 
+    private static readonly List<ItemKey> BOXES_WITH_SINGLE_CARD = new List<ItemKey>()
+    {
+        ItemKey.RareCard, ItemKey.EpicCard, ItemKey.LegendaryCard,
+    };
+
 
     public static bool IsBooster(this ItemKey itemKey) => BOOSTERS.Contains(itemKey);
     public static bool IsBox(this ItemKey itemKey) => BOXES.Contains(itemKey);
 
+    public static bool IsBoxWithSingleCard(this ItemKey itemKey) => BOXES_WITH_SINGLE_CARD.Contains(itemKey);
 
 
 }

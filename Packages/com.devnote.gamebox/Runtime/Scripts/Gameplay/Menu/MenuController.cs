@@ -1,3 +1,4 @@
+using System;
 using DevNote;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ namespace Gamebox
 {
     public class MenuController
     {
+        public event Action OnLocationScreenOpened;
+
         private readonly Viewer<TabsView> tabsViewer; public TabsView Tabs => tabsViewer.View;
         private readonly Viewer<LocationsScreenView> locationsScreenViewer; 
         public LocationsScreenView LocationsScreen => locationsScreenViewer.View;
@@ -13,7 +16,7 @@ namespace Gamebox
 
         private int _locationIndex = 0;
 
-        public MenuController(TabsView tabs)
+        public MenuController()
         {
             tabsViewer = new(IConfigs.GetViewPrefab<TabsView>());
             locationsScreenViewer = new(IConfigs.GetViewPrefab<LocationsScreenView>());
@@ -30,6 +33,8 @@ namespace Gamebox
                 view.Display(locationIndex);
                 _locationIndex = locationIndex;
             }
+
+            OnLocationScreenOpened?.Invoke();
         }
 
         public void HideLocationsScreen() => locationsScreenViewer.Hide();

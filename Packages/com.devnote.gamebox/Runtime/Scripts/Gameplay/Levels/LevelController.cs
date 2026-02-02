@@ -13,6 +13,9 @@ namespace Gamebox
         public int CompletedStars { get; private set; } = -1;
 
         public bool IsLevelPlaying { get; private set; } = false;
+        public bool IsLevelRestarted { get; private set; } = false;
+        public int ReviveCount { get; private set; } = 0;
+
 
         private bool _isLevelPlayRepeat;
 
@@ -61,12 +64,38 @@ namespace Gamebox
         }
 
 
-        public void Revive()
+        public bool TryRevive()
         {
-            environment.StartGameplay();
+            void Revive()
+            {
+                environment.StartGameplay();
+                ReviveCount++;
+                IsLevelPlaying = true;
+                OnRevive?.Invoke();
+            }
 
-            IsLevelPlaying = true;
-            OnRevive?.Invoke();
+            int maxFreeRevives = IGameState.Cards.IsActive(CardType.Reviver) ?
+                IConfigs.Gamebox.GetCardPower(CardType.Reviver) : 0;
+
+            bool freeReviveAvailable = maxFreeRevives - ReviveCount > 0;
+
+            if (freeReviveAvailable)
+            {
+                Revive();
+                return true;
+            }
+            else
+            {
+                int gemPrice = IConfigs.Gamebox.ReviveGemPrice;
+                if (IGameState.Items.Get(ItemKey.Gems) >= gemPrice)
+                {
+                    IGameState.Items.Spend(ItemKey.Gems, gemPrice);
+                    Revive();
+                    return true;
+                }
+
+                else return false;
+            }
         }
 
 
@@ -78,7 +107,7 @@ namespace Gamebox
         }
 
 
-        public void StartLevel(int locationIndex, int levelIndex)
+        public void StartLevel(int locationIndex, int levelIndex, bool isRestart = false)
         {
             environment.StartGameplay();
 
@@ -91,10 +120,12 @@ namespace Gamebox
             CompletedStars = 0;
 
             IsLevelPlaying = true;
+            IsLevelRestarted = isRestart;
+
+            ReviveCount = 0;
+
             OnLevelStarted?.Invoke();
         }
-
-
 
 
         public void CompleteCurrentLevel(int stars)
@@ -181,13 +212,7 @@ namespace Gamebox
         {
             environment.StopGameplay();
 
-            var loseWindow = loseWindowViewer.ShowFaded(UI.Container);
-
-            bool showRevive = (IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1)
-                && ads.RewardedAvailable;
-
-            loseWindow.Display(showRevive);
-            loseWindow.AnimateShow();
+            loseWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
 
             IsLevelPlaying = false;
             OnLevelLost?.Invoke();

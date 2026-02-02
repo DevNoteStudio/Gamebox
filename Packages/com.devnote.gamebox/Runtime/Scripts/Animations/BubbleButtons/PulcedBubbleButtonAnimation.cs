@@ -50,7 +50,7 @@ namespace Gamebox
         {
             if (!_button.interactable) return;
 
-            IConfigs.Gamebox.PointerEnterSound.Play();
+            Sound.Play(SoundName.PointerEnter);
 
             _currentTween?.Kill();
             _currentTween = transform.DOScale(MAX_POINTER_ENTER_SCALE, BUBBLE_DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -71,10 +71,10 @@ namespace Gamebox
         {
             if (_soundType == ButtonSoundType.None) return;
 
-            var sound = _soundType == ButtonSoundType.Click ?
-                IConfigs.Gamebox.ClickSound : IConfigs.Gamebox.OpenClickSound;
+            var soundName = _soundType == ButtonSoundType.Click ?
+                SoundName.Click : SoundName.OpenClick;
 
-            sound.Play();
+            Sound.Play(soundName);
         }
 
         void IAnimation.Play() => AnimatePulce();

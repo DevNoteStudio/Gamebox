@@ -18,7 +18,6 @@ namespace Gamebox
         }
 
 
-        [SerializeField] private SoundUnit _tickSound;
         [SerializeField] private RectTransform _pointer;
         [SerializeField] private RectTransform _spinAreaRect;
         [SerializeField] private float _leftRightPadding;
@@ -53,7 +52,7 @@ namespace Gamebox
                 if (currentIndex != _currentIndex)
                 {
                     _currentIndex = currentIndex;
-                    _tickSound.Play();
+                    Sound.Play(SoundName.RouletteTick);
                 }
 
                 for (int i = 0; i < _sectors.Count; i++)

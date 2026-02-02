@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using DevNote;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using static Gamebox.CardsState;
 
 namespace Gamebox
 {
@@ -11,6 +11,7 @@ namespace Gamebox
         [SerializeField] private HorizontalLayoutGroup _activeCardsGroup;
         [SerializeField] private RectTransform _inventoryContainer;
         [SerializeField] private List<CardCellView> _cells;
+        [field: SerializeField] public ScrollRect ScrollRect { get; private set; }
 
         private List<CardView> _inventoryCards;
 
@@ -24,6 +25,7 @@ namespace Gamebox
             IGameState.Cards.OnCardChanged += OnCardChanged;
             IGameState.Cards.OnCardCellChanged += OnCardCellChanged;
             OnOrientationChanged();
+            Display();
         }
 
         private void OnDisable()
@@ -33,10 +35,17 @@ namespace Gamebox
             IGameState.Cards.OnCardCellChanged -= OnCardCellChanged;
         }
 
-        public void Display()
+        private void Display()
         {
             if (_inventoryContainer.childCount == 0)
                 CreateCards();
+
+            else
+            {
+                foreach (var card in _inventoryCards)
+                    card.Display(card.CardType, CardView.DisplayType.Inventory);
+            }
+            
 
             bool moreButtonShown = false;
             for (int i = 0; i < _cells.Count; i++)

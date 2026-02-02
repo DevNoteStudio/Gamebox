@@ -1,14 +1,14 @@
 using DevNote;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Gamebox
 {
     public class GameboxSceneContext : SceneContext
     {
-        [SerializeField] private TabsView _tabs;
         [SerializeField] private RectTransform _uiContainer;
         [SerializeField] private RectTransform _fadeContainer;
+        [SerializeField] private Canvas _canvas;
+        [SerializeField] private ExtendedGraphicRaycaster _graphicRaycaster;
 
         private readonly Holder<IEnvironment> environment = new();
         private readonly Holder<ILeaderboards> leaderboards = new();
@@ -20,11 +20,12 @@ namespace Gamebox
 
         public override void RegisterContext()
         {
-            new UI(_uiContainer, _fadeContainer);
+            new UI(_uiContainer, _fadeContainer, _canvas);
+            new TutorialPointer();
 
             var rollup = Register(new RollupController());
             var league = Register(new LeagueController());
-            var menu = Register(new MenuController(_tabs));
+            var menu = Register(new MenuController());
             var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league, environment.Item, save.Item));
             var test = Register(new TestController(level));
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
@@ -33,6 +34,8 @@ namespace Gamebox
             var shop = Register(new ShopController(purchase.Item));
             var boxOpen = Register(new BoxOpenController());
             var cards = Register(new CardsController());
+            var boxAndCardTutorial = Register(new BoxAndCardTutorialController(menu, shop, boxOpen, cards, _graphicRaycaster));
+            var sound = Register(new SoundController());
 
             var start = Register(new StartController(menu, level, popup));
 

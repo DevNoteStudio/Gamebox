@@ -81,9 +81,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cf634478032e64498510b948e59844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tabs: {fileID: 0}
   _uiContainer: {fileID: 492147473268517977}
   _fadeContainer: {fileID: 7228955970938480016}
+  _canvas: {fileID: 7353000900692289397}
+  _graphicRaycaster: {fileID: 820005677823905164}
 --- !u!1 &4717210099188058819
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ GameObject:
   - component: {fileID: 1209835429118453456}
   - component: {fileID: 7353000900692289397}
   - component: {fileID: 4573422164986249507}
-  - component: {fileID: 7027973290212207795}
+  - component: {fileID: 820005677823905164}
   m_Layer: 0
   m_Name: '- Canvas'
   m_TagString: Untagged
@@ -328,7 +329,7 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &7027973290212207795
+--- !u!114 &820005677823905164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7423481968165826495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Script: {fileID: 11500000, guid: 9238196ecbe86d3429dabdefbb0c2ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
