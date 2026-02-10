@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b561bd3f520f81844af9da449ab71d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 0}
   _portraitGameObjectIsActive: 1
   _landscapeGameObjectIsActive: 1
   _portraitContainer: {fileID: 0}
@@ -25245,7 +25246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e68a01ab68087e24eb33d47949f4976b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3da9d1cdd63d8ec4f85f160ae8596879, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25305,8 +25306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb011e1a7e54600429d4c14e2cca2671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showSound: {fileID: 11400000, guid: e65ef2bd1df103346ae902700c99ae01, type: 2}
-  _openSound: {fileID: 11400000, guid: 5f516789ec2064840aa023c61e2b6ed2, type: 2}
   _openButton: {fileID: 8508673559909443440}
   _takeButton: {fileID: 8508673561543179678}
   _chestRect: {fileID: 8508673560472301208}

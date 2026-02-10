@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DevNote;
 using TMPro;
 using UnityEngine;
@@ -37,7 +38,7 @@ namespace Gamebox
         {
             _boxItemKey = boxItemKey;
 
-            _titleText.text = IConfigs.Gamebox.GetBoxName(boxItemKey);
+            _titleText.text = IConfigs.Gamebox.GetBoxNameTitle(boxItemKey);
             _descriptionText.text = IConfigs.Gamebox.GetBoxDescription(boxItemKey);
             _boxIconImage.LoadSprite(AssetLoader.LoadItemSprite(boxItemKey));
 
@@ -75,7 +76,7 @@ namespace Gamebox
                 boxOpenController.Item.TryBuyBox(_boxItemKey, _multiAmount);
 
             shopController.Item.HideBoxWindow();
-            boxOpenController.Item.TryOpenBox(_boxItemKey, _multiAmount);
+            boxOpenController.Item.TryOpenBox(_boxItemKey, _multiAmount).Forget();
         }
 
         private void OnOpenSingleButtonClick()
@@ -84,7 +85,7 @@ namespace Gamebox
                 boxOpenController.Item.TryBuyBox(_boxItemKey, 1);
 
             shopController.Item.HideBoxWindow();
-            boxOpenController.Item.TryOpenBox(_boxItemKey, 1);
+            boxOpenController.Item.TryOpenBox(_boxItemKey, 1).Forget();
         }
 
         private void OnCloseButtonClick()

@@ -1882,7 +1882,7 @@ PrefabInstance:
     - target: {fileID: 4607366861772543400, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fd36d2c0ae07de949988d21fb864e250, type: 3}
+      objectReference: {fileID: 21300000, guid: 3da9d1cdd63d8ec4f85f160ae8596879, type: 3}
     - target: {fileID: 6023003821377981130, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_text
       value: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442

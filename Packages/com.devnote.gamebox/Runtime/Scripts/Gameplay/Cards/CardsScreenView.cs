@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using DevNote;
 using UnityEngine;
 using UnityEngine.UI;
-using static Gamebox.CardsState;
 
 namespace Gamebox
 {
@@ -42,10 +41,14 @@ namespace Gamebox
 
             else
             {
-                foreach (var card in _inventoryCards)
+                for (int i = 0; i < _inventoryCards.Count; i++)
+                {
+                    var card = _inventoryCards[i];
                     card.Display(card.CardType, CardView.DisplayType.Inventory);
+                }  
             }
             
+            SortCards();
 
             bool moreButtonShown = false;
             for (int i = 0; i < _cells.Count; i++)
@@ -75,6 +78,25 @@ namespace Gamebox
                 card.Display(cardType, CardView.DisplayType.Inventory);
                 _inventoryCards.Add(card);
             }
+        }
+
+
+        private void SortCards()
+        {
+            _inventoryCards.Sort((a, b) =>
+            {
+                var rarityA = IConfigs.Gamebox.GetCardRarity(a.CardType);
+                var rarityB = IConfigs.Gamebox.GetCardRarity(b.CardType);
+
+                var hasA = IGameState.Cards.Has(a.CardType);
+                var hasB = IGameState.Cards.Has(b.CardType);
+
+                if (hasA != hasB) return hasB.CompareTo(hasA);
+                else return rarityB.CompareTo(rarityA);
+            });
+
+            for (int i = 0; i < _inventoryCards.Count; i++)
+                _inventoryCards[i].transform.SetSiblingIndex(i);
         }
 
 

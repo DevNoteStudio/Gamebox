@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Gamebox
 
         private BoxRewardData _nextBoxReward;
 
-        private readonly Viewer<BoxOpenScreenView> boxOpenScreenViewer;
+        private readonly AsyncViewer<BoxOpenScreenView> boxOpenScreenViewer = new();
 
 
         private readonly List<int> SAME_RARE_AMOUNTS = new List<int>()
@@ -37,12 +38,6 @@ namespace Gamebox
         };
 
 
-        public BoxOpenController()
-        {
-            boxOpenScreenViewer = new(IConfigs.GetViewPrefab<BoxOpenScreenView>());
-        }
-
-
         public bool TryBuyBox(ItemKey boxItemKey, int amount)
         {
             int price = IConfigs.Gamebox.GetBoxPrice(boxItemKey, out bool buyForGems) * amount;
@@ -60,7 +55,7 @@ namespace Gamebox
 
         public void SetNextBoxReward(BoxRewardData boxRewardData) => _nextBoxReward = boxRewardData;
 
-        public bool TryOpenBox(ItemKey boxItemKey, int boxAmount)
+        public async UniTask<bool> TryOpenBox(ItemKey boxItemKey, int boxAmount)
         {
             if (IGameState.Items.Get(boxItemKey) < boxAmount) 
                 return false; 
@@ -76,7 +71,7 @@ namespace Gamebox
             foreach (var boosterAmount in boxReward.boosters)
                 IGameState.Items.Add(boosterAmount.Key, boosterAmount.Value);
 
-            boxOpenScreenViewer.ShowExpand(UI.Container)
+            (await boxOpenScreenViewer.Show(UI.Container))
                 .Display(boxItemKey, boxReward.cards, boxReward.boosters).AnimateShow();
 
             return true;

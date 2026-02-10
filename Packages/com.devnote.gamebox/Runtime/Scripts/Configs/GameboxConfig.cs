@@ -26,6 +26,7 @@ namespace Gamebox
         [SerializeField] private List<int> _rateUsLevels;
 
         [SerializeField] private List<int> _cardCellGemPrices;
+        [SerializeField] private List<CardPrice> _cardUpgradePrices;
         [SerializeField] private List<CardData> _cardDataList;
         [SerializeField] private List<ShopBoxData> _shopBoxes;
         [SerializeField] private List<int> _gemsInsideShopPacks;

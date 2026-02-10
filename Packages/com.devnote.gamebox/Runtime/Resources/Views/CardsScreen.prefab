@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 8932366734271060939}
   - component: {fileID: 8932366734271060948}
   - component: {fileID: 8932366734271060947}
+  - component: {fileID: 2746894646156050993}
   m_Layer: 0
   m_Name: <Header>
   m_TagString: Untagged
@@ -249,6 +250,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2746894646156050993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8932366734271060950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77af3c43e77026648aeeb16d29050be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: cards_screen_title
 --- !u!1 &8932366735582745232
 GameObject:
   m_ObjectHideFlags: 0

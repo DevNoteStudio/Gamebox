@@ -29,12 +29,8 @@ MonoBehaviour:
     m_Address: Locations/2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 30328b06434dcf0468abc2ba040160d6
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/mistery_show.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 07b3d4a3d51dc4645a9569f7c83f46ed
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/show_card.mp3
+  - m_GUID: bc03ac576ea66c249ba553e5b5709c8b
+    m_Address: Sounds/Revive
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

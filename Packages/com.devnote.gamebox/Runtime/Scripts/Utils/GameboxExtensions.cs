@@ -19,6 +19,9 @@ namespace Gamebox
             float alpha = image.color.a;
             image.color = image.color.SetAlpha(0f);
             image.sprite = await loader;
+
+            if (Mathf.Approximately(alpha, 0f)) alpha = 1f;
+
             image.color = image.color.SetAlpha(alpha);
         }
 

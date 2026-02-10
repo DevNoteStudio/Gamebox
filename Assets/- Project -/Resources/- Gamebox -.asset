@@ -35,7 +35,16 @@ MonoBehaviour:
     coinsForNewStar: 30
     ratingForLevelComplete: 1
     ratingForNewStar: 3
-    rewardsForTotalLevelCompletion: []
+    rewardsForTotalLevelCompletion:
+    - completedLevels: 1
+      itemKey: 4
+      amount: 1
+    - completedLevels: 2
+      itemKey: 5
+      amount: 1
+    - completedLevels: 3
+      itemKey: 6
+      amount: 1
   _leagues:
   - leagueType: 0
     ratingRequire: 0
@@ -266,6 +275,15 @@ MonoBehaviour:
     amount: 500
   _rateUsLevels: 0200000005000000
   _cardCellGemPrices: 000000000f00000064000000fa000000e8030000
+  _cardUpgradePrices:
+  - rarityType: 0
+    levelPrices: 64000000c80000009001000020030000dc050000b80b00008813000010270000983a0000a861000050c30000f8240100a0860100f049020090d00300
+  - rarityType: 1
+    levelPrices: c8000000900100002003000040060000b80b00007017000010270000204e00003075000050c30000a0860100f0490200400d0300e093040020a10700
+  - rarityType: 2
+    levelPrices: 900100002003000040060000800c000070170000e02e0000204e0000409c000060ea0000a0860100400d0300e0930400801a0600c027090040420f00
+  - rarityType: 3
+    levelPrices: 2003000040060000800c000000190000e02e0000c05d0000409c000080380100c0d40100400d0300801a0600c027090000350c00804f120080841e00
   _cardDataList:
   - cardType: 1
     rarityType: 0
@@ -291,7 +309,7 @@ MonoBehaviour:
   _shopBoxes:
   - boxItemKey: 4
     buyForGems: 0
-    price: 500
+    price: 1000
     minMaxCommonCards: {x: 5, y: 10}
     minMaxRareCards: {x: 0, y: 1}
     minMaxEpicCards: {x: 0, y: 0}
@@ -323,7 +341,7 @@ MonoBehaviour:
     minMaxBoosters: {x: 0, y: 0}
   - boxItemKey: 8
     buyForGems: 1
-    price: 59
+    price: 49
     minMaxCommonCards: {x: 0, y: 0}
     minMaxRareCards: {x: 0, y: 0}
     minMaxEpicCards: {x: 1, y: 1}

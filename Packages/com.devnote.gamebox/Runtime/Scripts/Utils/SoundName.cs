@@ -24,6 +24,7 @@ namespace Gamebox
         public static string CardUpgrade => "CardUpgrade";
         public static string OpenLootbox => "OpenLootbox";
         public static string OpenCard => "OpenCard";
+        public static string Revive => "Revive";
 
         public static string Star(int number) => $"Star{number}";
 

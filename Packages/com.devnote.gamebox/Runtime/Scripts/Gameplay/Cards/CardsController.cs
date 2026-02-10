@@ -66,7 +66,7 @@ namespace Gamebox
         public bool TryUpgradeCard(CardType cardType)
         {
             int currentLevel = IGameState.Cards.GetLevel(cardType);
-            int price = IConfigs.Gamebox.GetCardUpgradePrice(currentLevel);
+            int price = IConfigs.Gamebox.GetCardUpgradePrice(cardType, currentLevel);
 
             if (IGameState.Items.Get(ItemKey.Coins) >= price)
             {

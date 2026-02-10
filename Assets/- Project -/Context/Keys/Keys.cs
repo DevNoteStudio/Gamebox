@@ -26,7 +26,7 @@ public enum ItemKey
     Booster3 = 12,
 
     CommonBox = 4, RareBox = 5, EpicBox = 6,
-    RareCard = 7, EpicCard = 8, LegendaryCard = 9,
+    RareCardBox = 7, EpicCardBox = 8, LegendaryCardBox = 9,
 
 }
 
@@ -40,12 +40,12 @@ public static class ItemKeyExtension
     private static readonly List<ItemKey> BOXES = new List<ItemKey>()
     {
         ItemKey.CommonBox, ItemKey.RareBox, ItemKey.RareBox,
-        ItemKey.RareCard, ItemKey.EpicCard, ItemKey.LegendaryCard,
+        ItemKey.RareCardBox, ItemKey.EpicCardBox, ItemKey.LegendaryCardBox,
     };
 
     private static readonly List<ItemKey> BOXES_WITH_SINGLE_CARD = new List<ItemKey>()
     {
-        ItemKey.RareCard, ItemKey.EpicCard, ItemKey.LegendaryCard,
+        ItemKey.RareCardBox, ItemKey.EpicCardBox, ItemKey.LegendaryCardBox,
     };
 
 

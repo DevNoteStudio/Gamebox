@@ -74,7 +74,7 @@ namespace Gamebox
 
             int currentLevel = cardsState.GetLevel(cardType);
             int nextLevel = currentLevel + 1;
-            int price = config.GetCardUpgradePrice(currentLevel);
+            int price = config.GetCardUpgradePrice(cardType, currentLevel);
 
             _iconImage.LoadSprite(AssetLoader.LoadCardSprite(cardType));
 

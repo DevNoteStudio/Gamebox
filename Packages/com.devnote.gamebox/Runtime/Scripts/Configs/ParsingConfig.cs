@@ -12,6 +12,7 @@ namespace Gamebox
             ParseLeagues(tables[TableKey.Leagues]);
             ParseShop(tables[TableKey.Shop]);
             _cardDataList = ParseCards(tables[TableKey.Cards]);
+            _cardUpgradePrices = ParseCardUpgradePrices(tables[TableKey.Cards]);
         }
 
         private void ParseLeagues(Table leaguesTable)
@@ -52,9 +53,9 @@ namespace Gamebox
                 ParseBoxData("common_box", ItemKey.CommonBox, shopTable),
                 ParseBoxData("rare_box", ItemKey.RareBox,  shopTable),
                 ParseBoxData("epic_box", ItemKey.EpicBox,  shopTable),
-                ParseBoxData("rare_card", ItemKey.RareCard,  shopTable),
-                ParseBoxData("epic_card", ItemKey.EpicCard,  shopTable),
-                ParseBoxData("legendary_card", ItemKey.LegendaryCard,  shopTable),
+                ParseBoxData("rare_card", ItemKey.RareCardBox,  shopTable),
+                ParseBoxData("epic_card", ItemKey.EpicCardBox,  shopTable),
+                ParseBoxData("legendary_card", ItemKey.LegendaryCardBox,  shopTable),
             };
 
             _gemsInsideShopPacks = new List<int>();
@@ -146,6 +147,34 @@ namespace Gamebox
             return result;
         }
 
+        private List<CardPrice> ParseCardUpgradePrices(Table cardTable)
+        {
+            List<Column> levelColumns = new List<Column>
+            {
+                Column.D, Column.E, Column.F, Column.G, Column.H, Column.I,
+                Column.J, Column.K, Column.L, Column.M, Column.N, Column.O,
+                Column.P, Column.Q, Column.R,
+            };
+
+            var result = new List<CardPrice>();
+
+            for (int row = 3; row <= 6; row++)
+            {
+                var cardPrice = new CardPrice()
+                {
+                    rarityType = cardTable.Get(row, Column.B).ToEnum<RarityType>(),
+                    levelPrices = new List<int>()
+                };
+
+                foreach (var column in levelColumns)
+                    cardPrice.levelPrices.Add(cardTable.GetInt(row, column));
+                    
+                result.Add(cardPrice);
+            }
+
+            return result;
+
+        }
 
 
     }

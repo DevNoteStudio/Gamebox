@@ -12,6 +12,7 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _amountText;
         [SerializeField] private TextMeshProUGUI _openButtonText;
         [SerializeField] private Button _openButton; public Button OpenButton => _openButton;
+        [SerializeField] private Image _iconImage;
 
         private readonly Holder<ShopController> shopController = new();
 
@@ -50,6 +51,8 @@ namespace Gamebox
                 _openButtonText.text = $"<sprite={spriteIndex}>{price}";
             }
             else _openButtonText.text = Localization.GetLocalizedText("open");
+
+            _iconImage.LoadSprite(AssetLoader.LoadItemSprite(_boxItemKey));
         }
 
 

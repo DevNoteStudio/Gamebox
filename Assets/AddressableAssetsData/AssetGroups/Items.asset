@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: cf84e51f02fb06c4d87f83f35e0f4c16
   m_SerializeEntries:
   - m_GUID: f7497d4524584d94f95d9e1c1873c8c1
-    m_Address: Items/RareCard
+    m_Address: Items/RareCardBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 24ee9b92f6ff43f41896669777ff3279
@@ -42,11 +42,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 8ce5543f4e9f5cb4286ebf212a02b46c
-    m_Address: Items/EpicCard
+    m_Address: Items/EpicCardBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3dc723f6b842b5f4d953a03e675cc65c
-    m_Address: Items/LegendaryCard
+    m_Address: Items/LegendaryCardBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: be4fc7e05570ed64b9aca45b80d3097b

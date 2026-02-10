@@ -19,7 +19,7 @@ namespace Gamebox
         public void DisplayRewardBox(ItemKey itemKey)
         {
             _iconImage.LoadSprite(AssetLoader.LoadItemSprite(itemKey));
-            _labelText.text = IConfigs.Gamebox.GetBoxName(itemKey);
+            _labelText.text = IConfigs.Gamebox.GetBoxNameShort(itemKey);
         }
 
 

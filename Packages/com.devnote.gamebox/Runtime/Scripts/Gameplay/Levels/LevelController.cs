@@ -46,7 +46,14 @@ namespace Gamebox
         {
             bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
-            if (!_isLevelPlayRepeat)
+            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+
+            if (IConfigs.Gamebox.MenuAvailable && !IGameState.BoxAndCardTutorialCompleted.Value)
+            {
+                menuController.ShowLocationsScreen(CurrentLocationIndex);
+                OnLevelExit?.Invoke();
+            }
+            else if (!_isLevelPlayRepeat)
             {
                 if (isLastLevel)
                 {
@@ -68,6 +75,7 @@ namespace Gamebox
         {
             void Revive()
             {
+                Sound.Play(SoundName.Revive);
                 environment.StartGameplay();
                 ReviveCount++;
                 IsLevelPlaying = true;

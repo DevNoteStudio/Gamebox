@@ -7,6 +7,12 @@ namespace Gamebox
 {
     public partial class GameboxConfig // Cards
     {
+        [Serializable] private struct CardPrice
+        {
+            public RarityType rarityType;
+            public List<int> levelPrices;
+        }
+
         [Serializable] private struct CardData
         {
             public CardType cardType;
@@ -52,9 +58,10 @@ namespace Gamebox
         public RarityType GetCardRarity(CardType cardType) 
             => _cardDataList.FindOrException(data => data.cardType == cardType).rarityType;
 
-        public int GetCardUpgradePrice(int level)
+        public int GetCardUpgradePrice(CardType cardType, int level)
         {
-            return level * 50;
+            var rarity = GetCardRarity(cardType);
+            return _cardUpgradePrices.Find(cardPrice => cardPrice.rarityType == rarity).levelPrices[level - 1];
         }
 
         public int GetCardCellGemPrice(int cellIndex) => _cardCellGemPrices[cellIndex];

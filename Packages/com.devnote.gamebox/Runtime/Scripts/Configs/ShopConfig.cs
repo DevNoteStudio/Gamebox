@@ -21,7 +21,9 @@ namespace Gamebox
         }
 
 
-        public string GetBoxName(ItemKey boxItemKey) => Localization.GetLocalizedText($"{boxItemKey}_name");
+        public string GetBoxNameShort(ItemKey boxItemKey) => Localization.GetLocalizedText($"{boxItemKey}_short");
+
+        public string GetBoxNameTitle(ItemKey boxItemKey) => Localization.GetLocalizedText($"{boxItemKey}_title");
 
         public string GetBoxDescription(ItemKey boxItemKey)
         {
