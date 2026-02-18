@@ -1859,6 +1859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isCard: 0
+  _iconImage: {fileID: 5899431112487083230}
   _targetRect: {fileID: 7850389197942311105}
   _titleRect: {fileID: 8546079218784854887}
   _nameText: {fileID: 8505388325782945763}
@@ -2895,6 +2896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isCard: 1
+  _iconImage: {fileID: 0}
   _targetRect: {fileID: 7850389197942311105}
   _titleRect: {fileID: 7158582059731358544}
   _nameText: {fileID: 7816395785818811201}

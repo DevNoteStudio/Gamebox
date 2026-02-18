@@ -211,7 +211,7 @@ namespace Gamebox
             victoryScreen.Display(stars, fromRating, toRating, rewards);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(IGameState.Rating.Value);
+            leaderboards.SetScore(IGameState.Levels.CompletedLevels);
             save.FullSave();
             OnLevelCompleted?.Invoke();
         }

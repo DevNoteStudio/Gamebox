@@ -18,7 +18,13 @@ namespace Gamebox
 
         private BoxRewardData _nextBoxReward;
 
-        private readonly AsyncViewer<BoxOpenScreenView> boxOpenScreenViewer = new();
+        private readonly Viewer<BoxOpenScreenView> boxOpenScreenViewer;
+
+
+        public BoxOpenController()
+        {
+            boxOpenScreenViewer = new(IConfigs.GetViewPrefab<BoxOpenScreenView>());
+        }
 
 
         private readonly List<int> SAME_RARE_AMOUNTS = new List<int>()
@@ -55,7 +61,7 @@ namespace Gamebox
 
         public void SetNextBoxReward(BoxRewardData boxRewardData) => _nextBoxReward = boxRewardData;
 
-        public async UniTask<bool> TryOpenBox(ItemKey boxItemKey, int boxAmount)
+        public bool TryOpenBox(ItemKey boxItemKey, int boxAmount)
         {
             if (IGameState.Items.Get(boxItemKey) < boxAmount) 
                 return false; 
@@ -71,7 +77,7 @@ namespace Gamebox
             foreach (var boosterAmount in boxReward.boosters)
                 IGameState.Items.Add(boosterAmount.Key, boosterAmount.Value);
 
-            (await boxOpenScreenViewer.Show(UI.Container))
+            boxOpenScreenViewer.ShowExpand(UI.Container)
                 .Display(boxItemKey, boxReward.cards, boxReward.boosters).AnimateShow();
 
             return true;

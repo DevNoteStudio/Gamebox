@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Gamebox
 {
-    public class OverlayScreenView : MonoBehaviour
+    public class OverlayView : MonoBehaviour
     {
         [SerializeField] private Button _resetButton;
 

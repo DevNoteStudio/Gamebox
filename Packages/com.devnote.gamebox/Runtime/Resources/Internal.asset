@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dac2a32b9c0304db3ecd9b6748098b, type: 3}
   m_Name: Internal
   m_EditorClassIdentifier: 
-  <BackgroundBoosterCardColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
-  <TextBoosterCardColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <GameboxRootPrefab>k__BackingField: {fileID: 7082978175954543023, guid: 63a48a14ed170f14db1941d608c348ac, type: 3}
   _rarityColors:
   - rarityType: 0
     backgroundColor: {r: 0.4862745, g: 0.4862745, b: 0.4862745, a: 1}

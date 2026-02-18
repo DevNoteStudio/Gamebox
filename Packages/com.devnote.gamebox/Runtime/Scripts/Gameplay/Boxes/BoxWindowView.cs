@@ -76,7 +76,7 @@ namespace Gamebox
                 boxOpenController.Item.TryBuyBox(_boxItemKey, _multiAmount);
 
             shopController.Item.HideBoxWindow();
-            boxOpenController.Item.TryOpenBox(_boxItemKey, _multiAmount).Forget();
+            boxOpenController.Item.TryOpenBox(_boxItemKey, _multiAmount);
         }
 
         private void OnOpenSingleButtonClick()
@@ -85,7 +85,7 @@ namespace Gamebox
                 boxOpenController.Item.TryBuyBox(_boxItemKey, 1);
 
             shopController.Item.HideBoxWindow();
-            boxOpenController.Item.TryOpenBox(_boxItemKey, 1).Forget();
+            boxOpenController.Item.TryOpenBox(_boxItemKey, 1);
         }
 
         private void OnCloseButtonClick()

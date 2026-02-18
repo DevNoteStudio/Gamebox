@@ -4,12 +4,14 @@ using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gamebox
 {
     public class BoxItemAnimation : MonoBehaviour
     {
         [SerializeField] private bool _isCard;
+        [SerializeField, HideIf(nameof(_isCard))] private Image _iconImage;
         [SerializeField] private RectTransform _targetRect;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private TextMeshProUGUI _nameText;
@@ -52,6 +54,8 @@ namespace Gamebox
             _nameText.text = IConfigs.Gamebox.GetItemName(boosterItemKey);
             _rarityText.text = Localization.GetLocalizedText("booster");
             _amountText.text = $"x{amount}";
+
+            _iconImage.LoadSprite(AssetLoader.LoadItemSprite(boosterItemKey));
 
             AnimateShow(onCompleted);
         }

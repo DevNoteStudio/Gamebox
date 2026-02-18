@@ -40,11 +40,5 @@ namespace Gamebox
         }
 
 
-        public static async UniTask<T> LoadViewPrefab<T>() where T : Component
-            => await Addressables.LoadAssetAsync<T>($"Views/{typeof(T).Name.Replace("View", string.Empty)}");
-
-
-
-
     }
 }

@@ -793,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d37f7332767094fb38c9aa09c5d9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _adShowStatus: 0
 --- !u!1 &8627241340399656994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef04d45144636b4abc33f8abc00e315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayBeforeInitialization: 1
+  _fullscreenIsSupported: 0
   _deviceLanguage: 1
   _deviceType: 0
 --- !u!1001 &4528692624445434330

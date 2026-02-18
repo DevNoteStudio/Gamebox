@@ -5,10 +5,7 @@ namespace Gamebox
 {
     public class GameboxSceneContext : SceneContext
     {
-        [SerializeField] private RectTransform _uiContainer;
-        [SerializeField] private RectTransform _fadeContainer;
-        [SerializeField] private Canvas _canvas;
-        [SerializeField] private ExtendedGraphicRaycaster _graphicRaycaster;
+        [SerializeField] private Camera _mainCamera;
 
         private readonly Holder<IEnvironment> environment = new();
         private readonly Holder<ILeaderboards> leaderboards = new();
@@ -20,7 +17,12 @@ namespace Gamebox
 
         public override void RegisterContext()
         {
-            new UI(_uiContainer, _fadeContainer, _canvas);
+            var gamebox = Instantiate(IConfigs.Internal.GameboxRootPrefab);
+            gamebox.name = "G Gamebox";
+            gamebox.transform.SetAsLastSibling();
+
+
+            new UI(gamebox.ScreenContainer, gamebox.FadeContainer, gamebox.Canvas);
             new TutorialPointer();
 
             var rollup = Register(new RollupController());
@@ -34,13 +36,14 @@ namespace Gamebox
             var shop = Register(new ShopController(purchase.Item));
             var boxOpen = Register(new BoxOpenController());
             var cards = Register(new CardsController());
-            var boxAndCardTutorial = Register(new BoxAndCardTutorialController(menu, shop, boxOpen, cards, _graphicRaycaster));
+            var boxAndCardTutorial = Register(new BoxAndCardTutorialController(menu, shop, boxOpen, cards, gamebox.GraphicRaycaster));
             var sound = Register(new SoundController());
 
             var start = Register(new StartController(menu, level, popup));
 
             Register(new AnalyticsController(analytics.Item, level));
         }
+
 
 
     }

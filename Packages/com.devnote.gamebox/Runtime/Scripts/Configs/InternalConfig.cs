@@ -8,18 +8,15 @@ namespace Gamebox
     [CreateAssetMenu(menuName = "Gamebox/InternalConfig", fileName = "Internal")]
     public class InternalConfig : ScriptableObject
     {
-        [field: SerializeField] public Color BackgroundBoosterCardColor { get; private set; }
-        [field: SerializeField] public Color TextBoosterCardColor { get; private set; }
-
-
-        [Serializable] private struct RarityColor
+        [Serializable]
+        private struct RarityColor
         {
             public RarityType rarityType;
             public Color backgroundColor;
             public Color textColor;
         }
 
-
+        [field: SerializeField] public GameboxRoot GameboxRootPrefab { get; private set; }
         [SerializeField] private List<RarityColor> _rarityColors;
 
 
