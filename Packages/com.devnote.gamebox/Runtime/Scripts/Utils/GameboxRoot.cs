@@ -14,8 +14,8 @@ namespace Gamebox
         public void ConnectCamera(Camera camera)
         {
             Canvas.worldCamera = camera;
-            Canvas.planeDistance = 0.01f;
-            Canvas.sortingLayerName = "UI2";
+            Canvas.planeDistance = 1f;
+            Canvas.sortingLayerName = "UI";
             Canvas.sortingOrder = 0;
         }
 

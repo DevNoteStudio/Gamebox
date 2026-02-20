@@ -5,6 +5,8 @@ namespace Gamebox
 {
     public class GameboxSceneContext : SceneContext
     {
+        public static bool Initialized { get; private set; } = false;
+
         [SerializeField] private Camera _mainCamera;
 
         private readonly Holder<IEnvironment> environment = new();
@@ -17,10 +19,7 @@ namespace Gamebox
 
         public override void RegisterContext()
         {
-            var gamebox = Instantiate(IConfigs.Internal.GameboxRootPrefab);
-            gamebox.name = "G Gamebox";
-            gamebox.transform.SetAsLastSibling();
-
+            var gamebox = CreateGameboxRoot();
 
             new UI(gamebox.ScreenContainer, gamebox.FadeContainer, gamebox.Canvas);
             new TutorialPointer();
@@ -42,8 +41,20 @@ namespace Gamebox
             var start = Register(new StartController(menu, level, popup));
 
             Register(new AnalyticsController(analytics.Item, level));
+
+            Initialized = true;
         }
 
+
+        private GameboxRoot CreateGameboxRoot()
+        {
+            var gamebox = Instantiate(IConfigs.Internal.GameboxRootPrefab);
+            gamebox.name = "G Gamebox";
+            gamebox.transform.SetAsLastSibling();
+            gamebox.ConnectCamera(_mainCamera);
+
+            return gamebox;
+        }
 
 
     }
