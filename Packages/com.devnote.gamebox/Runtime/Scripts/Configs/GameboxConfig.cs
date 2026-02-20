@@ -12,19 +12,31 @@ namespace Gamebox
         [field: SerializeField] public bool TestEnabled { get; private set; }
 
 
-        [SerializeField] private List<ItemData> _items;
+        [SerializeField] private List<ItemKey> _tutorialItems;
         [SerializeField] private List<LocationData> _locations;
         [SerializeField] private RewardsData _rewards;
         [SerializeField] private List<LeagueData> _leagues;
         [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
+        [field: SerializeField] public int ReviveGemPrice { get; private set; }
         [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
         [SerializeField] private int _interstitialsFromLevel;
+        [SerializeField] private LeagueType _menuFromLeague;
         [field: SerializeField] public ItemPack GameRateReward { get; private set; }
         [SerializeField] private List<int> _rateUsLevels;
 
+        [SerializeField] private List<int> _cardCellGemPrices;
+        [SerializeField] private List<CardPrice> _cardUpgradePrices;
+        [SerializeField] private List<CardData> _cardDataList;
+        [SerializeField] private List<ShopBoxData> _shopBoxes;
+        [SerializeField] private List<int> _gemsInsideShopPacks;
+        [SerializeField] private List<int> _coinsInsideShopPacks;
+        [SerializeField] private List<int> _coinsPackPrices;
+
 
         public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 
+        public bool MenuAvailable => IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value) >= _menuFromLeague;
+
 
         public bool RateUsNow
         {

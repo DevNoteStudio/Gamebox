@@ -8,12 +8,12 @@ namespace Gamebox
 {
     public static class TweenHub
     {
-        public static Tween Show(Transform transform, float duration = 0.6f, bool playSound = false)
+        public static Tween Show(Transform transform, float duration = 0.45f, bool playSound = false)
         {
             transform.localScale = Vector3.zero;
             return transform.DOScale(1f, duration).SetEase(Ease.OutBack).OnStart(() => 
             {
-                if (playSound) IConfigs.Gamebox.ShowSound.Play();
+                if (playSound) Sound.Play(SoundName.Show);
             });
         }
 
@@ -31,7 +31,7 @@ namespace Gamebox
         {
             return transform.DOScale(0f, duration).SetEase(Ease.OutFlash).OnStart(() =>
             {
-                if (playSound) IConfigs.Gamebox.HideSound.Play();
+                if (playSound) Sound.Play(SoundName.Hide);
             });
         }
 

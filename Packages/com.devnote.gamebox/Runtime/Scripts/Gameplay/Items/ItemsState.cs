@@ -9,106 +9,112 @@ namespace Gamebox
 
     public class ItemsState
     {
+        private class ItemData
+        {
+            public int amount;
+            public bool isUnlocked;
+            public Action onChanged;
+
+            public ItemData(int amount, bool isUnlocked)
+            {
+                this.amount = amount;
+                this.isUnlocked = isUnlocked;
+                onChanged = null;
+            }
+        }
+
         public event Action<ItemKey> OnChanged;
 
-        private Dictionary<ItemKey, int> _amounts;
-        private Dictionary<ItemKey, int> _cheatAmounts;
-        private Dictionary<ItemKey, Action> _changeActions = new();
-
+        private Dictionary<ItemKey, ItemData> _items;
 
         public ItemsState(string data)
         {
-            _amounts = new Dictionary<ItemKey, int>();
-            _cheatAmounts = new Dictionary<ItemKey, int>();
+            _items = new Dictionary<ItemKey, ItemData>();
 
             if (!string.IsNullOrEmpty(data))
             {
-                string[] amountsData = data.Split(S.S2);
-                foreach (var amountData in amountsData)
+                string[] splitData = data.Split(S.S2);
+
+                foreach (var itemData in splitData)
                 {
-                    string[] keyValueData = amountData.Split(S.S1);
+                    string[] splitItemData = itemData.Split(S.S1);
 
-                    ItemKey key = (ItemKey)int.Parse(keyValueData[0]);
-                    int value = int.Parse(keyValueData[1]);
+                    if (splitItemData.Length == 2) // Old saves
+                    {
+                        ItemKey key = (ItemKey)int.Parse(splitItemData[0]);
+                        int amount = int.Parse(splitItemData[1]);
+                        bool isUnlocked = amount > 0;
 
-                    Set(key, value);
+                        _items[key] = new ItemData(amount, isUnlocked);
+                    }
+                    else if (splitItemData.Length == 3) // New saves
+                    {
+                        ItemKey key = (ItemKey)int.Parse(splitItemData[0]);
+                        int amount = int.Parse(splitItemData[1]);
+                        bool isUnlocked = splitItemData[2].FromBinaryToBool();
+
+                        _items[key] = new ItemData(amount, isUnlocked);
+                    }
                 }
             }
         }
 
-
-        public int Get(ItemKey itemKey)
+        private ItemData GetItemData(ItemKey key)
         {
-            bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemKey);
-            return cheatModeEnabled ? _cheatAmounts[itemKey] : _amounts.GetValueOrDefault(itemKey, 0);
+            if (!_items.ContainsKey(key))
+                _items.Add(key, new ItemData(amount: 0, isUnlocked: false));
+
+            return _items[key];
         }
 
-        public void Set(ItemKey itemKey, int value)
+        public bool IsUnlocked(ItemKey itemKey) => GetItemData(itemKey).isUnlocked;
+
+        public int Get(ItemKey itemKey) => GetItemData(itemKey).amount;
+
+        public void Set(ItemKey itemKey, int amount)
         {
-            bool cheatModeEnabled = _cheatAmounts.ContainsKey(itemKey);
+            var itemData = GetItemData(itemKey);
 
-            if (cheatModeEnabled) _cheatAmounts[itemKey] = value;
-            else
-            {
-                if (!_amounts.ContainsKey(itemKey))
-                    _amounts.Add(itemKey, value);
+            itemData.amount = amount;
 
-                else _amounts[itemKey] = value;
-            }
+            if (amount > 0 && !itemData.isUnlocked)
+                itemData.isUnlocked = true;
 
-            GetChangeAction(itemKey)?.Invoke();
+            itemData.onChanged?.Invoke();
             OnChanged?.Invoke(itemKey);
         }
 
-        public bool IsCheatMode(ItemKey itemKey) => _cheatAmounts.ContainsKey(itemKey);
-
-        public void SetCheatMode(ItemKey itemKey, bool enabled, int cheatAmount = 99999)
-        {
-            if (enabled && !_cheatAmounts.ContainsKey(itemKey))
-                _cheatAmounts.Add(itemKey, cheatAmount);
-
-            if (!enabled && _cheatAmounts.ContainsKey(itemKey))
-                _cheatAmounts.Remove(itemKey);
-        }
-
-        public void Spend(ItemKey itemKey, int value) => Set(itemKey, Get(itemKey) - value);
-        public void Add(ItemKey itemKey, int value) => Set(itemKey, Get(itemKey) + value);
+        public void Spend(ItemKey itemKey, int amount) => Set(itemKey, Get(itemKey) - amount);
+        public void Add(ItemKey itemKey, int amount) => Set(itemKey, Get(itemKey) + amount);
         public bool Has(ItemKey itemKey) => Get(itemKey) > 0;
 
-
-        public void Subscribe(ItemKey itemKey, Action onChanged)
+        public void Unlock(ItemKey itemKey)
         {
-            var action = GetChangeAction(itemKey);
-            _changeActions[itemKey] = action + onChanged;
+            var itemData = GetItemData(itemKey);
+            itemData.isUnlocked = true;
+            itemData.onChanged?.Invoke();
+            OnChanged?.Invoke(itemKey);
         }
+
+
+        public void Subscribe(ItemKey itemKey, Action onChanged) 
+            => GetItemData(itemKey).onChanged += onChanged;
 
         public void Dispose(ItemKey itemKey, Action onChanged)
-        {
-            var action = GetChangeAction(itemKey);
-            _changeActions[itemKey] = action - onChanged;
-        }
-
-
-        private Action GetChangeAction(ItemKey itemKey)
-        {
-            if (!_changeActions.ContainsKey(itemKey))
-                _changeActions.Add(itemKey, null);
-
-            return _changeActions[itemKey];
-        }
+            => GetItemData(itemKey).onChanged -= onChanged;
 
         public override string ToString()
         {
             var builder = new StringBuilder();
 
             int i = 0;
-            foreach (var itemAmount in _amounts)
+            foreach (var itemKeyValue in _items)
             {
-                ItemKey key = itemAmount.Key;
-                int amount = itemAmount.Value;
+                ItemKey key = itemKeyValue.Key;
+                var data = itemKeyValue.Value;
 
-                builder.Append($"{(int)key}{S.S1}{amount}");
-                if (i < _amounts.Count - 1) builder.Append(S.S2);
+                if (i != 0) builder.Append(S.S2);
+                builder.Append($"{(int)key}{S.S1}{data.amount}{S.S1}{data.isUnlocked.ToBinaryString()}");
 
                 i++;
             }

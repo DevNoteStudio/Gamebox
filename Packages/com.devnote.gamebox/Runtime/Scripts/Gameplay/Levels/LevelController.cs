@@ -13,6 +13,9 @@ namespace Gamebox
         public int CompletedStars { get; private set; } = -1;
 
         public bool IsLevelPlaying { get; private set; } = false;
+        public bool IsLevelRestarted { get; private set; } = false;
+        public int ReviveCount { get; private set; } = 0;
+
 
         private bool _isLevelPlayRepeat;
 
@@ -20,12 +23,13 @@ namespace Gamebox
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
         private readonly MenuController menuController;
         private readonly LeagueController leagueController;
+        private readonly ISave save;
         private readonly ILeaderboards leaderboards;
         private readonly IAds ads;
         private readonly IEnvironment environment;
 
         public LevelController(MenuController menuController, ILeaderboards leaderboards, 
-            IAds ads, LeagueController leagueController, IEnvironment environment)
+            IAds ads, LeagueController leagueController, IEnvironment environment, ISave save)
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
@@ -34,14 +38,17 @@ namespace Gamebox
             this.ads = ads;
             this.leagueController = leagueController;
             this.environment = environment;
+            this.save = save;
         }
 
 
-        public void StartNextLevelOrShowLevelSelection()
+        public void StartNextLevelOrShowMenu()
         {
             bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
-            if (IConfigs.Gamebox.LocationTutorialIsAvailable)
+            var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+
+            if (IConfigs.Gamebox.MenuAvailable && !IGameState.BoxAndCardTutorialCompleted.Value)
             {
                 menuController.ShowLocationsScreen(CurrentLocationIndex);
                 OnLevelExit?.Invoke();
@@ -64,12 +71,39 @@ namespace Gamebox
         }
 
 
-        public void Revive()
+        public bool TryRevive()
         {
-            environment.StartGameplay();
+            void Revive()
+            {
+                Sound.Play(SoundName.Revive);
+                environment.StartGameplay();
+                ReviveCount++;
+                IsLevelPlaying = true;
+                OnRevive?.Invoke();
+            }
 
-            IsLevelPlaying = true;
-            OnRevive?.Invoke();
+            int maxFreeRevives = IGameState.Cards.IsActive(CardType.Reviver) ?
+                IConfigs.Gamebox.GetCardPower(CardType.Reviver) : 0;
+
+            bool freeReviveAvailable = maxFreeRevives - ReviveCount > 0;
+
+            if (freeReviveAvailable)
+            {
+                Revive();
+                return true;
+            }
+            else
+            {
+                int gemPrice = IConfigs.Gamebox.ReviveGemPrice;
+                if (IGameState.Items.Get(ItemKey.Gems) >= gemPrice)
+                {
+                    IGameState.Items.Spend(ItemKey.Gems, gemPrice);
+                    Revive();
+                    return true;
+                }
+
+                else return false;
+            }
         }
 
 
@@ -81,7 +115,7 @@ namespace Gamebox
         }
 
 
-        public void StartLevel(int locationIndex, int levelIndex)
+        public void StartLevel(int locationIndex, int levelIndex, bool isRestart = false)
         {
             environment.StartGameplay();
 
@@ -94,10 +128,12 @@ namespace Gamebox
             CompletedStars = 0;
 
             IsLevelPlaying = true;
+            IsLevelRestarted = isRestart;
+
+            ReviveCount = 0;
+
             OnLevelStarted?.Invoke();
         }
-
-
 
 
         public void CompleteCurrentLevel(int stars)
@@ -121,16 +157,41 @@ namespace Gamebox
             var rewards = IConfigs.Gamebox.GetLevelRewards
                 (CurrentLocationIndex, CurrentLevelIndex, newStars, _isLevelPlayRepeat, completedLevels, isFirstComplete);
 
+            int coinsIndex = rewards.FindIndex(itemPack => itemPack.itemKey == ItemKey.Coins);
+            if (IGameState.Cards.IsActive(CardType.CoinsMultiplier) && coinsIndex != -1)
+            {
+                int coinsMultiplierPercentage = IConfigs.Gamebox.GetCardPower(CardType.CoinsMultiplier,
+                    IGameState.Cards.GetLevel(CardType.CoinsMultiplier));
+
+                float multiplier = 1f + coinsMultiplierPercentage / 100f;
+                int totalCoins = (int)(rewards[coinsIndex].amount * multiplier);
+                rewards[coinsIndex] = rewards[coinsIndex].Set(totalCoins);
+            }
+            if (IGameState.Cards.IsActive(CardType.GemRewarder))
+            {
+                int gemsPerNewStar = IConfigs.Gamebox.GetCardPower(CardType.GemRewarder,
+                    IGameState.Cards.GetLevel(CardType.GemRewarder));
+
+                rewards.Add(new ItemPack(ItemKey.Gems, gemsPerNewStar * newStars));
+            }
+
+
             foreach (var reward in rewards )
                 IGameState.Items.Add(reward.itemKey, reward.amount);
 
             var victoryScreen = victoryScreenViewer.ShowExpand(UI.Container);
 
-            bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel
-                && ads.RewardedAvailable;
-
             int rewardRating = IConfigs.Gamebox.GetRatingForLevelCompletion
                 (CurrentLocationIndex, CurrentLevelIndex, newStars);
+
+            if (IGameState.Cards.IsActive(CardType.RatingMultiplier))
+            {
+                int ratingMultiplierPercentage = IConfigs.Gamebox.GetCardPower(CardType.RatingMultiplier, 
+                    IGameState.Cards.GetLevel(CardType.RatingMultiplier));
+
+                float multiplier = 1f + ratingMultiplierPercentage / 100f;
+                rewardRating = Mathf.RoundToInt(rewardRating * multiplier);
+            }
 
             var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
             int maxRewardRating = IConfigs.Gamebox.IsLastLeague(currentLeague) ?
@@ -147,11 +208,11 @@ namespace Gamebox
             int fromRating = IGameState.Rating.Value - rewardRating;
             int toRating = IGameState.Rating.Value;
 
-            victoryScreen.Display(stars, fromRating, toRating, rewards, showBonus);
+            victoryScreen.Display(stars, fromRating, toRating, rewards);
             victoryScreen.AnimateShow();
 
-            leaderboards.SetScore(IGameState.Rating.Value);
-
+            leaderboards.SetScore(IGameState.Levels.CompletedLevels);
+            save.FullSave();
             OnLevelCompleted?.Invoke();
         }
 
@@ -159,13 +220,7 @@ namespace Gamebox
         {
             environment.StopGameplay();
 
-            var loseWindow = loseWindowViewer.ShowFaded(UI.Container);
-
-            bool showRevive = (IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1)
-                && ads.RewardedAvailable;
-
-            loseWindow.Display(showRevive);
-            loseWindow.AnimateShow();
+            loseWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
 
             IsLevelPlaying = false;
             OnLevelLost?.Invoke();

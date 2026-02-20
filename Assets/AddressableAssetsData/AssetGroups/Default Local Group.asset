@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 628e7cd6133007e47bf0221b17bf33b3
+  m_SerializeEntries:
+  - m_GUID: 44ba2b80c2ed3604ea7422f5859260db
+    m_Address: Locations/0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8fb20a5e5dbeda499d7249d1cf6ad95
+    m_Address: Locations/1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7425ebf01d90bf9498c2aa19ce76665e
+    m_Address: Locations/2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc03ac576ea66c249ba553e5b5709c8b
+    m_Address: Sounds/Revive
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0b619dbcdb209e345830e8f82c9f55d7, type: 2}
+    - {fileID: 11400000, guid: 9659e017ccaea6f4fa9a733d38ee41ed, type: 2}

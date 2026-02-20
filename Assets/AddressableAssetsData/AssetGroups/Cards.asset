@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Cards
+  m_EditorClassIdentifier: 
+  m_GroupName: Cards
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 903fa343395ba314f84626e0a6cf966a
+  m_SerializeEntries:
+  - m_GUID: fa612b874f8efb74d8490fc83ae7a9d0
+    m_Address: Cards/GemRewarder
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 09a8531c560451a46bbffbb9ccb8dc7a
+    m_Address: Cards/Reviver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5f9a5ef3080ec940b86b85465038551
+    m_Address: Cards/RatingMultiplier
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c867abe692228d742b596824def552a2
+    m_Address: Cards/CoinsMultiplier
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f976fa8d77933d41bc95e3cb3ea8cc5
+    m_Address: Cards/FreeBooster1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5dd37c7af71e3e4484135dfc2cddf3a
+    m_Address: Cards/FreeBooster2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7724d6411b33fd449afc5bf2decf5a66
+    m_Address: Cards/FreeBooster3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5c61c76f973c62741a60ad51a05a5bb7, type: 2}
+    - {fileID: 11400000, guid: 39f5eb6067136304699fa9c20fe37a24, type: 2}

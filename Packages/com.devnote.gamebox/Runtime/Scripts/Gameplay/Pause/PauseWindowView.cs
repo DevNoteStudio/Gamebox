@@ -27,9 +27,7 @@ namespace Gamebox
 
         public PauseWindowView Display()
         {
-            bool locationsUnlocked = IConfigs.Gamebox.ItemIsAvailable(ItemKey.LocationsUnlocked);
-            _menuButton.gameObject.SetActive(locationsUnlocked);
-
+            _menuButton.gameObject.SetActive(IConfigs.Gamebox.MenuAvailable);
             return this;
         }
 
@@ -58,7 +56,7 @@ namespace Gamebox
                 int locationIndex = levelController.Item.CurrentLocationIndex;
 
                 pauseController.Item.HidePauseWindow(force: true);
-                levelController.Item.StartLevel(locationIndex, levelIndex);
+                levelController.Item.StartLevel(locationIndex, levelIndex, isRestart: true);
             });
         }
 

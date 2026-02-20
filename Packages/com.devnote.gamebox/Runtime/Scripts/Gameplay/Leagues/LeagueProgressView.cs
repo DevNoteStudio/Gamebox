@@ -15,7 +15,6 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField] private TextMeshProUGUI _stageText;
         [SerializeField] private Slider _slider;
-        [SerializeField] private SoundUnit _fillProgressSound;
 
         public const float FILL_DURATION = 1.2f;
 
@@ -61,7 +60,7 @@ namespace Gamebox
         }
 
 
-        public void AnimateProgressFill(int fromRating, int toRating, Action<LeagueType> onNextLeagueReached = null)
+        public async void AnimateProgressFill(int fromRating, int toRating, Action<LeagueType> onNextLeagueReached = null)
         {
             var config = IConfigs.Gamebox;
 
@@ -70,7 +69,7 @@ namespace Gamebox
 
             if (config.IsLastLeague(fromLeagueType))
             {
-                var fillAudioSource = _fillProgressSound.Play();
+                var fillAudioSource = await Sound.PlayAsync(SoundName.RatingFill);
 
                 int toLeagueRating = config.GetCurrentLeagueRating(toRating);
                 int currentRating = fromLeagueRating;
@@ -112,10 +111,10 @@ namespace Gamebox
             }
         }
 
-        private void AnimateFillInsideOneLeague
+        private async void AnimateFillInsideOneLeague
             (float fromFill, float toFill, LeagueType leagueType, float duration, Action onCompleted = null)
         {
-            var fillAudioSource = _fillProgressSound.Play();
+            var fillAudioSource = await Sound.PlayAsync(SoundName.RatingFill);
             int requiredRating = IConfigs.Gamebox.GetLeagueRatingRequire(leagueType + 1);
 
             _slider.value = fromFill;

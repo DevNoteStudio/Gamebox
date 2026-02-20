@@ -8,6 +8,9 @@ namespace Gamebox
         private readonly LevelController levelController;
         private readonly PopupController popupController;
 
+        private const int CURRENT_SAVE_VERSION = 1;
+
+
         public StartController(MenuController menuController, LevelController levelController, 
             PopupController popupController)
         {
@@ -19,33 +22,44 @@ namespace Gamebox
 
         void IStartHandler.Start()
         {
-            ConvertStarsToRating();
+            if (DevNote.IGameState.SaveVersion.Value < CURRENT_SAVE_VERSION)
+                ConvertRatingAndGetPassedLeagueRewards();
+
 
             int locationIndex = IGameState.LastPlayLocationIndex.Value;
 
-            if (IConfigs.Gamebox.ItemIsAvailable(ItemKey.LocationsUnlocked))
-            {
+            if (IConfigs.Gamebox.MenuAvailable)
                 menuController.ShowLocationsScreen(locationIndex);
-                if (IConfigs.Gamebox.LocationTutorialIsAvailable)
-                    popupController.ShowLocationsTutorialWindow();
-            }
+
             else
             {
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(locationIndex);
                 levelController.StartLevel(locationIndex, levelIndex);
             }
-
-            
         }
 
 
-        private void ConvertStarsToRating()
+        private void ConvertRatingAndGetPassedLeagueRewards()
         {
-            int stars = IGameState.Items.Get(ItemKey.Stars);
-            IGameState.Items.Set(ItemKey.Stars, 0);
+            if (IGameState.Rating.Value != 0)
+            {
+                IGameState.Rating.Value = IGameState.Rating.Value / 10;
 
-            IGameState.Rating.Value += stars * 50;
+                var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
+
+                for (int i = 0; i <= (int)currentLeague; i++)
+                {
+                    var passedLeagueRewards = IConfigs.Gamebox.GetLeagueRewardItems((LeagueType)i);
+                    foreach (var rewardItemPack in passedLeagueRewards)
+                        IGameState.Items.Add(rewardItemPack.itemKey, rewardItemPack.amount);
+                }
+            }
+
+            DevNote.IGameState.SaveVersion.Value = CURRENT_SAVE_VERSION;
         }
+
+
+
 
 
     }

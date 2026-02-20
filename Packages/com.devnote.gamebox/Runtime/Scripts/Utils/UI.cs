@@ -14,6 +14,7 @@ namespace Gamebox
 
         public static RectTransform Container { get; private set; }
         public static RectTransform FadeContainer { get; private set; }
+        public static Canvas Canvas { get; private set; }
 
 
         private static readonly Viewer<Image> screenFadeViewer = new(IConfigs.Gamebox.ScreenFadePrefab);
@@ -25,11 +26,26 @@ namespace Gamebox
         private const float WINDOW_FADE_DURATION = 0.3f;
 
 
-        public UI(RectTransform mainContainer, RectTransform fadeContainer)
+        public UI(RectTransform mainContainer, RectTransform fadeContainer, Canvas canvas)
         {
             Container = mainContainer;
             FadeContainer = fadeContainer;
+            Canvas = canvas;
         }
+
+
+        public static void HideLastView()
+        {
+            for (int i = Container.childCount - 1; i >= 0; i--)
+            {
+                var viewObject = Container.GetChild(i).gameObject;
+
+                if (viewObject.activeInHierarchy)
+                    viewObject.SetActive(false);
+            }
+        }
+
+
 
         public static void AddFadePoint()
         {

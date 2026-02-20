@@ -10,6 +10,7 @@ public class Test : MonoBehaviour
 
     private readonly Holder<LeagueController> leagueController = new();
     private readonly Holder<RollupController> rollupController = new();
+    private readonly Holder<BoxAndCardTutorialController> boxAndCardTutorialController = new();
 
     private void Update()
     {
@@ -35,9 +36,7 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            int add = 50;
-            IGameState.Items.Add(ItemKey.Coins, add);
-            rollupController.Item.RollupCoins(add);
+            boxAndCardTutorialController.Item.StartTutorial();
         }
 
     }

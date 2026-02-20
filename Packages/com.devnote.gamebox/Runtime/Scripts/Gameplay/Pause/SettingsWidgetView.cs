@@ -14,6 +14,8 @@ namespace Gamebox
         [SerializeField] private GameObject _enabledSoundObject;
         [SerializeField] private GameObject _disabledSoundObject;
 
+        private readonly Holder<IEnvironment> environment = new();
+
 
         private void OnEnable() => Display();
 
@@ -26,27 +28,35 @@ namespace Gamebox
 
         private void Display()
         {
-            _disabledSoundObject.SetActive(!Sound.Settings.SfxEnabled);
-            _enabledSoundObject.SetActive(Sound.Settings.SfxEnabled);
-            _disabledMusicObject.SetActive(!Sound.Settings.MusicEnabled);
-            _enabledMusicObject.SetActive(Sound.Settings.MusicEnabled);
+            _disabledSoundObject.SetActive(environment.Item.ChannelIsMuted(Sound.Channel.SFX));
+            _enabledSoundObject.SetActive(!environment.Item.ChannelIsMuted(Sound.Channel.SFX));
+            _disabledMusicObject.SetActive(environment.Item.ChannelIsMuted(Sound.Channel.Music));
+            _enabledMusicObject.SetActive(!environment.Item.ChannelIsMuted(Sound.Channel.Music));
         }
 
 
         private void OnSwitchSoundButtonClick()
         {
-            Sound.Settings.SfxEnabled = !Sound.Settings.SfxEnabled;
-            _disabledSoundObject.SetActive(!Sound.Settings.SfxEnabled);
-            _enabledSoundObject.SetActive(Sound.Settings.SfxEnabled);
-            IConfigs.Gamebox.OpenClickSound.Play();
+            bool isMuted = !environment.Item.ChannelIsMuted(Sound.Channel.SFX);
+
+            environment.Item.SetChannelMute(Sound.Channel.SFX, isMuted);
+
+            _disabledSoundObject.SetActive(isMuted);
+            _enabledSoundObject.SetActive(!isMuted);
+
+            Sound.Play(SoundName.OpenClick);
         }
 
         private void OnSwitchMusicButtonClick()
         {
-            Sound.Settings.MusicEnabled = !Sound.Settings.MusicEnabled;
-            _disabledMusicObject.SetActive(!Sound.Settings.MusicEnabled);
-            _enabledMusicObject.SetActive(Sound.Settings.MusicEnabled);
-            IConfigs.Gamebox.OpenClickSound.Play();
+            bool isMuted = !environment.Item.ChannelIsMuted(Sound.Channel.Music);
+
+            environment.Item.SetChannelMute(Sound.Channel.Music, isMuted);
+
+            _disabledMusicObject.SetActive(isMuted);
+            _enabledMusicObject.SetActive(!isMuted);
+
+            Sound.Play(SoundName.OpenClick);
         }
 
     }

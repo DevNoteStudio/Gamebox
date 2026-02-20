@@ -123,13 +123,6 @@ namespace Gamebox
         }
 
 
-        public void ShowLocationsTutorialWindow()
-        {
-            itemTutorialWindowViewer.ShowFaded(UI.Container).
-                Display(ItemKey.LocationsUnlocked).AnimateShow();
-        }
-
-
 
     }
 }

@@ -10,8 +10,6 @@ namespace Gamebox
 {
     public class RewardScreenView : MonoBehaviour
     {
-        [SerializeField] private SoundUnit _showSound;
-        [SerializeField] private SoundUnit _openSound;
         [SerializeField] private Button _openButton;
         [SerializeField] private Button _takeButton;
         [SerializeField] private RectTransform _chestRect;
@@ -37,7 +35,7 @@ namespace Gamebox
         public RewardScreenView Display(ItemPack itemPack)
         {
             _itemPack = itemPack;
-            _itemImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemPack.itemKey);
+            _itemImage.LoadSprite(AssetLoader.LoadItemSprite(itemPack.itemKey));
 
             _itemNameText.text = 
                 $"{IConfigs.Gamebox.GetItemName(itemPack.itemKey)} <size=75%>x</size>{itemPack.amount}";
@@ -47,7 +45,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            _showSound.Play();
+            Sound.Play(SoundName.RewardShow);
 
             _chestRect.gameObject.SetActive(true);
             _itemRect.gameObject.SetActive(false);
@@ -68,7 +66,7 @@ namespace Gamebox
             _itemRect.gameObject.SetActive(true);
             _chestParticle.Play();
 
-            _openSound.Play();
+            Sound.Play(SoundName.RewardOpen);
 
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence()

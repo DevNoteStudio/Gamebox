@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Boxes
+  m_EditorClassIdentifier: 
+  m_GroupName: Boxes
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 214afaff15854984ebac3a0666ec03e1
+  m_SerializeEntries:
+  - m_GUID: f068794ec8894de4aa6c9e38c3844ead
+    m_Address: Boxes/CommonBox_opened
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb4b9e357665a5940a6b57f5bb16d640
+    m_Address: Boxes/CommonBox_front
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4bac6e9657993594188f75db69998ac3
+    m_Address: Boxes/EpicBox_opened
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cea62861ffc9f584fb9c0ecb9d071f43
+    m_Address: Boxes/EpicBox_front
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d38223aa92f06614685302f459eb1cdf
+    m_Address: Boxes/RareBox_opened
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3eb164a5c02482144a70072651384923
+    m_Address: Boxes/RareBox_front
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fa56585e4c7807348be1ed2d0aeaccfa, type: 2}
+    - {fileID: 11400000, guid: e7f3cb9c7d5078a4c8aebbfb63351081, type: 2}

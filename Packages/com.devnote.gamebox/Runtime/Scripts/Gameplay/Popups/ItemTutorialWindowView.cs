@@ -32,7 +32,7 @@ namespace Gamebox
             _itemKey = itemKey;
             _nameText.text = IConfigs.Gamebox.GetItemName(itemKey);
             _descriptionText.text = IConfigs.Gamebox.GetItemTutorialDescription(itemKey);
-            _iconImage.sprite = IConfigs.Gamebox.GetItemIconSprite(itemKey);
+            _iconImage.LoadSprite(AssetLoader.LoadItemSprite(itemKey));
 
             return this;
         }
@@ -57,7 +57,6 @@ namespace Gamebox
         private void OnSubmitButtonClick()
         {
             IGameState.ItemTutorials.SetCompleted(_itemKey, true);
-            IGameState.Items.Add(_itemKey, IConfigs.Gamebox.GetItemStartAmount(_itemKey));
             popupController.Item.HidePopup(PopupType.ItemTutorial);
         }
 

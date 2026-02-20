@@ -23,7 +23,7 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _leagueRequireStageText;
         [SerializeField] private Button _previousButton;
         [SerializeField] private Button _nextButton;
-        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _playButton; public Button PlayButton => _playButton;
         [SerializeField] private Button _levelsButton;
 
         private Pool<Image> _previewPool;
@@ -51,7 +51,11 @@ namespace Gamebox
 
             _previewPool.Clear();
             for (int index = 0; index < IConfigs.Gamebox.LocationsAmount; index++)
-                _previewPool.Get().sprite = IConfigs.Gamebox.GetLocationPreviewSprite(index);
+            {
+                var previewImage = _previewPool.Get();
+                previewImage.color = Color.white;
+                previewImage.LoadSprite(AssetLoader.LoadLocationSprite(index));
+            }
 
             _scrollSnap.StartingPanel = locationIndex;
 

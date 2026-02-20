@@ -4,7 +4,6 @@ using DevNote;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 
 namespace Gamebox
@@ -21,13 +20,13 @@ namespace Gamebox
         [SerializeField] private Button _takeButton;
         [SerializeField] private RectTransform _titleRect;
         [SerializeField] private RectTransform _rewardRect;
-        [SerializeField] private SoundUnit _levelUpSound;
-        [SerializeField] private ItemWidgetView _rewardItemPrefab;
-        [SerializeField] private UnlockedContentWidgetView _unlockedLocationWidget;
-        [SerializeField] private UnlockedContentWidgetView _unlockedItemWidget;
+        [Space]
+        [SerializeField] private LeagueRewardView _gemRewardView;
+        [SerializeField] private LeagueRewardView _boxRewardView;
+        [SerializeField] private LeagueRewardView _unlockedBoosterView;
+        [SerializeField] private LeagueRewardView _unlockedLocationView;
 
-
-        private Pool<ItemWidgetView> _rewardItemWidgetsPool;
+        
         private List<ItemPack> _rewards;
 
         private readonly Holder<LeagueController> leagueController = new();
@@ -36,11 +35,6 @@ namespace Gamebox
         private const float SHAKE_DURATION = 1.5f;
         private const float SHOW_DELAY_1 = 1f;
         private const float SHOW_DELAY_2 = 1.5f;
-
-        private void Awake()
-        {
-            _rewardItemWidgetsPool = new(_rewardItemPrefab, _rewardItemPrefab.transform.parent);
-        }
 
 
         private void Start()
@@ -57,7 +51,7 @@ namespace Gamebox
 
             _shineParticle.Clear();
             _shineParticle.Stop();
-            _levelUpSound.Play();
+            Sound.Play(SoundName.LeagueLevelUp);
 
             _leagueStageText.text = config.GetLeagueStageSymbol(previousLeague);
             _leagueIconImage.sprite = config.GetLeagueSprite(previousLeague);
@@ -93,27 +87,38 @@ namespace Gamebox
 
         private void DisplayRewards(LeagueType nextLeague)
         {
-            bool showUnlockedLocation = IConfigs.Gamebox.TryGetUnlockedLocation
-                (nextLeague, out int unlockedLocationIndex);
+            // Unlocked location
+            if (IConfigs.Gamebox.TryGetUnlockedLocation(nextLeague, out int unlockedLocationIndex))
+            {
+                _unlockedLocationView.gameObject.SetActive(true);
+                _unlockedLocationView.DisplayUnlockedLocation(unlockedLocationIndex);
+            }
+            else _unlockedLocationView.gameObject.SetActive(false);
 
-            _unlockedLocationWidget.gameObject.SetActive(showUnlockedLocation);
-
-            if (showUnlockedLocation)
-                _unlockedLocationWidget.DisplayUnlockedLocation(unlockedLocationIndex);
-
-            bool showUnlockedItem = IConfigs.Gamebox.TryGetUnlockedItem
-                (nextLeague, out ItemKey unlockedItemKey);
-
-            _unlockedItemWidget.gameObject.SetActive(showUnlockedItem);
-
-            if (showUnlockedItem)
-                _unlockedItemWidget.DisplayUnlockedItem(unlockedItemKey);
-
+            // Gems
             _rewards = IConfigs.Gamebox.GetLeagueRewardItems(nextLeague);
+            if (_rewards.TryFind(itemPack => itemPack.itemKey == ItemKey.Gems, out var gemPack))
+            {
+                _gemRewardView.gameObject.SetActive(true);
+                _gemRewardView.DisplayRewardItem(ItemKey.Gems, gemPack.amount);
+            }
+            else _gemRewardView.gameObject.SetActive(false);
 
-            _rewardItemWidgetsPool.Clear();
-            foreach (var rewardItem in _rewards)
-                _rewardItemWidgetsPool.Get().Display(rewardItem.itemKey, rewardItem.amount);
+            // Box
+            if (_rewards.TryFind(itemPack => itemPack.itemKey.IsBox(), out var boxPack))
+            {
+                _boxRewardView.gameObject.SetActive(true);
+                _boxRewardView.DisplayRewardBox(boxPack.itemKey);
+            }
+            else _boxRewardView.gameObject.SetActive(false);
+
+            // Unlocked booster
+            if (_rewards.TryFind(itemPack => itemPack.itemKey.IsBooster(), out var boosterPack))
+            {
+                _unlockedBoosterView.gameObject.SetActive(true);
+                _unlockedBoosterView.DisplayUnlockedBooster(boosterPack.itemKey);
+            }
+            else _unlockedBoosterView.gameObject.SetActive(false);
         }
 
 

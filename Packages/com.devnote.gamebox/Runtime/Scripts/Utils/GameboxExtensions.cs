@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -13,6 +13,19 @@ namespace Gamebox
 
     public static class GameboxExtensions
     {
+
+        public static async void LoadSprite(this Image image, UniTask<Sprite> loader)
+        {
+            float alpha = image.color.a;
+            image.color = image.color.SetAlpha(0f);
+            image.sprite = await loader;
+
+            if (Mathf.Approximately(alpha, 0f)) alpha = 1f;
+
+            image.color = image.color.SetAlpha(alpha);
+        }
+
+        
 
         public static T Attach<T>(this T tween, GameObject target) where T : Tween
             => tween.SetLink(target, LinkBehaviour.KillOnDisable);
