@@ -40,6 +40,8 @@ namespace Gamebox
 
         private async void Awake()
         {
+            if (IEnvironment.IsEditor) _clicksToOpenPanel = 1;
+
             _panelObject.SetActive(false);
 
             await UniTask.WaitUntil(() => GameboxSceneContext.Initialized);
