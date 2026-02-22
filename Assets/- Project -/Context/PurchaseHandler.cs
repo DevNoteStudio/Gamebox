@@ -26,5 +26,12 @@ public class PurchaseHandler : MonoBehaviour, IPurchaseHandler
                 break;
         }
     }
+
+    bool IPurchaseHandler.ProductIsPurchased(ProductKey productKey) => productKey switch
+    {
+        ProductKey.NoAds => DevNote.IGameState.NoAdsPurchased.Value,
+        _ => false,
+    };
+
 }
 

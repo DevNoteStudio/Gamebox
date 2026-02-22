@@ -19,28 +19,55 @@ namespace Gamebox
             this.analytics = analytics;
             this.levelController = levelController;
 
-            IAds.OnInterstitialShown += OnInterstitialShown;
-            IAds.OnRewardedShown += OnRewardedShown;
-            IReview.OnGameRated += OnGameRated;
-            IPurchase.OnPurchaseHandled += OnPurchaseHandled;
-            levelController.OnLevelLost += OnLevelLost;
             levelController.OnLevelCompleted += OnLevelCompleted;
-            levelController.OnRevive += OnRevive;
+            IPurchase.OnPurchaseHandled += OnPurchaseHandled;
+
+            // IAds.OnInterstitialShown += OnInterstitialShown;
+            // IAds.OnRewardedShown += OnRewardedShown;
+            // IReview.OnGameRated += OnGameRated;
+            // 
+            // levelController.OnLevelLost += OnLevelLost;
+            // levelController.OnRevive += OnRevive;
         }
 
+
+        public void TutorialStepCompleted(int stepIndex, string stepName)
+        {
+            analytics.SendEvent("tutorial_step", new()
+            {
+                { "step", stepIndex + 1 },
+                { "name", stepName },
+            });
+        }
+
+
+        private void OnLevelCompleted()
+        {
+            analytics.SendEvent("level_completed", new()
+            {
+                { "location", IGameState.LastPlayLocationIndex.Value + 1 },
+                { "level", IGameState.LastPlayLevelIndex.Value + 1 },
+            });
+        }
+
+        private void OnPurchaseHandled(ProductKey productKey, bool success)
+        {
+            if (!success) return;
+
+            analytics.SendEvent("iap_purchase", new()
+            {
+                { "product", productKey.ToString() },
+                { "location", IGameState.LastPlayLocationIndex.Value + 1 },
+                { "level", IGameState.LastPlayLevelIndex.Value + 1 },
+            });
+        }
+
+
+        /*
         private void OnRevive()
         {
             analytics.SendEvent("level_revive", new()
             {
-                { "level", CurrentLevelData },
-            });
-        }
-
-        private void OnLevelCompleted()
-        {
-            analytics.SendEvent("level_win", new()
-            {
-                { "stars", levelController.CompletedStars },
                 { "level", CurrentLevelData },
             });
         }
@@ -53,16 +80,7 @@ namespace Gamebox
             });
         }
 
-        private void OnPurchaseHandled(ProductKey productKey, bool success)
-        {
-            if (!success) return;
-
-            analytics.SendEvent("iap_purchase", new()
-            {
-                { "product", CurrentLevelData },
-                { "level", CurrentLevelData },
-            });
-        }
+        
 
         private void OnGameRated()
         {
@@ -114,7 +132,7 @@ namespace Gamebox
                 { "level", CurrentLevelData }
             });
         }
-
+        */
 
 
     }
