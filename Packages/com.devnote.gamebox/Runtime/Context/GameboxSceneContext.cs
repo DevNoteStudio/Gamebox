@@ -7,7 +7,7 @@ namespace Gamebox
     {
         public static bool Initialized { get; private set; } = false;
 
-        [SerializeField] private Camera _mainCamera;
+        [SerializeField] private Camera _mainCamera; public static Camera MainCamera { get; private set; }
 
         private readonly Holder<IEnvironment> environment = new();
         private readonly Holder<ILeaderboards> leaderboards = new();
@@ -19,6 +19,8 @@ namespace Gamebox
 
         public override void RegisterContext()
         {
+            MainCamera = _mainCamera;
+
             var gamebox = CreateGameboxRoot();
 
             new UI(gamebox.ScreenContainer, gamebox.FadeContainer, gamebox.Canvas);
@@ -37,6 +39,7 @@ namespace Gamebox
             var cards = Register(new CardsController());
             var boxAndCardTutorial = Register(new BoxAndCardTutorialController(menu, shop, boxOpen, cards, gamebox.GraphicRaycaster));
             var sound = Register(new SoundController());
+            var score = Register(new ScoreController(level));
 
             var start = Register(new StartController(menu, level, popup));
 

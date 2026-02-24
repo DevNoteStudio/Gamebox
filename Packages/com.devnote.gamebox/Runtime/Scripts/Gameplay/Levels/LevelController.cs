@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 
@@ -21,6 +23,7 @@ namespace Gamebox
 
         private readonly Viewer<LoseWindowView> loseWindowViewer;
         private readonly Viewer<VictoryScreenView> victoryScreenViewer;
+        private readonly Viewer<GameplayScreenView> gameplayScreenViewer; public GameplayScreenView GameplayScreen => gameplayScreenViewer.View;
         private readonly MenuController menuController;
         private readonly LeagueController leagueController;
         private readonly ISave save;
@@ -33,6 +36,8 @@ namespace Gamebox
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
+            gameplayScreenViewer = new(IConfigs.GetViewPrefab<GameplayScreenView>());
+
             this.menuController = menuController;
             this.leaderboards = leaderboards;
             this.ads = ads;
@@ -110,6 +115,9 @@ namespace Gamebox
         public void ExitLevel()
         {
             environment.StopGameplay();
+
+            gameplayScreenViewer.Hide();
+
             IsLevelPlaying = false;
             OnLevelExit?.Invoke();
         }
@@ -131,6 +139,9 @@ namespace Gamebox
             IsLevelRestarted = isRestart;
 
             ReviveCount = 0;
+
+            gameplayScreenViewer.ShowExpand(UI.Container).Display(levelIndex);
+
 
             OnLevelStarted?.Invoke();
         }
@@ -179,7 +190,7 @@ namespace Gamebox
             foreach (var reward in rewards )
                 IGameState.Items.Add(reward.itemKey, reward.amount);
 
-            var victoryScreen = victoryScreenViewer.ShowExpand(UI.Container);
+            
 
             int rewardRating = IConfigs.Gamebox.GetRatingForLevelCompletion
                 (CurrentLocationIndex, CurrentLevelIndex, newStars);
@@ -208,13 +219,23 @@ namespace Gamebox
             int fromRating = IGameState.Rating.Value - rewardRating;
             int toRating = IGameState.Rating.Value;
 
-            victoryScreen.Display(stars, fromRating, toRating, rewards);
-            victoryScreen.AnimateShow();
+            ShowWinScreen(stars, fromRating, toRating, rewards);
 
             leaderboards.SetScore(IGameState.Levels.CompletedLevels);
             save.FullSave();
             OnLevelCompleted?.Invoke();
         }
+
+        private async void ShowWinScreen(int stars, int fromRating, int toRating, List<ItemPack> rewards)
+        {
+            await UniTask.WaitForSeconds(IConfigs.Gamebox.DelayBeforeShowWinScreen);
+
+            var victoryScreen = victoryScreenViewer.ShowExpand(UI.Container);
+            victoryScreen.Display(stars, fromRating, toRating, rewards);
+            victoryScreen.AnimateShow();
+        }
+
+
 
         public void LoseCurrentLevel()
         {

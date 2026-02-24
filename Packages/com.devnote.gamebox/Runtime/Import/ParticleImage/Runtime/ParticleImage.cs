@@ -1103,19 +1103,21 @@ namespace AssetKits.ParticleImage
         /// <summary>
         /// Called when the first piece of a particle finishes.
         /// </summary>
-        public UnityEvent onFirstParticleFinished => _onFirstParticleFinish;
-        
+        public UnityEvent onFirstParticleFinished => _onFirstParticleFinish; public event Action<ParticleImage> OnFirstParticleFinished;
+
         [SerializeField]
         private UnityEvent _onParticleFinish = new UnityEvent();
         
         /// <summary>
         /// Called when any piece of a particle finishes.
         /// </summary>
-        public UnityEvent onAnyParticleFinished => _onParticleFinish;
-        
+        public UnityEvent onAnyParticleFinished => _onParticleFinish; public event Action<ParticleImage> OnAnyParticleFinished;
+
+
+
         [SerializeField]
-        private UnityEvent _onLastParticleFinish = new UnityEvent();
-        
+        private UnityEvent _onLastParticleFinish = new UnityEvent(); public event Action<ParticleImage> OnLastParticleFinished;
+
         /// <summary>
         /// Called when the last piece of a particle finishes.
         /// </summary>
@@ -2068,17 +2070,17 @@ namespace AssetKits.ParticleImage
                 {
                     if (_particles[i].TimeSinceBorn > _particles[i].Lifetime && (_particles[i].trailPoints.Count <= 1 || _dieWithParticle))
                     {
-                        OnAnyParticleFinished();
+                        OnAnyParticleFinish();
                         pool.Release(_particles[i]);
                         _particles.RemoveAt(i);
                         if (_firstParticleFinished == false)
                         {
                             _firstParticleFinished = true;
-                           OnFirstParticleFinished();
+                           OnFirstParticleFinish();
                         }
                         if (particleCount < 1)
                         {
-                            OnLastParticleFinished();
+                            OnLastParticleFinish();
                         }
                     }
                 }
@@ -2737,19 +2739,22 @@ namespace AssetKits.ParticleImage
             onParticleStarted.Invoke();
         }
 
-        private void OnFirstParticleFinished()
+        private void OnFirstParticleFinish()
         {
             onFirstParticleFinished.Invoke();
+            OnFirstParticleFinished?.Invoke(this);
         }
         
-        private void OnAnyParticleFinished()
+        private void OnAnyParticleFinish()
         {
             onAnyParticleFinished.Invoke();
+            OnAnyParticleFinished?.Invoke(this);
         }
         
-        private void OnLastParticleFinished()
+        private void OnLastParticleFinish()
         {
             onLastParticleFinished.Invoke();
+            OnLastParticleFinished?.Invoke(this);
         }
         
         private void OnParticleStop()

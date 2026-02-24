@@ -68,7 +68,7 @@ namespace Gamebox
         {
             int amount = 0;
 
-            foreach (var itemKey in Utils.GetEnumTypes<ItemKey>())
+            foreach (var itemKey in DevNote.Utils.GetEnumTypes<ItemKey>())
             {
                 if (itemKey.IsBox())
                     amount += IGameState.Items.Get(itemKey);
@@ -85,7 +85,7 @@ namespace Gamebox
         private int GetCardsMarkersAmount()
         {
             int amount = 0;
-            foreach (var cardType in Utils.GetEnumTypes<CardType>())
+            foreach (var cardType in DevNote.Utils.GetEnumTypes<CardType>())
             {
                 if (IGameState.Cards.UpgradeAvailable(cardType) || IGameState.Cards.IsNew(cardType))
                     amount++;

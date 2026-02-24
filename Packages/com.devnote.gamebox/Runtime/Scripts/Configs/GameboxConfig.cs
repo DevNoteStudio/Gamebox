@@ -16,6 +16,8 @@ namespace Gamebox
         [SerializeField] private List<LocationData> _locations;
         [SerializeField] private RewardsData _rewards;
         [SerializeField] private List<LeagueData> _leagues;
+
+        [field: SerializeField] public float DelayBeforeShowWinScreen { get; private set; }
         [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
         [field: SerializeField] public int ReviveFromLevel { get; private set; }
         [field: SerializeField] public int ReviveGemPrice { get; private set; }

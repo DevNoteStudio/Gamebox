@@ -264,12 +264,13 @@ MonoBehaviour:
       amount: 115
     - itemKey: 6
       amount: 1
+  <DelayBeforeShowWinScreen>k__BackingField: 1
   <VictoryRouletteFromLevel>k__BackingField: 2
   <ReviveFromLevel>k__BackingField: 0
   <ReviveGemPrice>k__BackingField: 5
   <InterstitialsShowsToShowNoAdsWindow>k__BackingField: 3
   _interstitialsFromLevel: 5
-  _menuFromLeague: 0
+  _menuFromLeague: 3
   <GameRateReward>k__BackingField:
     itemKey: 0
     amount: 500
