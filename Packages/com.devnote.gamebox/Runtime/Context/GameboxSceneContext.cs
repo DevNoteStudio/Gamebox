@@ -38,7 +38,7 @@ namespace Gamebox
             var boxAndCardTutorial = Register(new BoxAndCardTutorialController(menu, shop, boxOpen, cards, gamebox.GraphicRaycaster));
             var sound = Register(new SoundController());
             var score = Register(new ScoreController(level));
-            var booster = Register(new BoosterController());
+            var booster = Register(new BoosterController(pause));
 
             var start = Register(new StartController(menu, level, popup));
 

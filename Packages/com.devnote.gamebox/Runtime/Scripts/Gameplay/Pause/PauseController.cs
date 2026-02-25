@@ -1,9 +1,12 @@
+using System;
 using DevNote;
 
 namespace Gamebox
 {
     public class PauseController
     {
+        public event Action OnGamePaused;
+
         private readonly Viewer<PauseWindowView> pauseWindowViewer;
         private readonly IEnvironment environment;
 
@@ -19,6 +22,7 @@ namespace Gamebox
         {
             environment.StopGameplay();
             pauseWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
+            OnGamePaused?.Invoke();
         }
 
 

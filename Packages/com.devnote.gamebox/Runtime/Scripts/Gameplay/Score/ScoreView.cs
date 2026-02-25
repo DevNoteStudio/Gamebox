@@ -72,6 +72,7 @@ namespace Gamebox
             scoreParticle.AddBurst(0, particles);
 
             scoreParticle.Play();
+            Sound.Play(SoundName.ShowScoreParticles);
 
             _particleScores[scoreParticle] = score;
 

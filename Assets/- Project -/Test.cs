@@ -6,7 +6,7 @@ public class Test : MonoBehaviour
 {
     [SerializeField] private Transform _worldEmitter;
 
-
+    private readonly Holder<LevelController> levelController = new();
     private readonly Holder<ScoreController> scoreController = new();
     private readonly Holder<BoosterController> boosterController = new();
 
@@ -15,11 +15,23 @@ public class Test : MonoBehaviour
     {
         scoreController.Item.SetScoreCompletedLevelStars(() => 3);
         boosterController.Item.OnBoosterUsingStarted += OnBoosterUsingStarted;
+        levelController.Item.OnLevelStarted += OnLevelStarted;
+    }
+
+    private void OnLevelStarted()
+    {
+        scoreController.Item.SetScoreRequire((Gamebox.IGameState.Levels.CompletedLevels + 1) * 10);
     }
 
     private void OnBoosterUsingStarted()
     {
-        boosterController.Item.FinishBoosterUsing(success: true);
+        if (boosterController.Item.CurrentUsingBoosterKey == ItemKey.Booster1)
+            boosterController.Item.FinishBoosterUsing(success: true);
+
+        else
+        {
+
+        }
     }
 
     private void Update()
@@ -30,11 +42,15 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            scoreController.Item.SetScoreRequire(10);
+            
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Gamebox.IGameState.Items.Add(ItemKey.Booster1, 1);
+            boosterController.Item.FinishBoosterUsing(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            boosterController.Item.CancelBoosterUsing();
         }
 
     }

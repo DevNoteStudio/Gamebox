@@ -45,8 +45,7 @@ namespace Gamebox
 
             int loops = 
                 addProgress > 0.15f ? 5 :
-                addProgress > 0.1f ? 4 :
-                addProgress > 0.02f ? 3 : 2;
+                addProgress > 0.1f ? 4 : 3;
 
             float addPitch = (toPitch - fromPitch) / (loops - 1);
 
@@ -62,7 +61,6 @@ namespace Gamebox
                 {
                     currentPitch += addPitch;
                     audioSource.pitch = currentPitch;
-                    Debug.Log(audioSource.pitch);
                     audioSource.Play();
                 })
                 .SetLoops(loops - 1);

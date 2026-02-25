@@ -1,5 +1,6 @@
 using System;
 using Coffee.UIExtensions;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using DG.Tweening;
 using TMPro;
@@ -20,22 +21,45 @@ namespace Gamebox
         [SerializeField] private Button _useButton;
         [SerializeField] private UIParticle _spendParticle;
         [SerializeField] private RectTransform _animatedRect;
+        [SerializeField] private UIParticle _shineParticles;
 
         private ItemKey _boosterItemKey;
 
         private readonly Holder<BoosterController> boosterController = new();
 
+        private const float SHINE_SHOW_DURATION = 0.4f;
+
+        private void Awake()
+        {
+            _shineParticles.Stop();
+        }
+
 
         private void OnEnable()
         {
             boosterController.Item.OnBoosterUsingFinished += OnBoosterUsingFinished;
+            boosterController.Item.OnBoosterUsingStarted += OnBoosterUsingStarted;
+        }
+
+        private void OnDisable()
+        {
+            boosterController.Item.OnBoosterUsingFinished -= OnBoosterUsingFinished;
+            boosterController.Item.OnBoosterUsingStarted -= OnBoosterUsingStarted;
+        }
+
+        private void OnBoosterUsingStarted()
+        {
+            if (_boosterItemKey == boosterController.Item.CurrentUsingBoosterKey)
+                AnimateBoosterStartUsing();
         }
 
         private void OnBoosterUsingFinished(bool success)
         {
-            if (success && _boosterItemKey == boosterController.Item.CurrentUsingBoosterKey)
-                AnimateBoosterApply();
-                
+            if (_boosterItemKey != boosterController.Item.CurrentUsingBoosterKey)
+                return;
+
+            if (success) AnimateBoosterApply();
+            else AnimateBoosterCancelUsing();
         }
 
 
@@ -87,9 +111,38 @@ namespace Gamebox
 
         private void OnUseButtonClick()
         {
-            boosterController.Item.StartBoosterUsing(_boosterItemKey);
+            if (boosterController.Item.IsUsingBooster)
+            {
+                if (boosterController.Item.CurrentUsingBoosterKey == _boosterItemKey)
+                    boosterController.Item.CancelBoosterUsing();
+
+                else
+                {
+                    boosterController.Item.CancelBoosterUsing();
+                    boosterController.Item.StartBoosterUsing(_boosterItemKey);
+                }
+            }
+            else boosterController.Item.StartBoosterUsing(_boosterItemKey);
         }
 
+
+        private async void AnimateBoosterStartUsing()
+        {
+            await UniTask.NextFrame();
+
+            if (boosterController.Item.IsUsingBooster)
+            {
+                if (_shineParticles.isPaused) _shineParticles.Play();
+                _shineParticles.StartEmission();
+
+                Sound.Play(SoundName.StartUsingBooster);
+            }
+        }
+
+        private void AnimateBoosterCancelUsing()
+        {
+            _shineParticles.StopEmission();
+        }
 
         private void AnimateBoosterApply()
         {
@@ -105,6 +158,8 @@ namespace Gamebox
                 .Append(_animatedRect.DOScale(TO_SCALE, DURATION / 2f).SetEase(Ease.OutQuad))
                 .Append(_animatedRect.DOScale(1f, DURATION / 2f).SetEase(Ease.InQuad))
                 .OnComplete(() => _useButton.image.raycastTarget = true);
+
+            _shineParticles.StopEmission();
         }
         
 

@@ -27,6 +27,8 @@ namespace Gamebox
         public static string Revive => "Revive";
         public static string BoosterApplied => "BoosterApplied";
         public static string AddScore => "AddScore";
+        public static string ShowScoreParticles => "ShowScoreParticles";
+        public static string StartUsingBooster => "StartUsingBooster";
 
         public static string Star(int number) => $"Star{number}";
 
