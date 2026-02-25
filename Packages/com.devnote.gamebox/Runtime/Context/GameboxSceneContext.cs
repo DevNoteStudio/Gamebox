@@ -5,8 +5,6 @@ namespace Gamebox
 {
     public class GameboxSceneContext : SceneContext
     {
-        public static bool Initialized { get; private set; } = false;
-
         [SerializeField] private Camera _mainCamera; public static Camera MainCamera { get; private set; }
 
         private readonly Holder<IEnvironment> environment = new();
@@ -40,6 +38,7 @@ namespace Gamebox
             var boxAndCardTutorial = Register(new BoxAndCardTutorialController(menu, shop, boxOpen, cards, gamebox.GraphicRaycaster));
             var sound = Register(new SoundController());
             var score = Register(new ScoreController(level));
+            var booster = Register(new BoosterController());
 
             var start = Register(new StartController(menu, level, popup));
 

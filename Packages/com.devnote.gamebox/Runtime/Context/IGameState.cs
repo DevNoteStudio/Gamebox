@@ -14,6 +14,7 @@ namespace Gamebox
         public static ReactiveValue<bool> GameRated { get; private set; }
         public static ReactiveValue<int> Rating { get; private set; }
         public static ReactiveValue<bool> BoxAndCardTutorialCompleted { get; private set; }
+        public static int MaxLaunchedLevelIndex { get; set; }
 
 
 
@@ -26,6 +27,7 @@ namespace Gamebox
         private const string GAME_RATED = "rated";
         private const string CARDS = "cards";
         private const string BOX_AND_CARD_TUTORIAL_COMPLETED = "boxCardTutorial";
+        private const string MAX_LAUNCHED_LEVEL_INDEX = "launch";
 
 
         protected static void ParseState(Dictionary<string, string> data)
@@ -39,7 +41,7 @@ namespace Gamebox
             Rating = new(int.Parse(data.GetValueOrDefault(RATING, "0")));
             Cards = new(data.GetValueOrDefault(CARDS, string.Empty));
             BoxAndCardTutorialCompleted = new(data.GetValueOrDefault(BOX_AND_CARD_TUTORIAL_COMPLETED, "0").FromBinaryToBool());
-
+            MaxLaunchedLevelIndex = int.Parse(data.GetValueOrDefault(MAX_LAUNCHED_LEVEL_INDEX, "-1"));
         }
 
         protected static Dictionary<string, string> ToDictionary() => new()
@@ -53,6 +55,7 @@ namespace Gamebox
             { RATING, Rating.ToString() },
             { CARDS, Cards.ToString() },
             { BOX_AND_CARD_TUTORIAL_COMPLETED, BoxAndCardTutorialCompleted.Value.ToBinaryString() },
+            { MAX_LAUNCHED_LEVEL_INDEX, MaxLaunchedLevelIndex.ToString() },
         };
 
 

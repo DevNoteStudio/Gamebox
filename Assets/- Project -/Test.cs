@@ -8,14 +8,19 @@ public class Test : MonoBehaviour
 
 
     private readonly Holder<ScoreController> scoreController = new();
+    private readonly Holder<BoosterController> boosterController = new();
 
 
     private void Awake()
     {
         scoreController.Item.SetScoreCompletedLevelStars(() => 3);
+        boosterController.Item.OnBoosterUsingStarted += OnBoosterUsingStarted;
     }
 
-
+    private void OnBoosterUsingStarted()
+    {
+        boosterController.Item.FinishBoosterUsing(success: true);
+    }
 
     private void Update()
     {
@@ -27,7 +32,10 @@ public class Test : MonoBehaviour
         {
             scoreController.Item.SetScoreRequire(10);
         }
-
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Gamebox.IGameState.Items.Add(ItemKey.Booster1, 1);
+        }
 
     }
 

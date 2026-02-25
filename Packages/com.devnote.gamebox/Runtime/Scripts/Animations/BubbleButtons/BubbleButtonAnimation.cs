@@ -9,7 +9,7 @@ namespace Gamebox
     [RequireComponent(typeof(Button))]
     public class BubbleButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        private enum ButtonSoundType { Click, Open }
+        private enum ButtonSoundType { Click, Open, None }
 
         [SerializeField] private ButtonSoundType _soundType;
 
@@ -34,7 +34,7 @@ namespace Gamebox
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable) return;
+            if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable || !_button.image.raycastTarget) return;
 
             Sound.Play(SoundName.PointerEnter);
 
@@ -44,7 +44,7 @@ namespace Gamebox
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable) return;
+            if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable || !_button.image.raycastTarget) return;
 
             _pointerTween?.Kill();
             _pointerTween = transform.DOScale(1f, DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -53,19 +53,16 @@ namespace Gamebox
 
         private void OnButtonClick()
         {
-            var soundName = _soundType == ButtonSoundType.Click ?
-                SoundName.Click : SoundName.OpenClick;
+            var soundName = _soundType == ButtonSoundType.Click ? SoundName.Click : SoundName.OpenClick;
 
-            Sound.Play(soundName);
+            if (_soundType != ButtonSoundType.None)
+                Sound.Play(soundName);
 
             if (_clickTween.IsActive() && _clickTween.IsPlaying()) return;
 
             _clickTween?.Kill();
             _clickTween = TweenHub.PopDown(transform).SetUpdate(true);
         }
-
-
-
 
     }
 }

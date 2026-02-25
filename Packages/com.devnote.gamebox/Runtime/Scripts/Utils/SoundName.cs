@@ -25,6 +25,8 @@ namespace Gamebox
         public static string OpenLootbox => "OpenLootbox";
         public static string OpenCard => "OpenCard";
         public static string Revive => "Revive";
+        public static string BoosterApplied => "BoosterApplied";
+        public static string AddScore => "AddScore";
 
         public static string Star(int number) => $"Star{number}";
 

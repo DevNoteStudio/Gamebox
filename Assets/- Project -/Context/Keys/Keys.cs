@@ -1,6 +1,21 @@
 using System.Collections.Generic;
 
 
+public enum ContentKey
+{
+    StartInterstitial = 0,
+
+    UnlockBooster1 = 1,
+    UnlockBooster2 = 2,
+    UnlockBooster3 = 3,
+    UnlockBooster4 = 5,
+
+    RateUs = 6,
+    UnlockCards = 7,
+    UnlockShop = 8,
+}
+
+
 public enum CardType
 {
     Locked = -1,

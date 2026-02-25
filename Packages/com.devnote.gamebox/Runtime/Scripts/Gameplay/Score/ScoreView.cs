@@ -20,6 +20,8 @@ namespace Gamebox
         [SerializeField] private Slider _scoreSlider;
         [SerializeField] private Image _shineImage;
 
+        private float _previousProgress;
+
         private bool _flashParticleIsPlaying = false;
         private Tween _textTween;
         private Tween _sliderTween;
@@ -29,6 +31,7 @@ namespace Gamebox
 
         private readonly Holder<ScoreController> scoreController = new();
         private readonly Holder<LevelController> levelController = new();
+        private readonly Holder<SoundController> soundController = new();
 
         private const float FLASH_PARTICLE_DURATION = 0.3f;
         private const float PROGRESS_DURATION = 0.5f;
@@ -104,19 +107,26 @@ namespace Gamebox
             int requiredScore = scoreController.Item.RequiredScore;
             float progress = (float)currentScore / requiredScore;
 
-            if (!_flashParticleIsPlaying)
-            {
-                _scoreFlashParticle.Play();
-                _flashParticleIsPlaying = true;
-            }
-            
-            _scoreFlashParticle.StartEmission();
+            bool isScoreIncrease = progress > _previousProgress && currentScore != 0;
 
+            if (isScoreIncrease)
+            {
+                soundController.Item.PlayScoreFill(_previousProgress, progress);
+
+                if (!_flashParticleIsPlaying)
+                {
+                    _scoreFlashParticle.Play();
+                    _flashParticleIsPlaying = true;
+                }
+
+                _scoreFlashParticle.StartEmission();
+
+                _shineTween?.Kill();
+                _shineTween = _shineImage.DOFade(1f, PROGRESS_EFFECT_DURATION);
+            }
+                
             _textTween?.Kill();
             _textTween = _scoreText.transform.DOScale(TEXT_UPSCALE, PROGRESS_EFFECT_DURATION);
-
-            _shineTween?.Kill();
-            _shineTween = _shineImage.DOFade(1f, PROGRESS_EFFECT_DURATION);
 
             _sliderTween?.Kill();
             _sliderTween = _scoreSlider.DOValue(progress, PROGRESS_DURATION)
@@ -133,6 +143,8 @@ namespace Gamebox
                 _shineTween = _shineImage.DOFade(0f, PROGRESS_EFFECT_DURATION);
                 _textTween = _scoreText.transform.DOScale(1f, PROGRESS_EFFECT_DURATION);
             });
+
+            _previousProgress = progress;
         }
 
 

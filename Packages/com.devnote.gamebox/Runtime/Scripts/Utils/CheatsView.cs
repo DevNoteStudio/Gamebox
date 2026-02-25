@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
@@ -31,6 +32,9 @@ namespace Gamebox
         private int _clicksToOpenPanel = 12;
         private int _originRating;
         private bool _maxRatingEnabled = false;
+        private bool _maxBoostersEnabled = false;
+
+        private Dictionary<ItemKey, int> _originBoosterAmounts = new();
 
         private readonly Holder<ISave> save = new();
         private readonly Holder<LevelController> levelController = new();
@@ -44,7 +48,7 @@ namespace Gamebox
 
             _panelObject.SetActive(false);
 
-            await UniTask.WaitUntil(() => GameboxSceneContext.Initialized);
+            await UniTask.WaitUntil(() => ProjectContext.Initialized);
 
             levelController.Item.OnLevelStarted += Display;
             levelController.Item.OnLevelExit += Display;
@@ -60,6 +64,7 @@ namespace Gamebox
             _nextLevelButton.onClick.AddListener(OnNextLevelButtonClick);
             _previousLevelButton.onClick.AddListener(OnPreviousLevelButtonClick);
             _maxRatingButton.onClick.AddListener(OnMaxRatingButtonClick);
+            _boosterButton.onClick.AddListener(OnBoosterButtonClick);
         }
 
         private void Display()
@@ -80,6 +85,28 @@ namespace Gamebox
             _nextLevelButton.interactable = levelController.Item.IsLevelPlaying && !isLastLevel;
         }
 
+        private void OnBoosterButtonClick()
+        {
+            _maxBoostersEnabled = !_maxBoostersEnabled;
+            _boosterButton.image.color = _maxBoostersEnabled ? _activeColor : _notActiveColor;
+
+            var allBoosterKeys = IConfigs.Gamebox.GetAllBoosterTypes();
+
+            if (_maxBoostersEnabled)
+            {
+                foreach (var itemKey in allBoosterKeys)
+                {
+                    _originBoosterAmounts[itemKey] = IGameState.Items.Get(itemKey);
+                    IGameState.Items.Set(itemKey, 99);
+                }
+            }
+            else
+            {
+                foreach (var itemKey in allBoosterKeys)
+                     IGameState.Items.Set(itemKey, _originBoosterAmounts[itemKey]);
+            }
+
+        }
 
         private void OnMaxRatingButtonClick()
         {

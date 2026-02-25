@@ -264,6 +264,16 @@ MonoBehaviour:
       amount: 115
     - itemKey: 6
       amount: 1
+  <ContentPipeline>k__BackingField:
+    _content:
+    - levelNumber: 5
+      contentKey: 1
+    - levelNumber: 7
+      contentKey: 2
+    - levelNumber: 9
+      contentKey: 3
+    - levelNumber: 10
+      contentKey: 6
   <DelayBeforeShowWinScreen>k__BackingField: 1
   <VictoryRouletteFromLevel>k__BackingField: 2
   <ReviveFromLevel>k__BackingField: 0

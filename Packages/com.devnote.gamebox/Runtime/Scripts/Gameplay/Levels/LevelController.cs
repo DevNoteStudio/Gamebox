@@ -16,6 +16,7 @@ namespace Gamebox
 
         public bool IsLevelPlaying { get; private set; } = false;
         public bool IsLevelRestarted { get; private set; } = false;
+        public bool IsLevelFirstLaunched { get; private set; } = false;
         public int ReviveCount { get; private set; } = 0;
 
 
@@ -131,6 +132,13 @@ namespace Gamebox
 
             IGameState.LastPlayLocationIndex.Value = locationIndex;
             IGameState.LastPlayLevelIndex.Value = levelIndex;
+
+            if (levelIndex > IGameState.MaxLaunchedLevelIndex)
+            {
+                IsLevelFirstLaunched = true;
+                IGameState.MaxLaunchedLevelIndex = levelIndex;
+            }
+
             CurrentLocationIndex = locationIndex;
             CurrentLevelIndex = levelIndex;
             CompletedStars = 0;

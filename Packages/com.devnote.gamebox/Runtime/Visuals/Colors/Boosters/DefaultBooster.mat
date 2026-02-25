@@ -29,7 +29,7 @@ Material:
     - _Angle: 270
     - _ColorCount: 2
     - _NumColors: 5
-    - _Pos0: 0
+    - _Pos0: 0.187
     - _Pos1: 1
     - _Pos2: 0
     - _Pos3: 0
@@ -39,7 +39,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 0.6864664, g: 0.654902, b: 1, a: 1}
-    - _Color1: {r: 0.8490566, g: 0.1521893, b: 0.5563723, a: 1}
+    - _Color1: {r: 0.6874709, g: 0.33773577, b: 1, a: 1}
     - _Color2: {r: 0, g: 0, b: 0, a: 0}
     - _Color3: {r: 0, g: 0, b: 0, a: 0}
     - _Color4: {r: 0, g: 0, b: 0, a: 0}
