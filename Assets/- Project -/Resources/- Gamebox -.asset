@@ -369,3 +369,10 @@ MonoBehaviour:
   _gemsInsideShopPacks: 1400000032000000640000002c010000e8030000b80b0000
   _coinsInsideShopPacks: e803000088130000a8610000
   _coinsPackPrices: 1d00000063000000c7000000
+  _boosterPrices:
+  - boosterItemKey: 10
+    price: 1
+  - boosterItemKey: 11
+    price: 2
+  - boosterItemKey: 12
+    price: 3

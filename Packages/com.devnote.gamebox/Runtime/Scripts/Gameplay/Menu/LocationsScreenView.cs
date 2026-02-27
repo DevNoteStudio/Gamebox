@@ -79,7 +79,7 @@ namespace Gamebox
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(_locationIndex);
 
                 menuController.Item.HideLocationsScreen();
-                levelController.Item.StartLevel(_locationIndex, levelIndex);
+                //levelController.Item.StartLevel(_locationIndex, levelIndex);
             });
 
         }

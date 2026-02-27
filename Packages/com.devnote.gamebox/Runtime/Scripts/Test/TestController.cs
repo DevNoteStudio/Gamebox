@@ -34,12 +34,6 @@ namespace Gamebox
         void IUpdateHandler.Update()
         {
             if (!IConfigs.Gamebox.TestEnabled) return;
-
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                IGameState.Cards.IncreaseAmount(CardType.CoinsMultiplier, 1);
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                IGameState.Items.Add(ItemKey.Coins, 10000);
         }
     }
 }

@@ -22,10 +22,14 @@ namespace Gamebox
         [SerializeField] private UIParticle _spendParticle;
         [SerializeField] private RectTransform _animatedRect;
         [SerializeField] private UIParticle _shineParticles;
+        [SerializeField] private UIParticle _buyParticle;
 
         private ItemKey _boosterItemKey;
+        private int _boosterNumber;
 
         private readonly Holder<BoosterController> boosterController = new();
+        private readonly Holder<CurrencyController> currencyController = new();
+        private readonly Holder<IAds> ads = new();
 
         private const float SHINE_SHOW_DURATION = 0.4f;
 
@@ -71,6 +75,7 @@ namespace Gamebox
         public void Display(ItemKey boosterItemKey, int boosterNumber)
         {
             _boosterItemKey = boosterItemKey;
+            _boosterNumber = boosterNumber;
 
             _iconImage.LoadSprite(AssetLoader.LoadItemSprite(boosterItemKey));
             
@@ -83,7 +88,7 @@ namespace Gamebox
                 _ => throw new Exception($"Wrong booster number: {boosterNumber}. It must be from 1 to 4.")
             };
 
-            bool isUnlocked = IConfigs.Gamebox.ContentPipeline.IsUnlocked(contentType);
+            bool isUnlocked = IConfigs.Gamebox.ContentPipeline.IsAvailable(contentType);
 
             _lockObject.SetActive(!isUnlocked);
             _counterObject.SetActive(isUnlocked);
@@ -92,12 +97,13 @@ namespace Gamebox
 
             if (isUnlocked)
             {
-                bool hasBooster = IGameState.Items.Has(boosterItemKey);
-                
+                bool hasBooster = IGameState.Items.Has(boosterItemKey);            
+
                 _priceObject.SetActive(!hasBooster);
+                if (!hasBooster) _priceText.text = $"<sprite=0>{IConfigs.Gamebox.GetBoosterPrice(_boosterItemKey)}";
 
                 _counterObject.SetActive(hasBooster);
-                if (hasBooster) _counterText.text =IGameState.Items.Get(boosterItemKey).ToString();
+                if (hasBooster) _counterText.text = IGameState.Items.Get(boosterItemKey).ToString();
 
             }
             
@@ -111,18 +117,44 @@ namespace Gamebox
 
         private void OnUseButtonClick()
         {
-            if (boosterController.Item.IsUsingBooster)
-            {
-                if (boosterController.Item.CurrentUsingBoosterKey == _boosterItemKey)
-                    boosterController.Item.CancelBoosterUsing();
+            int boosters = IGameState.Items.Get(_boosterItemKey);
 
+            // <-- Using -->
+            if (boosters > 0)
+            {
+                if (boosterController.Item.IsUsingBooster)
+                {
+                    if (boosterController.Item.CurrentUsingBoosterKey == _boosterItemKey)
+                        boosterController.Item.CancelBoosterUsing();
+
+                    else
+                    {
+                        boosterController.Item.CancelBoosterUsing();
+                        boosterController.Item.StartBoosterUsing(_boosterItemKey);
+                    }
+                }
+                else boosterController.Item.StartBoosterUsing(_boosterItemKey);
+            }
+
+            // <-- No boosters -->
+            else
+            {
+                int price = IConfigs.Gamebox.GetBoosterPrice(_boosterItemKey);
+
+                // <-- Purchasing -->
+                if (currencyController.Item.TrySpendCoins(price))
+                {
+                    Sound.Play(SoundName.BuyBooster);
+                    _buyParticle.Play();
+                    IGameState.Items.Add(_boosterItemKey, 1);
+                }
+
+                // <-- Show rewarded ads -->
                 else
                 {
-                    boosterController.Item.CancelBoosterUsing();
-                    boosterController.Item.StartBoosterUsing(_boosterItemKey);
+
                 }
             }
-            else boosterController.Item.StartBoosterUsing(_boosterItemKey);
         }
 
 
@@ -161,7 +193,7 @@ namespace Gamebox
 
             _shineParticles.StopEmission();
         }
-        
+
 
 
 

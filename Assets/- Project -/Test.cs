@@ -9,6 +9,7 @@ public class Test : MonoBehaviour
     private readonly Holder<LevelController> levelController = new();
     private readonly Holder<ScoreController> scoreController = new();
     private readonly Holder<BoosterController> boosterController = new();
+    private readonly Holder<CurrencyController> currencyController = new();
 
 
     private void Awake()
@@ -30,7 +31,7 @@ public class Test : MonoBehaviour
 
         else
         {
-
+            
         }
     }
 
@@ -42,7 +43,7 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            
+            currencyController.Item.AnimateCoinsRollup(RollupType.AddCurrency, 50, 5, _worldEmitter.position);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {

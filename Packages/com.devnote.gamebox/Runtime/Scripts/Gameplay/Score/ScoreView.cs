@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using AssetKits.ParticleImage;
 using Coffee.UIExtensions;
-using Cysharp.Threading.Tasks;
 using DevNote;
 using DG.Tweening;
 using TMPro;
@@ -89,7 +88,7 @@ namespace Gamebox
 
         private void OnLevelStarted()
         {
-            _levelText.text = (levelController.Item.CurrentLevelIndex + 1).ToString();
+            _levelText.text = IGameState.Level.ToString();
         }
 
 

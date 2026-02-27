@@ -123,37 +123,14 @@ namespace Gamebox
 
         private void OnPreviousLevelButtonClick()
         {
-            int locationIndex = levelController.Item.CurrentLocationIndex;
-            int levelIndex = levelController.Item.CurrentLevelIndex;
-
-            if (levelIndex == 0)
-            {
-                locationIndex--;
-                levelIndex = IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex) - 1;
-            }
-            else levelIndex--;
-
-            levelController.Item.StartLevel(locationIndex, levelIndex);
+            int level = Mathf.Max(IGameState.Level - 1, 1);
+            levelController.Item.StartLevel(level);
         }
 
         private void OnNextLevelButtonClick()
         {
-            int locationIndex = levelController.Item.CurrentLocationIndex;
-            int levelIndex = levelController.Item.CurrentLevelIndex;
-
-            if (IGameState.Levels.GetLevelStars(locationIndex, levelIndex) == 0)
-                IGameState.Levels.SetLevelStars(locationIndex, levelIndex, 1);
-
-            if (levelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(locationIndex) - 1)
-            {
-                locationIndex++;
-                levelIndex = 0;
-            }
-            else levelIndex++;
-
-            Debug.Log(IGameState.Levels.CompletedLevels);
-
-            levelController.Item.StartLevel(locationIndex, levelIndex);
+            int level = IGameState.Level + 1;
+            levelController.Item.StartLevel(level);
         }
 
         private void OnResetButtonClick()

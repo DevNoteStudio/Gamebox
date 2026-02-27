@@ -6,6 +6,8 @@ namespace Gamebox
     public interface IGameState
     {
         public static LevelsState Levels { get; private set; }
+        public static int Level { get; set; }
+        public static bool LevelWasStarted { get; set; } 
         public static ItemsState Items { get; private set; }
         public static CardsState Cards { get; private set; }
         public static ItemTutorialsState ItemTutorials { get; private set; }
@@ -14,10 +16,10 @@ namespace Gamebox
         public static ReactiveValue<bool> GameRated { get; private set; }
         public static ReactiveValue<int> Rating { get; private set; }
         public static ReactiveValue<bool> BoxAndCardTutorialCompleted { get; private set; }
-        public static int MaxLaunchedLevelIndex { get; set; }
 
 
-
+        private const string LEVEL = "level";
+        private const string LEVEL_WAS_STARTED = "lvl_start";
         private const string LEVELS = "levels";
         private const string RATING = "rating";
         private const string LAST_PLAY_LOCATION_INDEX = "lastLocIndex";
@@ -27,11 +29,12 @@ namespace Gamebox
         private const string GAME_RATED = "rated";
         private const string CARDS = "cards";
         private const string BOX_AND_CARD_TUTORIAL_COMPLETED = "boxCardTutorial";
-        private const string MAX_LAUNCHED_LEVEL_INDEX = "launch";
 
 
         protected static void ParseState(Dictionary<string, string> data)
         {
+            Level = int.Parse(data.GetValueOrDefault(LEVEL, $"{1}"));
+            LevelWasStarted = bool.Parse(data.GetValueOrDefault(LEVEL_WAS_STARTED, $"{false}"));
             Levels = new(data.GetValueOrDefault(LEVELS, string.Empty));
             LastPlayLocationIndex = new(int.Parse(data.GetValueOrDefault(LAST_PLAY_LOCATION_INDEX, "0")));
             LastPlayLevelIndex = new(int.Parse(data.GetValueOrDefault(LAST_PLAY_LEVEL_INDEX, "0")));
@@ -41,11 +44,12 @@ namespace Gamebox
             Rating = new(int.Parse(data.GetValueOrDefault(RATING, "0")));
             Cards = new(data.GetValueOrDefault(CARDS, string.Empty));
             BoxAndCardTutorialCompleted = new(data.GetValueOrDefault(BOX_AND_CARD_TUTORIAL_COMPLETED, "0").FromBinaryToBool());
-            MaxLaunchedLevelIndex = int.Parse(data.GetValueOrDefault(MAX_LAUNCHED_LEVEL_INDEX, "-1"));
         }
 
         protected static Dictionary<string, string> ToDictionary() => new()
         {
+            { LEVEL, Level.ToString() },
+            { LEVEL_WAS_STARTED, LevelWasStarted.ToString() },
             { LEVELS, Levels.ToString() },
             { LAST_PLAY_LOCATION_INDEX, LastPlayLocationIndex.ToString() },
             { LAST_PLAY_LEVEL_INDEX, LastPlayLevelIndex.ToString() },
@@ -55,7 +59,6 @@ namespace Gamebox
             { RATING, Rating.ToString() },
             { CARDS, Cards.ToString() },
             { BOX_AND_CARD_TUTORIAL_COMPLETED, BoxAndCardTutorialCompleted.Value.ToBinaryString() },
-            { MAX_LAUNCHED_LEVEL_INDEX, MaxLaunchedLevelIndex.ToString() },
         };
 
 

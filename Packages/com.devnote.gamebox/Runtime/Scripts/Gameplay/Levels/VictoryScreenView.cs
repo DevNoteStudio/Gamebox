@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Coffee.UIExtensions;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using DG.Tweening;
 using TMPro;
@@ -26,10 +27,6 @@ namespace Gamebox
         [SerializeField] private Button _skipButton;
         [SerializeField] private Button _takeButton;
         [SerializeField] private Button _stopRouletteButton;
-        [SerializeField] private RectTransform _leagueRect;
-        [SerializeField] private LeagueProgressView _leagueProgress;
-        [SerializeField] private TextMeshProUGUI _leaguePromptText;
-        [SerializeField] private TextMeshProUGUI _earnedRatingText;
         
         private Pool<ItemWidgetView> _rewardItemWidgetPool;
         private ItemWidgetView _coinItemWidget;
@@ -40,12 +37,14 @@ namespace Gamebox
         private int _totalRewardCoins;
         private int _fromRating;
         private int _toRating;
+        
 
         private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
         private readonly Holder<LeagueController> leagueController = new();
         private readonly Holder<RollupController> rollupController = new();
         private readonly Holder<PopupController> popupController = new();
+        private readonly Holder<CurrencyController> currencyController = new();
 
         private const float FADE_DURATION = 0.8f;
         private const float DELAY_BEFORE_VICTORY_SOUND = 0.3f;
@@ -95,8 +94,6 @@ namespace Gamebox
                     _coinItemWidget = widget;
                 }
             }
-
-            _earnedRatingText.text = $"+{(toRating - fromRating)} {Localization.GetLocalizedText("of_rating")}";
         }
 
 
@@ -147,21 +144,6 @@ namespace Gamebox
 
             sequence.AppendInterval(DELAY_AFTER_STARS);
 
-            sequence.AppendCallback(() => _leagueProgress.Display(_fromRating));
-            sequence.Append(TweenHub.Show(_leagueRect));
-
-            sequence.AppendCallback(() => _leagueProgress.AnimateProgressFill(_fromRating, _toRating, 
-            onNextLeagueReached: (nextLeague) => 
-            {
-                leagueController.Item.ShowLeagueLevelUpScreen(nextLeague, 
-                    onScreenHided: () => sequence.Play());
-
-                sequence.Pause();
-            }));
-
-            sequence.AppendInterval(LeagueProgressView.FILL_DURATION);
-
-            sequence.AppendInterval(DELAY_AFTER_REWARDS);
             sequence.Append(TweenHub.Show(_rewardsRect, playSound: true));
             sequence.AppendInterval(DELAY_AFTER_REWARDS);
 
@@ -188,11 +170,13 @@ namespace Gamebox
 
         private void OnTakeButtonClick()
         {
-            UI.ScreenFade(onCompleted: () =>
+            UI.ScreenFade(onCompleted: async () =>
             {
-                levelController.Item.HideVictoryScreen();
-                levelController.Item.StartNextLevelOrShowMenu();
-                rollupController.Item.RollupCoins(_totalRewardCoins);
+                levelController.Item.HideWinScreen();
+                levelController.Item.StartLevel(IGameState.Level);
+
+                await UniTask.WaitForSeconds(0.5f);
+                currencyController.Item.AnimateCoinsRollup(RollupType.OnlyEffect, _totalRewardCoins, 8);
             });
         }
 

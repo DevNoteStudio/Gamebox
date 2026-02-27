@@ -16,7 +16,7 @@ namespace Gamebox
 
         public bool IsLevelPlaying { get; private set; } = false;
         public bool IsLevelRestarted { get; private set; } = false;
-        public bool IsLevelFirstLaunched { get; private set; } = false;
+        public bool IsLevelLaunchedFirstTime { get; private set; } = false;
         public int ReviveCount { get; private set; } = 0;
 
 
@@ -50,6 +50,7 @@ namespace Gamebox
 
         public void StartNextLevelOrShowMenu()
         {
+            /*
             bool isLastLevel = CurrentLevelIndex == IConfigs.Gamebox.GetLocationLevelsAmount(CurrentLocationIndex) - 1;
 
             var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
@@ -74,6 +75,7 @@ namespace Gamebox
                 menuController.ShowLevelsScreen(CurrentLocationIndex);
                 OnLevelExit?.Invoke();
             }
+            */
         }
 
 
@@ -124,32 +126,21 @@ namespace Gamebox
         }
 
 
-        public void StartLevel(int locationIndex, int levelIndex, bool isRestart = false)
+        public void StartLevel(int level, bool isRestart = false)
         {
             environment.StartGameplay();
 
-            _isLevelPlayRepeat = IGameState.Levels.GetLevelStars(locationIndex, levelIndex) > 0;
+            IsLevelLaunchedFirstTime = !IGameState.LevelWasStarted;
+            IGameState.LevelWasStarted = true;
 
-            IGameState.LastPlayLocationIndex.Value = locationIndex;
-            IGameState.LastPlayLevelIndex.Value = levelIndex;
-
-            if (levelIndex > IGameState.MaxLaunchedLevelIndex)
-            {
-                IsLevelFirstLaunched = true;
-                IGameState.MaxLaunchedLevelIndex = levelIndex;
-            }
-
-            CurrentLocationIndex = locationIndex;
-            CurrentLevelIndex = levelIndex;
-            CompletedStars = 0;
+            IGameState.Level = level;
 
             IsLevelPlaying = true;
             IsLevelRestarted = isRestart;
 
             ReviveCount = 0;
 
-            gameplayScreenViewer.ShowExpand(UI.Container).Display(levelIndex);
-
+            gameplayScreenViewer.ShowExpand(UI.Container);
 
             OnLevelStarted?.Invoke();
         }
@@ -159,6 +150,10 @@ namespace Gamebox
         {
             environment.StopGameplay();
             IsLevelPlaying = false;
+
+            IGameState.Level++;
+            IGameState.LevelWasStarted = false;
+
 
             stars = Mathf.Clamp(stars, 1, 3);
 
@@ -198,33 +193,17 @@ namespace Gamebox
             foreach (var reward in rewards )
                 IGameState.Items.Add(reward.itemKey, reward.amount);
 
-            
-
-            int rewardRating = IConfigs.Gamebox.GetRatingForLevelCompletion
-                (CurrentLocationIndex, CurrentLevelIndex, newStars);
-
-            if (IGameState.Cards.IsActive(CardType.RatingMultiplier))
-            {
-                int ratingMultiplierPercentage = IConfigs.Gamebox.GetCardPower(CardType.RatingMultiplier, 
-                    IGameState.Cards.GetLevel(CardType.RatingMultiplier));
-
-                float multiplier = 1f + ratingMultiplierPercentage / 100f;
-                rewardRating = Mathf.RoundToInt(rewardRating * multiplier);
-            }
 
             var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
             int maxRewardRating = IConfigs.Gamebox.IsLastLeague(currentLeague) ?
                 int.MaxValue : IConfigs.Gamebox.GetLeagueRatingRequire(currentLeague + 1);
 
-            rewardRating = Mathf.Min(rewardRating, maxRewardRating);
-
-            IGameState.Rating.Value += rewardRating;
             var currentLeagueNow = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
 
             if (currentLeagueNow > currentLeague)
                 leagueController.ApplyNewLeagueReward(currentLeagueNow);
 
-            int fromRating = IGameState.Rating.Value - rewardRating;
+            int fromRating = IGameState.Rating.Value;
             int toRating = IGameState.Rating.Value;
 
             ShowWinScreen(stars, fromRating, toRating, rewards);
@@ -256,7 +235,7 @@ namespace Gamebox
         }
 
 
-        public void HideVictoryScreen()
+        public void HideWinScreen()
         {
             victoryScreenViewer.Hide();
         }

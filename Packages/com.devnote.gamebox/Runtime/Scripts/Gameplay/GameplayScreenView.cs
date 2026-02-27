@@ -10,22 +10,31 @@ namespace Gamebox
         [SerializeField] private Button _pauseButton;
 
         [field: SerializeField] public ScoreView ScoreView { get; private set; }
+        [field: SerializeField] public CurrencyView CurrencyView { get; private set; }
 
-
+        private readonly Holder<LevelController> levelController = new();
         private readonly Holder<PauseController> pauseController = new();
 
 
         private void Start()
         {
+            
             _pauseButton.onClick.AddListener(OnPauseButtonClick);
         }
 
-        public void Display(int levelIndex)
+        private void OnEnable()
         {
+            levelController.Item.OnLevelStarted += Display;
+        }
 
+        private void OnDisable()
+        {
+            levelController.Item.OnLevelStarted -= Display;
+        }
 
-
-
+        private void Display()
+        {
+            CurrencyView.gameObject.SetActive(IGameState.Level >= 2);
         }
 
         private void OnPauseButtonClick()

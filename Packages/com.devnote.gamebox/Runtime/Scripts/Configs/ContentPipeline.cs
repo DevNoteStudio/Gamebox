@@ -9,26 +9,18 @@ namespace Gamebox
     {
         [Serializable] private struct LevelContent
         {
-            public int levelNumber;
+            public int level;
             public ContentKey contentKey;
         }
 
         [SerializeField] private List<LevelContent> _content;
 
 
-        public bool IsNow(ContentKey contentKey)
-        {
-            int currentLevelNumber = IGameState.Levels.CompletedLevels + 1;
-            return currentLevelNumber == GetContent(contentKey).levelNumber;
-        }
+        public bool IsNow(ContentKey contentKey) => IGameState.Level == GetContent(contentKey).level;
 
-        public bool IsUnlocked(ContentKey contentKey)
-        {
-            int currentLevelNumber = IGameState.Levels.CompletedLevels + 1;
-            return currentLevelNumber >= GetContent(contentKey).levelNumber;
-        }
+        public bool IsAvailable(ContentKey contentKey) => IGameState.Level >= GetContent(contentKey).level;
 
-        public int GetLevel(ContentKey contentKey) => GetContent(contentKey).levelNumber;
+        public int GetLevel(ContentKey contentKey) => GetContent(contentKey).level;
 
 
         private LevelContent GetContent(ContentKey key)

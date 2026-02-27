@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DevNote;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Gamebox
         private readonly Holder<IAnalytics> analytics = new();
         private readonly Holder<ISave> save = new();
 
-        public override void RegisterContext()
+        public override async void RegisterContext()
         {
             MainCamera = _mainCamera;
 
@@ -24,10 +25,13 @@ namespace Gamebox
             new UI(gamebox.ScreenContainer, gamebox.FadeContainer, gamebox.Canvas);
             new TutorialPointer();
 
+            await UniTask.WaitUntil(() => save.Item.Initialized);
+
             var rollup = Register(new RollupController());
             var league = Register(new LeagueController());
             var menu = Register(new MenuController());
             var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league, environment.Item, save.Item));
+            var currency = Register(new CurrencyController(level));
             var test = Register(new TestController(level));
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
             var pause = Register(new PauseController(environment.Item));

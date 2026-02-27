@@ -70,7 +70,7 @@ namespace Gamebox
             UI.ScreenFade(onCompleted: () =>
             {
                 menuController.Item.HideLevelsScreen();
-                levelController.Item.StartLevel(_locationIndex, _levelIndex);
+                //levelController.Item.StartLevel(_locationIndex, _levelIndex);
             });
         }
 

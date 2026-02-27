@@ -37,10 +37,9 @@ namespace Gamebox
         {
             var rewards = new List<ItemPack>();
 
-            var locationData = _locations[locationIndex];
+            //var locationData = _locations[locationIndex];
 
             int coins = _rewards.coinsForLevelComplete + _rewards.coinsForNewStar * newStars;
-            coins = (int)(coins * locationData.coinsMultiplier);
 
             rewards.Add(new ItemPack(ItemKey.Coins, coins));
 
@@ -50,12 +49,6 @@ namespace Gamebox
                 {
                     if (completedLevels == rewardData.completedLevels)
                         Put(rewards, rewardData.itemKey, rewardData.amount);
-                }
-
-                foreach (var additionalReward in locationData.additionalLevelRewards)
-                {
-                    if (additionalReward.levelIndex == levelIndex)
-                        Put(rewards, additionalReward.itemKey, additionalReward.amount);
                 }
             }
 

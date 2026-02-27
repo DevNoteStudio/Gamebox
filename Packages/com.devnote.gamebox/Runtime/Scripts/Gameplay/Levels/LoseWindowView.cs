@@ -116,7 +116,7 @@ namespace Gamebox
                 int locationIndex = levelController.Item.CurrentLocationIndex;
                 int levelIndex = levelController.Item.CurrentLevelIndex;
 
-                levelController.Item.StartLevel(locationIndex, levelIndex, isRestart: true);
+                levelController.Item.StartLevel(IGameState.Level, isRestart: true);
                 levelController.Item.HideLoseWindow(forceHide: true);
             });
         }

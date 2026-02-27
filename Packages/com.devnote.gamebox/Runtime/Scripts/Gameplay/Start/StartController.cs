@@ -34,7 +34,7 @@ namespace Gamebox
             else
             {
                 int levelIndex = IGameState.Levels.GetLastLevelIndexForPlay(locationIndex);
-                levelController.StartLevel(locationIndex, levelIndex);
+                levelController.StartLevel(IGameState.Level);
             }
         }
 

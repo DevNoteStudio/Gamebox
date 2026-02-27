@@ -36,7 +36,7 @@ namespace Gamebox
         [SerializeField] private List<int> _gemsInsideShopPacks;
         [SerializeField] private List<int> _coinsInsideShopPacks;
         [SerializeField] private List<int> _coinsPackPrices;
-
+        [SerializeField] private List<BoosterPrice> _boosterPrices;
 
         public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 
         public bool MenuAvailable => IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value) >= _menuFromLeague;
