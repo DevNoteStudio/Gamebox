@@ -6,7 +6,16 @@ namespace Gamebox
 {
     public class LeaderboardWindowView : MonoBehaviour
     {
+
+
         
+
+        public void Display()
+        {
+
+        }
+
+
 
 
     }

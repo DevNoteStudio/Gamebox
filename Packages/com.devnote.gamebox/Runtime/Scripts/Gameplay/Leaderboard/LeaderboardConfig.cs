@@ -15,12 +15,7 @@ namespace Gamebox
     [CreateAssetMenu(menuName = "Gamebox/Leaderboard", fileName = "Leaderboard")]
     public class LeaderboardConfig : ScriptableObject
     {
-
-        [SerializeField] private List<LeaderboardEntry> _entries;
-
-
-
-
+        [SerializeField] private List<LeaderboardEntry> _entries; public IReadOnlyList<LeaderboardEntry> Entries => _entries;
 
 
 
