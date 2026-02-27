@@ -35,16 +35,7 @@ MonoBehaviour:
     coinsForNewStar: 30
     ratingForLevelComplete: 1
     ratingForNewStar: 3
-    rewardsForTotalLevelCompletion:
-    - completedLevels: 1
-      itemKey: 4
-      amount: 1
-    - completedLevels: 2
-      itemKey: 5
-      amount: 1
-    - completedLevels: 3
-      itemKey: 6
-      amount: 1
+    rewardsForTotalLevelCompletion: []
   _leagues:
   - leagueType: 0
     ratingRequire: 0
@@ -266,13 +257,13 @@ MonoBehaviour:
       amount: 1
   <ContentPipeline>k__BackingField:
     _content:
-    - levelNumber: 5
+    - level: 0
       contentKey: 1
-    - levelNumber: 7
+    - level: 0
       contentKey: 2
-    - levelNumber: 9
+    - level: 0
       contentKey: 3
-    - levelNumber: 10
+    - level: 0
       contentKey: 6
   <DelayBeforeShowWinScreen>k__BackingField: 1
   <VictoryRouletteFromLevel>k__BackingField: 2
