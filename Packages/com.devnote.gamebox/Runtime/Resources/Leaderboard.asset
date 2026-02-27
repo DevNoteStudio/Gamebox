@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0545f9b60cc0f3142a1f5ab8d190cace, type: 3}
   m_Name: Leaderboard
   m_EditorClassIdentifier: 
-  _entries: []
+  _entries:
+  - playerName: MindArtist_V
+    rating: 217
+  - playerName: LifeWinner53
+    rating: 183
+  - playerName: troloman
+    rating: 156
