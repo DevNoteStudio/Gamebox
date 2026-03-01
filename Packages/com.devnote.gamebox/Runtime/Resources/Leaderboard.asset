@@ -13,1803 +13,1809 @@ MonoBehaviour:
   m_Name: Leaderboard
   m_EditorClassIdentifier: 
   _entries:
-  - playerName: CyberKiller686
+  - playerName: MindArtist_V
+    rating: 217
+  - playerName: LifeWinner53
+    rating: 193
+  - playerName: Troloman
+    rating: 164
+  - playerName: AlphaWalker
+    rating: 149
+  - playerName: KingHunter11
+    rating: 148
+  - playerName: Ghost70
     rating: 147
-  - playerName: QueenBreaker963
+  - playerName: CoolPlayer51
+    rating: 146
+  - playerName: Storm7533
+    rating: 146
+  - playerName: NeonSeeker916
+    rating: 146
+  - playerName: "\u0421\u0442\u0430\u0441524"
     rating: 144
-  - playerName: Стас777
+  - playerName: "\u0421\u0430\u0448\u0430_pro"
+    rating: 144
+  - playerName: CyberPro758
+    rating: 143
+  - playerName: IceBreaker496
+    rating: 143
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439123"
     rating: 142
-  - playerName: FirePro343
-    rating: 141
-  - playerName: BetaX
+  - playerName: Cool42
+    rating: 142
+  - playerName: "\u0412\u0430\u043D\u044F2024"
+    rating: 142
+  - playerName: KingPro880
     rating: 139
-  - playerName: Кирилл_лучший
-    rating: 135
-  - playerName: Night9946
-    rating: 133
-  - playerName: MegaSlayer470
-    rating: 132
-  - playerName: SuperWalker
-    rating: 132
-  - playerName: PrimeMaker
-    rating: 130
-  - playerName: Паша_лучший
-    rating: 130
-  - playerName: Петя123
-    rating: 129
-  - playerName: Никита_герой
-    rating: 127
-  - playerName: TigerPro
-    rating: 127
-  - playerName: GhostSeeker270
-    rating: 127
-  - playerName: Макс_гонщик
-    rating: 126
-  - playerName: Саша_чемпион
-    rating: 126
-  - playerName: Макс_pro
-    rating: 125
-  - playerName: StormGamer
-    rating: 124
-  - playerName: DarkRider
-    rating: 124
-  - playerName: NightOne
-    rating: 124
-  - playerName: Гриша_король
-    rating: 124
-  - playerName: MasterMaker514
-    rating: 124
-  - playerName: Лена_v
-    rating: 123
-  - playerName: GhostKiller707
-    rating: 123
-  - playerName: Настя_гонщик
-    rating: 123
-  - playerName: Влад_игрок
-    rating: 121
-  - playerName: BetaFighter
-    rating: 121
-  - playerName: WolfMaker29
-    rating: 121
-  - playerName: LordOne537
-    rating: 120
-  - playerName: SkyGamer151
-    rating: 120
-  - playerName: CoolMaker
-    rating: 120
-  - playerName: Гриша_боец
-    rating: 120
-  - playerName: Миша_боец
-    rating: 119
-  - playerName: Юра_pro
-    rating: 118
-  - playerName: Master99
-    rating: 118
-  - playerName: CyberWalker232
-    rating: 117
-  - playerName: ShadowRider
-    rating: 117
-  - playerName: Женя_боец
-    rating: 116
-  - playerName: GhostMaker247
-    rating: 116
-  - playerName: Катя_стрелок
-    rating: 116
-  - playerName: IceWalker813
-    rating: 116
-  - playerName: SkyZ
-    rating: 116
-  - playerName: Super42750
-    rating: 115
-  - playerName: Юра595
-    rating: 115
-  - playerName: Юра604
-    rating: 114
-  - playerName: Катя_pro
-    rating: 114
-  - playerName: Fire117
-    rating: 114
-  - playerName: StarBreaker986
-    rating: 113
-  - playerName: Серёжа_гонщик
-    rating: 113
-  - playerName: SkyOne
-    rating: 112
-  - playerName: Кирилл8
-    rating: 112
-  - playerName: Денис_x
-    rating: 111
-  - playerName: PrimeHunter582
-    rating: 111
-  - playerName: Никита123
-    rating: 111
-  - playerName: CoolPro
-    rating: 111
-  - playerName: WolfZ
-    rating: 111
-  - playerName: NeonStriker98
-    rating: 110
-  - playerName: ShadowHunter565
-    rating: 110
-  - playerName: StormPro
-    rating: 110
-  - playerName: Костя2024
-    rating: 110
-  - playerName: Денис_чемпион
-    rating: 109
-  - playerName: TigerPlayer864
-    rating: 108
-  - playerName: SkyStriker694
-    rating: 107
-  - playerName: ProKiller727
-    rating: 107
-  - playerName: StarGamer690
-    rating: 107
-  - playerName: Игорь_боец
-    rating: 107
-  - playerName: Катя_v
-    rating: 105
-  - playerName: AceX343
-    rating: 105
-  - playerName: Кирилл_чемпион
-    rating: 105
-  - playerName: Ice99460
-    rating: 105
-  - playerName: Андрей_гонщик
-    rating: 104
-  - playerName: SuperZ734
-    rating: 104
-  - playerName: Elite99
-    rating: 103
-  - playerName: AlphaZ
-    rating: 103
-  - playerName: FireBreaker
-    rating: 103
-  - playerName: NinjaSeeker
-    rating: 103
-  - playerName: Даша_чемпион
-    rating: 103
-  - playerName: Гриша_v
-    rating: 102
-  - playerName: Sky7900
-    rating: 102
-  - playerName: ShadowRunner525
-    rating: 102
-  - playerName: KingFighter415
-    rating: 102
-  - playerName: BetaWalker686
-    rating: 102
-  - playerName: Серёжа_стрелок
-    rating: 102
-  - playerName: Женя_x
-    rating: 101
-  - playerName: SkyFighter
-    rating: 101
-  - playerName: Миша_гонщик
-    rating: 101
-  - playerName: NinjaHunter
-    rating: 101
-  - playerName: Рома_чемпион
-    rating: 100
-  - playerName: Паша_король
-    rating: 100
-  - playerName: Master992
-    rating: 100
-  - playerName: NinjaRider184
-    rating: 99
-  - playerName: Макс_лучший
-    rating: 99
-  - playerName: StarPro
-    rating: 99
-  - playerName: WolfX68
-    rating: 99
-  - playerName: CyberHunter516
-    rating: 99
-  - playerName: AlphaZ705
-    rating: 99
-  - playerName: Дима_игрок
-    rating: 98
-  - playerName: Стас_top
-    rating: 98
-  - playerName: ProFighter501
-    rating: 98
-  - playerName: QueenRunner528
-    rating: 98
-  - playerName: Женя_pro
-    rating: 98
-  - playerName: QueenRider286
-    rating: 98
-  - playerName: NightMaker
-    rating: 98
-  - playerName: Артём777
-    rating: 97
-  - playerName: PrimeBreaker
-    rating: 97
-  - playerName: CyberHunter
-    rating: 97
-  - playerName: DragonGamer
-    rating: 97
-  - playerName: Стас_игрок
-    rating: 97
-  - playerName: Стас_герой
-    rating: 97
-  - playerName: PrimeStriker587
-    rating: 96
-  - playerName: Миша_герой
-    rating: 96
-  - playerName: EliteRunner162
-    rating: 96
-  - playerName: Юра96
-    rating: 96
-  - playerName: Даша_v
-    rating: 96
-  - playerName: WolfStriker
-    rating: 96
-  - playerName: PrimeKiller
-    rating: 96
-  - playerName: Юра_x
-    rating: 95
-  - playerName: Tiger
-    rating: 95
-  - playerName: Никита_pro
-    rating: 95
-  - playerName: Кирилл_герой
-    rating: 94
-  - playerName: StormHunter
-    rating: 94
-  - playerName: Маша_мастер
-    rating: 94
-  - playerName: NinjaOne59
-    rating: 94
-  - playerName: LordRunner409
-    rating: 94
-  - playerName: Дима_герой
-    rating: 94
-  - playerName: Оля_мастер
-    rating: 94
-  - playerName: MasterZ
-    rating: 94
-  - playerName: Гриша_top
-    rating: 93
-  - playerName: Ace4
-    rating: 93
-  - playerName: WolfSlayer
-    rating: 93
-  - playerName: AceMaker
-    rating: 93
-  - playerName: Артём_гонщик
-    rating: 93
-  - playerName: Queen115
-    rating: 93
-  - playerName: Phoenix42
-    rating: 92
-  - playerName: Игорь_стрелок
-    rating: 92
-  - playerName: Лёша_стрелок
-    rating: 92
-  - playerName: Дима777
-    rating: 92
-  - playerName: Ваня418
-    rating: 92
-  - playerName: Ninja
-    rating: 92
-  - playerName: AcePro
-    rating: 92
-  - playerName: Катя2024
-    rating: 91
-  - playerName: Женя2024
-    rating: 91
-  - playerName: Серёжа_король
-    rating: 91
-  - playerName: GhostRider
-    rating: 91
-  - playerName: Лена_pro
-    rating: 91
-  - playerName: Master7589
-    rating: 90
-  - playerName: Лена_боец
-    rating: 90
-  - playerName: NinjaRunner859
-    rating: 90
-  - playerName: QueenFighter900
-    rating: 89
-  - playerName: Fire543
-    rating: 89
-  - playerName: Катя384
-    rating: 89
-  - playerName: Tiger549
-    rating: 89
-  - playerName: GhostSlayer353
-    rating: 89
-  - playerName: NeonOne751
-    rating: 89
-  - playerName: Миша_лучший
-    rating: 89
-  - playerName: BetaFighter495
-    rating: 89
-  - playerName: Рома_игрок
-    rating: 89
-  - playerName: Ваня_лучший
-    rating: 88
-  - playerName: NightStriker696
-    rating: 88
-  - playerName: IcePro168
-    rating: 88
-  - playerName: Лена_x
-    rating: 88
-  - playerName: ShadowRider119
-    rating: 88
-  - playerName: Таня_лучший
-    rating: 87
-  - playerName: Артём129
-    rating: 87
-  - playerName: BetaX163
-    rating: 87
-  - playerName: SuperSeeker20
-    rating: 87
-  - playerName: Оля_лучший
-    rating: 87
-  - playerName: AlphaRider
-    rating: 87
-  - playerName: NeonPlayer681
-    rating: 87
-  - playerName: Юра_гонщик
-    rating: 86
-  - playerName: Wolf7
-    rating: 86
-  - playerName: Стас_чемпион
-    rating: 86
-  - playerName: Серёжа_лучший
-    rating: 86
-  - playerName: Lord
-    rating: 86
-  - playerName: GhostMaker701
-    rating: 86
-  - playerName: EliteOne954
-    rating: 86
-  - playerName: Elite42764
-    rating: 85
-  - playerName: DragonKiller330
-    rating: 85
-  - playerName: Ace42133
-    rating: 83
-  - playerName: Влад_герой
-    rating: 83
-  - playerName: Phoenix
-    rating: 83
-  - playerName: Лёша2024
-    rating: 82
-  - playerName: MasterSeeker42
-    rating: 82
-  - playerName: Гриша777
-    rating: 82
-  - playerName: WolfStriker934
-    rating: 82
-  - playerName: Лена_мастер
-    rating: 82
-  - playerName: QueenMaker
-    rating: 82
-  - playerName: NeonRunner
-    rating: 82
-  - playerName: Влад946
-    rating: 81
-  - playerName: TigerOne880
-    rating: 81
-  - playerName: Гриша_стрелок
-    rating: 81
-  - playerName: Макс_стрелок
-    rating: 81
-  - playerName: MasterWalker
-    rating: 81
-  - playerName: Петя_король
-    rating: 81
-  - playerName: AlphaHunter
-    rating: 81
-  - playerName: Игорь_герой
-    rating: 80
-  - playerName: Настя_игрок
-    rating: 80
-  - playerName: Стас_боец
-    rating: 80
-  - playerName: TigerFighter390
-    rating: 80
-  - playerName: Петя_герой
-    rating: 80
-  - playerName: Денис437
-    rating: 80
-  - playerName: IceWalker
-    rating: 80
-  - playerName: Дима368
-    rating: 80
-  - playerName: StormX991
-    rating: 80
-  - playerName: Настя2024
-    rating: 80
-  - playerName: Sky7127
-    rating: 79
-  - playerName: Костя_top
-    rating: 79
-  - playerName: Master42
-    rating: 79
-  - playerName: FirePro
-    rating: 79
-  - playerName: Саша_стрелок
-    rating: 79
-  - playerName: Ace42148
-    rating: 79
-  - playerName: Лёша_игрок
-    rating: 79
-  - playerName: Лёша_чемпион
-    rating: 79
-  - playerName: Серёжа123
-    rating: 79
-  - playerName: FireZ
-    rating: 79
-  - playerName: Влад_чемпион
-    rating: 78
-  - playerName: Петя85
-    rating: 77
   - playerName: Neon7
-    rating: 77
-  - playerName: EliteFighter609
-    rating: 76
-  - playerName: MasterZ257
-    rating: 76
-  - playerName: Оля777
-    rating: 76
-  - playerName: IcePlayer695
-    rating: 76
-  - playerName: TigerSlayer
-    rating: 75
-  - playerName: Neon99
-    rating: 75
-  - playerName: IceRunner705
-    rating: 75
-  - playerName: ShadowSeeker413
-    rating: 75
-  - playerName: CyberSeeker
-    rating: 74
-  - playerName: Никита_top
-    rating: 74
-  - playerName: MegaMaker
-    rating: 74
-  - playerName: Cool99413
-    rating: 74
-  - playerName: Денис123
-    rating: 74
-  - playerName: Игорь_лучший
-    rating: 74
-  - playerName: StarPlayer
-    rating: 74
-  - playerName: TigerStriker203
-    rating: 73
-  - playerName: Влад_x
-    rating: 73
-  - playerName: SuperSlayer288
-    rating: 73
-  - playerName: StarWalker
-    rating: 73
-  - playerName: NinjaRunner563
-    rating: 72
-  - playerName: Влад_стрелок
-    rating: 72
-  - playerName: LordPlayer
-    rating: 72
-  - playerName: GhostStriker24
-    rating: 72
-  - playerName: WolfFighter
-    rating: 72
-  - playerName: Оля_гонщик
-    rating: 72
-  - playerName: StarRunner746
-    rating: 71
-  - playerName: QueenFighter
-    rating: 71
-  - playerName: Лёша846
-    rating: 70
-  - playerName: Юра_v
-    rating: 70
-  - playerName: Mega9938
-    rating: 70
-  - playerName: PrimeWalker
-    rating: 70
-  - playerName: Queen42517
-    rating: 70
-  - playerName: Петя_v
-    rating: 70
-  - playerName: EliteGamer
-    rating: 70
-  - playerName: ProX484
-    rating: 70
-  - playerName: Alpha42
-    rating: 70
-  - playerName: Ultra42
-    rating: 69
-  - playerName: Лена_герой
-    rating: 69
-  - playerName: SuperRunner980
-    rating: 69
-  - playerName: PhoenixOne27
-    rating: 69
-  - playerName: CyberRider
-    rating: 69
-  - playerName: PrimeFighter
-    rating: 69
-  - playerName: NinjaSlayer305
-    rating: 69
-  - playerName: Макс_игрок
-    rating: 68
-  - playerName: Cool99
-    rating: 68
-  - playerName: EliteX
-    rating: 68
-  - playerName: Андрей_мастер
-    rating: 68
-  - playerName: CyberWalker362
-    rating: 68
-  - playerName: FireRider
-    rating: 68
-  - playerName: Beta7
-    rating: 67
-  - playerName: PrimeX847
-    rating: 67
-  - playerName: Ваня777
-    rating: 67
-  - playerName: QueenX65
-    rating: 67
-  - playerName: Prime99
-    rating: 67
-  - playerName: Лёша777
-    rating: 67
-  - playerName: DragonKiller
-    rating: 66
-  - playerName: GhostHunter
-    rating: 66
-  - playerName: Витя_чемпион
-    rating: 66
-  - playerName: Саша_лучший
-    rating: 66
-  - playerName: TigerKiller
-    rating: 66
-  - playerName: DarkSeeker
-    rating: 65
-  - playerName: Никита_x
-    rating: 65
-  - playerName: Ultra7998
-    rating: 65
-  - playerName: StormBreaker
-    rating: 65
-  - playerName: StormFighter
-    rating: 65
-  - playerName: TigerBreaker772
-    rating: 64
-  - playerName: Игорь2024
-    rating: 64
-  - playerName: SuperRider
-    rating: 64
-  - playerName: Паша381
-    rating: 64
-  - playerName: LordWalker
-    rating: 64
-  - playerName: ShadowPlayer
-    rating: 64
-  - playerName: CyberSeeker223
-    rating: 63
-  - playerName: Серёжа777
-    rating: 63
-  - playerName: CyberRider276
-    rating: 63
-  - playerName: EliteBreaker539
-    rating: 63
-  - playerName: BetaBreaker
-    rating: 63
-  - playerName: Игорь_король
-    rating: 63
-  - playerName: Влад_король
-    rating: 63
-  - playerName: Оля_pro
-    rating: 63
-  - playerName: QueenSlayer
-    rating: 63
-  - playerName: Серёжа_мастер
-    rating: 62
-  - playerName: NightSlayer887
-    rating: 62
-  - playerName: PhoenixGamer245
-    rating: 62
-  - playerName: ProKiller
-    rating: 62
-  - playerName: SkyStriker333
-    rating: 62
-  - playerName: AlphaKiller945
-    rating: 62
-  - playerName: Артём_король
-    rating: 62
-  - playerName: CyberGamer
-    rating: 62
-  - playerName: CoolWalker463
-    rating: 61
-  - playerName: Sky736
-    rating: 61
-  - playerName: Ваня_стрелок
-    rating: 61
-  - playerName: Костя_x
-    rating: 61
-  - playerName: Elite7338
-    rating: 61
-  - playerName: BetaPlayer
-    rating: 61
-  - playerName: CoolStriker124
-    rating: 61
-  - playerName: Ace99996
-    rating: 61
-  - playerName: Ваня_x
-    rating: 60
-  - playerName: FireStriker
-    rating: 60
-  - playerName: StarSeeker
-    rating: 60
-  - playerName: CyberRider503
-    rating: 60
-  - playerName: Ваня2024
-    rating: 59
-  - playerName: Ice42
-    rating: 59
+    rating: 138
+  - playerName: ShadowSlayer
+    rating: 138
+  - playerName: EliteHunter15
+    rating: 135
+  - playerName: GhostMaker648
+    rating: 135
+  - playerName: IceBreaker235
+    rating: 134
   - playerName: UltraStriker
-    rating: 59
-  - playerName: NightPlayer561
-    rating: 59
-  - playerName: SkyKiller369
-    rating: 59
-  - playerName: Prime42437
-    rating: 59
-  - playerName: Дима_лучший
-    rating: 59
-  - playerName: Master42602
-    rating: 59
-  - playerName: MasterStriker684
-    rating: 59
-  - playerName: SkyWalker220
-    rating: 58
-  - playerName: ProZ929
-    rating: 58
-  - playerName: Рома777
-    rating: 58
-  - playerName: IceSlayer
-    rating: 58
-  - playerName: Саша123
-    rating: 58
-  - playerName: Super42
-    rating: 57
-  - playerName: CyberWalker826
-    rating: 57
-  - playerName: Лена_лучший
-    rating: 57
-  - playerName: AceZ318
-    rating: 57
-  - playerName: Серёжа_pro
-    rating: 57
-  - playerName: Маша_лучший
-    rating: 57
-  - playerName: AceOne152
-    rating: 57
-  - playerName: StarStriker599
-    rating: 57
-  - playerName: Elite7309
-    rating: 57
-  - playerName: MegaGamer61
-    rating: 57
-  - playerName: Dragon7381
-    rating: 57
-  - playerName: Рома_top
-    rating: 56
-  - playerName: Петя_боец
-    rating: 56
-  - playerName: AceFighter
-    rating: 56
-  - playerName: Женя123
-    rating: 56
-  - playerName: Маша_x
-    rating: 56
+    rating: 134
+  - playerName: GhostWalker184
+    rating: 133
+  - playerName: IceWalker
+    rating: 132
+  - playerName: NeonPlayer876
+    rating: 129
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 129
+  - playerName: Night42352
+    rating: 128
+  - playerName: "\u0412\u0430\u043D\u044F411"
+    rating: 127
+  - playerName: BetaPro637
+    rating: 126
+  - playerName: MasterMaker280
+    rating: 126
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 125
+  - playerName: EliteRunner66
+    rating: 124
+  - playerName: AceFighter370
+    rating: 122
+  - playerName: ProStriker691
+    rating: 122
+  - playerName: "\u0413\u0440\u0438\u0448\u0430123"
+    rating: 121
+  - playerName: IceKiller962
+    rating: 120
+  - playerName: "\u0414\u0435\u043D\u0438\u04412024"
+    rating: 114
+  - playerName: "\u041C\u0430\u0448\u04302024"
+    rating: 113
+  - playerName: Elite42
+    rating: 112
   - playerName: DragonHunter
-    rating: 56
-  - playerName: Night997
-    rating: 56
-  - playerName: Ваня_боец
-    rating: 55
-  - playerName: Рома_v
-    rating: 55
-  - playerName: PhoenixKiller684
-    rating: 55
-  - playerName: MasterGamer
-    rating: 55
-  - playerName: Витя_мастер
-    rating: 55
-  - playerName: Лёша_боец
-    rating: 55
-  - playerName: Миша895
-    rating: 55
-  - playerName: Женя916
-    rating: 55
-  - playerName: ProMaker
-    rating: 55
-  - playerName: Стас2024
-    rating: 54
-  - playerName: IceSeeker
-    rating: 54
-  - playerName: Mega7
-    rating: 54
-  - playerName: NeonRider
-    rating: 54
-  - playerName: Макс777
-    rating: 54
-  - playerName: IceKiller
-    rating: 54
-  - playerName: SuperMaker
-    rating: 54
-  - playerName: Юра25
-    rating: 54
-  - playerName: Дима_чемпион
-    rating: 54
-  - playerName: Alpha562
-    rating: 54
-  - playerName: Стас_король
-    rating: 53
-  - playerName: SkyWalker992
-    rating: 53
-  - playerName: AlphaFighter
-    rating: 53
-  - playerName: BetaSlayer
-    rating: 53
-  - playerName: KingStriker969
-    rating: 52
-  - playerName: Гриша_игрок
-    rating: 52
-  - playerName: Петя849
-    rating: 52
-  - playerName: Beta284
-    rating: 52
-  - playerName: AceKiller
-    rating: 52
-  - playerName: Андрей_v
-    rating: 52
-  - playerName: UltraRider
-    rating: 52
-  - playerName: Паша_мастер
-    rating: 52
-  - playerName: Денис777
-    rating: 52
-  - playerName: Маша_гонщик
-    rating: 52
-  - playerName: Рома980
-    rating: 52
-  - playerName: Влад_лучший
-    rating: 51
-  - playerName: Стас121
-    rating: 51
-  - playerName: Саша_гонщик
-    rating: 51
-  - playerName: Паша_чемпион
-    rating: 50
-  - playerName: AlphaSlayer85
-    rating: 50
-  - playerName: NinjaRunner847
-    rating: 50
-  - playerName: Влад_боец
-    rating: 50
-  - playerName: Денис_король
-    rating: 50
-  - playerName: StarFighter616
-    rating: 49
-  - playerName: Дима_pro
-    rating: 49
-  - playerName: Кирилл162
-    rating: 49
-  - playerName: SuperStriker
-    rating: 49
-  - playerName: CyberStriker217
-    rating: 49
-  - playerName: Дима_top
-    rating: 49
-  - playerName: BetaWalker551
-    rating: 48
-  - playerName: Таня_x
-    rating: 48
-  - playerName: Влад_top
-    rating: 48
-  - playerName: FireSlayer
-    rating: 48
-  - playerName: Dark294
-    rating: 48
-  - playerName: Стас123
-    rating: 48
-  - playerName: NeonMaker106
-    rating: 48
-  - playerName: Юра_боец
-    rating: 48
-  - playerName: ShadowMaker
-    rating: 48
-  - playerName: EliteSeeker
-    rating: 48
-  - playerName: Маша2024
-    rating: 48
-  - playerName: DragonMaker429
-    rating: 48
-  - playerName: Star42
-    rating: 47
-  - playerName: SuperSlayer974
-    rating: 47
-  - playerName: QueenWalker409
-    rating: 47
-  - playerName: Витя_лучший
-    rating: 47
-  - playerName: Паша_v
-    rating: 47
-  - playerName: PrimeBreaker514
-    rating: 47
-  - playerName: WolfX
-    rating: 47
-  - playerName: Master99317
-    rating: 46
-  - playerName: Петя_лучший
-    rating: 46
-  - playerName: Андрей_король
-    rating: 46
-  - playerName: Ghost7812
-    rating: 46
-  - playerName: MegaSeeker895
-    rating: 46
-  - playerName: CyberKiller
-    rating: 46
-  - playerName: KingSeeker
-    rating: 46
-  - playerName: Никита2024
-    rating: 46
-  - playerName: Кирилл_top
-    rating: 46
-  - playerName: BetaWalker486
-    rating: 46
-  - playerName: Таня_стрелок
-    rating: 46
-  - playerName: Рома_боец
-    rating: 46
-  - playerName: AceGamer42
-    rating: 46
-  - playerName: Phoenix4283
-    rating: 45
-  - playerName: Саша_pro
-    rating: 45
-  - playerName: LordHunter
-    rating: 45
-  - playerName: Лёша_pro
-    rating: 45
-  - playerName: DarkStriker
-    rating: 45
-  - playerName: Никита_мастер
-    rating: 45
-  - playerName: CyberSeeker414
-    rating: 45
-  - playerName: Стас_гонщик
-    rating: 44
-  - playerName: PhoenixZ747
-    rating: 44
-  - playerName: EliteRunner
-    rating: 44
-  - playerName: Beta9991
-    rating: 44
-  - playerName: QueenKiller
-    rating: 44
-  - playerName: MasterWalker114
-    rating: 43
-  - playerName: Кирилл_pro
-    rating: 43
-  - playerName: Саша_игрок
-    rating: 43
-  - playerName: Артём235
-    rating: 43
-  - playerName: Женя_v
-    rating: 43
-  - playerName: NightFighter
-    rating: 43
-  - playerName: Кирилл777
-    rating: 43
-  - playerName: NinjaPlayer
-    rating: 43
-  - playerName: MegaWalker
-    rating: 43
-  - playerName: CyberPlayer
-    rating: 43
-  - playerName: Дима_король
-    rating: 43
-  - playerName: MasterStriker
-    rating: 43
-  - playerName: CyberX
-    rating: 43
-  - playerName: Артём_чемпион
-    rating: 43
-  - playerName: Alpha453
-    rating: 42
-  - playerName: Dragon42588
-    rating: 42
-  - playerName: AceHunter311
-    rating: 42
-  - playerName: MegaOne647
-    rating: 42
-  - playerName: Sky99
-    rating: 42
-  - playerName: WolfPlayer
-    rating: 42
-  - playerName: Катя123
-    rating: 41
-  - playerName: Ваня_чемпион
-    rating: 41
-  - playerName: StarRunner
-    rating: 41
-  - playerName: Костя_pro
-    rating: 41
-  - playerName: Рома_король
-    rating: 41
-  - playerName: Юра_мастер
-    rating: 41
-  - playerName: Storm
-    rating: 40
-  - playerName: SkyRunner
-    rating: 40
-  - playerName: TigerSeeker318
-    rating: 40
-  - playerName: Ghost
-    rating: 40
-  - playerName: Рома123
-    rating: 40
-  - playerName: Рома_x
-    rating: 40
-  - playerName: Лёша_гонщик
-    rating: 40
-  - playerName: Витя123
-    rating: 40
-  - playerName: DragonX560
-    rating: 40
-  - playerName: Андрей2024
-    rating: 40
-  - playerName: Костя_король
-    rating: 40
-  - playerName: Даша_pro
-    rating: 40
-  - playerName: Shadow7
-    rating: 40
-  - playerName: CyberBreaker9
-    rating: 40
-  - playerName: CyberPlayer346
-    rating: 40
-  - playerName: Гриша_чемпион
-    rating: 39
-  - playerName: NeonGamer49
-    rating: 39
-  - playerName: AlphaOne
-    rating: 39
-  - playerName: Дима482
-    rating: 39
-  - playerName: DragonSeeker542
-    rating: 39
-  - playerName: SuperBreaker241
-    rating: 39
-  - playerName: Super440
-    rating: 39
-  - playerName: Влад587
-    rating: 39
-  - playerName: IcePlayer977
-    rating: 39
-  - playerName: SkyKiller
-    rating: 39
-  - playerName: Кирилл2024
-    rating: 39
-  - playerName: Денис_игрок
-    rating: 38
-  - playerName: Влад777
-    rating: 38
-  - playerName: Андрей123
-    rating: 38
-  - playerName: Кирилл_x
-    rating: 38
-  - playerName: NightKiller
-    rating: 38
-  - playerName: Маша_боец
-    rating: 38
-  - playerName: TigerMaker641
-    rating: 38
-  - playerName: Prime7699
-    rating: 38
-  - playerName: Master
-    rating: 38
-  - playerName: Гриша2024
-    rating: 38
-  - playerName: Миша123
-    rating: 38
-  - playerName: AlphaMaker881
-    rating: 38
-  - playerName: Оля_v
-    rating: 38
-  - playerName: Андрей_top
-    rating: 38
-  - playerName: ProHunter799
-    rating: 38
-  - playerName: Гриша_x
-    rating: 37
-  - playerName: Лена_гонщик
-    rating: 37
-  - playerName: KingZ
-    rating: 37
-  - playerName: Влад_v
-    rating: 37
-  - playerName: Стас_pro
-    rating: 37
-  - playerName: PhoenixPro466
-    rating: 37
-  - playerName: SuperStriker132
-    rating: 37
-  - playerName: Таня123
-    rating: 37
-  - playerName: NinjaStriker113
-    rating: 37
-  - playerName: Лёша_мастер
-    rating: 37
-  - playerName: Витя830
-    rating: 37
-  - playerName: AlphaPlayer865
-    rating: 36
-  - playerName: Витя437
-    rating: 36
-  - playerName: DragonSeeker
-    rating: 36
-  - playerName: SkyKiller97
-    rating: 36
-  - playerName: Дима_мастер
-    rating: 36
-  - playerName: Миша777
-    rating: 36
-  - playerName: UltraOne12
-    rating: 36
-  - playerName: Юра_top
-    rating: 36
-  - playerName: Серёжа2024
-    rating: 36
-  - playerName: Денис_pro
-    rating: 35
-  - playerName: Юра_герой
-    rating: 35
-  - playerName: Макс_герой
-    rating: 35
-  - playerName: ShadowPro709
-    rating: 35
-  - playerName: LordZ
-    rating: 35
-  - playerName: BetaSeeker
-    rating: 35
-  - playerName: Даша_боец
-    rating: 34
-  - playerName: Настя_v
-    rating: 34
-  - playerName: PrimeWalker520
-    rating: 34
-  - playerName: Рома_герой
-    rating: 34
-  - playerName: Dark42
-    rating: 34
-  - playerName: Катя_top
-    rating: 34
-  - playerName: Витя_боец
-    rating: 33
-  - playerName: Лена123
-    rating: 33
-  - playerName: Маша_игрок
-    rating: 33
-  - playerName: PhoenixStriker
-    rating: 33
-  - playerName: LordX
-    rating: 33
-  - playerName: BetaPro
-    rating: 33
-  - playerName: Таня_мастер
-    rating: 33
-  - playerName: Ace99
-    rating: 33
-  - playerName: KingOne
-    rating: 33
-  - playerName: FireFighter
-    rating: 33
-  - playerName: Cyber99556
-    rating: 33
-  - playerName: UltraStriker266
-    rating: 33
-  - playerName: Ultra7
-    rating: 33
-  - playerName: Alpha99647
-    rating: 33
-  - playerName: Макс_чемпион
-    rating: 33
-  - playerName: Женя_стрелок
-    rating: 32
-  - playerName: SkyRider
-    rating: 32
-  - playerName: ProSlayer836
-    rating: 32
-  - playerName: Саша_король
-    rating: 32
-  - playerName: Ваня_pro
-    rating: 32
-  - playerName: WolfHunter918
-    rating: 32
-  - playerName: SkyFighter748
-    rating: 32
-  - playerName: ProHunter
-    rating: 32
-  - playerName: Tiger42815
-    rating: 32
-  - playerName: BetaWalker
-    rating: 32
-  - playerName: Phoenix9995
-    rating: 32
-  - playerName: Саша777
-    rating: 32
-  - playerName: LordZ820
-    rating: 32
-  - playerName: DarkHunter980
-    rating: 32
+    rating: 111
+  - playerName: ShadowRider666
+    rating: 110
+  - playerName: Sky42627
+    rating: 110
+  - playerName: "\u041F\u0435\u0442\u044F_\u0433\u0435\u0440\u043E\u0439"
+    rating: 109
+  - playerName: "\u0414\u0430\u0448\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 108
   - playerName: DarkOne
-    rating: 32
-  - playerName: LordX408
-    rating: 32
-  - playerName: PrimeOne811
-    rating: 31
-  - playerName: Маша_король
-    rating: 31
-  - playerName: FireHunter
-    rating: 31
-  - playerName: AlphaGamer847
-    rating: 31
-  - playerName: StarKiller
-    rating: 31
-  - playerName: Игорь123
-    rating: 31
-  - playerName: Настя_герой
-    rating: 31
-  - playerName: StormRunner
-    rating: 31
-  - playerName: Дима123
-    rating: 31
-  - playerName: Настя_боец
-    rating: 30
-  - playerName: Таня_боец
-    rating: 30
-  - playerName: CoolOne576
-    rating: 30
-  - playerName: Рома2024
-    rating: 30
-  - playerName: StarStriker58
-    rating: 30
-  - playerName: Артём_стрелок
-    rating: 30
-  - playerName: CyberZ
-    rating: 30
-  - playerName: Super7889
-    rating: 30
-  - playerName: IcePlayer548
-    rating: 30
-  - playerName: Оля_король
-    rating: 30
-  - playerName: SkyBreaker
-    rating: 30
-  - playerName: CoolPro899
-    rating: 30
-  - playerName: Cyber
-    rating: 30
-  - playerName: FireMaker643
-    rating: 29
-  - playerName: GhostZ
-    rating: 29
-  - playerName: Таня_король
-    rating: 29
-  - playerName: PhoenixKiller
-    rating: 29
-  - playerName: Макс_v
-    rating: 29
-  - playerName: Катя777
-    rating: 29
-  - playerName: SkyPro
-    rating: 29
-  - playerName: Макс65
-    rating: 29
-  - playerName: Андрей526
-    rating: 29
-  - playerName: Лёша_король
-    rating: 29
-  - playerName: Женя_гонщик
-    rating: 29
-  - playerName: CoolSlayer
-    rating: 29
+    rating: 107
+  - playerName: "\u041E\u043B\u044F_\u0431\u043E\u0435\u0446"
+    rating: 105
+  - playerName: Dragon770
+    rating: 105
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 105
+  - playerName: FireSlayer187
+    rating: 102
+  - playerName: FirePlayer
+    rating: 102
+  - playerName: AlphaFighter172
+    rating: 101
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 100
+  - playerName: "\u042E\u0440\u0430_top"
+    rating: 97
+  - playerName: "\u041C\u0430\u043A\u0441_x"
+    rating: 95
+  - playerName: "\u0412\u043B\u0430\u0434_pro"
+    rating: 93
+  - playerName: "\u041F\u0435\u0442\u044F_x"
+    rating: 92
+  - playerName: SuperGamer56
+    rating: 91
+  - playerName: Master7
+    rating: 90
+  - playerName: "\u0412\u043B\u0430\u0434_\u0431\u043E\u0435\u0446"
+    rating: 89
+  - playerName: NeonOne
+    rating: 89
+  - playerName: Ace42598
+    rating: 88
+  - playerName: PhoenixMaker
+    rating: 88
+  - playerName: LordStriker787
+    rating: 86
+  - playerName: "\u0422\u0430\u043D\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 82
+  - playerName: Cyber42
+    rating: 79
+  - playerName: ProBreaker487
+    rating: 79
+  - playerName: "\u0416\u0435\u043D\u044F_pro"
+    rating: 78
+  - playerName: WolfBreaker703
+    rating: 77
+  - playerName: Pro9958
+    rating: 77
+  - playerName: DarkWalker
+    rating: 74
+  - playerName: ShadowStriker
+    rating: 74
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430123"
+    rating: 73
+  - playerName: PrimeMaker486
+    rating: 71
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 71
+  - playerName: NightHunter844
+    rating: 71
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_\u0433\u0435\u0440\u043E\u0439"
+    rating: 70
+  - playerName: UltraPro
+    rating: 70
+  - playerName: "\u0414\u0430\u0448\u0430_v"
+    rating: 69
+  - playerName: "\u0421\u0442\u0430\u0441_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 69
+  - playerName: StarZ562
+    rating: 69
+  - playerName: ShadowRunner153
+    rating: 68
+  - playerName: "\u0412\u0438\u0442\u044F2024"
+    rating: 68
+  - playerName: QueenRunner
+    rating: 64
+  - playerName: King246
+    rating: 64
+  - playerName: BetaStriker
+    rating: 63
+  - playerName: SkyGamer386
+    rating: 63
+  - playerName: Shadow42929
+    rating: 63
+  - playerName: NightPlayer767
+    rating: 62
+  - playerName: StarSlayer
+    rating: 60
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 59
+  - playerName: "\u041F\u0435\u0442\u044F_\u0431\u043E\u0435\u0446"
+    rating: 57
+  - playerName: Lord7
+    rating: 56
+  - playerName: CoolRider
+    rating: 56
+  - playerName: "\u0416\u0435\u043D\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 56
+  - playerName: "\u0414\u0438\u043C\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 56
+  - playerName: Pro
+    rating: 55
+  - playerName: "\u0412\u0430\u043D\u044F565"
+    rating: 55
+  - playerName: "\u041F\u0430\u0448\u0430_top"
+    rating: 54
+  - playerName: FireBreaker
+    rating: 54
+  - playerName: KingMaker550
+    rating: 53
+  - playerName: "\u0414\u0430\u0448\u0430_x"
+    rating: 51
+  - playerName: "\u0412\u043B\u0430\u0434564"
+    rating: 50
+  - playerName: "\u041F\u0430\u0448\u0430_pro"
+    rating: 50
+  - playerName: Alpha7
+    rating: 50
+  - playerName: King42897
+    rating: 50
+  - playerName: Alpha380
+    rating: 50
+  - playerName: "\u0420\u043E\u043C\u04302024"
+    rating: 50
+  - playerName: ShadowPro721
+    rating: 50
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 50
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 50
+  - playerName: Ice99
+    rating: 50
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 50
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430777"
+    rating: 50
+  - playerName: SkyZ7
+    rating: 50
+  - playerName: PhoenixSlayer617
+    rating: 50
+  - playerName: CoolBreaker
+    rating: 50
+  - playerName: FireRunner
+    rating: 50
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_pro"
+    rating: 50
+  - playerName: PhoenixOne518
+    rating: 50
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 50
+  - playerName: LordKiller
+    rating: 50
+  - playerName: AceFighter
+    rating: 50
+  - playerName: IceHunter267
+    rating: 50
+  - playerName: AlphaGamer217
+    rating: 50
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_v"
+    rating: 50
+  - playerName: NinjaMaker
+    rating: 50
+  - playerName: "\u041E\u043B\u044F_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 49
+  - playerName: DragonWalker
+    rating: 49
+  - playerName: "\u041C\u0438\u0448\u0430_v"
+    rating: 49
+  - playerName: NightGamer
+    rating: 49
+  - playerName: "\u041E\u043B\u044F5"
+    rating: 49
+  - playerName: AceWalker388
+    rating: 49
+  - playerName: PhoenixRider168
+    rating: 49
+  - playerName: "\u041C\u0438\u0448\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 49
+  - playerName: DarkSeeker280
+    rating: 49
+  - playerName: GhostRider232
+    rating: 49
+  - playerName: Elite99211
+    rating: 49
+  - playerName: "\u0410\u0440\u0442\u0451\u043C123"
+    rating: 49
+  - playerName: "\u041F\u0430\u0448\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 49
+  - playerName: LordPlayer652
+    rating: 48
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 48
+  - playerName: PhoenixZ
+    rating: 48
+  - playerName: Dragon42360
+    rating: 48
+  - playerName: EliteSlayer180
+    rating: 48
+  - playerName: PhoenixBreaker
+    rating: 48
+  - playerName: CyberKiller767
+    rating: 48
+  - playerName: AceSeeker278
+    rating: 48
+  - playerName: CyberPlayer
+    rating: 48
+  - playerName: "\u0414\u0438\u043C\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 48
+  - playerName: ShadowSeeker710
+    rating: 48
+  - playerName: Storm887
+    rating: 48
+  - playerName: KingZ
+    rating: 48
+  - playerName: PhoenixX
+    rating: 47
+  - playerName: "\u0421\u0442\u0430\u0441_pro"
+    rating: 47
   - playerName: EliteMaker
-    rating: 29
-  - playerName: NeonPro305
-    rating: 29
-  - playerName: KingPro
-    rating: 29
-  - playerName: Neon7519
-    rating: 28
-  - playerName: Tiger99256
-    rating: 28
+    rating: 47
+  - playerName: Master42642
+    rating: 47
+  - playerName: CoolRunner172
+    rating: 47
+  - playerName: Wolf42
+    rating: 47
+  - playerName: TigerBreaker
+    rating: 47
+  - playerName: Tiger42554
+    rating: 47
+  - playerName: Pro42125
+    rating: 47
+  - playerName: "\u041C\u0438\u0448\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 47
+  - playerName: QueenStriker168
+    rating: 47
+  - playerName: "\u041E\u043B\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 47
+  - playerName: StarMaker
+    rating: 47
+  - playerName: "\u041D\u0430\u0441\u0442\u044F299"
+    rating: 47
+  - playerName: PhoenixStriker360
+    rating: 47
+  - playerName: PrimeKiller836
+    rating: 46
+  - playerName: CyberGamer
+    rating: 46
+  - playerName: Fire42939
+    rating: 46
+  - playerName: KingStriker596
+    rating: 46
+  - playerName: "\u0414\u0438\u043C\u04302024"
+    rating: 46
+  - playerName: StormRunner
+    rating: 46
+  - playerName: "\u0422\u0430\u043D\u044F_x"
+    rating: 46
+  - playerName: QueenPro94
+    rating: 46
+  - playerName: StormBreaker581
+    rating: 46
+  - playerName: SkyRider
+    rating: 46
+  - playerName: "\u0412\u0438\u0442\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 46
+  - playerName: Neon7834
+    rating: 46
+  - playerName: PhoenixBreaker735
+    rating: 46
+  - playerName: "\u041A\u0430\u0442\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 46
+  - playerName: IceSlayer395
+    rating: 46
+  - playerName: "\u041A\u0430\u0442\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 46
+  - playerName: "\u0414\u0435\u043D\u0438\u0441123"
+    rating: 46
+  - playerName: "\u0410\u0440\u0442\u0451\u043C713"
+    rating: 46
+  - playerName: TigerZ835
+    rating: 46
+  - playerName: "\u0422\u0430\u043D\u044F152"
+    rating: 45
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 45
+  - playerName: "\u0414\u0430\u0448\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 45
+  - playerName: DarkRider572
+    rating: 45
+  - playerName: IceHunter
+    rating: 45
+  - playerName: "\u0414\u0430\u0448\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 45
+  - playerName: DragonSeeker
+    rating: 45
+  - playerName: PrimeRunner681
+    rating: 45
+  - playerName: AlphaZ
+    rating: 45
+  - playerName: Phoenix7
+    rating: 45
+  - playerName: QueenX173
+    rating: 45
+  - playerName: AceOne
+    rating: 45
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_x"
+    rating: 45
+  - playerName: DarkWalker365
+    rating: 44
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 44
+  - playerName: PrimeSlayer
+    rating: 44
+  - playerName: PhoenixSlayer219
+    rating: 44
+  - playerName: "\u041A\u0430\u0442\u044F_v"
+    rating: 44
+  - playerName: StormKiller
+    rating: 44
+  - playerName: "\u0412\u0438\u0442\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 44
+  - playerName: "\u0420\u043E\u043C\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 44
+  - playerName: "\u042E\u0440\u0430_pro"
+    rating: 44
+  - playerName: "\u0412\u0438\u0442\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 44
+  - playerName: "\u041C\u0430\u043A\u0441_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 44
+  - playerName: PrimeWalker
+    rating: 44
+  - playerName: KingFighter856
+    rating: 44
+  - playerName: "\u041B\u0435\u043D\u0430_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 44
+  - playerName: "\u0412\u043B\u0430\u0434_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 44
+  - playerName: MasterBreaker16
+    rating: 44
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 44
+  - playerName: "\u0412\u0430\u043D\u044F_top"
+    rating: 44
+  - playerName: "\u0412\u043B\u0430\u0434_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 43
+  - playerName: "\u041A\u0430\u0442\u044F_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 43
+  - playerName: KingPlayer936
+    rating: 43
+  - playerName: "\u041F\u0430\u0448\u0430123"
+    rating: 43
+  - playerName: "\u0421\u0442\u0430\u04412024"
+    rating: 43
+  - playerName: Queen99
+    rating: 43
+  - playerName: "\u041F\u0430\u0448\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 43
+  - playerName: AlphaPro757
+    rating: 43
+  - playerName: King99
+    rating: 43
+  - playerName: "\u041A\u0430\u0442\u044F2024"
+    rating: 43
+  - playerName: PrimeRider420
+    rating: 43
+  - playerName: "\u0416\u0435\u043D\u044F777"
+    rating: 43
+  - playerName: Prime7
+    rating: 43
+  - playerName: "\u041F\u0435\u0442\u044F_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 43
+  - playerName: SkyKiller
+    rating: 43
+  - playerName: Fire
+    rating: 42
+  - playerName: CyberX
+    rating: 42
+  - playerName: "\u0420\u043E\u043C\u0430_\u0431\u043E\u0435\u0446"
+    rating: 42
+  - playerName: NeonFighter266
+    rating: 42
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 42
+  - playerName: "\u0421\u0430\u0448\u04302024"
+    rating: 42
+  - playerName: "\u0414\u0435\u043D\u0438\u0441777"
+    rating: 42
+  - playerName: Super
+    rating: 42
+  - playerName: ShadowSeeker
+    rating: 42
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430123"
+    rating: 42
+  - playerName: ProHunter678
+    rating: 42
+  - playerName: KingGamer669
+    rating: 42
+  - playerName: SuperBreaker693
+    rating: 42
+  - playerName: AcePro
+    rating: 42
+  - playerName: DarkGamer88
+    rating: 42
+  - playerName: Ice7291
+    rating: 42
+  - playerName: EliteFighter870
+    rating: 42
+  - playerName: WolfSeeker
+    rating: 42
+  - playerName: Queen99809
+    rating: 42
+  - playerName: NeonRider
+    rating: 42
+  - playerName: TigerRider675
+    rating: 41
+  - playerName: "\u041E\u043B\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 41
+  - playerName: "\u041B\u0451\u0448\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 41
+  - playerName: WolfStriker
+    rating: 41
+  - playerName: TigerX
+    rating: 41
+  - playerName: CoolFighter
+    rating: 41
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430300"
+    rating: 41
+  - playerName: "\u0412\u0430\u043D\u044F_\u0431\u043E\u0435\u0446"
+    rating: 41
+  - playerName: CoolRider329
+    rating: 41
+  - playerName: "\u0421\u0430\u0448\u0430_v"
+    rating: 41
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 41
+  - playerName: QueenRider
+    rating: 41
+  - playerName: "\u041D\u0430\u0441\u0442\u044F2024"
+    rating: 41
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 41
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 41
+  - playerName: CyberWalker
+    rating: 41
+  - playerName: BetaBreaker818
+    rating: 41
+  - playerName: "\u041C\u0430\u0448\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 41
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 40
+  - playerName: ProX99
+    rating: 40
+  - playerName: "\u0416\u0435\u043D\u044F_\u0431\u043E\u0435\u0446"
+    rating: 40
+  - playerName: UltraKiller954
+    rating: 40
+  - playerName: CoolKiller
+    rating: 40
+  - playerName: LordX838
+    rating: 40
+  - playerName: AlphaOne
+    rating: 40
+  - playerName: BetaBreaker224
+    rating: 40
+  - playerName: "\u0416\u0435\u043D\u044F_v"
+    rating: 40
+  - playerName: "\u041E\u043B\u044F_\u0433\u0435\u0440\u043E\u0439"
+    rating: 40
+  - playerName: "\u0416\u0435\u043D\u044F_\u0433\u0435\u0440\u043E\u0439"
+    rating: 40
+  - playerName: Cyber99506
+    rating: 40
+  - playerName: EliteSlayer917
+    rating: 40
+  - playerName: AlphaStriker243
+    rating: 40
+  - playerName: Mega99619
+    rating: 39
+  - playerName: "\u0420\u043E\u043C\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 39
+  - playerName: Night7
+    rating: 39
+  - playerName: "\u0412\u0438\u0442\u044F_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 39
+  - playerName: "\u0412\u043B\u0430\u04342024"
+    rating: 39
+  - playerName: "\u041B\u0451\u0448\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 39
+  - playerName: "\u041B\u0435\u043D\u0430_x"
+    rating: 39
+  - playerName: PhoenixHunter358
+    rating: 39
+  - playerName: NightX
+    rating: 39
+  - playerName: MasterZ441
+    rating: 39
+  - playerName: GhostMaker103
+    rating: 39
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 39
+  - playerName: PrimeOne
+    rating: 39
+  - playerName: CyberKiller756
+    rating: 39
+  - playerName: MegaStriker
+    rating: 39
+  - playerName: "\u041B\u0435\u043D\u0430777"
+    rating: 38
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_v"
+    rating: 38
+  - playerName: Fire99518
+    rating: 38
+  - playerName: "\u0412\u043B\u0430\u0434_v"
+    rating: 38
+  - playerName: Beta99
+    rating: 38
+  - playerName: NinjaX631
+    rating: 38
+  - playerName: GhostPlayer
+    rating: 37
+  - playerName: CyberRider668
+    rating: 37
+  - playerName: AlphaGamer853
+    rating: 37
+  - playerName: BetaKiller710
+    rating: 37
+  - playerName: PhoenixSlayer
+    rating: 37
+  - playerName: CyberX97
+    rating: 37
+  - playerName: "\u0420\u043E\u043C\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 37
+  - playerName: Ace
+    rating: 37
+  - playerName: TigerOne
+    rating: 37
+  - playerName: KingKiller
+    rating: 37
+  - playerName: BetaWalker
+    rating: 37
+  - playerName: NightWalker656
+    rating: 37
+  - playerName: UltraWalker
+    rating: 37
+  - playerName: BetaPro544
+    rating: 36
+  - playerName: QueenSlayer
+    rating: 36
+  - playerName: Prime7967
+    rating: 36
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 36
+  - playerName: "\u041F\u0430\u0448\u0430_x"
+    rating: 36
+  - playerName: Ghost865
+    rating: 36
+  - playerName: "\u041C\u0430\u043A\u0441_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 36
+  - playerName: "\u041F\u0435\u0442\u044F2024"
+    rating: 36
+  - playerName: DragonStriker771
+    rating: 36
+  - playerName: UltraHunter
+    rating: 36
+  - playerName: LordHunter
+    rating: 36
+  - playerName: "\u041B\u0451\u0448\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 36
+  - playerName: BetaSlayer
+    rating: 36
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_\u0433\u0435\u0440\u043E\u0439"
+    rating: 36
+  - playerName: StormWalker
+    rating: 36
+  - playerName: Phoenix99
+    rating: 36
+  - playerName: KingHunter297
+    rating: 36
+  - playerName: "\u0421\u0442\u0430\u0441_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 36
+  - playerName: Ghost7
+    rating: 36
+  - playerName: NinjaStriker7
+    rating: 36
+  - playerName: "\u0414\u0430\u0448\u0430_top"
+    rating: 35
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_pro"
+    rating: 35
+  - playerName: "\u0422\u0430\u043D\u044F123"
+    rating: 35
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_x"
+    rating: 35
+  - playerName: King7
+    rating: 35
+  - playerName: "\u041A\u0430\u0442\u044F_top"
+    rating: 35
+  - playerName: Cool99955
+    rating: 35
+  - playerName: "\u0416\u0435\u043D\u044F_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 35
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 35
+  - playerName: Ace4288
+    rating: 35
+  - playerName: CyberOne
+    rating: 35
+  - playerName: TigerStriker957
+    rating: 35
+  - playerName: TigerWalker697
+    rating: 35
+  - playerName: AlphaPro
+    rating: 35
+  - playerName: "\u0413\u0440\u0438\u0448\u04302024"
+    rating: 35
+  - playerName: LordGamer760
+    rating: 35
+  - playerName: CyberSlayer346
+    rating: 35
+  - playerName: "\u041F\u0435\u0442\u044F_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 35
+  - playerName: TigerRunner684
+    rating: 35
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_top"
+    rating: 35
+  - playerName: DarkWalker473
+    rating: 35
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 35
+  - playerName: EliteGamer459
+    rating: 34
+  - playerName: "\u041E\u043B\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 34
+  - playerName: "\u0420\u043E\u043C\u0430696"
+    rating: 34
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 34
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_pro"
+    rating: 34
+  - playerName: IceStriker
+    rating: 34
+  - playerName: NinjaFighter
+    rating: 34
+  - playerName: "\u0422\u0430\u043D\u044F2024"
+    rating: 34
+  - playerName: SkyZ
+    rating: 34
+  - playerName: QueenSeeker
+    rating: 34
+  - playerName: NeonSlayer
+    rating: 33
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_v"
+    rating: 33
+  - playerName: Alpha7139
+    rating: 33
+  - playerName: MegaMaker
+    rating: 33
+  - playerName: NinjaHunter
+    rating: 33
+  - playerName: Ninja99
+    rating: 33
+  - playerName: "\u041E\u043B\u044F_top"
+    rating: 33
+  - playerName: Shadow99
+    rating: 33
   - playerName: GhostFighter
+    rating: 33
+  - playerName: MasterPro740
+    rating: 33
+  - playerName: CoolPlayer
+    rating: 33
+  - playerName: UltraFighter
+    rating: 33
+  - playerName: "\u041A\u0430\u0442\u044F123"
+    rating: 33
+  - playerName: Ninja7
+    rating: 33
+  - playerName: DarkOne988
+    rating: 33
+  - playerName: UltraBreaker
+    rating: 33
+  - playerName: DragonStriker636
+    rating: 33
+  - playerName: "\u041A\u0430\u0442\u044F_\u0431\u043E\u0435\u0446"
+    rating: 33
+  - playerName: KingStriker109
+    rating: 33
+  - playerName: "\u0421\u0430\u0448\u0430_x"
+    rating: 33
+  - playerName: DragonGamer
+    rating: 33
+  - playerName: PrimeX
+    rating: 33
+  - playerName: NightMaker
+    rating: 33
+  - playerName: NightStriker
+    rating: 33
+  - playerName: GhostBreaker637
+    rating: 33
+  - playerName: GhostZ
+    rating: 33
+  - playerName: "\u041D\u0430\u0441\u0442\u044F777"
+    rating: 32
+  - playerName: NinjaZ48
+    rating: 32
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B602"
+    rating: 32
+  - playerName: "\u041C\u0430\u0448\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 32
+  - playerName: MegaSeeker195
+    rating: 32
+  - playerName: DarkRunner400
+    rating: 32
+  - playerName: PrimeOne42
+    rating: 32
+  - playerName: AceStriker488
+    rating: 32
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 32
+  - playerName: FireSlayer914
+    rating: 32
+  - playerName: Sky42446
+    rating: 32
+  - playerName: AlphaMaker
+    rating: 32
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 32
+  - playerName: "\u041C\u0430\u0448\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 32
+  - playerName: DarkGamer
+    rating: 31
+  - playerName: "\u0421\u0442\u0430\u0441_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 31
+  - playerName: IceFighter
+    rating: 31
+  - playerName: "\u041A\u043E\u0441\u0442\u044F127"
+    rating: 31
+  - playerName: IceSeeker
+    rating: 31
+  - playerName: ElitePro113
+    rating: 31
+  - playerName: "\u0420\u043E\u043C\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 31
+  - playerName: ShadowOne
+    rating: 31
+  - playerName: BetaPlayer535
+    rating: 31
+  - playerName: NightPlayer519
+    rating: 31
+  - playerName: "\u0413\u0440\u0438\u0448\u0430777"
+    rating: 30
+  - playerName: UltraHunter139
+    rating: 30
+  - playerName: NeonKiller
+    rating: 30
+  - playerName: "\u041B\u0435\u043D\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 30
+  - playerName: "\u041A\u043E\u0441\u0442\u044F2024"
+    rating: 30
+  - playerName: "\u0414\u0430\u0448\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 30
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_pro"
+    rating: 30
+  - playerName: AlphaRunner
+    rating: 30
+  - playerName: PrimeSeeker
+    rating: 30
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_v"
+    rating: 30
+  - playerName: SuperSlayer969
+    rating: 30
+  - playerName: "\u042E\u0440\u0430_v"
+    rating: 29
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_x"
+    rating: 29
+  - playerName: CoolGamer
+    rating: 29
+  - playerName: FireRider
+    rating: 29
+  - playerName: DragonSlayer
+    rating: 29
+  - playerName: Sky503
+    rating: 29
+  - playerName: GhostX251
+    rating: 29
+  - playerName: "\u041E\u043B\u044F123"
+    rating: 29
+  - playerName: BetaPro357
+    rating: 29
+  - playerName: GhostKiller972
+    rating: 29
+  - playerName: "\u0421\u0442\u0430\u0441_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 29
+  - playerName: "\u042E\u0440\u0430123"
+    rating: 29
+  - playerName: GhostRider942
+    rating: 29
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_top"
+    rating: 29
+  - playerName: AceBreaker914
+    rating: 29
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B777"
     rating: 28
-  - playerName: StormStriker
-    rating: 28
-  - playerName: Женя_top
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_x"
     rating: 28
   - playerName: AceGamer
     rating: 28
-  - playerName: FireX293
-    rating: 28
-  - playerName: Миша2024
-    rating: 28
-  - playerName: MegaBreaker
-    rating: 28
-  - playerName: AceHunter644
-    rating: 28
-  - playerName: KingHunter286
-    rating: 28
-  - playerName: GhostSeeker887
-    rating: 27
-  - playerName: AceFighter112
-    rating: 27
-  - playerName: WolfHunter
-    rating: 27
-  - playerName: Ultra99
-    rating: 27
-  - playerName: Таня777
-    rating: 27
-  - playerName: NightWalker
-    rating: 27
-  - playerName: Миша_мастер
-    rating: 27
-  - playerName: Ваня_гонщик
-    rating: 27
-  - playerName: MegaHunter540
-    rating: 27
-  - playerName: Queen42
-    rating: 27
-  - playerName: NightGamer287
-    rating: 27
-  - playerName: BetaBreaker17
-    rating: 26
-  - playerName: IcePlayer
-    rating: 26
-  - playerName: BetaStriker448
-    rating: 26
-  - playerName: LordRunner908
-    rating: 26
-  - playerName: PhoenixMaker273
-    rating: 26
-  - playerName: ShadowBreaker
-    rating: 26
-  - playerName: Саша_герой
-    rating: 26
-  - playerName: UltraZ816
-    rating: 26
-  - playerName: ShadowGamer
-    rating: 26
-  - playerName: WolfPlayer524
-    rating: 26
-  - playerName: NeonSlayer993
-    rating: 25
-  - playerName: Миша_v
-    rating: 25
-  - playerName: Денис_top
-    rating: 25
-  - playerName: Лена495
-    rating: 25
-  - playerName: SuperGamer
-    rating: 25
-  - playerName: Настя_top
-    rating: 25
-  - playerName: AlphaStriker378
-    rating: 25
-  - playerName: MasterMaker695
-    rating: 25
-  - playerName: Ninja99
-    rating: 25
-  - playerName: Dragon99
-    rating: 25
-  - playerName: MasterRider571
-    rating: 24
-  - playerName: Beta
-    rating: 24
-  - playerName: Костя_v
-    rating: 24
-  - playerName: Паша_стрелок
-    rating: 24
-  - playerName: BetaGamer907
-    rating: 24
-  - playerName: ShadowHunter
-    rating: 24
-  - playerName: Костя_гонщик
-    rating: 24
-  - playerName: Tiger925
-    rating: 24
-  - playerName: SuperPlayer685
-    rating: 23
-  - playerName: Витя_v
-    rating: 23
-  - playerName: Master7206
-    rating: 23
-  - playerName: LordStriker461
-    rating: 23
-  - playerName: Игорь_гонщик
-    rating: 23
-  - playerName: Лена2024
-    rating: 23
-  - playerName: NinjaKiller889
-    rating: 23
-  - playerName: DragonStriker
-    rating: 23
-  - playerName: Phoenix7
-    rating: 23
-  - playerName: DarkBreaker263
-    rating: 23
-  - playerName: NightKiller687
-    rating: 23
-  - playerName: UltraStriker346
-    rating: 22
-  - playerName: Никита_игрок
-    rating: 22
-  - playerName: Lord99250
-    rating: 22
-  - playerName: Паша777
-    rating: 22
-  - playerName: StarFighter307
-    rating: 22
-  - playerName: AceKiller530
-    rating: 21
-  - playerName: Юра961
-    rating: 21
-  - playerName: PrimeRider
-    rating: 21
-  - playerName: Дима_стрелок
-    rating: 21
-  - playerName: Storm42312
-    rating: 21
-  - playerName: Лена_top
-    rating: 21
-  - playerName: Юра_лучший
-    rating: 21
-  - playerName: Fire7
-    rating: 21
-  - playerName: KingGamer
-    rating: 21
-  - playerName: Макс_король
-    rating: 21
-  - playerName: WolfRider629
-    rating: 21
-  - playerName: Кирилл_v
-    rating: 21
-  - playerName: NeonPro
-    rating: 21
-  - playerName: AceX880
-    rating: 20
-  - playerName: Паша_гонщик
-    rating: 20
-  - playerName: Паша_герой
-    rating: 20
-  - playerName: Даша777
-    rating: 20
-  - playerName: AlphaRunner
-    rating: 20
-  - playerName: PhoenixSlayer65
-    rating: 20
-  - playerName: EliteStriker
-    rating: 20
-  - playerName: UltraSlayer421
-    rating: 20
-  - playerName: Артём_pro
-    rating: 20
-  - playerName: WolfRider837
-    rating: 20
-  - playerName: Витя2024
-    rating: 20
-  - playerName: Дима_x
-    rating: 20
-  - playerName: IcePro348
-    rating: 20
-  - playerName: Денис_v
-    rating: 20
-  - playerName: KingX
-    rating: 20
-  - playerName: EliteWalker
-    rating: 20
-  - playerName: AlphaPro
-    rating: 20
-  - playerName: GhostRunner
-    rating: 19
-  - playerName: Петя_top
-    rating: 19
-  - playerName: CoolZ610
-    rating: 19
-  - playerName: Костя506
-    rating: 19
-  - playerName: TigerRunner7
-    rating: 19
-  - playerName: DragonRunner
-    rating: 19
-  - playerName: Fire9997
-    rating: 19
-  - playerName: UltraSeeker
-    rating: 19
-  - playerName: PhoenixHunter441
-    rating: 19
-  - playerName: Оля_чемпион
-    rating: 19
-  - playerName: SuperBreaker
-    rating: 19
-  - playerName: Игорь_pro
-    rating: 19
-  - playerName: AceStriker105
-    rating: 19
-  - playerName: Артём123
-    rating: 19
-  - playerName: Петя_x
-    rating: 18
-  - playerName: Ваня_король
-    rating: 18
-  - playerName: Серёжа_v
-    rating: 18
-  - playerName: DragonFighter858
-    rating: 18
-  - playerName: Маша_pro
-    rating: 18
-  - playerName: NinjaRunner156
-    rating: 18
-  - playerName: StormX
-    rating: 18
-  - playerName: PrimeStriker
-    rating: 17
-  - playerName: Оля123
-    rating: 17
-  - playerName: Витя_top
-    rating: 17
-  - playerName: Денис_герой
-    rating: 17
-  - playerName: MasterRider
-    rating: 17
-  - playerName: Настя691
-    rating: 17
-  - playerName: NightOne848
-    rating: 17
-  - playerName: Игорь_x
-    rating: 17
-  - playerName: Prime7
-    rating: 17
-  - playerName: SkyWalker
-    rating: 16
-  - playerName: Витя_стрелок
-    rating: 16
-  - playerName: Игорь450
-    rating: 16
-  - playerName: Маша_герой
-    rating: 16
-  - playerName: Night42
-    rating: 16
-  - playerName: UltraKiller
-    rating: 16
-  - playerName: MegaWalker567
-    rating: 15
-  - playerName: Влад_мастер
-    rating: 15
-  - playerName: NightFighter657
-    rating: 15
-  - playerName: Никита_стрелок
-    rating: 15
-  - playerName: StormPlayer
-    rating: 15
-  - playerName: EliteStriker455
-    rating: 15
-  - playerName: ShadowPro
-    rating: 15
-  - playerName: Артём_top
-    rating: 15
-  - playerName: StormZ
-    rating: 14
-  - playerName: Серёжа_x
-    rating: 14
-  - playerName: NinjaBreaker
-    rating: 14
-  - playerName: Петя_чемпион
-    rating: 14
-  - playerName: Женя777
-    rating: 14
-  - playerName: AceOne
-    rating: 14
-  - playerName: ProWalker
-    rating: 14
-  - playerName: Катя_игрок
-    rating: 14
-  - playerName: Кирилл427
-    rating: 14
-  - playerName: NeonPlayer261
-    rating: 14
-  - playerName: Настя_чемпион
-    rating: 14
-  - playerName: SuperZ
-    rating: 14
-  - playerName: Cyber770
-    rating: 14
-  - playerName: Ninja7
-    rating: 14
-  - playerName: FireX
-    rating: 14
-  - playerName: Ace99572
-    rating: 13
-  - playerName: Никита777
-    rating: 13
-  - playerName: Катя_король
-    rating: 13
-  - playerName: DragonX334
-    rating: 13
-  - playerName: Super99241
-    rating: 13
-  - playerName: NinjaX842
-    rating: 13
-  - playerName: Лёша_лучший
-    rating: 13
-  - playerName: AceFighter93
-    rating: 13
-  - playerName: King7306
-    rating: 13
-  - playerName: TigerFighter
-    rating: 13
-  - playerName: Витя777
-    rating: 12
-  - playerName: Маша777
-    rating: 12
-  - playerName: Паша_боец
-    rating: 12
-  - playerName: Юра123
-    rating: 12
-  - playerName: NeonGamer
-    rating: 12
-  - playerName: SkySlayer
-    rating: 12
-  - playerName: Lord7325
-    rating: 12
-  - playerName: GhostHunter56
-    rating: 12
-  - playerName: Костя_чемпион
-    rating: 12
-  - playerName: Игорь_игрок
-    rating: 12
-  - playerName: KingBreaker990
-    rating: 12
-  - playerName: WolfGamer665
-    rating: 12
-  - playerName: TigerHunter
-    rating: 11
-  - playerName: Андрей777
-    rating: 11
-  - playerName: Артём_x
-    rating: 11
-  - playerName: MegaHunter
-    rating: 11
-  - playerName: MasterSeeker157
-    rating: 11
-  - playerName: Паша2024
-    rating: 11
-  - playerName: Саша_x
-    rating: 11
-  - playerName: Влад123
-    rating: 11
-  - playerName: StarFighter
-    rating: 11
-  - playerName: StormRider925
-    rating: 11
-  - playerName: QueenX
-    rating: 10
-  - playerName: Дима771
-    rating: 10
-  - playerName: Андрей_стрелок
-    rating: 10
-  - playerName: Даша123
-    rating: 10
-  - playerName: Кирилл_игрок
-    rating: 10
-  - playerName: Витя_pro
-    rating: 10
-  - playerName: StarRider
-    rating: 10
-  - playerName: Pro9993
-    rating: 10
-  - playerName: Рома_лучший
-    rating: 10
-  - playerName: KingZ883
-    rating: 10
-  - playerName: StarStriker44
-    rating: 10
-  - playerName: CyberOne
-    rating: 9
-  - playerName: ProX689
-    rating: 9
-  - playerName: Оля_игрок
-    rating: 9
-  - playerName: Master42660
-    rating: 9
-  - playerName: NightRunner423
-    rating: 9
-  - playerName: Ghost42
-    rating: 9
-  - playerName: Женя_игрок
-    rating: 8
-  - playerName: Катя_x
-    rating: 8
-  - playerName: ProStriker
-    rating: 8
-  - playerName: CoolRider24
-    rating: 8
-  - playerName: AlphaOne613
-    rating: 8
-  - playerName: Ваня123
-    rating: 8
-  - playerName: Ice99
-    rating: 8
-  - playerName: PrimeSeeker
-    rating: 8
-  - playerName: UltraSlayer955
-    rating: 7
-  - playerName: Миша_чемпион
-    rating: 7
-  - playerName: Кирилл_боец
-    rating: 7
-  - playerName: MasterGamer301
-    rating: 7
-  - playerName: Никита_v
-    rating: 7
-  - playerName: Миша_игрок
-    rating: 7
-  - playerName: Паша_x
-    rating: 7
-  - playerName: Андрей_чемпион
-    rating: 7
-  - playerName: Юра777
-    rating: 7
-  - playerName: CyberWalker581
-    rating: 7
-  - playerName: StarSeeker445
-    rating: 7
-  - playerName: UltraSeeker441
-    rating: 7
-  - playerName: SuperPro68
-    rating: 7
-  - playerName: Катя_боец
-    rating: 7
-  - playerName: Катя_мастер
-    rating: 7
-  - playerName: Миша_король
-    rating: 6
-  - playerName: SkyWalker878
-    rating: 6
-  - playerName: PhoenixX297
-    rating: 6
-  - playerName: Никита_гонщик
-    rating: 6
-  - playerName: Паша_top
-    rating: 6
-  - playerName: Костя_мастер
-    rating: 6
-  - playerName: Ваня_игрок
-    rating: 6
-  - playerName: Таня_гонщик
-    rating: 6
-  - playerName: ElitePlayer259
-    rating: 6
-  - playerName: KingPlayer370
-    rating: 6
-  - playerName: CoolHunter440
-    rating: 6
-  - playerName: WolfX254
-    rating: 6
-  - playerName: Настя_x
-    rating: 6
-  - playerName: Витя_герой
-    rating: 5
-  - playerName: Костя123
-    rating: 5
-  - playerName: IceFighter200
-    rating: 5
-  - playerName: Андрей_игрок
-    rating: 5
-  - playerName: Dragon7
-    rating: 5
-  - playerName: PhoenixZ648
-    rating: 5
-  - playerName: Макс_top
-    rating: 4
-  - playerName: GhostGamer
-    rating: 4
-  - playerName: Макс_мастер
-    rating: 4
-  - playerName: ShadowStriker
-    rating: 4
-  - playerName: Даша_лучший
-    rating: 4
-  - playerName: IceRunner
-    rating: 4
-  - playerName: GhostKiller492
-    rating: 4
-  - playerName: MasterRider476
-    rating: 4
-  - playerName: Super99419
-    rating: 4
-  - playerName: Даша_игрок
-    rating: 4
-  - playerName: Никита619
-    rating: 4
-  - playerName: Fire42645
-    rating: 4
-  - playerName: Pro
-    rating: 4
-  - playerName: Лёша_герой
-    rating: 3
-  - playerName: MegaRider50
-    rating: 3
-  - playerName: Гриша_мастер
-    rating: 3
-  - playerName: LordBreaker
-    rating: 3
-  - playerName: LordSlayer132
-    rating: 3
-  - playerName: QueenPlayer684
-    rating: 3
-  - playerName: IceKiller155
-    rating: 3
-  - playerName: Влад_гонщик
-    rating: 3
-  - playerName: Таня_игрок
-    rating: 3
-  - playerName: MegaPro
-    rating: 3
-  - playerName: ShadowOne
-    rating: 3
-  - playerName: Таня814
-    rating: 3
-  - playerName: Саша_боец
-    rating: 2
-  - playerName: CyberStriker
-    rating: 2
-  - playerName: Elite99935
-    rating: 2
-  - playerName: Таня_v
-    rating: 2
-  - playerName: Миша_x
-    rating: 2
-  - playerName: UltraFighter722
-    rating: 2
-  - playerName: FireGamer
-    rating: 2
-  - playerName: Макс459
-    rating: 2
-  - playerName: Витя_игрок
-    rating: 2
-  - playerName: EliteSlayer
-    rating: 1
-  - playerName: MasterGamer982
-    rating: 1
-  - playerName: AceSlayer
-    rating: 1
-  - playerName: MegaSlayer
-    rating: 1
-  - playerName: Оля_герой
-    rating: 1
-  - playerName: LordMaker
-    rating: 1
-  - playerName: DragonBreaker910
-    rating: 1
-  - playerName: Ваня_герой
-    rating: 1
-  - playerName: Катя_гонщик
-    rating: 1
   - playerName: BetaRider
+    rating: 28
+  - playerName: "\u0414\u0438\u043C\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 28
+  - playerName: "\u0422\u0430\u043D\u044F_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 28
+  - playerName: FireZ
+    rating: 28
+  - playerName: IceX
+    rating: 28
+  - playerName: "\u0414\u0435\u043D\u0438\u044118"
+    rating: 28
+  - playerName: ProZ936
+    rating: 28
+  - playerName: SkyGamer
+    rating: 28
+  - playerName: UltraOne365
+    rating: 28
+  - playerName: PhoenixRunner
+    rating: 27
+  - playerName: Night42
+    rating: 27
+  - playerName: SkyZ669
+    rating: 27
+  - playerName: LordBreaker92
+    rating: 27
+  - playerName: NightX266
+    rating: 27
+  - playerName: "\u042E\u0440\u0430_\u0431\u043E\u0435\u0446"
+    rating: 27
+  - playerName: AlphaBreaker69
+    rating: 27
+  - playerName: ProX
+    rating: 27
+  - playerName: DragonKiller
+    rating: 27
+  - playerName: NeonOne464
+    rating: 27
+  - playerName: Night99
+    rating: 27
+  - playerName: ShadowGamer
+    rating: 27
+  - playerName: ShadowPlayer156
+    rating: 27
+  - playerName: FireZ591
+    rating: 27
+  - playerName: "\u0412\u0438\u0442\u044F_top"
+    rating: 27
+  - playerName: "\u0412\u043B\u0430\u0434_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 27
+  - playerName: FireWalker527
+    rating: 26
+  - playerName: AlphaX73
+    rating: 26
+  - playerName: "\u041C\u0430\u0448\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 26
+  - playerName: "\u041E\u043B\u044F777"
+    rating: 26
+  - playerName: "\u041F\u0430\u0448\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 26
+  - playerName: MasterBreaker
+    rating: 26
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u04302024"
+    rating: 26
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_x"
+    rating: 26
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_top"
+    rating: 26
+  - playerName: AceBreaker
+    rating: 26
+  - playerName: SkyRunner
+    rating: 26
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 26
+  - playerName: "\u0422\u0430\u043D\u044F_\u0431\u043E\u0435\u0446"
+    rating: 26
+  - playerName: "\u041C\u0430\u0448\u0430_v"
+    rating: 26
+  - playerName: Prime367
+    rating: 26
+  - playerName: GhostWalker514
+    rating: 26
+  - playerName: "\u041B\u0451\u0448\u04302024"
+    rating: 26
+  - playerName: ShadowPlayer
+    rating: 26
+  - playerName: GhostStriker
+    rating: 26
+  - playerName: Neon719
+    rating: 25
+  - playerName: KingFighter729
+    rating: 25
+  - playerName: ProWalker738
+    rating: 25
+  - playerName: "\u041C\u0438\u0448\u0430_x"
+    rating: 25
+  - playerName: PrimeStriker
+    rating: 25
+  - playerName: "\u041C\u0430\u043A\u0441777"
+    rating: 25
+  - playerName: NightZ
+    rating: 25
+  - playerName: DarkKiller213
+    rating: 25
+  - playerName: DarkOne779
+    rating: 25
+  - playerName: KingOne503
+    rating: 25
+  - playerName: "\u0414\u0430\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 25
+  - playerName: NightX53
+    rating: 25
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_\u0431\u043E\u0435\u0446"
+    rating: 25
+  - playerName: "\u041C\u0430\u0448\u0430_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 24
+  - playerName: Fire7150
+    rating: 24
+  - playerName: "\u041B\u0451\u0448\u0430_x"
+    rating: 24
+  - playerName: "\u041C\u0430\u0448\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 24
+  - playerName: Ninja
+    rating: 24
+  - playerName: "\u0412\u0438\u0442\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 24
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_top"
+    rating: 24
+  - playerName: StormRider243
+    rating: 24
+  - playerName: SkyStriker306
+    rating: 24
+  - playerName: MasterPro27
+    rating: 24
+  - playerName: BetaOne
+    rating: 24
+  - playerName: AceHunter
+    rating: 24
+  - playerName: PrimeSeeker263
+    rating: 24
+  - playerName: IceGamer510
+    rating: 23
+  - playerName: "\u041E\u043B\u044F2024"
+    rating: 23
+  - playerName: "\u042E\u0440\u0430_x"
+    rating: 23
+  - playerName: UltraSeeker
+    rating: 23
+  - playerName: "\u0414\u0430\u0448\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 23
+  - playerName: Tiger99
+    rating: 23
+  - playerName: PhoenixFighter
+    rating: 23
+  - playerName: KingSeeker986
+    rating: 23
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 23
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 23
+  - playerName: DragonSlayer410
+    rating: 23
+  - playerName: WolfRider152
+    rating: 23
+  - playerName: EliteBreaker516
+    rating: 23
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 23
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_pro"
+    rating: 23
+  - playerName: StarSeeker744
+    rating: 23
+  - playerName: WolfOne533
+    rating: 23
+  - playerName: NinjaGamer901
+    rating: 23
+  - playerName: LordKiller785
+    rating: 23
+  - playerName: "\u0412\u0430\u043D\u044F123"
+    rating: 23
+  - playerName: "\u041E\u043B\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 22
+  - playerName: StormRunner478
+    rating: 22
+  - playerName: "\u041F\u0430\u0448\u04302024"
+    rating: 22
+  - playerName: "\u042E\u0440\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 22
+  - playerName: "\u041F\u0435\u0442\u044F_pro"
+    rating: 22
+  - playerName: "\u0416\u0435\u043D\u044F_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 22
+  - playerName: ShadowX
+    rating: 22
+  - playerName: CyberStriker
+    rating: 22
+  - playerName: "\u041F\u0430\u0448\u0430777"
+    rating: 22
+  - playerName: PrimeHunter142
+    rating: 22
+  - playerName: ProZ240
+    rating: 22
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430737"
+    rating: 22
+  - playerName: Prime7592
+    rating: 22
+  - playerName: PhoenixWalker742
+    rating: 22
+  - playerName: BetaPro421
+    rating: 21
+  - playerName: "\u041F\u0435\u0442\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 21
+  - playerName: "\u042E\u0440\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 21
+  - playerName: "\u041C\u0430\u0448\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 21
+  - playerName: ShadowZ
+    rating: 21
+  - playerName: Ice565
+    rating: 21
+  - playerName: EliteRunner611
+    rating: 21
+  - playerName: Sky99
+    rating: 21
+  - playerName: "\u041C\u0438\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 21
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_pro"
+    rating: 21
+  - playerName: QueenWalker
+    rating: 21
+  - playerName: "\u0414\u0430\u0448\u0430851"
+    rating: 21
+  - playerName: DarkFighter90
+    rating: 21
+  - playerName: "\u041B\u0451\u0448\u0430777"
+    rating: 21
+  - playerName: DarkSeeker579
+    rating: 20
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 20
+  - playerName: CoolPro
+    rating: 20
+  - playerName: "\u0422\u0430\u043D\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 20
+  - playerName: DarkKiller233
+    rating: 20
+  - playerName: Alpha
+    rating: 20
+  - playerName: "\u0412\u0438\u0442\u044F_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 20
+  - playerName: "\u041F\u0435\u0442\u044F777"
+    rating: 20
+  - playerName: AlphaHunter264
+    rating: 20
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u04302024"
+    rating: 20
+  - playerName: "\u0421\u0442\u0430\u0441_\u0438\u0433\u0440\u043E\u043A"
+    rating: 20
+  - playerName: "\u0420\u043E\u043C\u0430_v"
+    rating: 20
+  - playerName: MasterMaker865
+    rating: 20
+  - playerName: UltraX536
+    rating: 20
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B123"
+    rating: 20
+  - playerName: "\u0420\u043E\u043C\u0430777"
+    rating: 19
+  - playerName: Mega42776
+    rating: 19
+  - playerName: SkyZ278
+    rating: 19
+  - playerName: "\u0414\u0430\u0448\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 19
+  - playerName: LordGamer378
+    rating: 19
+  - playerName: "\u0412\u0430\u043D\u044F_v"
+    rating: 19
+  - playerName: "\u0413\u0440\u0438\u0448\u0430783"
+    rating: 19
+  - playerName: NightKiller700
+    rating: 19
+  - playerName: StarWalker500
+    rating: 19
+  - playerName: NightHunter735
+    rating: 19
+  - playerName: Queen
+    rating: 19
+  - playerName: Night99480
+    rating: 19
+  - playerName: Storm869
+    rating: 19
+  - playerName: PrimeHunter353
+    rating: 19
+  - playerName: PhoenixX798
+    rating: 19
+  - playerName: "\u0414\u0430\u0448\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 19
+  - playerName: UltraX
+    rating: 19
+  - playerName: KingFighter975
+    rating: 18
+  - playerName: "\u0416\u0435\u043D\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 18
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 18
+  - playerName: NinjaPro884
+    rating: 18
+  - playerName: PrimeGamer318
+    rating: 18
+  - playerName: BetaPlayer18
+    rating: 18
+  - playerName: "\u041C\u0430\u0448\u0430123"
+    rating: 18
+  - playerName: EliteBreaker343
+    rating: 18
+  - playerName: "\u0416\u0435\u043D\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 18
+  - playerName: PrimeOne167
+    rating: 18
+  - playerName: ProZ585
+    rating: 18
+  - playerName: DarkMaker253
+    rating: 18
+  - playerName: NinjaOne
+    rating: 18
+  - playerName: AlphaX
+    rating: 18
+  - playerName: WolfPro675
+    rating: 17
+  - playerName: NightHunter518
+    rating: 17
+  - playerName: "\u0420\u043E\u043C\u0430_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 17
+  - playerName: "\u0422\u0430\u043D\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 17
+  - playerName: NeonWalker
+    rating: 17
+  - playerName: GhostMaker
+    rating: 17
+  - playerName: LordPro
+    rating: 17
+  - playerName: "\u041F\u0435\u0442\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 17
+  - playerName: TigerPlayer
+    rating: 17
+  - playerName: "\u0414\u0438\u043C\u0430_v"
+    rating: 17
+  - playerName: Ghost
+    rating: 17
+  - playerName: "\u041C\u0430\u0448\u0430777"
+    rating: 17
+  - playerName: Lord42
+    rating: 17
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 17
+  - playerName: "\u0421\u0430\u0448\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 17
+  - playerName: FireSlayer139
+    rating: 17
+  - playerName: Shadow99211
+    rating: 17
+  - playerName: "\u041F\u0430\u0448\u0430_v"
+    rating: 16
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 16
+  - playerName: "\u041C\u0430\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 16
+  - playerName: EliteSlayer552
+    rating: 16
+  - playerName: "\u0414\u0438\u043C\u0430777"
+    rating: 16
+  - playerName: "\u041A\u0430\u0442\u044F_x"
+    rating: 16
+  - playerName: Storm99
+    rating: 16
+  - playerName: StarBreaker
+    rating: 16
+  - playerName: "\u0414\u0438\u043C\u0430_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 16
+  - playerName: NinjaMaker994
+    rating: 16
+  - playerName: "\u0421\u0430\u0448\u0430777"
+    rating: 16
+  - playerName: Star
+    rating: 16
+  - playerName: NightX488
+    rating: 16
+  - playerName: CyberWalker906
+    rating: 16
+  - playerName: "\u0421\u0442\u0430\u0441_\u0433\u0435\u0440\u043E\u0439"
+    rating: 16
+  - playerName: "\u041B\u0451\u0448\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 15
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 15
+  - playerName: "\u041C\u0438\u0448\u0430_pro"
+    rating: 15
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B316"
+    rating: 15
+  - playerName: "\u0414\u0438\u043C\u0430_\u0431\u043E\u0435\u0446"
+    rating: 15
+  - playerName: EliteRider
+    rating: 15
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_\u0431\u043E\u0435\u0446"
+    rating: 15
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_pro"
+    rating: 15
+  - playerName: "\u041F\u0435\u0442\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 15
+  - playerName: NightHunter
+    rating: 15
+  - playerName: PhoenixSlayer7
+    rating: 15
+  - playerName: "\u041C\u0438\u0448\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 15
+  - playerName: "\u041A\u0430\u0442\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 15
+  - playerName: DarkX918
+    rating: 15
+  - playerName: NinjaSeeker
+    rating: 15
+  - playerName: "\u041B\u0451\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 15
+  - playerName: Lord99
+    rating: 15
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_\u0431\u043E\u0435\u0446"
+    rating: 15
+  - playerName: "\u041F\u0430\u0448\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 14
+  - playerName: "\u041C\u0438\u0448\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 14
+  - playerName: "\u0421\u0442\u0430\u0441_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 14
+  - playerName: "\u041F\u0430\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 14
+  - playerName: "\u041C\u0438\u0448\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 14
+  - playerName: IceGamer627
+    rating: 14
+  - playerName: KingZ271
+    rating: 14
+  - playerName: "\u041C\u0438\u0448\u0430_\u0433\u0435\u0440\u043E\u0439"
+    rating: 14
+  - playerName: "\u0414\u0438\u043C\u0430_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 14
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 14
+  - playerName: PhoenixX920
+    rating: 14
+  - playerName: EliteGamer277
+    rating: 14
+  - playerName: "\u0413\u0440\u0438\u0448\u0430921"
+    rating: 14
+  - playerName: "\u041C\u0430\u043A\u0441_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 14
+  - playerName: FireGamer
+    rating: 14
+  - playerName: SkyRunner321
+    rating: 14
+  - playerName: "\u041C\u0430\u043A\u0441_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 13
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_top"
+    rating: 13
+  - playerName: StarX
+    rating: 13
+  - playerName: "\u0414\u0438\u043C\u0430123"
+    rating: 13
+  - playerName: Cyber7
+    rating: 13
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_v"
+    rating: 13
+  - playerName: "\u0410\u0440\u0442\u0451\u043C_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 13
+  - playerName: ProGamer
+    rating: 13
+  - playerName: "\u0421\u0430\u0448\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 13
+  - playerName: "\u0422\u0430\u043D\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 13
+  - playerName: "\u042E\u0440\u0430777"
+    rating: 13
+  - playerName: ProPlayer
+    rating: 13
+  - playerName: ProWalker
+    rating: 13
+  - playerName: Ice
+    rating: 13
+  - playerName: TigerMaker
+    rating: 13
+  - playerName: AlphaSeeker75
+    rating: 13
+  - playerName: NeonRunner
+    rating: 13
+  - playerName: Alpha7160
+    rating: 13
+  - playerName: "\u0414\u0438\u043C\u0430174"
+    rating: 13
+  - playerName: MegaPro59
+    rating: 13
+  - playerName: SkyStriker508
+    rating: 13
+  - playerName: AlphaHunter
+    rating: 12
+  - playerName: BetaSeeker719
+    rating: 12
+  - playerName: Dragon110
+    rating: 12
+  - playerName: Elite99605
+    rating: 12
+  - playerName: "\u041A\u0430\u0442\u044F_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 12
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_v"
+    rating: 12
+  - playerName: SkyBreaker19
+    rating: 12
+  - playerName: "\u041C\u0430\u0448\u0430_pro"
+    rating: 12
+  - playerName: "\u041C\u0430\u0448\u0430_top"
+    rating: 12
+  - playerName: PhoenixOne684
+    rating: 12
+  - playerName: MasterZ
+    rating: 12
+  - playerName: Dark7
+    rating: 12
+  - playerName: DragonFighter681
+    rating: 12
+  - playerName: DarkPro
+    rating: 12
+  - playerName: BetaPro518
+    rating: 12
+  - playerName: MasterFighter198
+    rating: 12
+  - playerName: LordX
+    rating: 11
+  - playerName: CoolHunter631
+    rating: 11
+  - playerName: KingHunter
+    rating: 11
+  - playerName: "\u0421\u0442\u0430\u0441_\u0431\u043E\u0435\u0446"
+    rating: 11
+  - playerName: SuperWalker267
+    rating: 11
+  - playerName: CoolSeeker993
+    rating: 11
+  - playerName: SuperGamer
+    rating: 11
+  - playerName: UltraRider565
+    rating: 11
+  - playerName: PrimeWalker251
+    rating: 11
+  - playerName: NeonStriker342
+    rating: 11
+  - playerName: Ninja42
+    rating: 11
+  - playerName: NightKiller
+    rating: 11
+  - playerName: StarPlayer
+    rating: 10
+  - playerName: EliteRider953
+    rating: 10
+  - playerName: Cool4275
+    rating: 10
+  - playerName: WolfRunner631
+    rating: 10
+  - playerName: "\u0412\u0430\u043D\u044F_x"
+    rating: 10
+  - playerName: NinjaX919
+    rating: 10
+  - playerName: "\u0416\u0435\u043D\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 10
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 10
+  - playerName: CyberMaker899
+    rating: 10
+  - playerName: MasterHunter262
+    rating: 10
+  - playerName: LordStriker58
+    rating: 10
+  - playerName: Ultra7
+    rating: 10
+  - playerName: ElitePro692
+    rating: 10
+  - playerName: Storm
+    rating: 10
+  - playerName: ProHunter
+    rating: 10
+  - playerName: MasterFighter385
+    rating: 10
+  - playerName: AceSlayer128
+    rating: 10
+  - playerName: "\u0414\u0438\u043C\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 9
+  - playerName: "\u041D\u0430\u0441\u0442\u044F_pro"
+    rating: 9
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u0438\u0433\u0440\u043E\u043A"
+    rating: 9
+  - playerName: StormWalker7
+    rating: 9
+  - playerName: "\u041A\u0430\u0442\u044F777"
+    rating: 9
+  - playerName: ShadowRider6
+    rating: 9
+  - playerName: Ghost99372
+    rating: 9
+  - playerName: "\u0412\u0430\u043D\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 9
+  - playerName: GhostHunter
+    rating: 9
+  - playerName: StarGamer98
+    rating: 9
+  - playerName: "\u041C\u0430\u0448\u0430_x"
+    rating: 9
+  - playerName: KingKiller341
+    rating: 9
+  - playerName: StormPro172
+    rating: 9
+  - playerName: TigerPro96
+    rating: 9
+  - playerName: "\u041B\u0451\u0448\u0430_v"
+    rating: 9
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 8
+  - playerName: "\u0412\u0430\u043D\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 8
+  - playerName: "\u0422\u0430\u043D\u044F777"
+    rating: 8
+  - playerName: DragonPlayer
+    rating: 8
+  - playerName: SkyRider907
+    rating: 8
+  - playerName: "\u0421\u0430\u0448\u0430_\u0431\u043E\u0435\u0446"
+    rating: 8
+  - playerName: AlphaStriker
+    rating: 8
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 8
+  - playerName: Ace99462
+    rating: 8
+  - playerName: LordOne70
+    rating: 8
+  - playerName: AlphaStriker555
+    rating: 8
+  - playerName: TigerWalker
+    rating: 8
+  - playerName: TigerRider
+    rating: 8
+  - playerName: KingSeeker100
+    rating: 8
+  - playerName: "\u042E\u0440\u0430_\u0438\u0433\u0440\u043E\u043A"
+    rating: 8
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 8
+  - playerName: WolfBreaker
+    rating: 8
+  - playerName: StormX647
+    rating: 8
+  - playerName: SkySeeker282
+    rating: 8
+  - playerName: "\u041A\u0430\u0442\u044F_\u0433\u0435\u0440\u043E\u0439"
+    rating: 8
+  - playerName: WolfRider
+    rating: 8
+  - playerName: AlphaKiller
+    rating: 8
+  - playerName: GhostKiller996
+    rating: 8
+  - playerName: SuperPlayer
+    rating: 8
+  - playerName: "\u041B\u0451\u0448\u0430_pro"
+    rating: 8
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u0431\u043E\u0435\u0446"
+    rating: 8
+  - playerName: "\u042E\u0440\u04302024"
+    rating: 8
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430777"
+    rating: 7
+  - playerName: DragonHunter842
+    rating: 7
+  - playerName: "\u0422\u0430\u043D\u044F_v"
+    rating: 7
+  - playerName: Wolf7
+    rating: 7
+  - playerName: AlphaGamer137
+    rating: 7
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 7
+  - playerName: EliteX
+    rating: 7
+  - playerName: QueenZ274
+    rating: 7
+  - playerName: Fire7
+    rating: 7
+  - playerName: PrimeSeeker455
+    rating: 7
+  - playerName: PrimeRider
+    rating: 7
+  - playerName: PhoenixRunner298
+    rating: 7
+  - playerName: WolfMaker925
+    rating: 7
+  - playerName: "\u0412\u0438\u0442\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 7
+  - playerName: MegaKiller259
+    rating: 6
+  - playerName: "\u0418\u0433\u043E\u0440\u044C_\u0438\u0433\u0440\u043E\u043A"
+    rating: 6
+  - playerName: NinjaStriker
+    rating: 6
+  - playerName: "\u0413\u0440\u0438\u0448\u0430_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 6
+  - playerName: LordGamer144
+    rating: 6
+  - playerName: "\u0412\u0430\u043D\u044F_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 6
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_\u0438\u0433\u0440\u043E\u043A"
+    rating: 6
+  - playerName: "\u041A\u043E\u0441\u0442\u044F123"
+    rating: 6
+  - playerName: "\u0414\u0430\u0448\u0430123"
+    rating: 6
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_\u0431\u043E\u0435\u0446"
+    rating: 6
+  - playerName: NightWalker
+    rating: 6
+  - playerName: UltraPlayer
+    rating: 6
+  - playerName: Mega7
+    rating: 6
+  - playerName: DarkMaker
+    rating: 6
+  - playerName: DragonRunner666
+    rating: 6
+  - playerName: "\u041C\u0430\u0448\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 6
+  - playerName: Ace689
+    rating: 6
+  - playerName: "\u0421\u0430\u0448\u0430_top"
+    rating: 6
+  - playerName: WolfWalker
+    rating: 6
+  - playerName: LordStriker
+    rating: 6
+  - playerName: UltraOne
+    rating: 6
+  - playerName: GhostBreaker152
+    rating: 6
+  - playerName: "\u0414\u0438\u043C\u0430_pro"
+    rating: 5
+  - playerName: "\u041A\u043E\u0441\u0442\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 5
+  - playerName: MegaBreaker998
+    rating: 5
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430919"
+    rating: 5
+  - playerName: "\u041D\u0438\u043A\u0438\u0442\u0430_\u0431\u043E\u0435\u0446"
+    rating: 5
+  - playerName: "\u0412\u043B\u0430\u0434_top"
+    rating: 5
+  - playerName: FireWalker566
+    rating: 5
+  - playerName: "\u0421\u0442\u0430\u0441_v"
+    rating: 5
+  - playerName: KingSeeker803
+    rating: 5
+  - playerName: Night
+    rating: 5
+  - playerName: Beta42
+    rating: 5
+  - playerName: CoolOne
+    rating: 5
+  - playerName: PrimeX768
+    rating: 5
+  - playerName: SuperFighter
+    rating: 5
+  - playerName: NeonZ414
+    rating: 5
+  - playerName: BetaGamer367
+    rating: 5
+  - playerName: "\u041C\u0430\u043A\u04412024"
+    rating: 5
+  - playerName: MasterHunter512
+    rating: 5
+  - playerName: IceRunner
+    rating: 5
+  - playerName: PhoenixWalker307
+    rating: 5
+  - playerName: WolfRunner
+    rating: 5
+  - playerName: "\u0422\u0430\u043D\u044F_\u0433\u0435\u0440\u043E\u0439"
+    rating: 4
+  - playerName: KingX
+    rating: 4
+  - playerName: NinjaPlayer878
+    rating: 4
+  - playerName: "\u0414\u0435\u043D\u0438\u0441_x"
+    rating: 4
+  - playerName: ProKiller371
+    rating: 4
+  - playerName: BetaStriker753
+    rating: 4
+  - playerName: Shadow42
+    rating: 4
+  - playerName: "\u0412\u043B\u0430\u0434123"
+    rating: 4
+  - playerName: "\u0412\u0430\u043D\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 4
+  - playerName: KingPlayer346
+    rating: 4
+  - playerName: DarkX
+    rating: 4
+  - playerName: CyberBreaker482
+    rating: 4
+  - playerName: "\u042E\u0440\u0430_\u0441\u0442\u0440\u0435\u043B\u043E\u043A"
+    rating: 4
+  - playerName: IceStriker325
+    rating: 4
+  - playerName: SuperKiller
+    rating: 4
+  - playerName: MasterX985
+    rating: 3
+  - playerName: DragonX
+    rating: 3
+  - playerName: CyberFighter216
+    rating: 3
+  - playerName: Night877
+    rating: 3
+  - playerName: SkySeeker
+    rating: 3
+  - playerName: Ninja42558
+    rating: 3
+  - playerName: "\u0421\u0430\u0448\u0430553"
+    rating: 3
+  - playerName: Beta684
+    rating: 3
+  - playerName: "\u0421\u0435\u0440\u0451\u0436\u0430_v"
+    rating: 3
+  - playerName: PrimeGamer340
+    rating: 3
+  - playerName: "\u0412\u043B\u0430\u0434777"
+    rating: 3
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439777"
+    rating: 3
+  - playerName: Ice42261
+    rating: 3
+  - playerName: "\u041B\u0435\u043D\u0430_\u043B\u0443\u0447\u0448\u0438\u0439"
+    rating: 2
+  - playerName: Lord7733
+    rating: 2
+  - playerName: DarkZ
+    rating: 2
+  - playerName: Dragon99
+    rating: 2
+  - playerName: DragonStriker
+    rating: 2
+  - playerName: MasterRunner
+    rating: 2
+  - playerName: EliteSeeker319
+    rating: 2
+  - playerName: "\u0412\u043B\u0430\u0434_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 2
+  - playerName: SuperKiller68
+    rating: 2
+  - playerName: "\u0410\u043D\u0434\u0440\u0435\u0439_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 2
+  - playerName: "\u041C\u0438\u0448\u0430_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 2
+  - playerName: "\u041F\u0435\u0442\u044F_\u043C\u0430\u0441\u0442\u0435\u0440"
+    rating: 2
+  - playerName: "\u041B\u0451\u0448\u0430_\u0433\u043E\u043D\u0449\u0438\u043A"
+    rating: 2
+  - playerName: "\u0422\u0430\u043D\u044F_\u043A\u043E\u0440\u043E\u043B\u044C"
+    rating: 2
+  - playerName: GhostBreaker743
+    rating: 2
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_x"
+    rating: 2
+  - playerName: "\u0414\u0430\u0448\u0430777"
+    rating: 2
+  - playerName: DarkRider26
+    rating: 2
+  - playerName: EliteHunter984
+    rating: 1
+  - playerName: UltraMaker604
+    rating: 1
+  - playerName: "\u041F\u0435\u0442\u044F_v"
+    rating: 1
+  - playerName: "\u0416\u0435\u043D\u044F_top"
+    rating: 1
+  - playerName: "\u041F\u0435\u0442\u044F_\u0447\u0435\u043C\u043F\u0438\u043E\u043D"
+    rating: 1
+  - playerName: StormSlayer
+    rating: 1
+  - playerName: FirePro
+    rating: 1
+  - playerName: "\u041C\u0430\u043A\u0441_\u0431\u043E\u0435\u0446"
+    rating: 1
+  - playerName: TigerKiller
+    rating: 1
+  - playerName: "\u041A\u0430\u0442\u044F_\u0438\u0433\u0440\u043E\u043A"
+    rating: 1
+  - playerName: PhoenixFighter521
+    rating: 1
+  - playerName: "\u041A\u0438\u0440\u0438\u043B\u043B_\u043A\u043E\u0440\u043E\u043B\u044C"
     rating: 1

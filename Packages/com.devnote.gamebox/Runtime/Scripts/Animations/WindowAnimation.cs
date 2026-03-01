@@ -20,11 +20,19 @@ public class WindowAnimation : MonoBehaviour
         _canvasGroup.interactable = false;
 
         _currentTween?.Kill();
-        _currentTween = DOTween.Sequence()
+
+        var sequence = DOTween.Sequence()
             .Append(TweenHub.Show(_windowRect, playSound: true))
-            .AppendCallback(() => _canvasGroup.interactable = true)
-            .AppendInterval(UNDER_BUTTON_SHOW_DELAY)
-            .Append(TweenHub.Show(_underButtonRect));
+            .AppendCallback(() => _canvasGroup.interactable = true);
+
+        if (_underButtonRect != null)
+        {
+            sequence
+                .AppendInterval(UNDER_BUTTON_SHOW_DELAY)
+                .Append(TweenHub.Show(_underButtonRect));
+        }
+
+        _currentTween = sequence;
     }
 
     public void AnimateHide(Action onCompleted)

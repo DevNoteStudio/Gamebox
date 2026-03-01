@@ -20,600 +20,520 @@ MonoBehaviour:
   - language: 1
     column: 2
   <Translations>k__BackingField:
-  - key: "\u041E\u0431\u0449\u0435\u0435"
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
   - key: location_number
     _values:
     - language: 0
       value: "\u041B\u043E\u043A\u0430\u0446\u0438\u044F {NUMBER}"
     - language: 1
-      value: "Location {NUMBER}\r"
+      value: Location {NUMBER}
   - key: play_button
     _values:
     - language: 0
       value: "\u0418\u0433\u0440\u0430\u0442\u044C"
     - language: 1
-      value: "Play\r"
+      value: Play
   - key: levels_title
     _values:
     - language: 0
       value: "\u0423\u0440\u043E\u0432\u043D\u0438"
     - language: 1
-      value: "Levels\r"
+      value: Levels
   - key: location_progress
     _values:
     - language: 0
       value: "\u041F\u0440\u043E\u0439\u0434\u0435\u043D\u043E {CURRENT} \u0438\u0437
         {MAX}"
     - language: 1
-      value: "Completed {CURRENT} of {MAX}\r"
+      value: Completed {CURRENT} of {MAX}
   - key: lose_title
     _values:
     - language: 0
       value: "\u041F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u0435"
     - language: 1
-      value: "Fail\r"
+      value: Fail
   - key: revive_button
     _values:
     - language: 0
       value: "\u0412\u043E\u0437\u0440\u043E\u0434\u0438\u0442\u044C"
     - language: 1
-      value: "Revive\r"
+      value: Revive
   - key: restart_button
     _values:
     - language: 0
       value: "\u0417\u0430\u043D\u043E\u0432\u043E"
     - language: 1
-      value: "Restart\r"
+      value: Restart
   - key: victory_title
     _values:
     - language: 0
       value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C \u043F\u0440\u043E\u0439\u0434\u0435\u043D!"
     - language: 1
-      value: "Level completed!\r"
+      value: Level completed!
   - key: reward
     _values:
     - language: 0
       value: "\u041D\u0430\u0433\u0440\u0430\u0434\u0430"
     - language: 1
-      value: "Reward\r"
+      value: Reward
   - key: get_button
     _values:
     - language: 0
       value: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"
     - language: 1
-      value: "Get\r"
+      value: Get
   - key: reject_button
     _values:
     - language: 0
       value: "\u041D\u0435\u0442, \u0441\u043F\u0430\u0441\u0438\u0431\u043E"
     - language: 1
-      value: "No, thank's\r"
+      value: No, thank's
   - key: take_button
     _values:
     - language: 0
       value: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"
     - language: 1
-      value: "Take\r"
+      value: Take
   - key: location_locked
     _values:
     - language: 0
       value: "\u0414\u043E\u0441\u0442\u0438\u0433\u043D\u0438 \u043B\u0438\u0433\u0438:"
     - language: 1
-      value: "Reach the league:\r"
+      value: 'Reach the league:'
   - key: no_ads_title
     _values:
     - language: 0
       value: "\u0411\u0435\u0437 \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
     - language: 1
-      value: "Disable ads\r"
+      value: Disable ads
   - key: no_ads_description
     _values:
     - language: 0
       value: "\u0418\u0433\u0440\u0430\u0439 \u0431\u0435\u0437 \u0440\u0435\u043A\u043B\u0430\u043C\u044B
         \u043C\u0435\u0436\u0434\u0443 \u0443\u0440\u043E\u0432\u043D\u044F\u043C\u0438!"
     - language: 1
-      value: "Play without ads between levels!\r"
+      value: Play without ads between levels!
   - key: item_tutor_title
     _values:
     - language: 0
       value: "\u041D\u043E\u0432\u044B\u0439 \u044D\u043B\u0435\u043C\u0435\u043D\u0442!"
     - language: 1
-      value: "New element!\r"
+      value: New element!
   - key: pause_title
     _values:
     - language: 0
       value: "\u041F\u0430\u0443\u0437\u0430"
     - language: 1
-      value: "Pause\r"
+      value: Pause
   - key: music
     _values:
     - language: 0
       value: "\u041C\u0443\u0437\u044B\u043A\u0430"
     - language: 1
-      value: "Music\r"
+      value: Music
   - key: sound
     _values:
     - language: 0
       value: "\u0417\u0432\u0443\u043A"
     - language: 1
-      value: "Sound\r"
+      value: Sound
   - key: menu_button
     _values:
     - language: 0
       value: "\u0412 \u043C\u0435\u043D\u044E"
     - language: 1
-      value: "Menu\r"
+      value: Menu
   - key: roulette_button
     _values:
     - language: 0
       value: "\u0423\u043C\u043D\u043E\u0436\u0438\u0442\u044C"
     - language: 1
-      value: "Multiply\r"
+      value: Multiply
   - key: rate_game_title
     _values:
     - language: 0
       value: "\u0422\u0435\u0431\u0435 \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F
         \u0438\u0433\u0440\u0430?"
     - language: 1
-      value: "Do you like the game?\r"
+      value: Do you like the game?
   - key: rate_game_desc
     _values:
     - language: 0
       value: "\u041E\u0446\u0435\u043D\u0438 \u0438\u0433\u0440\u0443 \u0438 \u043F\u043E\u043B\u0443\u0447\u0438
         \u043F\u043E\u0434\u0430\u0440\u043E\u043A!"
     - language: 1
-      value: "Rate the game and receive a gift!\r"
+      value: Rate the game and receive a gift!
   - key: apply_rate
     _values:
     - language: 0
       value: "\u0414\u0430!"
     - language: 1
-      value: "Yes!\r"
+      value: Yes!
   - key: reject_rate
     _values:
     - language: 0
       value: "\u041D\u0435\u0442"
     - language: 1
-      value: "No\r"
+      value: No
   - key: click_to_open
     _values:
     - language: 0
       value: "\u041D\u0430\u0436\u043C\u0438, \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u043A\u0440\u044B\u0442\u044C"
     - language: 1
-      value: "Click to open\r"
+      value: Click to open
   - key: new_location
     _values:
     - language: 0
       value: "\u041D\u043E\u0432\u0430\u044F\n\u043B\u043E\u043A\u0430\u0446\u0438\u044F"
     - language: 1
-      value: "New\nlocation\r"
+      value: 'New
+
+        location'
   - key: new_booster
     _values:
     - language: 0
       value: "\u041D\u043E\u0432\u044B\u0439\n\u0431\u0443\u0441\u0442\u0435\u0440"
     - language: 1
-      value: "New\nbooster\r"
+      value: 'New
+
+        booster'
   - key: rating
     _values:
     - language: 0
       value: "\u0420\u0435\u0439\u0442\u0438\u043D\u0433"
     - language: 1
-      value: "Rating\r"
+      value: Rating
   - key: of_rating
     _values:
     - language: 0
       value: "\u043E\u0447\u043A\u043E\u0432"
     - language: 1
-      value: "points\r"
+      value: points
   - key: new_league_title
     _values:
     - language: 0
       value: "\u041D\u043E\u0432\u044B\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C\n\u043B\u0438\u0433\u0438!"
     - language: 1
-      value: "New league level!\r"
+      value: New league level!
   - key: lvl
     _values:
     - language: 0
       value: "\u0443\u0440."
     - language: 1
-      value: "lvl\r"
+      value: lvl
   - key: upgrade
     _values:
     - language: 0
       value: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
     - language: 1
-      value: "Upgrade\r"
+      value: Upgrade
   - key: take_card
     _values:
     - language: 0
       value: "\u0412\u0437\u044F\u0442\u044C"
     - language: 1
-      value: "Take\r"
+      value: Take
   - key: remove_card
     _values:
     - language: 0
       value: "\u0423\u0431\u0440\u0430\u0442\u044C"
     - language: 1
-      value: "Remove\r"
+      value: Remove
   - key: unlock_cell_title
     _values:
     - language: 0
       value: "\u041A\u0443\u043F\u0438\u0442\u044C \u0441\u043B\u043E\u0442?"
     - language: 1
-      value: "Buy a card slot\r"
+      value: Buy a card slot
   - key: unlock_cell_desc
     _values:
     - language: 0
       value: "\u0412\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u0437\u044F\u0442\u044C
         {VALUE} \u043A\u0430\u0440\u0442\u044B \u043E\u0434\u043D\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E"
     - language: 1
-      value: "You will be able to take {VALUE} cards at a time\r"
+      value: You will be able to take {VALUE} cards at a time
   - key: buy
     _values:
     - language: 0
       value: "\u041A\u0443\u043F\u0438\u0442\u044C"
     - language: 1
-      value: "Buy\r"
+      value: Buy
   - key: open_box
     _values:
     - language: 0
       value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
     - language: 1
-      value: "Open\r"
+      value: Open
   - key: contains
     _values:
     - language: 0
       value: "\u0421\u043E\u0434\u0435\u0440\u0436\u0438\u0442"
     - language: 1
-      value: "Contains\r"
+      value: Contains
   - key: upgrade_available
     _values:
     - language: 0
       value: "\u041C\u043E\u0436\u043D\u043E \u0443\u043B\u0443\u0447\u0448\u0438\u0442\u044C!"
     - language: 1
-      value: "Upgrade available!\r"
+      value: Upgrade available!
   - key: booster
     _values:
     - language: 0
       value: "\u0423\u0441\u0438\u043B\u0435\u043D\u0438\u0435"
     - language: 1
-      value: "Booster\r"
+      value: Booster
   - key: no_coins
     _values:
     - language: 0
       value: "\u041D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u043C\u043E\u043D\u0435\u0442!"
     - language: 1
-      value: "Not enough coins!\r"
+      value: Not enough coins!
   - key: no_cards
     _values:
     - language: 0
       value: "\u041D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u043A\u0430\u0440\u0442!"
     - language: 1
-      value: "Not enough card!\r"
+      value: Not enough card!
   - key: revives_left
     _values:
     - language: 0
       value: "\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C x{VALUE} \u043F\u043E\u043F\u044B\u0442\u043E\u043A"
     - language: 1
-      value: "{VALUE} attempts left\r"
+      value: '{VALUE} attempts left'
   - key: box_boosters
     _values:
     - language: 0
       value: "\u0431\u0443\u0441\u0442\u0435\u0440\u043E\u0432"
     - language: 1
-      value: "boosters\r"
+      value: boosters
   - key: cards_screen_title
     _values:
     - language: 0
       value: "\u0423\u0441\u0438\u043B\u0435\u043D\u0438\u044F"
     - language: 1
-      value: "Card powers\r"
+      value: Card powers
   - key: open
     _values:
     - language: 0
       value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
     - language: 1
-      value: "Open\r"
-  - key: 
+      value: Open
+  - key: leaders_better
     _values:
     - language: 0
-      value: 
+      value: "\u0412\u044B \u043A\u0440\u0443\u0447\u0435 {VALUE}% \u0438\u0433\u0440\u043E\u043A\u043E\u0432"
     - language: 1
-      value: "\r"
-  - key: "\u041B\u0438\u0433\u0438"
+      value: You are cooler than {VALUE}% of players
+  - key: leaders_title
     _values:
     - language: 0
-      value: 
+      value: "\u041B\u0443\u0447\u0448\u0438\u0435 \u0438\u0433\u0440\u043E\u043A\u0438"
     - language: 1
-      value: "\r"
+      value: Top players
   - key: league_Stone
     _values:
     - language: 0
       value: "\u041A\u0430\u043C\u0435\u043D\u044C"
     - language: 1
-      value: "Stone\r"
+      value: Stone
   - key: league_Bronze
     _values:
     - language: 0
       value: "\u0411\u0440\u043E\u043D\u0437\u0430"
     - language: 1
-      value: "Bronze\r"
+      value: Bronze
   - key: league_Silver
     _values:
     - language: 0
       value: "\u0421\u0435\u0440\u0435\u0431\u0440\u043E"
     - language: 1
-      value: "Silver\r"
+      value: Silver
   - key: league_Gold
     _values:
     - language: 0
       value: "\u0417\u043E\u043B\u043E\u0442\u043E"
     - language: 1
-      value: "Gold\r"
+      value: Gold
   - key: league_Diamond
     _values:
     - language: 0
       value: "\u0410\u043B\u043C\u0430\u0437"
     - language: 1
-      value: "Diamond\r"
+      value: Diamond
   - key: league_Legend
     _values:
     - language: 0
       value: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430"
     - language: 1
-      value: "Legend\r"
+      value: Legend
   - key: league_Relict
     _values:
     - language: 0
       value: "\u0420\u0435\u043B\u0438\u043A\u0442"
     - language: 1
-      value: "Relict\r"
+      value: Relict
   - key: league_Imperium
     _values:
     - language: 0
       value: "\u0418\u043C\u043F\u0435\u0440\u0438\u0443\u043C"
     - language: 1
-      value: "Imperium\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
-  - key: "\u0412\u043A\u043B\u0430\u0434\u043A\u0438"
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Imperium
   - key: shop_tab
     _values:
     - language: 0
       value: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
     - language: 1
-      value: "Shop\r"
+      value: Shop
   - key: locations_tab
     _values:
     - language: 0
       value: "\u041B\u043E\u043A\u0430\u0446\u0438\u0438"
     - language: 1
-      value: "Locations\r"
+      value: Locations
   - key: cards_tab
     _values:
     - language: 0
       value: "\u041A\u0430\u0440\u0442\u044B"
     - language: 1
-      value: "Cards\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
-  - key: "\u0420\u0435\u0434\u043A\u043E\u0441\u0442\u0438 \u043A\u0430\u0440\u0442"
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Cards
   - key: Common_card
     _values:
     - language: 0
       value: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Common card\r"
+      value: Common card
   - key: Rare_card
     _values:
     - language: 0
       value: "\u0420\u0435\u0434\u043A\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Rare card\r"
+      value: Rare card
   - key: Epic_card
     _values:
     - language: 0
       value: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Epic card\r"
+      value: Epic card
   - key: Legendary_card
     _values:
     - language: 0
       value: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F
         \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Legendary card\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Legendary card
   - key: box_common_cards
     _values:
     - language: 0
       value: "\u043E\u0431\u044B\u0447\u043D. \u043A\u0430\u0440\u0442"
     - language: 1
-      value: "comm. cards\r"
+      value: comm. cards
   - key: box_rare_cards
     _values:
     - language: 0
       value: "\u0440\u0435\u0434\u043A. \u043A\u0430\u0440\u0442"
     - language: 1
-      value: "rare cards\r"
+      value: rare cards
   - key: box_epic_cards
     _values:
     - language: 0
       value: "\u044D\u043F\u0438\u0447. \u043A\u0430\u0440\u0442"
     - language: 1
-      value: "epic cards\r"
+      value: epic cards
   - key: box_legendary_cards
     _values:
     - language: 0
       value: "\u043B\u0435\u0433\u0435\u043D\u0434. \u043A\u0430\u0440\u0442"
     - language: 1
-      value: "legend. cards\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
-  - key: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: legend. cards
   - key: boxes_sector
     _values:
     - language: 0
       value: "- \u0411\u043E\u043A\u0441\u044B -"
     - language: 1
-      value: "- Boxes -\r"
+      value: '- Boxes -'
   - key: cards_sector
     _values:
     - language: 0
       value: "- \u041A\u0430\u0440\u0442\u044B -"
     - language: 1
-      value: "- Cards -\r"
+      value: '- Cards -'
   - key: gems_sector
     _values:
     - language: 0
       value: "- \u0410\u043B\u043C\u0430\u0437\u044B -"
     - language: 1
-      value: "- Gems -\r"
+      value: '- Gems -'
   - key: coins_sector
     _values:
     - language: 0
       value: "- \u041C\u043E\u043D\u0435\u0442\u044B -"
     - language: 1
-      value: "- Coins -\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: '- Coins -'
   - key: CommonBox_short
     _values:
     - language: 0
       value: "\u0421\u0442\u0430\u0440\u0442-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Start box\r"
+      value: Start box
   - key: CommonBox_title
     _values:
     - language: 0
       value: "\u0421\u0442\u0430\u0440\u0442-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Start box\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Start box
   - key: RareBox_short
     _values:
     - language: 0
       value: "\u041F\u0440\u043E\u0444\u0438-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Pro box\r"
+      value: Pro box
   - key: RareBox_title
     _values:
     - language: 0
       value: "\u041F\u0440\u043E\u0444\u0438-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Pro box\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Pro box
   - key: EpicBox_short
     _values:
     - language: 0
       value: "\u0421\u0443\u043F\u0435\u0440-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Super box\r"
+      value: Super box
   - key: EpicBox_title
     _values:
     - language: 0
       value: "\u0421\u0443\u043F\u0435\u0440-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Super box\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Super box
   - key: RareCardBox_short
     _values:
     - language: 0
       value: "\u0420\u0435\u0434\u043A\u0430\u044F"
     - language: 1
-      value: "Rare\r"
+      value: Rare
   - key: RareCardBox_title
     _values:
     - language: 0
       value: "\u0420\u0435\u0434\u043A\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Rare card\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Rare card
   - key: EpicCardBox_short
     _values:
     - language: 0
       value: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
     - language: 1
-      value: "Epic\r"
+      value: Epic
   - key: EpicCardBox_title
     _values:
     - language: 0
       value: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Epic card\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
+      value: Epic card
   - key: LegendaryCardBox_short
     _values:
     - language: 0
       value: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F"
     - language: 1
-      value: "Legendary\r"
+      value: Legendary
   - key: LegendaryCardBox_title
     _values:
     - language: 0
@@ -621,147 +541,113 @@ MonoBehaviour:
         \u043A\u0430\u0440\u0442\u0430"
     - language: 1
       value: Legendary card
-  - key: "\u0420\u0430\u0437\u043D\u043E\u0435"
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
-  - key: location_name_0
-    _values:
-    - language: 0
-      value: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u0430\u044F \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
-    - language: 1
-      value: "Start location\r"
-  - key: location_name_1
-    _values:
-    - language: 0
-      value: "\u041B\u043E\u043A\u0430\u0446\u0438\u044F \u043F\u043E\u0442\u044F\u0436\u0435\u043B\u0435\u0435"
-    - language: 1
-      value: "Location 2\r"
-  - key: location_name_2
-    _values:
-    - language: 0
-      value: "\u041A\u0430\u043F\u0435\u0446 \u0442\u044F\u0436\u0435\u043B\u0430\u044F
-        \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
-    - language: 1
-      value: "Location 3\r"
-  - key: lose_description
-    _values:
-    - language: 0
-      value: "\u0417\u0430\u043A\u043E\u043D\u0447\u0438\u043B\u0438\u0441\u044C
-        \u0436\u0438\u0437\u043D\u0438!"
-    - language: 1
-      value: "Out of lives!\r"
-  - key: 
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
-  - key: "\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044B"
-    _values:
-    - language: 0
-      value: 
-    - language: 1
-      value: "\r"
   - key: Coins_name
     _values:
     - language: 0
       value: "\u041C\u043E\u043D\u0435\u0442\u044B"
     - language: 1
-      value: "Coins\r"
+      value: Coins
   - key: Gems_name
     _values:
     - language: 0
       value: "\u0410\u043B\u043C\u0430\u0437\u044B"
     - language: 1
-      value: "Gems\r"
-  - key: Booster1_name
-    _values:
-    - language: 0
-      value: "\u0411\u0443\u0441\u0442\u0435\u0440 1"
-    - language: 1
-      value: "Booster 1\r"
-  - key: Booster2_name
-    _values:
-    - language: 0
-      value: "\u0411\u0443\u0441\u0442\u0435\u0440 2"
-    - language: 1
-      value: "Booster 2\r"
-  - key: Booster3_name
-    _values:
-    - language: 0
-      value: "\u0411\u0443\u0441\u0442\u0435\u0440 3"
-    - language: 1
-      value: "Booster 3\r"
+      value: Gems
   - key: CommonBox_name
     _values:
     - language: 0
       value: "\u0421\u0442\u0430\u0440\u0442-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Start box\r"
+      value: Start box
   - key: RareBox_name
     _values:
     - language: 0
       value: "\u041F\u0440\u043E\u0444\u0438-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Pro box\r"
+      value: Pro box
   - key: EpicBox_name
     _values:
     - language: 0
       value: "\u0421\u0443\u043F\u0435\u0440-\u0431\u043E\u043A\u0441"
     - language: 1
-      value: "Super box\r"
+      value: Super box
   - key: RareCard_name
     _values:
     - language: 0
       value: "\u0420\u0435\u0434\u043A\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Rare card\r"
+      value: Rare card
   - key: EpicCard_name
     _values:
     - language: 0
       value: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Epic card\r"
+      value: Epic card
   - key: LegendaryCard_name
     _values:
     - language: 0
       value: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F
         \u043A\u0430\u0440\u0442\u0430"
     - language: 1
-      value: "Legendary card\r"
-  - key: 
+      value: Legendary card
+  - key: location_name_0
     _values:
     - language: 0
-      value: 
+      value: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u0430\u044F \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
     - language: 1
-      value: "\r"
-  - key: 
+      value: Start location
+  - key: location_name_1
     _values:
     - language: 0
-      value: 
+      value: "\u041B\u043E\u043A\u0430\u0446\u0438\u044F \u043F\u043E\u0442\u044F\u0436\u0435\u043B\u0435\u0435"
     - language: 1
-      value: "\r"
-  - key: "\u041A\u0430\u0440\u0442\u044B"
+      value: Location 2
+  - key: location_name_2
     _values:
     - language: 0
-      value: 
+      value: "\u041A\u0430\u043F\u0435\u0446 \u0442\u044F\u0436\u0435\u043B\u0430\u044F
+        \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
     - language: 1
-      value: "\r"
+      value: Location 3
+  - key: lose_description
+    _values:
+    - language: 0
+      value: "\u0417\u0430\u043A\u043E\u043D\u0447\u0438\u043B\u0438\u0441\u044C
+        \u0436\u0438\u0437\u043D\u0438!"
+    - language: 1
+      value: Out of lives!
+  - key: Booster1_name
+    _values:
+    - language: 0
+      value: "\u0411\u0443\u0441\u0442\u0435\u0440 1"
+    - language: 1
+      value: Booster 1
+  - key: Booster2_name
+    _values:
+    - language: 0
+      value: "\u0411\u0443\u0441\u0442\u0435\u0440 2"
+    - language: 1
+      value: Booster 2
+  - key: Booster3_name
+    _values:
+    - language: 0
+      value: "\u0411\u0443\u0441\u0442\u0435\u0440 3"
+    - language: 1
+      value: Booster 3
   - key: CoinsMultiplier_name
     _values:
     - language: 0
       value: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u0441\u0443\u043D\u0434\u0443\u043A"
     - language: 1
-      value: "Gold chest\r"
+      value: Gold chest
   - key: CoinsMultiplier_short
     _values:
     - language: 0
       value: "+{VALUE}%\n<size=75%>\u043C\u043E\u043D\u0435\u0442"
     - language: 1
-      value: "+{VALUE}%\n<size=75%>coins\r"
+      value: '+{VALUE}%
+
+        <size=75%>coins'
   - key: CoinsMultiplier_desc
     _values:
     - language: 0
@@ -770,19 +656,21 @@ MonoBehaviour:
         \u0437\u0430 \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435
         \u0443\u0440\u043E\u0432\u043D\u044F"
     - language: 1
-      value: "Increases the number of coins earned for completing a level\r"
+      value: Increases the number of coins earned for completing a level
   - key: RatingMultiplier_name
     _values:
     - language: 0
       value: "\u041A\u0443\u0431\u043E\u043A \u0447\u0435\u043C\u043F\u0438\u043E\u043D\u0430"
     - language: 1
-      value: "Champion cup\r"
+      value: Champion cup
   - key: RatingMultiplier_short
     _values:
     - language: 0
       value: "+{VALUE}%\n<size=75%>\u0440\u0435\u0439\u0442\u0438\u043D\u0433"
     - language: 1
-      value: "+{VALUE}%\n<size=75%>rating\r"
+      value: '+{VALUE}%
+
+        <size=75%>rating'
   - key: RatingMultiplier_desc
     _values:
     - language: 0
@@ -791,19 +679,21 @@ MonoBehaviour:
         \u0437\u0430 \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435
         \u0443\u0440\u043E\u0432\u043D\u044F"
     - language: 1
-      value: "Increases the number of rating points earned for completing a level\r"
+      value: Increases the number of rating points earned for completing a level
   - key: Reviver_name
     _values:
     - language: 0
       value: "\u041C\u0435\u0434\u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442"
     - language: 1
-      value: "Medical kit\r"
+      value: Medical kit
   - key: Reviver_short
     _values:
     - language: 0
       value: "+{VALUE}\n<size=75%>\u0432\u043E\u0441\u043A\u0440\u0435\u0448\u0435\u043D\u0438\u0435"
     - language: 1
-      value: "+{VALUE}\n<size=75%>revive\r"
+      value: '+{VALUE}
+
+        <size=75%>revive'
   - key: Reviver_desc
     _values:
     - language: 0
@@ -811,19 +701,21 @@ MonoBehaviour:
         \u0432\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E
         \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435"
     - language: 1
-      value: "In case of defeat, you can continue the game for free\r"
+      value: In case of defeat, you can continue the game for free
   - key: GemRewarder_name
     _values:
     - language: 0
       value: "\u0410\u043B\u043C\u0430\u0437\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u043D\u0430"
     - language: 1
-      value: "Diamond \u0441rown\r"
+      value: "Diamond \u0441rown"
   - key: GemRewarder_short
     _values:
     - language: 0
       value: "+{VALUE}\n<size=75%>\u0430\u043B\u043C\u0430\u0437\u043E\u0432"
     - language: 1
-      value: "+{VALUE}\n<size=75%>gems\r"
+      value: '+{VALUE}
+
+        <size=75%>gems'
   - key: GemRewarder_desc
     _values:
     - language: 0
@@ -832,70 +724,4 @@ MonoBehaviour:
         \u0432\u044B \u0442\u0430\u043A\u0436\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435
         \u0430\u043B\u043C\u0430\u0437\u044B"
     - language: 1
-      value: "For each new star you receive, you will also receive diamonds\r"
-  - key: FreeBooster1_name
-    _values:
-    - language: 0
-      value: "\u0411\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0439 \u0431\u0443\u0441\u0442\u0435\u0440
-        1"
-    - language: 1
-      value: "Free booster 1\r"
-  - key: FreeBooster1_short
-    _values:
-    - language: 0
-      value: "+{VALUE}\n<size=75%>\u0431\u0443\u0441\u0442\u0435\u0440 1"
-    - language: 1
-      value: "+{VALUE}\n<size=75%>booster 1\r"
-  - key: FreeBooster1_desc
-    _values:
-    - language: 0
-      value: "\u0412 \u043D\u0430\u0447\u0430\u043B\u0435 \u0443\u0440\u043E\u0432\u043D\u044F
-        \u0432\u0430\u043C \u0431\u0443\u0434\u0443\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B
-        \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0435 \u0431\u0443\u0441\u0442\u0435\u0440\u044B
-        1"
-    - language: 1
-      value: "At the start of the level you will have access to free boosters 1\r"
-  - key: FreeBooster2_name
-    _values:
-    - language: 0
-      value: "\u0411\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0439 \u0431\u0443\u0441\u0442\u0435\u0440
-        2"
-    - language: 1
-      value: "Free booster 2\r"
-  - key: FreeBooster2_short
-    _values:
-    - language: 0
-      value: "+{VALUE}\n<size=75%>\u0431\u0443\u0441\u0442\u0435\u0440 2"
-    - language: 1
-      value: "+{VALUE}\n<size=75%>booster 2\r"
-  - key: FreeBooster2_desc
-    _values:
-    - language: 0
-      value: "\u0412 \u043D\u0430\u0447\u0430\u043B\u0435 \u0443\u0440\u043E\u0432\u043D\u044F
-        \u0432\u0430\u043C \u0431\u0443\u0434\u0443\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B
-        \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0435 \u0431\u0443\u0441\u0442\u0435\u0440\u044B
-        2"
-    - language: 1
-      value: "At the start of the level you will have access to free boosters 2\r"
-  - key: FreeBooster3_name
-    _values:
-    - language: 0
-      value: "\u0411\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0439 \u0431\u0443\u0441\u0442\u0435\u0440
-        3"
-    - language: 1
-      value: "Free booster 3\r"
-  - key: FreeBooster3_short
-    _values:
-    - language: 0
-      value: "+{VALUE}\n<size=75%>\u0431\u0443\u0441\u0442\u0435\u0440 3"
-    - language: 1
-      value: "+{VALUE}\n<size=75%>booster 3\r"
-  - key: FreeBooster3_desc
-    _values:
-    - language: 0
-      value: "\u0412 \u043D\u0430\u0447\u0430\u043B\u0435 \u0443\u0440\u043E\u0432\u043D\u044F
-        \u0432\u0430\u043C \u0431\u0443\u0434\u0443\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B
-        \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0435 \u0431\u0443\u0441\u0442\u0435\u0440\u044B
-        3"
-    - language: 1
-      value: At the start of the level you will have access to free boosters 3
+      value: For each new star you receive, you will also receive diamonds

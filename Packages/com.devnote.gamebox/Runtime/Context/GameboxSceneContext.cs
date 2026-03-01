@@ -43,6 +43,7 @@ namespace Gamebox
             var sound = Register(new SoundController());
             var score = Register(new ScoreController(level));
             var booster = Register(new BoosterController(pause));
+            var leaders = Register(new LeadersController());
 
             var start = Register(new StartController(menu, level, popup));
 

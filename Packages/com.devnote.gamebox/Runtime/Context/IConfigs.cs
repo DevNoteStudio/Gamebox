@@ -6,6 +6,7 @@ namespace Gamebox
     {
         public static GameboxConfig Gamebox => Resources.Load<GameboxConfig>("- Gamebox -");
 
+        public static LeaderboardConfig Leaderboard => Resources.Load<LeaderboardConfig>("Leaderboard");
         public static InternalConfig Internal => Resources.Load<InternalConfig>("Internal");
 
         public static T GetViewPrefab<T>() where T : Component

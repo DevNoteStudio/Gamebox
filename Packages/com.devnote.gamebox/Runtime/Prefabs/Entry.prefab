@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MindArtist
+  m_text: Player
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 24117b72736421548bcd3b6b8961f38a, type: 2}
   m_sharedMaterial: {fileID: -7216278356357123725, guid: 24117b72736421548bcd3b6b8961f38a, type: 2}
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5610693505396581610}
   - component: {fileID: 4515996988574792879}
   - component: {fileID: 3657665534030849962}
+  - component: {fileID: 8574951797377040302}
   m_Layer: 0
   m_Name: Entry
   m_TagString: Untagged
@@ -214,6 +215,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2.7
+--- !u!114 &8574951797377040302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050069898006122336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a4b4683d671e0418f9af5fc1d15d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stageText: {fileID: 3535331735446996677}
+  _playerNameText: {fileID: 5744275002557988174}
+  _ratingText: {fileID: 2575116910693985885}
+  _panelImage: {fileID: 3657665534030849962}
+  _playerColor: {r: 0.4784314, g: 0.92549026, b: 0.3137255, a: 1}
+  _originColor: {r: 0.7058824, g: 0.92549026, b: 1, a: 1}
 --- !u!1 &3070227769649221720
 GameObject:
   m_ObjectHideFlags: 0
