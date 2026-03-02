@@ -29,10 +29,14 @@ public class Test : MonoBehaviour
         if (boosterController.Item.CurrentUsingBoosterKey == ItemKey.Booster1)
             boosterController.Item.FinishBoosterUsing(success: true);
 
-        else
+        if (boosterController.Item.CurrentUsingBoosterKey == ItemKey.Booster2)
         {
-            
+            boosterController.Item.ShowBoosterHint();
+
         }
+            
+
+
     }
 
     private void Update()
@@ -48,6 +52,7 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             boosterController.Item.FinishBoosterUsing(true);
+            boosterController.Item.HideBoosterHint();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {

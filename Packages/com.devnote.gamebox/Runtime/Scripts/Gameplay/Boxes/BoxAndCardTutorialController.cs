@@ -95,7 +95,7 @@ namespace Gamebox
             boxOpenController.SetNextBoxReward(new BoxRewardData
             {
                 cards = new Dictionary<CardType, int> { { CardType.CoinsMultiplier, 5 } },
-                boosters = new Dictionary<ItemKey, int> { { IConfigs.Gamebox.GetAllBoosterTypes()[0], 3 } },
+                boosters = new Dictionary<ItemKey, int> { { IConfigs.Gamebox.GetAllBoosterKeys()[0], 3 } },
             });
 
             openBoxButton.onClick.AddListener(OnOpenBoxButtonClick);

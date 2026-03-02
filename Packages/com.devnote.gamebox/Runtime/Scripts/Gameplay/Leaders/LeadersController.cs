@@ -4,12 +4,12 @@ namespace Gamebox
 {
     public class LeadersController
     {
-        private readonly Viewer<LeaderboardWindowView> leaderboardWindowViewer;
+        private readonly Viewer<LeadersWindowView> leaderboardWindowViewer;
 
 
         public LeadersController()
         {
-            leaderboardWindowViewer = new(IConfigs.GetViewPrefab<LeaderboardWindowView>());
+            leaderboardWindowViewer = new(IConfigs.GetViewPrefab<LeadersWindowView>());
         }
 
 

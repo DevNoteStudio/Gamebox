@@ -90,7 +90,7 @@ namespace Gamebox
             _maxBoostersEnabled = !_maxBoostersEnabled;
             _boosterButton.image.color = _maxBoostersEnabled ? _activeColor : _notActiveColor;
 
-            var allBoosterKeys = IConfigs.Gamebox.GetAllBoosterTypes();
+            var allBoosterKeys = IConfigs.Gamebox.GetAllBoosterKeys();
 
             if (_maxBoostersEnabled)
             {

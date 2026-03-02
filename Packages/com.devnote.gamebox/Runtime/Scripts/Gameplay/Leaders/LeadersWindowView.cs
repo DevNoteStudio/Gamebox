@@ -4,16 +4,16 @@ using DevNote;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Gamebox.LeaderboardEntryView;
+using static Gamebox.LeaderEntryView;
 
 namespace Gamebox
 {
-    public class LeaderboardWindowView : Window
+    public class LeadersWindowView : Window
     {
         [SerializeField] private Button _closeButton;
         [SerializeField] private TextMeshProUGUI _betterPercentageText;
-        [SerializeField] private List<LeaderboardEntryView> _topEntries3; // 3 entries
-        [SerializeField] private List<LeaderboardEntryView> _otherEntries6; // 6 entries
+        [SerializeField] private List<LeaderEntryView> _topEntries3; // 3 entries
+        [SerializeField] private List<LeaderEntryView> _otherEntries6; // 6 entries
 
         private const string PLAYER_NAME = "You";
 
@@ -29,10 +29,10 @@ namespace Gamebox
             leadersController.Item.HideLeadersWindow();
         }
 
-        public LeaderboardWindowView Display()
+        public LeadersWindowView Display()
         {
-            var entries = IConfigs.Leaderboard.Entries;
-            int playerRank = IConfigs.Leaderboard.GetRank(IGameState.Level);
+            var entries = IConfigs.Leaders.Entries;
+            int playerRank = IConfigs.Leaders.GetRank(IGameState.Level);
             var playerEntry = new LeaderEntry() { playerName = PLAYER_NAME, rating = IGameState.Level };
 
             Debug.Log(playerRank);
@@ -62,7 +62,6 @@ namespace Gamebox
                 for (int i = 0, rank = playerRank - 4; i < _otherEntries6.Count; rank++, i++)
                 {
                     int index = rank - 1;
-                    Debug.Log(index);
                     var entry = playerRank == rank ? playerEntry : entries[index];
                     var displayType = playerRank == rank ? DisplayType.Player : DisplayType.Other;
 
@@ -86,7 +85,7 @@ namespace Gamebox
             if (playerRank == 1) return 100;
             else
             {
-                int maxRank = IConfigs.Leaderboard.Entries.Count;
+                int maxRank = IConfigs.Leaders.Entries.Count;
                 return (int)((1f - (float)playerRank / maxRank) * 100f);
             }
         }

@@ -120,7 +120,7 @@ namespace Gamebox
 
 
 
-        public void AnimateCoinsRollup(int score, int particles, Vector2 fromCanvasPosition)
+        public void AnimateCoinsRollup(int coins, int particles, Vector2 fromCanvasPosition)
         {
             var coinsParticle = _coinsParticlePool.Get(container: _particleContainer);
 
@@ -132,7 +132,7 @@ namespace Gamebox
             coinsParticle.Play();
             Sound.Play(SoundName.ShowCoinsParticles);
 
-            _particleCoins[coinsParticle] = score;
+            _particleCoins[coinsParticle] = coins;
 
             coinsParticle.OnFirstParticleFinished += OnFirstParticleFinished;
             coinsParticle.OnLastParticleFinished += OnLastParticleFinished;

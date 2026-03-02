@@ -19,7 +19,7 @@ MonoBehaviour:
   _volume: 0.4
   _randomVolume: {x: 0, y: 0}
   _pitch: 1
-  _randomPitch: {x: 0.9, y: 1}
+  _randomPitch: {x: 1, y: 1.1}
   _useRandomAudioClip: 0
   _useRandomVolume: 0
   _useRandomPitch: 1

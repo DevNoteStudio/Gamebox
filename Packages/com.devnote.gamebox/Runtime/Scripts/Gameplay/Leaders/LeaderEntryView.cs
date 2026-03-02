@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Gamebox
 {
-    public class LeaderboardEntryView : MonoBehaviour
+    public class LeaderEntryView : MonoBehaviour
     {
         public enum DisplayType { Top3, Player, Other }
 

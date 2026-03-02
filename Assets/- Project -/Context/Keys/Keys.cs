@@ -8,11 +8,25 @@ public enum ContentKey
     UnlockBooster1 = 1,
     UnlockBooster2 = 2,
     UnlockBooster3 = 3,
-    UnlockBooster4 = 5,
 
     RateUs = 6,
-    UnlockCards = 7,
-    UnlockShop = 8,
+    UnlockLeaderboard = 7,
+    UnlockBoosterPanel = 8,
+    UnlockWinBonusRoulette = 9,
+}
+
+public static class ContentKeyExtension
+{
+    private static readonly Dictionary<ItemKey, ContentKey> ITEM_MATCHES = new()
+    {
+        { ItemKey.Booster1, ContentKey.UnlockBooster1 },
+        { ItemKey.Booster2, ContentKey.UnlockBooster2 },
+        { ItemKey.Booster3, ContentKey.UnlockBooster3 },
+    };
+
+    public static ContentKey GetContentKey(this ItemKey boosterItemKey)
+        => ITEM_MATCHES[boosterItemKey];
+
 }
 
 

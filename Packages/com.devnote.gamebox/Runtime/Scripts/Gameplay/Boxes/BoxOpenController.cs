@@ -145,7 +145,7 @@ namespace Gamebox
                         boosterTypesAmount++;
                 }
 
-                var allBoosterTypes = IConfigs.Gamebox.GetAllBoosterTypes();
+                var allBoosterTypes = IConfigs.Gamebox.GetAllBoosterKeys();
                 ItemKey firstBooster = allBoosterTypes[0];
                 allBoosterTypes.RemoveAll(boosterItemKey => !IGameState.Items.IsUnlocked(boosterItemKey));
 

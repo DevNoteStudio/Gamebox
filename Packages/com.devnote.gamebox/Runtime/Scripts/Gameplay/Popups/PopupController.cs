@@ -21,6 +21,7 @@ namespace Gamebox
 
         public PopupController(LevelController levelController, IAds ads, IReview review, IPurchase purchase)
         {
+            /*
             _priorityPopupList = GetPriorityPopupList();
 
             this.ads = ads;
@@ -35,6 +36,7 @@ namespace Gamebox
 
             IAds.OnInterstitialShown += OnInterstitialShown;
             levelController.OnLevelStarted += OnLevelStarted;
+            */
         }
 
         private PriorityPopupList GetPriorityPopupList() => new PriorityPopupList(new List<PopupData>()

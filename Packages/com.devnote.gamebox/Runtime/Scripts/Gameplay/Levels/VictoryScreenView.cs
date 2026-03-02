@@ -175,7 +175,7 @@ namespace Gamebox
                 levelController.Item.HideWinScreen();
                 levelController.Item.StartLevel(IGameState.Level);
 
-                await UniTask.WaitForSeconds(0.5f);
+                await UniTask.WaitForSeconds(0.3f);
                 currencyController.Item.AnimateCoinsRollup(RollupType.OnlyEffect, _totalRewardCoins, 8);
             });
         }

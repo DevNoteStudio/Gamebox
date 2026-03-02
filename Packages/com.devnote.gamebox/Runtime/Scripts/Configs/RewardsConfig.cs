@@ -32,6 +32,12 @@ namespace Gamebox
         }
 
 
+        public int GetCoinsForLevelComplete(int level)
+        {
+            return 100;
+        }
+
+
         public List<ItemPack> GetLevelRewards(int locationIndex, int levelIndex, 
             int newStars, bool isRepeatComplete, int completedLevels, bool isFirstComplete)
         {

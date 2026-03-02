@@ -7,7 +7,7 @@ namespace Gamebox
     {
         public static LevelsState Levels { get; private set; }
         public static int Level { get; set; }
-        public static bool LevelWasStarted { get; set; } 
+        public static int LastStartedLevel { get; set; }
         public static ItemsState Items { get; private set; }
         public static CardsState Cards { get; private set; }
         public static ItemTutorialsState ItemTutorials { get; private set; }
@@ -19,7 +19,7 @@ namespace Gamebox
 
 
         private const string LEVEL = "level";
-        private const string LEVEL_WAS_STARTED = "lvl_start";
+        private const string LAST_STARTED_LEVEL = "last_level";
         private const string LEVELS = "levels";
         private const string RATING = "rating";
         private const string LAST_PLAY_LOCATION_INDEX = "lastLocIndex";
@@ -34,7 +34,7 @@ namespace Gamebox
         protected static void ParseState(Dictionary<string, string> data)
         {
             Level = int.Parse(data.GetValueOrDefault(LEVEL, $"{1}"));
-            LevelWasStarted = bool.Parse(data.GetValueOrDefault(LEVEL_WAS_STARTED, $"{false}"));
+            LastStartedLevel = int.Parse(data.GetValueOrDefault(LAST_STARTED_LEVEL, $"{0}"));
             Levels = new(data.GetValueOrDefault(LEVELS, string.Empty));
             LastPlayLocationIndex = new(int.Parse(data.GetValueOrDefault(LAST_PLAY_LOCATION_INDEX, "0")));
             LastPlayLevelIndex = new(int.Parse(data.GetValueOrDefault(LAST_PLAY_LEVEL_INDEX, "0")));
@@ -49,7 +49,7 @@ namespace Gamebox
         protected static Dictionary<string, string> ToDictionary() => new()
         {
             { LEVEL, Level.ToString() },
-            { LEVEL_WAS_STARTED, LevelWasStarted.ToString() },
+            { LAST_STARTED_LEVEL, LastStartedLevel.ToString() },
             { LEVELS, Levels.ToString() },
             { LAST_PLAY_LOCATION_INDEX, LastPlayLocationIndex.ToString() },
             { LAST_PLAY_LEVEL_INDEX, LastPlayLevelIndex.ToString() },

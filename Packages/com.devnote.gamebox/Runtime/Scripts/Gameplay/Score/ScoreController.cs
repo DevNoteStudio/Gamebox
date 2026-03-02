@@ -7,7 +7,7 @@ namespace Gamebox
     public class ScoreController
     {
         public event Action OnScoreChanged;
-        public event Action OnStarScoreChanged;
+        public event Action OnScoreCompleted;
 
         public delegate int GetLevelStarsHandler();
         private GetLevelStarsHandler _getLevelStarsHandler; 
@@ -15,10 +15,6 @@ namespace Gamebox
 
         public int CurrentScore { get; private set; } = 0;
         public int RequiredScore { get; private set; } = 1;
-
-
-        public int CurrentStarScore { get; private set; }
-        public int RequiredStarScore { get; private set; }
 
 
         private readonly LevelController levelController;
@@ -37,11 +33,6 @@ namespace Gamebox
             OnScoreChanged?.Invoke();
         }
 
-        public void SetStarScoreRequire(int require)
-        {
-
-        }
-
         public void SetScoreCompletedLevelStars(GetLevelStarsHandler handler) 
             => _getLevelStarsHandler = handler;
 
@@ -49,12 +40,21 @@ namespace Gamebox
         {
             if (!levelController.IsLevelPlaying) return;
 
+            int previousScore = CurrentScore;
             CurrentScore = Mathf.Clamp(CurrentScore + score, 0, RequiredScore);
-            OnScoreChanged?.Invoke();
 
-            if (CurrentScore == RequiredScore && _getLevelStarsHandler != null)
-                levelController.CompleteCurrentLevel(_getLevelStarsHandler.Invoke());
+            if (previousScore != CurrentScore)
+            {
+                OnScoreChanged?.Invoke();
 
+                if (CurrentScore == RequiredScore)
+                {
+                    if (_getLevelStarsHandler != null)
+                        levelController.CompleteCurrentLevel(_getLevelStarsHandler.Invoke());
+
+                    OnScoreCompleted?.Invoke();
+                }
+            }
         }
 
         public void AddParticleScore(int score, int particles, Vector3 fromWorldPosition)

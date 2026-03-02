@@ -16,7 +16,8 @@ namespace Gamebox
 
         public bool IsLevelPlaying { get; private set; } = false;
         public bool IsLevelRestarted { get; private set; } = false;
-        public bool IsLevelLaunchedFirstTime { get; private set; } = false;
+        public bool IsLevelStartedFirstTime { get; private set; } = false;
+        public bool IsFirstLevelInGameSession { get; private set; } = false;
         public int ReviveCount { get; private set; } = 0;
 
 
@@ -126,14 +127,16 @@ namespace Gamebox
         }
 
 
-        public void StartLevel(int level, bool isRestart = false)
+        public void StartLevel(int level, bool isRestart = false, bool isFirstLevelInGameSession = false)
         {
             environment.StartGameplay();
 
-            IsLevelLaunchedFirstTime = !IGameState.LevelWasStarted;
-            IGameState.LevelWasStarted = true;
+            IsLevelStartedFirstTime = IGameState.LastStartedLevel != level;
+
+            IsFirstLevelInGameSession = isFirstLevelInGameSession;
 
             IGameState.Level = level;
+            IGameState.LastStartedLevel = level;
 
             IsLevelPlaying = true;
             IsLevelRestarted = isRestart;
@@ -152,8 +155,6 @@ namespace Gamebox
             IsLevelPlaying = false;
 
             IGameState.Level++;
-            IGameState.LevelWasStarted = false;
-
 
             stars = Mathf.Clamp(stars, 1, 3);
 

@@ -13,10 +13,17 @@ namespace Gamebox
         public bool IsUsingBooster { get; private set; }
         public ItemKey CurrentUsingBoosterKey { get; private set; }
 
+        private BoosterPanelView BoosterPanel => levelController.GameplayScreen.BoosterPanel;
 
-        public BoosterController(PauseController pauseController)
+
+        private readonly LevelController levelController;
+
+
+        public BoosterController(PauseController pauseController, LevelController levelController)
         {
-            pauseController.OnGamePaused += OnGamePaused;
+            this.levelController = levelController;
+
+            pauseController.OnGameplayPaused += OnGamePaused;
         }
 
         private void OnGamePaused() => CancelBoosterUsing();
@@ -42,13 +49,15 @@ namespace Gamebox
             if (!IsUsingBooster) return;
 
             IsUsingBooster = false;
+            HideBoosterHint();
+
             OnBoosterUsingFinished?.Invoke(success: false);
         }
 
-        public void ShowBoosterHint()
-        {
+        public void ShowBoosterHint() => BoosterPanel.ShowBoosterHint(CurrentUsingBoosterKey);
 
-        }
+
+        public void HideBoosterHint() => BoosterPanel.HideBoosterHint();
 
 
     }

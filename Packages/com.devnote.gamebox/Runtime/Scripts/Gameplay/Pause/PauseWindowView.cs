@@ -20,6 +20,7 @@ namespace Gamebox
 
         private void Start()
         {
+            Debug.Log(name);
             _closeButton.onClick.AddListener(OnCloseButtonClick);
             _restartButton.onClick.AddListener(OnRestartButtonClick);
             _menuButton.onClick.AddListener(OnMenuButtonClick);

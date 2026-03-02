@@ -23,9 +23,11 @@ namespace Gamebox
         [SerializeField] private RectTransform _animatedRect;
         [SerializeField] private UIParticle _shineParticles;
         [SerializeField] private UIParticle _buyParticle;
+        [SerializeField] private UIParticle _unlockParticle;
+        [SerializeField] private TextMeshProUGUI _unlockLevelText;
+        [SerializeField] private RectTransform _baseRect;
 
-        private ItemKey _boosterItemKey;
-        private int _boosterNumber;
+        public ItemKey BoosterItemKey { get; private set; }
 
         private readonly Holder<BoosterController> boosterController = new();
         private readonly Holder<CurrencyController> currencyController = new();
@@ -53,13 +55,13 @@ namespace Gamebox
 
         private void OnBoosterUsingStarted()
         {
-            if (_boosterItemKey == boosterController.Item.CurrentUsingBoosterKey)
+            if (BoosterItemKey == boosterController.Item.CurrentUsingBoosterKey)
                 AnimateBoosterStartUsing();
         }
 
         private void OnBoosterUsingFinished(bool success)
         {
-            if (_boosterItemKey != boosterController.Item.CurrentUsingBoosterKey)
+            if (BoosterItemKey != boosterController.Item.CurrentUsingBoosterKey)
                 return;
 
             if (success) AnimateBoosterApply();
@@ -72,21 +74,14 @@ namespace Gamebox
             _useButton.onClick.AddListener(OnUseButtonClick);
         }
 
-        public void Display(ItemKey boosterItemKey, int boosterNumber)
+
+        public void Display(ItemKey boosterItemKey)
         {
-            _boosterItemKey = boosterItemKey;
-            _boosterNumber = boosterNumber;
+            BoosterItemKey = boosterItemKey;
 
             _iconImage.LoadSprite(AssetLoader.LoadItemSprite(boosterItemKey));
-            
-            var contentType = boosterNumber switch
-            {
-                1 => ContentKey.UnlockBooster1,
-                2 => ContentKey.UnlockBooster2,
-                3 => ContentKey.UnlockBooster3,
-                4 => ContentKey.UnlockBooster4,
-                _ => throw new Exception($"Wrong booster number: {boosterNumber}. It must be from 1 to 4.")
-            };
+
+            var contentType = boosterItemKey.GetContentKey();
 
             bool isUnlocked = IConfigs.Gamebox.ContentPipeline.IsAvailable(contentType);
 
@@ -100,53 +95,51 @@ namespace Gamebox
                 bool hasBooster = IGameState.Items.Has(boosterItemKey);            
 
                 _priceObject.SetActive(!hasBooster);
-                if (!hasBooster) _priceText.text = $"<sprite=0>{IConfigs.Gamebox.GetBoosterPrice(_boosterItemKey)}";
+                if (!hasBooster) _priceText.text = $"<sprite=0>{IConfigs.Gamebox.GetBoosterPrice(BoosterItemKey)}";
 
                 _counterObject.SetActive(hasBooster);
                 if (hasBooster) _counterText.text = IGameState.Items.Get(boosterItemKey).ToString();
-
             }
-            
+            else
+            {
+                int unlockLevel = IConfigs.Gamebox.ContentPipeline.GetLevel(contentType);
+                _unlockLevelText.text = Localization.GetLocalizedText("level_short")
+                    .Replace("{VALUE}", unlockLevel.ToString());
+            }
         }
-
-        public void AnimateProgress()
-        {
-
-        }
-
 
         private void OnUseButtonClick()
         {
-            int boosters = IGameState.Items.Get(_boosterItemKey);
+            int boosters = IGameState.Items.Get(BoosterItemKey);
 
             // <-- Using -->
             if (boosters > 0)
             {
                 if (boosterController.Item.IsUsingBooster)
                 {
-                    if (boosterController.Item.CurrentUsingBoosterKey == _boosterItemKey)
+                    if (boosterController.Item.CurrentUsingBoosterKey == BoosterItemKey)
                         boosterController.Item.CancelBoosterUsing();
 
                     else
                     {
                         boosterController.Item.CancelBoosterUsing();
-                        boosterController.Item.StartBoosterUsing(_boosterItemKey);
+                        boosterController.Item.StartBoosterUsing(BoosterItemKey);
                     }
                 }
-                else boosterController.Item.StartBoosterUsing(_boosterItemKey);
+                else boosterController.Item.StartBoosterUsing(BoosterItemKey);
             }
 
             // <-- No boosters -->
             else
             {
-                int price = IConfigs.Gamebox.GetBoosterPrice(_boosterItemKey);
+                int price = IConfigs.Gamebox.GetBoosterPrice(BoosterItemKey);
 
                 // <-- Purchasing -->
                 if (currencyController.Item.TrySpendCoins(price))
                 {
                     Sound.Play(SoundName.BuyBooster);
                     _buyParticle.Play();
-                    IGameState.Items.Add(_boosterItemKey, 1);
+                    IGameState.Items.Add(BoosterItemKey, 1);
                 }
 
                 // <-- Show rewarded ads -->
@@ -195,7 +188,32 @@ namespace Gamebox
         }
 
 
+        public void AnimateUnlock()
+        {
+            const float SHAKE_DURATION = 1.2f;
+            const float TO_SCALE = 1.32f;
 
+            _lockObject.SetActive(true);
+            _counterObject.SetActive(false);
+            _priceObject.SetActive(false);
+
+            Sound.Play(SoundName.BoosterUnlockStart);
+
+            DOTween.Sequence()
+                .Append(_baseRect.DOShakeAnchorPos(duration: SHAKE_DURATION, 
+                    strength: 25, vibrato: 17, fadeOut: false).SetEase(Ease.OutQuad))
+                .Join(_baseRect.DOScale(TO_SCALE, SHAKE_DURATION).SetEase(Ease.OutQuad))
+                .AppendCallback(() => 
+                {
+                    UpdateDisplay();
+                    _unlockParticle.Play();
+                    Sound.Play(SoundName.BoosterUnlocked);
+                })
+                .Append(_baseRect.DOScale(1f, SHAKE_DURATION / 3f).SetEase(Ease.InQuad));
+        }
+
+
+        private void UpdateDisplay() => Display(BoosterItemKey);
 
     }
 }

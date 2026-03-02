@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AssetKits.ParticleImage;
 using Coffee.UIExtensions;
+using Cysharp.Threading.Tasks;
 using DevNote;
 using DG.Tweening;
 using TMPro;
@@ -18,6 +19,8 @@ namespace Gamebox
         [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private Slider _scoreSlider;
         [SerializeField] private Image _shineImage;
+        [SerializeField] private RectTransform _winFlashRect;
+        [SerializeField] private RectTransform _widgetRect;
 
         private float _previousProgress;
 
@@ -40,13 +43,14 @@ namespace Gamebox
 
         private void Awake()
         {
-            _particleScorePool = new(_particleScorePrefab, transform);
+            _particleScorePool = new(_particleScorePrefab, transform.parent);
             _shineImage.color = _shineImage.color.SetAlpha(0f);
         }
 
         private void OnEnable()
         {
             scoreController.Item.OnScoreChanged += OnScoreChanged;
+            scoreController.Item.OnScoreCompleted += OnScoreCompleted;
             levelController.Item.OnLevelStarted += OnLevelStarted;
             OnScoreChanged();
             OnLevelStarted();
@@ -55,6 +59,7 @@ namespace Gamebox
         private void OnDisable()
         {
             scoreController.Item.OnScoreChanged -= OnScoreChanged;
+            scoreController.Item.OnScoreCompleted -= OnScoreCompleted;
             levelController.Item.OnLevelStarted -= OnLevelStarted;
         }
 
@@ -146,6 +151,30 @@ namespace Gamebox
 
             _previousProgress = progress;
         }
+
+        private void OnScoreCompleted() => AnimateCompleteScore();
+
+        private async void AnimateCompleteScore()
+        {
+            Vector2 FROM_TO_X = new Vector2(-400f, 400f);
+            const float TO_SCALE = 1.5f;
+            const float DURATION = 0.6f;
+            const float DELAY = 0.3f;
+
+            await UniTask.WaitForSeconds(DELAY);
+
+            _winFlashRect.localPosition = _winFlashRect.localPosition.SetX(FROM_TO_X.x);
+            _winFlashRect.DOLocalMoveX(FROM_TO_X.y, DURATION).SetEase(Ease.Linear);
+
+            _widgetRect.localScale = Vector3.one;
+            DOTween.Sequence()
+                .Append(_widgetRect.DOScale(TO_SCALE, DURATION / 2f).SetEase(Ease.OutQuad))
+                .Append(_widgetRect.DOScale(1f, DURATION / 2f).SetEase(Ease.InQuad));
+
+
+            Sound.Play(SoundName.ScoreCompletedFlashLine);
+        }
+
 
 
 
