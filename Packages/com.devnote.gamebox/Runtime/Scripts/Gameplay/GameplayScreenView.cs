@@ -12,7 +12,7 @@ namespace Gamebox
         [field: SerializeField] public ScoreView ScoreView { get; private set; }
         [field: SerializeField] public CurrencyView CurrencyView { get; private set; }
         [field: SerializeField] public BoosterPanelView BoosterPanel { get; private set; }
-        [SerializeField] private LeadersButtonView _leaderButton;
+        [field: SerializeField] public LeadersButtonView LeadersButton { get; private set; }
 
 
         private readonly Holder<LevelController> levelController = new();
@@ -41,7 +41,7 @@ namespace Gamebox
 
             CurrencyView.gameObject.SetActive(IGameState.Level >= 2);
             
-            _leaderButton.gameObject.SetActive(pipeline.IsAvailable(ContentKey.UnlockLeaderboard));
+            LeadersButton.gameObject.SetActive(pipeline.IsAvailable(ContentKey.UnlockLeaderboard));
             BoosterPanel.gameObject.SetActive(pipeline.IsAvailable(ContentKey.UnlockBoosterPanel));
 
         }

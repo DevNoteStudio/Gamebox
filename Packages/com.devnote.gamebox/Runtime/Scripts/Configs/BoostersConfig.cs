@@ -11,8 +11,12 @@ namespace Gamebox
             public ItemKey itemKey;
             public ContentKey contentKey;
             public int price;
+            public int startAmount;
         }
 
+
+        public int GetBoosterStartAmount(ItemKey boosterItemKey)
+            => _boosterData.FindOrException((data) => data.itemKey == boosterItemKey).startAmount;
 
         public int GetBoosterPrice(ItemKey boosterItemKey)
             => _boosterData.FindOrException((data) => data.itemKey == boosterItemKey).price;
@@ -33,14 +37,19 @@ namespace Gamebox
             return boosterKeys;
         }
 
+        public ContentKey GetBoosterContentKey(ItemKey boosterItemKey)
+            => _boosterData.FindOrException(data => data.itemKey == boosterItemKey).contentKey;
+
+
+
         public bool TryGetUnlockedBoosterKey(int level, out ItemKey boosterItemKey)
         {
             var allBoosterKeys = GetAllBoosterKeys();
 
             foreach (var boosterKey in allBoosterKeys)
             {
-                var contentKey = boosterKey.GetContentKey();
-                if (ContentPipeline.IsNow(contentKey))
+                var contentKey = GetBoosterContentKey(boosterKey);
+                if (ContentPipeline.GetLevel(contentKey) == level)
                 {
                     boosterItemKey = boosterKey;
                     return true;

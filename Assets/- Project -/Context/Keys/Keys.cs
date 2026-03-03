@@ -15,20 +15,6 @@ public enum ContentKey
     UnlockWinBonusRoulette = 9,
 }
 
-public static class ContentKeyExtension
-{
-    private static readonly Dictionary<ItemKey, ContentKey> ITEM_MATCHES = new()
-    {
-        { ItemKey.Booster1, ContentKey.UnlockBooster1 },
-        { ItemKey.Booster2, ContentKey.UnlockBooster2 },
-        { ItemKey.Booster3, ContentKey.UnlockBooster3 },
-    };
-
-    public static ContentKey GetContentKey(this ItemKey boosterItemKey)
-        => ITEM_MATCHES[boosterItemKey];
-
-}
-
 
 public enum CardType
 {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _channel: 1
   _playType: 2
-  _audioClip: {fileID: 8300000, guid: b2eb49911ba493448b05736f92cc5a8c, type: 3}
+  _audioClip: {fileID: 8300000, guid: f6e8e9fd82165134095917602d321737, type: 3}
   _randomAudioClips: []
   _volume: 1
   _randomVolume: {x: 0, y: 0}

@@ -47,7 +47,7 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currencyController.Item.AnimateCoinsRollup(RollupType.AddCurrency, 50, 5, _worldEmitter.position);
+            currencyController.Item.AddCoinsRollup(50, 5, _worldEmitter.position);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {

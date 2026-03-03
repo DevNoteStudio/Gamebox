@@ -30,7 +30,7 @@ namespace Gamebox
             var rollup = Register(new RollupController());
             var league = Register(new LeagueController());
             var menu = Register(new MenuController());
-            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league, environment.Item, save.Item));
+            var level = Register(new LevelController(menu, leaderboards.Item, ads.Item, league, environment.Item, save.Item, review.Item));
             var currency = Register(new CurrencyController(level));
             var test = Register(new TestController(level));
             var popup = Register(new PopupController(level, ads.Item, review.Item, purchase.Item));
@@ -44,6 +44,7 @@ namespace Gamebox
             var score = Register(new ScoreController(level));
             var booster = Register(new BoosterController(pause, level));
             var leaders = Register(new LeadersController());
+            var effect = Register(new EffectController(level, currency));
 
             var start = Register(new StartController(menu, level, popup));
 

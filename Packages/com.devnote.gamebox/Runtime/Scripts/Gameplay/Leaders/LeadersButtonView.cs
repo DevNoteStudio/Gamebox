@@ -23,17 +23,6 @@ namespace Gamebox
         private readonly Holder<LevelController> levelController = new();
 
 
-        private void OnEnable()
-        {
-            levelController.Item.OnLevelStarted += OnLevelStarted;
-            OnLevelStarted();
-        }
-
-        private void OnDisable()
-        {
-            levelController.Item.OnLevelStarted -= OnLevelStarted;
-        }
-
         private void Start()
         {
             _button.onClick.AddListener(OnButtonClick);
@@ -44,34 +33,20 @@ namespace Gamebox
             leadersController.Item.ShowLeadersWindow();
         }
 
-
-        private void OnLevelStarted()
-        {
-            if (!IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.UnlockLeaderboard))
-                return;
-
-            if (levelController.Item.IsLevelStartedFirstTime)
-                AnimateUpdateRank();
-                
-            else Display();
-        }
-
-        private void Display()
+        public void Display()
         {
             _rankText.text = IConfigs.Leaders.GetRank(IGameState.Level).ToString();
         }
 
 
-        private async void AnimateUpdateRank()
+        public async void AnimateUpdateRank(float delay)
         {
-            const float DELAY = 1f;
-
             _button.image.raycastTarget = false;
 
             _ratingParticle.OnFirstParticleFinished -= OnRatingParticleFinished;
             _ratingParticle.OnFirstParticleFinished += OnRatingParticleFinished;
 
-            await UniTask.WaitForSeconds(DELAY);
+            await UniTask.WaitForSeconds(delay);
 
             Sound.Play(SoundName.ShowLeaderParticle);
             _ratingParticle.Play();

@@ -71,8 +71,7 @@ namespace Gamebox
 
         public void Display(int stars, int fromRating, int toRating, List<ItemPack> rewards)
         {
-            bool showBonus = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.VictoryRouletteFromLevel
-                && ads.Item.RewardedAvailable;
+            bool showBonus = IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.UnlockWinBonusRoulette);
 
             _stars = stars;
             _showBonus = showBonus;
@@ -170,13 +169,10 @@ namespace Gamebox
 
         private void OnTakeButtonClick()
         {
-            UI.ScreenFade(onCompleted: async () =>
+            UI.ScreenFade(onCompleted: () =>
             {
                 levelController.Item.HideWinScreen();
                 levelController.Item.StartLevel(IGameState.Level);
-
-                await UniTask.WaitForSeconds(0.3f);
-                currencyController.Item.AnimateCoinsRollup(RollupType.OnlyEffect, _totalRewardCoins, 8);
             });
         }
 

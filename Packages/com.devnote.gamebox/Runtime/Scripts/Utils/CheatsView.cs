@@ -71,6 +71,7 @@ namespace Gamebox
         {
             if (!_panelObject.activeInHierarchy) return;
 
+            /*
             var config = IConfigs.Gamebox;
 
             int locationIndex = levelController.Item.CurrentLocationIndex;
@@ -83,6 +84,7 @@ namespace Gamebox
                 && levelIndex == config.GetLocationLevelsAmount(locationIndex) - 1;
 
             _nextLevelButton.interactable = levelController.Item.IsLevelPlaying && !isLastLevel;
+            */
         }
 
         private void OnBoosterButtonClick()

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace Gamebox
 {
@@ -11,11 +8,13 @@ namespace Gamebox
         private GameplayScreenView GameplayScreen => levelController.GameplayScreen;
 
         private readonly LevelController levelController;
+        private readonly CurrencyController currencyController;
 
 
-        public EffectController(LevelController levelController)
+        public EffectController(LevelController levelController, CurrencyController currencyController)
         {
             this.levelController = levelController;
+            this.currencyController = currencyController;
 
             levelController.OnLevelStarted += OnLevelStarted;
         }
@@ -31,20 +30,19 @@ namespace Gamebox
                     IConfigs.Gamebox.TryGetUnlockedBoosterKey(IGameState.Level, out var boosterKey);
 
                 // <- Coins ->
-                int completedLevel = IGameState.Level - 1;
-                int coins = IConfigs.Gamebox.GetCoinsForLevelComplete(completedLevel);
-                GameplayScreen.CurrencyView.AnimateCoinsRollup(coins, 8, Vector2.zero);
-
+                currencyController.UpdateCoinsRollup(particles: 8, delay: 0.3f);
 
                 // <- Booster unlock ->
                 if (hasBoosterUnlock)
                 {
-                    GameplayScreen.BoosterPanel.GetButton(boosterKey).AnimateUnlock();
+                    GameplayScreen.BoosterPanel.GetButton(boosterKey).AnimateUnlock(delay: 1.5f);
+                    GameplayScreen.LeadersButton.Display();
                 }
-                // <- Leaderboard ->
-                else
-                {
 
+                // <- Leaderboard ->
+                else if (IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.UnlockLeaderboard))
+                {
+                    GameplayScreen.LeadersButton.AnimateUpdateRank(delay: 1.3f);
                 }
 
             }
@@ -52,7 +50,7 @@ namespace Gamebox
             // <-- Display without effects -->
             else
             {
-
+                GameplayScreen.LeadersButton.Display();
 
             }
 

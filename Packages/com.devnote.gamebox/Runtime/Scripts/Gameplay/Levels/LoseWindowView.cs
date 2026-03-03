@@ -39,7 +39,7 @@ namespace Gamebox
 
         public LoseWindowView Display()
         {
-            bool reviveAvailable = IGameState.Levels.CompletedLevels >= IConfigs.Gamebox.ReviveFromLevel - 1;
+            bool reviveAvailable = false;
 
             _bottomRestartButton.gameObject.SetActive(reviveAvailable);
             _reviveButton.gameObject.SetActive(reviveAvailable);

@@ -12,7 +12,6 @@ namespace Gamebox
     public class BoosterButtonView : MonoBehaviour
     {
         [SerializeField] private Image _iconImage;
-        [SerializeField] private Image _progressFillImage;
         [SerializeField] private TextMeshProUGUI _counterText;
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private GameObject _lockObject;
@@ -26,14 +25,15 @@ namespace Gamebox
         [SerializeField] private UIParticle _unlockParticle;
         [SerializeField] private TextMeshProUGUI _unlockLevelText;
         [SerializeField] private RectTransform _baseRect;
+        [SerializeField] private GameObject _adObject;
 
         public ItemKey BoosterItemKey { get; private set; }
 
         private readonly Holder<BoosterController> boosterController = new();
         private readonly Holder<CurrencyController> currencyController = new();
+        private readonly Holder<LevelController> levelController = new();
         private readonly Holder<IAds> ads = new();
 
-        private const float SHINE_SHOW_DURATION = 0.4f;
 
         private void Awake()
         {
@@ -81,24 +81,29 @@ namespace Gamebox
 
             _iconImage.LoadSprite(AssetLoader.LoadItemSprite(boosterItemKey));
 
-            var contentType = boosterItemKey.GetContentKey();
+            var contentType = IConfigs.Gamebox.GetBoosterContentKey(boosterItemKey);
 
             bool isUnlocked = IConfigs.Gamebox.ContentPipeline.IsAvailable(contentType);
 
             _lockObject.SetActive(!isUnlocked);
             _counterObject.SetActive(isUnlocked);
             _priceObject.SetActive(isUnlocked);
+            _adObject.SetActive(isUnlocked);
             _useButton.image.raycastTarget = isUnlocked;
 
             if (isUnlocked)
             {
-                bool hasBooster = IGameState.Items.Has(boosterItemKey);            
+                int price = IConfigs.Gamebox.GetBoosterPrice(BoosterItemKey);
+                bool hasBooster = IGameState.Items.Has(boosterItemKey);
+                bool hasCoinsForBuy = IGameState.Items.Get(ItemKey.Coins) >= price;
 
-                _priceObject.SetActive(!hasBooster);
-                if (!hasBooster) _priceText.text = $"<sprite=0>{IConfigs.Gamebox.GetBoosterPrice(BoosterItemKey)}";
+                _adObject.SetActive(!hasBooster && !hasCoinsForBuy);
+
+                _priceObject.SetActive(!hasBooster && hasCoinsForBuy);
+                _priceText.text = $"<sprite=0>{price}";
 
                 _counterObject.SetActive(hasBooster);
-                if (hasBooster) _counterText.text = IGameState.Items.Get(boosterItemKey).ToString();
+                _counterText.text = IGameState.Items.Get(boosterItemKey).ToString();
             }
             else
             {
@@ -110,6 +115,8 @@ namespace Gamebox
 
         private void OnUseButtonClick()
         {
+            if (!levelController.Item.IsLevelPlaying) return;
+
             int boosters = IGameState.Items.Get(BoosterItemKey);
 
             // <-- Using -->
@@ -145,7 +152,12 @@ namespace Gamebox
                 // <-- Show rewarded ads -->
                 else
                 {
-
+                    ads.Item.ShowRewarded(onRewarded: () =>
+                    {
+                        Sound.Play(SoundName.BuyBooster);
+                        _buyParticle.Play();
+                        IGameState.Items.Add(BoosterItemKey, 1);
+                    });
                 }
             }
         }
@@ -188,14 +200,19 @@ namespace Gamebox
         }
 
 
-        public void AnimateUnlock()
+        public async void AnimateUnlock(float delay)
         {
-            const float SHAKE_DURATION = 1.2f;
-            const float TO_SCALE = 1.32f;
+            const float SHAKE_DURATION = 1.4f;
+            const float TO_SCALE = 1.4f;
 
+
+            _useButton.image.raycastTarget = false;
             _lockObject.SetActive(true);
             _counterObject.SetActive(false);
             _priceObject.SetActive(false);
+
+
+            await UniTask.WaitForSeconds(delay);
 
             Sound.Play(SoundName.BoosterUnlockStart);
 
@@ -205,11 +222,13 @@ namespace Gamebox
                 .Join(_baseRect.DOScale(TO_SCALE, SHAKE_DURATION).SetEase(Ease.OutQuad))
                 .AppendCallback(() => 
                 {
+                    
                     UpdateDisplay();
                     _unlockParticle.Play();
-                    Sound.Play(SoundName.BoosterUnlocked);
+                    //Sound.Play(SoundName.BoosterUnlocked);
                 })
-                .Append(_baseRect.DOScale(1f, SHAKE_DURATION / 3f).SetEase(Ease.InQuad));
+                .Append(_baseRect.DOScale(1f, SHAKE_DURATION / 3f).SetEase(Ease.InQuad))
+                .OnComplete(() => _useButton.image.raycastTarget = true);
         }
 
 

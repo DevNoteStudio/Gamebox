@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47176fd648b92b4e9ce31d45b6644ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startGameRequestMode: 1
+  _startGameRequestMode: 0
   _tables:
   - <Key>k__BackingField: 0
     _webId: 1yGL-Ky9eQgN82zsOAAJiIcGa6ZZPO3yVdQLG5aCRnRA

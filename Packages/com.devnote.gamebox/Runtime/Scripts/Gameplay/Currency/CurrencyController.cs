@@ -1,10 +1,9 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Gamebox
 {
-    public enum RollupType { OnlyEffect, AddCurrency }
-
 
     public class CurrencyController
     {
@@ -27,21 +26,20 @@ namespace Gamebox
 
 
 
-        public void AnimateCoinsRollup(RollupType rollupType, int coins, int particles, Vector3 worldPosition)
+        public void AddCoinsRollup(int coins, int particles, Vector3 worldPosition)
         {
-            if (rollupType == RollupType.AddCurrency)
-                IGameState.Items.Add(ItemKey.Coins, coins);
+            IGameState.Items.Add(ItemKey.Coins, coins);
 
             Vector2 canvasPosition = Utils.WorldToCanvas(worldPosition, UI.Canvas, GameboxSceneContext.MainCamera);
             CurrencyView.AnimateCoinsRollup(coins, particles, canvasPosition);
         }
 
-        public void AnimateCoinsRollup(RollupType rollupType, int coins, int particles)
+        public async void UpdateCoinsRollup(int particles, float delay = 0f)
         {
-            if (rollupType == RollupType.AddCurrency)
-                IGameState.Items.Add(ItemKey.Coins, coins);
+            await UniTask.WaitForSeconds(delay);
 
-            CurrencyView.AnimateCoinsRollup(coins, particles, Vector2.zero);
+            int addDisplayedCoins = IGameState.Items.Get(ItemKey.Coins) - DisplayedCoins;
+            CurrencyView.AnimateCoinsRollup(addDisplayedCoins, particles, Vector2.zero);
         }
 
         public void EarnDisplayedCoins(int coins)

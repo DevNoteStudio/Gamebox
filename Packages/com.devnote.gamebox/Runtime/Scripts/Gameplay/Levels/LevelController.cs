@@ -32,9 +32,10 @@ namespace Gamebox
         private readonly ILeaderboards leaderboards;
         private readonly IAds ads;
         private readonly IEnvironment environment;
+        private readonly IReview review;
 
         public LevelController(MenuController menuController, ILeaderboards leaderboards, 
-            IAds ads, LeagueController leagueController, IEnvironment environment, ISave save)
+            IAds ads, LeagueController leagueController, IEnvironment environment, ISave save, IReview review)
         {
             loseWindowViewer = new(IConfigs.GetViewPrefab<LoseWindowView>());
             victoryScreenViewer = new(IConfigs.GetViewPrefab<VictoryScreenView>());
@@ -46,6 +47,7 @@ namespace Gamebox
             this.leagueController = leagueController;
             this.environment = environment;
             this.save = save;
+            this.review = review;
         }
 
 
@@ -145,6 +147,13 @@ namespace Gamebox
 
             gameplayScreenViewer.ShowExpand(UI.Container);
 
+            if (IConfigs.Gamebox.ContentPipeline.IsNow(ContentKey.RateUs))
+                review.Rate();
+
+            else if (IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.StartInterstitial))
+                ads.ShowInterstitial();
+
+
             OnLevelStarted?.Invoke();
         }
 
@@ -153,6 +162,10 @@ namespace Gamebox
         {
             environment.StopGameplay();
             IsLevelPlaying = false;
+
+
+            if (IConfigs.Gamebox.TryGetUnlockedBoosterKey(IGameState.Level + 1, out var itemKey))
+                IGameState.Items.Set(itemKey, IConfigs.Gamebox.GetBoosterStartAmount(itemKey));
 
             IGameState.Level++;
 
@@ -169,6 +182,7 @@ namespace Gamebox
 
             int completedLevels = IGameState.Levels.CompletedLevels;
 
+            /*
             var rewards = IConfigs.Gamebox.GetLevelRewards
                 (CurrentLocationIndex, CurrentLevelIndex, newStars, _isLevelPlayRepeat, completedLevels, isFirstComplete);
 
@@ -189,12 +203,21 @@ namespace Gamebox
 
                 rewards.Add(new ItemPack(ItemKey.Gems, gemsPerNewStar * newStars));
             }
+            */
 
+            var rewards = new List<ItemPack>()
+            {
+                new ItemPack
+                {
+                    itemKey = ItemKey.Coins,
+                    amount = IConfigs.Gamebox.LevelRewardCoins
+                }
+            };
 
-            foreach (var reward in rewards )
+            foreach (var reward in rewards)
                 IGameState.Items.Add(reward.itemKey, reward.amount);
 
-
+            /*
             var currentLeague = IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value);
             int maxRewardRating = IConfigs.Gamebox.IsLastLeague(currentLeague) ?
                 int.MaxValue : IConfigs.Gamebox.GetLeagueRatingRequire(currentLeague + 1);
@@ -203,11 +226,15 @@ namespace Gamebox
 
             if (currentLeagueNow > currentLeague)
                 leagueController.ApplyNewLeagueReward(currentLeagueNow);
-
+            
             int fromRating = IGameState.Rating.Value;
             int toRating = IGameState.Rating.Value;
+            */
 
-            ShowWinScreen(stars, fromRating, toRating, rewards);
+            
+
+
+            ShowWinScreen(stars, 0, 0, rewards);
 
             leaderboards.SetScore(IGameState.Levels.CompletedLevels);
             save.FullSave();

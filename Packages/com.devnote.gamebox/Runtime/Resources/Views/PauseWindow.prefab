@@ -1819,19 +1819,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3055144148623654228, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055144148623654228, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3055144148623654228, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 655
       objectReference: {fileID: 0}
     - target: {fileID: 3055144148623654228, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 3673915235860360424, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2016,6 +2016,10 @@ PrefabInstance:
     - target: {fileID: 7993891560322986109, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_Name
       value: '[Menu]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993891560322986109, guid: cdc887c9554db7341bbf78c521783767, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166124609534795187, guid: cdc887c9554db7341bbf78c521783767, type: 3}
       propertyPath: m_Material

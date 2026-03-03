@@ -28,7 +28,7 @@ namespace Gamebox
 
         public PauseWindowView Display()
         {
-            _menuButton.gameObject.SetActive(IConfigs.Gamebox.MenuAvailable);
+            //_menuButton.gameObject.SetActive(IConfigs.Gamebox.MenuAvailable);
             return this;
         }
 

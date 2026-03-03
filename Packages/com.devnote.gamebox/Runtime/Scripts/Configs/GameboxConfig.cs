@@ -11,32 +11,37 @@ namespace Gamebox
         [field: Header("Gamebox " + Info.VERSION), Space]
         [field: SerializeField] public bool TestEnabled { get; private set; }
 
-
-        [SerializeField] private List<ItemKey> _tutorialItems;
-        [SerializeField] private List<LocationData> _locations;
-        [SerializeField] private RewardsData _rewards;
-        [SerializeField] private List<LeagueData> _leagues;
+        [field: SerializeField] public ContentPipeline ContentPipeline { get; private set; }
         [SerializeField] private List<BoosterData> _boosterData;
 
-        [field: SerializeField] public ContentPipeline ContentPipeline { get; private set; }
+
+        private List<ItemKey> _tutorialItems;
+        private List<LocationData> _locations;
+        private RewardsData _rewards;
+        private List<LeagueData> _leagues;
+        
+
+        
 
         [field: SerializeField] public float DelayBeforeShowWinScreen { get; private set; }
-        [field: SerializeField] public int VictoryRouletteFromLevel { get; private set; }
-        [field: SerializeField] public int ReviveFromLevel { get; private set; }
-        [field: SerializeField] public int ReviveGemPrice { get; private set; }
-        [field: SerializeField] public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
-        [SerializeField] private int _interstitialsFromLevel;
-        [SerializeField] private LeagueType _menuFromLeague;
-        [field: SerializeField] public ItemPack GameRateReward { get; private set; }
-        [SerializeField] private List<int> _rateUsLevels;
+        [field: SerializeField] public int LevelRewardCoins { get; private set; }
 
-        [SerializeField] private List<int> _cardCellGemPrices;
-        [SerializeField] private List<CardPrice> _cardUpgradePrices;
-        [SerializeField] private List<CardData> _cardDataList;
-        [SerializeField] private List<ShopBoxData> _shopBoxes;
-        [SerializeField] private List<int> _gemsInsideShopPacks;
-        [SerializeField] private List<int> _coinsInsideShopPacks;
-        [SerializeField] private List<int> _coinsPackPrices;
+        public int VictoryRouletteFromLevel { get; private set; }
+        public int ReviveFromLevel { get; private set; }
+        public int ReviveGemPrice { get; private set; }
+        public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
+        private int _interstitialsFromLevel;
+        private LeagueType _menuFromLeague;
+        public ItemPack GameRateReward { get; private set; }
+        private List<int> _rateUsLevels;
+
+        private List<int> _cardCellGemPrices;
+        private List<CardPrice> _cardUpgradePrices;
+        private List<CardData> _cardDataList;
+        private List<ShopBoxData> _shopBoxes;
+        private List<int> _gemsInsideShopPacks;
+        private List<int> _coinsInsideShopPacks;
+        private List<int> _coinsPackPrices;
         
 
         public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 

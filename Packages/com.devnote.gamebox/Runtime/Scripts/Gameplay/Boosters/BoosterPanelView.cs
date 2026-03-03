@@ -41,6 +41,8 @@ namespace Gamebox
             foreach (var boosterItemKey in IConfigs.Gamebox.GetAllBoosterKeys())
                 IGameState.Items.Subscribe(boosterItemKey, Display);
 
+            IGameState.Items.Subscribe(ItemKey.Coins, Display);
+
             OnOrientationChanged();
             Display();
         }
@@ -52,6 +54,8 @@ namespace Gamebox
 
             foreach (var boosterItemKey in IConfigs.Gamebox.GetAllBoosterKeys())
                 IGameState.Items.Dispose(boosterItemKey, Display);
+
+            IGameState.Items.Dispose(ItemKey.Coins, Display);
         }
 
         private void OnOrientationChanged()
@@ -72,6 +76,8 @@ namespace Gamebox
 
         private void Display()
         {
+            if (!levelController.Item.IsLevelPlaying) return;
+
             var boosterItemKeys = IConfigs.Gamebox.GetAllBoosterKeys();
 
             for (int i = 0; i < boosterItemKeys.Count; i++)

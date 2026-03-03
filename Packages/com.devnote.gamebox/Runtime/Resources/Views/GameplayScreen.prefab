@@ -1744,7 +1744,7 @@ MonoBehaviour:
   <ScoreView>k__BackingField: {fileID: 5460970450874164108}
   <CurrencyView>k__BackingField: {fileID: 7213197211227126910}
   <BoosterPanel>k__BackingField: {fileID: 3834952467912933874}
-  _leaderButton: {fileID: 2131001401779161726}
+  <LeadersButton>k__BackingField: {fileID: 2131001401779161726}
 --- !u!1 &760250959920932058
 GameObject:
   m_ObjectHideFlags: 0
