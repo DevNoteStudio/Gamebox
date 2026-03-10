@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: Victory
+  m_Name: Star2
   m_EditorClassIdentifier: 
   _channel: 1
   _playType: 2
-  _audioClip: {fileID: 8300000, guid: 9f692786b9315594ba377bb2ba6d30f7, type: 3}
+  _audioClip: {fileID: 8300000, guid: e4a301335dd7748478c4013f9547ee21, type: 3}
   _randomAudioClips: []
-  _volume: 0.75
+  _volume: 1
   _randomVolume: {x: 0, y: 0}
-  _pitch: 1
+  _pitch: 1.1
   _randomPitch: {x: 0, y: 0}
   _useRandomAudioClip: 0
   _useRandomVolume: 0

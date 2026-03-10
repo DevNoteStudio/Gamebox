@@ -29,10 +29,6 @@ MonoBehaviour:
     m_Address: Locations/2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: bc03ac576ea66c249ba553e5b5709c8b
-    m_Address: Sounds/Revive
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
   m_SchemaSet:

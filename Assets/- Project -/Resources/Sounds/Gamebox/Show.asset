@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: Star2
+  m_Name: Show
   m_EditorClassIdentifier: 
   _channel: 1
   _playType: 2
-  _audioClip: {fileID: 8300000, guid: 25ae45f3e9968b9448fd8f183a2d27de, type: 3}
+  _audioClip: {fileID: 8300000, guid: dcb3267ded77a8247be0dff2a9f7405c, type: 3}
   _randomAudioClips: []
-  _volume: 1
+  _volume: 0.6
   _randomVolume: {x: 0, y: 0}
-  _pitch: 1.1
+  _pitch: 1
   _randomPitch: {x: 0, y: 0}
   _useRandomAudioClip: 0
   _useRandomVolume: 0

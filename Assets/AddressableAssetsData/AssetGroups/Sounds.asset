@@ -17,44 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 1ef96e5164576ff49813da2d1b44aac6
   m_SerializeEntries:
-  - m_GUID: b582276333fddb849b5d2d543fcd2b49
-    m_Address: Sounds/Show
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7722e8eef2366964aa05e247a472f8c7
-    m_Address: Sounds/Click
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: aecc633a9bfceb8449054194760baa57
-    m_Address: Sounds/Hide
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 5bdabca857f335c4098e6b682200781c
     m_Address: Sounds/CoinsRollupFinish
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 64926341f0981db489842b0518e20ed2
-    m_Address: Sounds/OpenClick
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: cad092be1e9d9f4489aa7384697f3a16
-    m_Address: Sounds/PointerEnter
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e0626125c718a66499dd88808c3ad796
     m_Address: Sounds/CoinsRollupStart
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5df5e0e995fbea14ab1ed978d4b77330
-    m_Address: Sounds/Confetti
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: c2519a3343b20b44093707d48b34420e
     m_Address: Sounds/LeagueLevelUp
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2616cbbab7c250447b1d6fd1b1c683da
-    m_Address: Sounds/Lose
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 083a9118a31e2cc4c91f2f1c1559dead
@@ -69,44 +41,8 @@ MonoBehaviour:
     m_Address: Sounds/RewardShow
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d0967578d5ec55745a6bda2d713411b7
-    m_Address: Sounds/RouletteStop
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: cefef3f961d388c44a1c931dcdff905d
-    m_Address: Sounds/RouletteTick
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9e1329d16b9d0f041959ef4517da0a3d
-    m_Address: Sounds/Star1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e2ff4eb3efa9d9840ab71e6855308635
-    m_Address: Sounds/Star2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 52d16061625147a428c7399491702846
-    m_Address: Sounds/Star3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0e5ebe1a5fa2c51479d7c7a0c8f183cf
-    m_Address: Sounds/Victory
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 82eeabc7374620a48a3306d8e86e5842
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/star_big.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e3f93f964043ee4439503984cfa7ad35
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/show.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 2caff89e0dee2ea43bd9ee295b77edc0
     m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/roulette_tick.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ba8b12c3f3f4349428eee660d70fa13d
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/roulette_stop.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: bfce2c7f3f703f345bb1380cfcada0b2
@@ -121,16 +57,8 @@ MonoBehaviour:
     m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/rating.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 023807747a4e67049af7a6e91ec6a0f7
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/lose.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 6b8a071428f1f5f40aabe674499c383a
     m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/league_level_up.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 91c80e2dbb1fd8440aa17a23a2b1e2e4
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/firework.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: af669920c1eeb4e41aad5ad1405f9b16
@@ -139,14 +67,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 3fb03bec5f335a345b439e36e065024c
     m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/coins_break.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 47d877d0cc704a64aadf07c954a4bc2a
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/click_open.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a297da88d57824249a61f1edcce09bcd
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/click.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 0dea486c1f659524aa9b8c4d8395b3ed
@@ -159,14 +79,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: e4a9aa8dafec8bd4b994d9820d1403b8
     m_Address: Sounds/TabClick
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 25ae45f3e9968b9448fd8f183a2d27de
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/star_small.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9f692786b9315594ba377bb2ba6d30f7
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/victory.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3db9092f0e9f59d4ea05e2233ca3208f
@@ -199,10 +111,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 73325fa4ebc56f74f87e2e4a19a77eca
     m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/lootbox_opened.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4fc05b4496eb6bc4193728794bd99280
-    m_Address: Packages/com.devnote.gamebox/Runtime/Addressables/Sounds/Sources/revive.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 07b3d4a3d51dc4645a9569f7c83f46ed

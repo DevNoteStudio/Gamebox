@@ -98,7 +98,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => Sound.Play(SoundName.Victory));
+            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => Sound.Play(SoundName.Win));
 
             _takeButton.gameObject.SetActive(false);
 

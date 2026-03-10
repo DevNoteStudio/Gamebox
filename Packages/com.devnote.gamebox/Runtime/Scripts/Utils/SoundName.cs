@@ -20,7 +20,7 @@ namespace Gamebox
         public static string RouletteStop => "RouletteStop";
         public static string RouletteTick => "RouletteTick";
         public static string Show => "Show";
-        public static string Victory => "Victory";
+        public static string Win => "Win";
         public static string CardUpgrade => "CardUpgrade";
         public static string OpenLootbox => "OpenLootbox";
         public static string OpenCard => "OpenCard";

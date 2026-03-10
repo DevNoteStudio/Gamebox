@@ -132,6 +132,8 @@ MonoBehaviour:
   _logWarnings: 1
   _audioMixer: {fileID: 24100000, guid: aca1dd39ad3e5f341965e7aca7f31f7a, type: 2}
   _sfxAudioPool: {fileID: 1867901138155090129}
+  _folders:
+  - Gamebox
 --- !u!114 &1867901138155090129
 MonoBehaviour:
   m_ObjectHideFlags: 0
