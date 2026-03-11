@@ -13,6 +13,7 @@ namespace Gamebox
         public int CurrentLocationIndex { get; private set; } = -1;
         public int CurrentLevelIndex { get; private set; } = -1;
         public int CompletedStars { get; private set; } = -1;
+        public int CompletedLevel { get; private set; } = -1;
 
         public bool IsLevelPlaying { get; private set; } = false;
         public bool IsLevelRestarted { get; private set; } = false;
@@ -163,6 +164,7 @@ namespace Gamebox
             environment.StopGameplay();
             IsLevelPlaying = false;
 
+            CompletedLevel = IGameState.Level;
 
             if (IConfigs.Gamebox.TryGetUnlockedBoosterKey(IGameState.Level + 1, out var itemKey))
                 IGameState.Items.Set(itemKey, IConfigs.Gamebox.GetBoosterStartAmount(itemKey));

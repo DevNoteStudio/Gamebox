@@ -45,7 +45,7 @@ namespace Gamebox
         {
             analytics.SendEvent("level_completed", new()
             {
-                { "level", IGameState.Level },
+                { "level", levelController.CompletedLevel },
             });
         }
 
