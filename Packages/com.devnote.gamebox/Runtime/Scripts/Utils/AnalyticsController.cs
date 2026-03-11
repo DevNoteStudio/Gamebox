@@ -45,8 +45,7 @@ namespace Gamebox
         {
             analytics.SendEvent("level_completed", new()
             {
-                { "location", IGameState.LastPlayLocationIndex.Value + 1 },
-                { "level", IGameState.LastPlayLevelIndex.Value + 1 },
+                { "level", IGameState.Level },
             });
         }
 
