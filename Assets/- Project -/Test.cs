@@ -56,7 +56,7 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            boosterController.Item.CancelBoosterUsing();
+            levelController.Item.LoseCurrentLevel();
         }
 
     }

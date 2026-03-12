@@ -83,39 +83,16 @@ namespace Gamebox
         }
 
 
-        public bool TryRevive()
+        public void Revive()
         {
-            void Revive()
-            {
-                Sound.Play(SoundName.Revive);
-                environment.StartGameplay();
-                ReviveCount++;
-                IsLevelPlaying = true;
-                OnRevive?.Invoke();
-            }
+            Sound.Play(SoundName.Revive);
 
-            int maxFreeRevives = IGameState.Cards.IsActive(CardType.Reviver) ?
-                IConfigs.Gamebox.GetCardPower(CardType.Reviver) : 0;
+            environment.StartGameplay();
+            ReviveCount++;
 
-            bool freeReviveAvailable = maxFreeRevives - ReviveCount > 0;
+            IsLevelPlaying = true;
 
-            if (freeReviveAvailable)
-            {
-                Revive();
-                return true;
-            }
-            else
-            {
-                int gemPrice = IConfigs.Gamebox.ReviveGemPrice;
-                if (IGameState.Items.Get(ItemKey.Gems) >= gemPrice)
-                {
-                    IGameState.Items.Spend(ItemKey.Gems, gemPrice);
-                    Revive();
-                    return true;
-                }
-
-                else return false;
-            }
+            OnRevive?.Invoke();
         }
 
 

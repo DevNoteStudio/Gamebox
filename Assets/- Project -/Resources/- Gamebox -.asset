@@ -46,3 +46,4 @@ MonoBehaviour:
     startAmount: 3
   <DelayBeforeShowWinScreen>k__BackingField: 1
   <LevelRewardCoins>k__BackingField: 100
+  <ReviveAvailable>k__BackingField: 1

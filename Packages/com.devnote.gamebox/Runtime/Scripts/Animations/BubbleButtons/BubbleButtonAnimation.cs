@@ -21,6 +21,17 @@ namespace Gamebox
         private const float DURATION = 0.2f;
 
 
+        private bool NewAnimationIsNotAvailable
+        {
+            get
+            {
+                bool clickTweenIsActive = _clickTween != null ? _clickTween.IsActive() && _clickTween.IsPlaying() : false;
+                return clickTweenIsActive || !_button.interactable || !_button.image.raycastTarget;
+            }
+        }
+            
+
+
         private void Start()
         {
             _button = GetComponent<Button>();
@@ -32,9 +43,12 @@ namespace Gamebox
             _pointerTween?.Kill();
         }
 
+
+
+
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
-            if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable || !_button.image.raycastTarget) return;
+            if (NewAnimationIsNotAvailable) return;
 
             Sound.Play(SoundName.PointerEnter);
 
@@ -44,11 +58,14 @@ namespace Gamebox
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
         {
-            if (_clickTween.IsActive() && _clickTween.IsPlaying() || !_button.interactable || !_button.image.raycastTarget) return;
+            if (NewAnimationIsNotAvailable) return;
 
             _pointerTween?.Kill();
             _pointerTween = transform.DOScale(1f, DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
         }
+
+
+
 
 
         private void OnButtonClick()

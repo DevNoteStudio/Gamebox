@@ -25,9 +25,8 @@ namespace Gamebox
 
         [field: SerializeField] public float DelayBeforeShowWinScreen { get; private set; }
         [field: SerializeField] public int LevelRewardCoins { get; private set; }
+        [field: SerializeField] public bool ReviveAvailable { get; private set; }
 
-        public int VictoryRouletteFromLevel { get; private set; }
-        public int ReviveFromLevel { get; private set; }
         public int ReviveGemPrice { get; private set; }
         public int InterstitialsShowsToShowNoAdsWindow { get; private set; }
         private int _interstitialsFromLevel;

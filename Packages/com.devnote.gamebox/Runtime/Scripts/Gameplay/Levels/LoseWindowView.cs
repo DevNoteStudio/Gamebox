@@ -15,8 +15,6 @@ namespace Gamebox
         [SerializeField] private Button _reviveButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _bottomRestartButton;
-        [SerializeField] private TextMeshProUGUI _reviveButtonText;
-        [SerializeField] private TextMeshProUGUI _revivesLeftText;
 
         private Tween _currentTween;
 
@@ -39,33 +37,15 @@ namespace Gamebox
 
         public LoseWindowView Display()
         {
-            bool reviveAvailable = false;
+            bool reviveAvailable = IConfigs.Gamebox.ReviveAvailable;
 
             _bottomRestartButton.gameObject.SetActive(reviveAvailable);
             _reviveButton.gameObject.SetActive(reviveAvailable);
             _restartButton.gameObject.SetActive(!reviveAvailable);
 
-            int revivesLeft = GetFreeRevives();
-            bool freeReviveAvailable = revivesLeft > 0;
-
-            _revivesLeftText.gameObject.SetActive(freeReviveAvailable);
-            _revivesLeftText.text = 
-                Localization.GetLocalizedText("revives_left").Replace("{VALUE}", revivesLeft.ToString());
-
-            _reviveButtonText.text = freeReviveAvailable ? 
-                Localization.GetLocalizedText("revive_button") :
-                $"{Localization.GetLocalizedText("revive_button")} <sprite=1>{IConfigs.Gamebox.ReviveGemPrice}";
-
             return this;
         }
 
-        private int GetFreeRevives()
-        {
-            int maxFreeRevives = IGameState.Cards.IsActive(CardType.Reviver) ?
-                IConfigs.Gamebox.GetCardPower(CardType.Reviver) : 0;
-
-            return maxFreeRevives - levelController.Item.ReviveCount;
-        }
 
 
         public void AnimateShow()
@@ -105,8 +85,11 @@ namespace Gamebox
 
         private void OnReviveButtonClick()
         {
-            if (levelController.Item.TryRevive())
+            ads.Item.ShowRewarded(AdKey.LevelRevive, onRewarded: () =>
+            {
+                levelController.Item.Revive();
                 levelController.Item.HideLoseWindow(forceHide: false);
+            }); 
         }
 
         private void OnRestartButtonClick()
