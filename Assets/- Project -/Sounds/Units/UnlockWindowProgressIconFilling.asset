@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: ScoreCompletedFlashLine
+  m_Name: UnlockWindowProgressIconFilling
   m_EditorClassIdentifier: 
   _clickToPlay: 0
   _channel: 1
@@ -18,7 +18,7 @@ MonoBehaviour:
   _assemblyType: 0
   _audioClip: {fileID: 0}
   _audioClipReference:
-    m_AssetGUID: dd3cda4baf377a745b8e7bce2340dec8
+    m_AssetGUID: 97eb86bb484af0b4e9986782215a0069
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -27,4 +27,4 @@ MonoBehaviour:
   _randomVolume: {x: 0, y: 0}
   _useRandomPitch: 0
   _pitch: 1
-  _randomPitch: {x: 0.9, y: 1}
+  _randomPitch: {x: 0, y: 0}

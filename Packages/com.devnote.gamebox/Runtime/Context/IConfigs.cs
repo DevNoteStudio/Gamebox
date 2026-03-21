@@ -6,7 +6,7 @@ namespace Gamebox
     {
         public static GameboxConfig Gamebox => Resources.Load<GameboxConfig>("- Gamebox -");
 
-        public static AudioHub AudioHub => Resources.Load<AudioHub>("AudioHub");
+        public static AudioHubBase AudioHub => Resources.Load<AudioHubBase>("AudioHub");
 
         public static LeadersConfig Leaders => Resources.Load<LeadersConfig>("Leaders");
         public static InternalConfig Internal => Resources.Load<InternalConfig>("Internal");

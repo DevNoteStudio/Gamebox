@@ -3,10 +3,9 @@ using DevNote;
 using NaughtyAttributes;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Configs/Audio Hub", fileName = "AudioHub")]
-public class AudioHub : ScriptableObject
-{
 
+public abstract class AudioHubBase : ScriptableObject
+{
     [field: SerializeField, Expandable] public SoundUnit Music { get; private set; }
 
     [field: Foldout("▶ COMMON"), SerializeField, Expandable] public SoundUnit ShowElement { get; private set; }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: UnlockFillProgressIcon
+  m_Name: ShowWindow
   m_EditorClassIdentifier: 
   _clickToPlay: 0
   _channel: 1
@@ -18,12 +18,12 @@ MonoBehaviour:
   _assemblyType: 0
   _audioClip: {fileID: 0}
   _audioClipReference:
-    m_AssetGUID: 97eb86bb484af0b4e9986782215a0069
+    m_AssetGUID: dcb3267ded77a8247be0dff2a9f7405c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _useRandomVolume: 0
-  _volume: 1
+  _volume: 0.6
   _randomVolume: {x: 0, y: 0}
   _useRandomPitch: 0
   _pitch: 1

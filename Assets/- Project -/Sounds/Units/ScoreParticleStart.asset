@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: StartUsingBooster
+  m_Name: ScoreParticleStart
   m_EditorClassIdentifier: 
   _clickToPlay: 0
   _channel: 1
@@ -18,13 +18,13 @@ MonoBehaviour:
   _assemblyType: 0
   _audioClip: {fileID: 0}
   _audioClipReference:
-    m_AssetGUID: bc424cb6630df4546ab9027578833a1c
+    m_AssetGUID: 1a8e37f4835b36940bcb84f4b38e2d7d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _useRandomVolume: 0
-  _volume: 0.5
+  _volume: 0.4
   _randomVolume: {x: 0, y: 0}
-  _useRandomPitch: 0
+  _useRandomPitch: 1
   _pitch: 1
-  _randomPitch: {x: 0.9, y: 1}
+  _randomPitch: {x: 1, y: 1.1}

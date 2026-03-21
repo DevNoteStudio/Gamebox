@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: UnlockShowProgressIcon
+  m_Name: CoinsRollupFinish
   m_EditorClassIdentifier: 
   _clickToPlay: 0
   _channel: 1
@@ -18,7 +18,7 @@ MonoBehaviour:
   _assemblyType: 0
   _audioClip: {fileID: 0}
   _audioClipReference:
-    m_AssetGUID: b2520fefad7f7a44cb081a0fd79e20fa
+    m_AssetGUID: 5c5300f538a6ad14db4fa7741fb4ad7f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -27,4 +27,4 @@ MonoBehaviour:
   _randomVolume: {x: 0, y: 0}
   _useRandomPitch: 0
   _pitch: 1
-  _randomPitch: {x: 0, y: 0}
+  _randomPitch: {x: 0.9, y: 1}
