@@ -52,7 +52,7 @@ namespace Gamebox
                 if (currentIndex != _currentIndex)
                 {
                     _currentIndex = currentIndex;
-                    Sound.Play(SoundName.RouletteTick);
+                    IConfigs.AudioHub.RouletteTick?.Play();
                 }
 
                 for (int i = 0; i < _sectors.Count; i++)

@@ -10,6 +10,7 @@ public class Test : MonoBehaviour
     private readonly Holder<ScoreController> scoreController = new();
     private readonly Holder<BoosterController> boosterController = new();
     private readonly Holder<CurrencyController> currencyController = new();
+    private readonly Holder<UnlockController> unlockController = new();
 
 
     private void Awake()
@@ -47,12 +48,11 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currencyController.Item.AddCoinsRollup(50, 5, _worldEmitter.position);
+            currencyController.Item.AddCoinsWithRollup(50, 5, _worldEmitter.position);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            boosterController.Item.FinishBoosterUsing(true);
-            boosterController.Item.HideBoosterHint();
+            //unlockController.Item.TryShowUnlockWindow(level: 5);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {

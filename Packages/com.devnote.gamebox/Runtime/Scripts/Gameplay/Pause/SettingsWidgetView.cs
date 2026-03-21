@@ -44,7 +44,7 @@ namespace Gamebox
             _disabledSoundObject.SetActive(isMuted);
             _enabledSoundObject.SetActive(!isMuted);
 
-            Sound.Play(SoundName.OpenClick);
+            IConfigs.AudioHub.OpenClick?.Play();
         }
 
         private void OnSwitchMusicButtonClick()
@@ -56,7 +56,7 @@ namespace Gamebox
             _disabledMusicObject.SetActive(isMuted);
             _enabledMusicObject.SetActive(!isMuted);
 
-            Sound.Play(SoundName.OpenClick);
+            IConfigs.AudioHub.OpenClick?.Play();
         }
 
     }

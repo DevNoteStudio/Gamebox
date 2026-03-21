@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Gamebox
 {
@@ -8,52 +9,34 @@ namespace Gamebox
         private GameplayScreenView GameplayScreen => levelController.GameplayScreen;
 
         private readonly LevelController levelController;
-        private readonly CurrencyController currencyController;
 
 
-        public EffectController(LevelController levelController, CurrencyController currencyController)
+        public EffectController(LevelController levelController, UnlockController unlockController)
         {
             this.levelController = levelController;
-            this.currencyController = currencyController;
 
-            levelController.OnLevelStarted += OnLevelStarted;
+            unlockController.OnUnlockWindowStartHandling += OnUnlockWindowStartHandling;
         }
 
-        private async void OnLevelStarted()
+        private async void OnUnlockWindowStartHandling(bool unlockWindowWasShown)
         {
-            await UniTask.NextFrame();
+            bool useEffects = !unlockWindowWasShown && !levelController.IsFirstLevelInGameSession 
+                && levelController.IsLevelStartedFirstTime;
 
-            // <-- Display with using effects -->
-            if (!levelController.IsFirstLevelInGameSession && levelController.IsLevelStartedFirstTime)
+            if (useEffects)
             {
-                bool hasBoosterUnlock =
-                    IConfigs.Gamebox.TryGetUnlockedBoosterKey(IGameState.Level, out var boosterKey);
+                GameplayScreen.CurrencyView.AnimateDisplayWithRollup(particles: 8, Vector2.zero);
 
-                // <- Coins ->
-                currencyController.UpdateCoinsRollup(particles: 8, delay: 0.3f);
+                await UniTask.WaitForSeconds(1.3f);
 
-                // <- Booster unlock ->
-                if (hasBoosterUnlock)
-                {
-                    GameplayScreen.BoosterPanel.GetButton(boosterKey).AnimateUnlock(delay: 1.5f);
-                    GameplayScreen.LeadersButton.Display();
-                }
-
-                // <- Leaderboard ->
-                else if (IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.UnlockLeaderboard))
-                {
-                    GameplayScreen.LeadersButton.AnimateUpdateRank(delay: 1.3f);
-                }
-
+                if (IConfigs.Gamebox.IsAvailable(UnlockKey.Leaderboard))
+                    GameplayScreen.LeadersButton.AnimateDisplay();
             }
-
-            // <-- Display without effects -->
             else
             {
                 GameplayScreen.LeadersButton.Display();
-
+                GameplayScreen.CurrencyView.Display();
             }
-
         }
     }
 }

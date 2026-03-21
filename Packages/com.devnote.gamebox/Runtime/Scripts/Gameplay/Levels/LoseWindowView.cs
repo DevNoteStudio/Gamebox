@@ -50,7 +50,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            Sound.Play(SoundName.Lose);
+            IConfigs.AudioHub.LoseShow?.Play();
 
             _windowRect.localScale = Vector3.zero;
             _bottomRestartButton.transform.localScale = Vector3.zero;
@@ -62,7 +62,7 @@ namespace Gamebox
 
                 .Append(_titleRect.DOScaleX(1f, TITLE_SHOW_DURATION).SetEase(Ease.OutBack))
 
-                .AppendCallback(() => Sound.Play(SoundName.Show))
+                .AppendCallback(() => IConfigs.AudioHub.ShowWindow?.Play())
                 .Append(TweenHub.Show(_windowRect))
                 .Join(_titleRect.DOLocalMoveY(SHOW_TITLE_TO_LOCAL_Y, TITLE_MOVE_DURATION).SetEase(Ease.InOutFlash))
                 

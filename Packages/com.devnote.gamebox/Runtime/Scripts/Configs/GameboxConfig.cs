@@ -11,8 +11,14 @@ namespace Gamebox
         [field: Header("Gamebox " + Info.VERSION), Space]
         [field: SerializeField] public bool TestEnabled { get; private set; }
 
-        [field: SerializeField] public ContentPipeline ContentPipeline { get; private set; }
+        [SerializeField] private List<LevelUnlock> _unlocks;
+
         [SerializeField] private List<BoosterData> _boosterData;
+        [field: SerializeField] public int BoosterPanelFromLevel { get; private set; }
+        [field: SerializeField] public int InterstitialsFromLevel { get; private set; }
+        [field: SerializeField] public int WinRouletteFromLevel { get; private set; }
+
+        [SerializeField] private List<int> _rateUsLevels; public bool LevelIsRateUs(int level) => _rateUsLevels.Contains(level);
 
 
         private List<ItemKey> _tutorialItems;
@@ -32,7 +38,7 @@ namespace Gamebox
         private int _interstitialsFromLevel;
         private LeagueType _menuFromLeague;
         public ItemPack GameRateReward { get; private set; }
-        private List<int> _rateUsLevels;
+        //private List<int> _rateUsLevels;
 
         private List<int> _cardCellGemPrices;
         private List<CardPrice> _cardUpgradePrices;

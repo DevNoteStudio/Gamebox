@@ -76,19 +76,29 @@ namespace Gamebox
             scoreParticle.AddBurst(0, particles);
 
             scoreParticle.Play();
-            Sound.Play(SoundName.ShowScoreParticles);
+            IConfigs.AudioHub.ScoreParticleStart?.Play();
 
             _particleScores[scoreParticle] = score;
 
             scoreParticle.OnFirstParticleFinished += OnFirstParticleFinished;
             scoreParticle.OnLastParticleFinished += OnLastParticleFinished;
-        }
 
-        private void OnLastParticleFinished(ParticleImage particleImage)
-        {
-            particleImage.Stop();
-            _particleScorePool.Return(particleImage);
-            particleImage.OnLastParticleFinished -= OnLastParticleFinished;
+
+            void OnLastParticleFinished()
+            {
+                scoreParticle.Stop();
+                _particleScorePool.Return(scoreParticle);
+                scoreParticle.OnLastParticleFinished -= OnLastParticleFinished;
+            }
+
+            void OnFirstParticleFinished()
+            {
+                var particleScore = _particleScores[scoreParticle];
+                scoreController.Item.AddScore(particleScore);
+                _particleScores.Remove(scoreParticle);
+
+                scoreParticle.OnFirstParticleFinished -= OnFirstParticleFinished;
+            }
         }
 
         private void OnLevelStarted()
@@ -96,15 +106,6 @@ namespace Gamebox
             _levelText.text = IGameState.Level.ToString();
         }
 
-
-        private void OnFirstParticleFinished(ParticleImage particleImage)
-        {
-            var particleScore = _particleScores[particleImage];
-            scoreController.Item.AddScore(particleScore);
-            _particleScores.Remove(particleImage);
-
-            particleImage.OnFirstParticleFinished -= OnFirstParticleFinished;
-        }
 
         private void OnScoreChanged()
         {
@@ -172,7 +173,7 @@ namespace Gamebox
                 .Append(_widgetRect.DOScale(1f, DURATION / 2f).SetEase(Ease.InQuad));
 
 
-            Sound.Play(SoundName.ScoreCompletedFlashLine);
+            IConfigs.AudioHub.ScoreCompleted?.Play();
         }
 
 

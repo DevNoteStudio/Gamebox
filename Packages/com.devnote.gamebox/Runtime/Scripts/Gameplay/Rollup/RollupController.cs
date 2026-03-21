@@ -43,7 +43,7 @@ namespace Gamebox
 
             int targetAmount = IGameState.Items.Get(ItemKey.Coins);
 
-            Sound.Play(SoundName.CoinsRollupStart);
+            //Sound.Play(SoundName.CoinsRollupStart);
 
             _fromValue = targetAmount - addAmount;
             _toValue = targetAmount;
@@ -76,7 +76,7 @@ namespace Gamebox
 
         private void OnFirstCoinParticleFinished()
         {
-            Sound.Play(SoundName.CoinsRollupFinish);
+            //Sound.Play(SoundName.CoinsRollupFinish);
         }
 
         private void OnAnyCoinParticleFinished()

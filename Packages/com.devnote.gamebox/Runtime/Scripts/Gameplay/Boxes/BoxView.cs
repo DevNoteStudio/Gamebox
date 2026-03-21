@@ -71,7 +71,7 @@ namespace Gamebox
 
         public void AnimateOpen(int itemsLeft, Action onOpened)
         {
-            Sound.Play(SoundName.OpenLootbox);
+            //Sound.Play(SoundName.OpenLootbox);
 
             soundController.Item.SetBoxCapacity(itemsLeft + 1);
 

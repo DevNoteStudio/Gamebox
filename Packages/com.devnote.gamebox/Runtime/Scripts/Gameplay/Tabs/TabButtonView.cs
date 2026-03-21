@@ -40,7 +40,7 @@ namespace Gamebox
 
         private void OnButtonClick()
         {
-            Sound.Play(SoundName.TabClick);
+            //Sound.Play(SoundName.TabClick);
             onClick?.Invoke(this);
         }
 

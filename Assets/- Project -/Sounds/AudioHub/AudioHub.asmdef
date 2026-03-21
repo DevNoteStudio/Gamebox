@@ -1,0 +1,17 @@
+{
+    "name": "AudioHub",
+    "rootNamespace": "",
+    "references": [
+        "GUID:795562f849cd9c7429d129e685a8e7c6",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

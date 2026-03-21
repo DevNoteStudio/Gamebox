@@ -26,6 +26,7 @@ namespace Gamebox
         private void Start()
         {
             _button.onClick.AddListener(OnButtonClick);
+            Display();
         }
 
         private void OnButtonClick()
@@ -39,38 +40,38 @@ namespace Gamebox
         }
 
 
-        public async void AnimateUpdateRank(float delay)
+        public void AnimateDisplay()
         {
             _button.image.raycastTarget = false;
 
             _ratingParticle.OnFirstParticleFinished -= OnRatingParticleFinished;
             _ratingParticle.OnFirstParticleFinished += OnRatingParticleFinished;
 
-            await UniTask.WaitForSeconds(delay);
-
-            Sound.Play(SoundName.ShowLeaderParticle);
+            IConfigs.AudioHub.LeaderParticleStart?.Play();
             _ratingParticle.Play();
+
+            void OnRatingParticleFinished()
+            {
+                const float DURATION = 0.5f;
+                const float TO_SCALE = 1.4f;
+
+                _ratingParticle.OnFirstParticleFinished -= OnRatingParticleFinished;
+
+                _flashParticle.Play();
+
+                IConfigs.AudioHub.LeaderParticleFinish?.Play();
+
+                _buttonTween?.Kill();
+                _buttonTween = DOTween.Sequence()
+                    .Append(_button.transform.DOScale(TO_SCALE, DURATION / 2f).SetEase(Ease.OutQuad))
+                    .Append(_button.transform.DOScale(1f, DURATION / 2f).SetEase(Ease.InQuad))
+                    .OnComplete(() => _button.image.raycastTarget = true);
+
+                Display();
+            }
         }
 
 
-        private void OnRatingParticleFinished(ParticleImage particleImage)
-        {
-            const float DURATION = 0.5f;
-            const float TO_SCALE = 1.4f;
-
-            particleImage.OnFirstParticleFinished -= OnRatingParticleFinished;
-
-            _flashParticle.Play();
-
-            Sound.Play(SoundName.LeaderParticle);
-
-            _buttonTween?.Kill();
-            _buttonTween = DOTween.Sequence()
-                .Append(_button.transform.DOScale(TO_SCALE, DURATION / 2f).SetEase(Ease.OutQuad))
-                .Append(_button.transform.DOScale(1f, DURATION / 2f).SetEase(Ease.InQuad))
-                .OnComplete(() => _button.image.raycastTarget = true);
-
-            Display();
-        }
+        
     }
 }

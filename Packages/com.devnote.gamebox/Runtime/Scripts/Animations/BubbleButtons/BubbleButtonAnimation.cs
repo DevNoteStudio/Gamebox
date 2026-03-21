@@ -50,7 +50,7 @@ namespace Gamebox
         {
             if (NewAnimationIsNotAvailable) return;
 
-            Sound.Play(SoundName.PointerEnter);
+            IConfigs.AudioHub.PointerEnter?.Play();
 
             _pointerTween?.Kill();
             _pointerTween = transform.DOScale(TO_SCALE, DURATION).SetEase(Ease.OutFlash).SetUpdate(true);
@@ -70,10 +70,10 @@ namespace Gamebox
 
         private void OnButtonClick()
         {
-            var soundName = _soundType == ButtonSoundType.Click ? SoundName.Click : SoundName.OpenClick;
+            var soundUnit = _soundType == ButtonSoundType.Click ? IConfigs.AudioHub.Click : IConfigs.AudioHub.OpenClick;
 
             if (_soundType != ButtonSoundType.None)
-                Sound.Play(soundName);
+                soundUnit?.Play();
 
             if (_clickTween.IsActive() && _clickTween.IsPlaying()) return;
 

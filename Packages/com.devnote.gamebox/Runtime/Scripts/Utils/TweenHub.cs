@@ -13,7 +13,7 @@ namespace Gamebox
             transform.localScale = Vector3.zero;
             return transform.DOScale(1f, duration).SetEase(Ease.OutBack).OnStart(() => 
             {
-                if (playSound) Sound.Play(SoundName.Show);
+                if (playSound) IConfigs.AudioHub.ShowElement?.Play();
             });
         }
 
@@ -31,7 +31,7 @@ namespace Gamebox
         {
             return transform.DOScale(0f, duration).SetEase(Ease.OutFlash).OnStart(() =>
             {
-                if (playSound) Sound.Play(SoundName.Hide);
+                if (playSound) IConfigs.AudioHub.HideWindow?.Play();
             });
         }
 

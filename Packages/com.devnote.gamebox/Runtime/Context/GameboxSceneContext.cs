@@ -44,7 +44,8 @@ namespace Gamebox
             var score = Register(new ScoreController(level));
             var booster = Register(new BoosterController(pause, level));
             var leaders = Register(new LeadersController());
-            var effect = Register(new EffectController(level, currency));
+            var unlock = Register(new UnlockController(level));
+            var effect = Register(new EffectController(level, unlock));
 
             var start = Register(new StartController(menu, level, popup));
 

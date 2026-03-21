@@ -85,7 +85,7 @@ namespace Gamebox
 
         public void Revive()
         {
-            Sound.Play(SoundName.Revive);
+            IConfigs.AudioHub.Revive?.Play();
 
             environment.StartGameplay();
             ReviveCount++;
@@ -112,7 +112,6 @@ namespace Gamebox
             environment.StartGameplay();
 
             IsLevelStartedFirstTime = IGameState.LastStartedLevel != level;
-
             IsFirstLevelInGameSession = isFirstLevelInGameSession;
 
             IGameState.Level = level;
@@ -125,10 +124,10 @@ namespace Gamebox
 
             gameplayScreenViewer.ShowExpand(UI.Container);
 
-            if (IConfigs.Gamebox.ContentPipeline.IsNow(ContentKey.RateUs))
+            if (IConfigs.Gamebox.LevelIsRateUs(level))
                 review.Rate();
 
-            else if (IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.StartInterstitial))
+            else if (level >= IConfigs.Gamebox.InterstitialsFromLevel)
                 ads.ShowInterstitial();
 
 

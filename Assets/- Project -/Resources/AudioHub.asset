@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52058493e95f1f0469d5f94526b9acbf, type: 3}
+  m_Name: AudioHub
+  m_EditorClassIdentifier: 
+  <Music>k__BackingField: {fileID: 0}
+  <ShowElement>k__BackingField: {fileID: 11400000, guid: b582276333fddb849b5d2d543fcd2b49, type: 2}
+  <ShowWindow>k__BackingField: {fileID: 11400000, guid: b582276333fddb849b5d2d543fcd2b49, type: 2}
+  <HideWindow>k__BackingField: {fileID: 11400000, guid: aecc633a9bfceb8449054194760baa57, type: 2}
+  <Click>k__BackingField: {fileID: 11400000, guid: 7722e8eef2366964aa05e247a472f8c7, type: 2}
+  <OpenClick>k__BackingField: {fileID: 11400000, guid: 64926341f0981db489842b0518e20ed2, type: 2}
+  <PointerEnter>k__BackingField: {fileID: 11400000, guid: cad092be1e9d9f4489aa7384697f3a16, type: 2}
+  <CoinsRollupStart>k__BackingField: {fileID: 11400000, guid: a534b6f926866b941bf3593df54b2c0e, type: 2}
+  <CoinsRollupFinish>k__BackingField: {fileID: 11400000, guid: 4e1c2de9c9e7cc74d8753f97c98ab72d, type: 2}
+  <WinShow>k__BackingField: {fileID: 11400000, guid: 0e5ebe1a5fa2c51479d7c7a0c8f183cf, type: 2}
+  <WinConfetti>k__BackingField: {fileID: 11400000, guid: 5df5e0e995fbea14ab1ed978d4b77330, type: 2}
+  <RouletteTick>k__BackingField: {fileID: 11400000, guid: cefef3f961d388c44a1c931dcdff905d, type: 2}
+  <RouletteStop>k__BackingField: {fileID: 11400000, guid: d0967578d5ec55745a6bda2d713411b7, type: 2}
+  <WinStars>k__BackingField:
+  - {fileID: 11400000, guid: 9e1329d16b9d0f041959ef4517da0a3d, type: 2}
+  - {fileID: 11400000, guid: e2ff4eb3efa9d9840ab71e6855308635, type: 2}
+  - {fileID: 11400000, guid: 52d16061625147a428c7399491702846, type: 2}
+  <LoseShow>k__BackingField: {fileID: 11400000, guid: 2616cbbab7c250447b1d6fd1b1c683da, type: 2}
+  <Revive>k__BackingField: {fileID: 11400000, guid: bc03ac576ea66c249ba553e5b5709c8b, type: 2}
+  <UnlockWindowProgressSliderFilling>k__BackingField: {fileID: 11400000, guid: 080a8953268c4b146b673630753495ab, type: 2}
+  <UnlockWindowProgressIconFilling>k__BackingField: {fileID: 11400000, guid: 31ab016306b3d494f902da303ffc0f8c, type: 2}
+  <UnlockWindowShowProgressIcon>k__BackingField: {fileID: 11400000, guid: 8c480ac936f2fe54f99788b68507d6e9, type: 2}
+  <UnlockWindowShowCenterIcon>k__BackingField: {fileID: 11400000, guid: 5b69c41dd90737749b6a2cda0d4e89ac, type: 2}
+  <AddScore>k__BackingField: {fileID: 11400000, guid: e7537c2b909b3314b998f7e89db93cf5, type: 2}
+  <ScoreParticleStart>k__BackingField: {fileID: 11400000, guid: 637462944d777a34b9721427c8a4b19c, type: 2}
+  <ScoreCompleted>k__BackingField: {fileID: 11400000, guid: 5e8f6aa5e36f93c4593f678c3fe9267b, type: 2}
+  <BuyBooster>k__BackingField: {fileID: 11400000, guid: b6fb447fee4a8b94e97f8637a6279fc5, type: 2}
+  <BoosterUsingStart>k__BackingField: {fileID: 11400000, guid: eb03558734a20cf4abcb7518d6c3c2c1, type: 2}
+  <BoosterUsingFinish>k__BackingField: {fileID: 11400000, guid: e76c360dd5b68c542bb4af5db716509c, type: 2}
+  <LeaderParticleStart>k__BackingField: {fileID: 11400000, guid: a5dc60c232d64004cbb30103c89f6d4c, type: 2}
+  <LeaderParticleFinish>k__BackingField: {fileID: 11400000, guid: ab054652a3233f2439edfdc125d25530, type: 2}

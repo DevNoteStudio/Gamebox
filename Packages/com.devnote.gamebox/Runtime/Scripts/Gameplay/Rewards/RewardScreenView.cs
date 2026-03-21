@@ -45,7 +45,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            Sound.Play(SoundName.RewardShow);
+            //Sound.Play(SoundName.RewardShow);
 
             _chestRect.gameObject.SetActive(true);
             _itemRect.gameObject.SetActive(false);
@@ -66,7 +66,7 @@ namespace Gamebox
             _itemRect.gameObject.SetActive(true);
             _chestParticle.Play();
 
-            Sound.Play(SoundName.RewardOpen);
+            //Sound.Play(SoundName.RewardOpen);
 
             _currentTween?.Kill();
             _currentTween = DOTween.Sequence()

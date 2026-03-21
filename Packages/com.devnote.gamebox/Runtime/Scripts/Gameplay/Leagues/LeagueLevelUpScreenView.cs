@@ -51,7 +51,7 @@ namespace Gamebox
 
             _shineParticle.Clear();
             _shineParticle.Stop();
-            Sound.Play(SoundName.LeagueLevelUp);
+            //Sound.Play(SoundName.LeagueLevelUp);
 
             _leagueStageText.text = config.GetLeagueStageSymbol(previousLeague);
             _leagueIconImage.sprite = config.GetLeagueSprite(previousLeague);

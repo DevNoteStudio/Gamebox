@@ -17,6 +17,9 @@ namespace Gamebox
             => await Addressables.LoadAssetAsync<Sprite>($"Locations/{locationIndex}");
 
 
+        public static async UniTask<Sprite> LoadUnlockSprite(UnlockKey unlockKey)
+            => await Addressables.LoadAssetAsync<Sprite>($"Unlocks/{unlockKey}");
+
 
 
 

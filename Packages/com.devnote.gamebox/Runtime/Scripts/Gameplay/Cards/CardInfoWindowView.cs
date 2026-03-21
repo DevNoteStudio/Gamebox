@@ -122,7 +122,7 @@ namespace Gamebox
 
         private void AnimateUpgrade()
         {
-            Sound.Play(SoundName.CardUpgrade);
+            //Sound.Play(SoundName.CardUpgrade);
 
             const float TO_SCALE = 1.3f;
             const float DURATION = 0.4f;

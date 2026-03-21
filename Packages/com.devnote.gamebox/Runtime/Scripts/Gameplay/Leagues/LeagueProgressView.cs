@@ -60,7 +60,7 @@ namespace Gamebox
         }
 
 
-        public async void AnimateProgressFill(int fromRating, int toRating, Action<LeagueType> onNextLeagueReached = null)
+        public void AnimateProgressFill(int fromRating, int toRating, Action<LeagueType> onNextLeagueReached = null)
         {
             var config = IConfigs.Gamebox;
 
@@ -69,7 +69,8 @@ namespace Gamebox
 
             if (config.IsLastLeague(fromLeagueType))
             {
-                var fillAudioSource = await Sound.PlayAsync(SoundName.RatingFill);
+                /*
+                //var fillAudioSource = await Sound.PlayAsync(SoundName.RatingFill);
 
                 int toLeagueRating = config.GetCurrentLeagueRating(toRating);
                 int currentRating = fromLeagueRating;
@@ -83,6 +84,7 @@ namespace Gamebox
                     _progressText.text = $"+{toLeagueRating}";
                     fillAudioSource.Stop();
                 });
+                */
             }
 
             else
@@ -111,10 +113,10 @@ namespace Gamebox
             }
         }
 
-        private async void AnimateFillInsideOneLeague
+        private void AnimateFillInsideOneLeague
             (float fromFill, float toFill, LeagueType leagueType, float duration, Action onCompleted = null)
         {
-            var fillAudioSource = await Sound.PlayAsync(SoundName.RatingFill);
+            //var fillAudioSource = await Sound.PlayAsync(SoundName.RatingFill);
             int requiredRating = IConfigs.Gamebox.GetLeagueRatingRequire(leagueType + 1);
 
             _slider.value = fromFill;
@@ -129,7 +131,7 @@ namespace Gamebox
                 int completedRating = Mathf.RoundToInt(_slider.value * requiredRating);
                 _progressText.text = $"{completedRating}<size=80%>/{requiredRating}";
 
-                fillAudioSource.Stop();
+                //fillAudioSource.Stop();
                 onCompleted?.Invoke();
             });
 

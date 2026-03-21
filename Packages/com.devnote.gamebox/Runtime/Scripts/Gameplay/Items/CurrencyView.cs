@@ -16,13 +16,11 @@ namespace Gamebox
         [SerializeField] private Color _earnCurrencyColor;
         [SerializeField] private Color _spendCurrencyColor;
 
-        private Dictionary<ParticleImage, int> _particleCoins = new();
         private Pool<ParticleImage> _coinsParticlePool;
         private int _previousCoins;
         private Sequence _coinsTextSequence;
 
         private readonly Holder<LevelController> levelController = new();
-        private readonly Holder<CurrencyController> currencyController = new();
 
 
         private void Awake()
@@ -30,50 +28,62 @@ namespace Gamebox
             _coinsParticlePool = new(_coinsParticlePrefab, transform);
         }
 
+        private void Start() => Display();
 
-        private void OnEnable()
-        {
-            levelController.Item.OnLevelStarted += Display;
-            currencyController.Item.OnCoinsEarned += OnCoinsEarned;
-            currencyController.Item.OnCoinsSpent += OnCoinsSpent;
-            Display();
-        }
 
-        private void OnDisable()
+        public void Display()
         {
-            currencyController.Item.OnCoinsSpent -= OnCoinsSpent;
-            currencyController.Item.OnCoinsEarned -= OnCoinsEarned;
-            levelController.Item.OnLevelStarted -= Display;
-        }
-
-        private void Display()
-        {
-            int coins = currencyController.Item.DisplayedCoins;
+            int coins = IGameState.Items.Get(ItemKey.Coins);
             _previousCoins = coins;
             _coinsText.text = $"<sprite=0>{coins}";
         }
 
-
-        private void OnCoinsEarned()
+        public void AnimateDisplayWithSpending()
         {
-            int newValue = currencyController.Item.DisplayedCoins;
-            _coinsTextSequence = AnimateCurrencyText(_previousCoins, newValue, _coinsText, _earnCurrencyColor);
-            _previousCoins = newValue;
+            int coins = IGameState.Items.Get(ItemKey.Coins);
+            _coinsTextSequence = AnimateAmountText(_previousCoins, coins, _coinsText, _spendCurrencyColor);
+            _previousCoins = coins;
         }
 
-        private void OnCoinsSpent()
+        public void AnimateDisplayWithRollup(int particles, Vector2 fromCanvasPosition)
         {
-            int newValue = currencyController.Item.DisplayedCoins;
-            _coinsTextSequence = AnimateCurrencyText(_previousCoins, newValue, _coinsText, _spendCurrencyColor);
-            _previousCoins = newValue;
+            int coins = IGameState.Items.Get(ItemKey.Coins);
+            var coinsParticle = _coinsParticlePool.Get(container: _particleContainer);
+
+            (coinsParticle.transform as RectTransform).anchoredPosition = fromCanvasPosition;
+
+            coinsParticle.RemoveBurst(0);
+            coinsParticle.AddBurst(0, particles);
+
+            coinsParticle.Play();
+            IConfigs.AudioHub.CoinsRollupStart?.Play();
+
+            coinsParticle.OnFirstParticleFinished += OnFirstParticleFinished;
+            coinsParticle.OnLastParticleFinished += OnLastParticleFinished;
+
+            void OnLastParticleFinished()
+            {
+                coinsParticle.Stop();
+                _coinsParticlePool.Return(coinsParticle);
+
+                coinsParticle.OnLastParticleFinished -= OnLastParticleFinished;
+            }
+
+            void OnFirstParticleFinished()
+            {
+                IConfigs.AudioHub.CoinsRollupFinish?.Play();
+                AnimateAmountText(_previousCoins, coins, _coinsText, _earnCurrencyColor);
+                _previousCoins = coins;
+                
+                coinsParticle.OnFirstParticleFinished -= OnFirstParticleFinished;
+            }
         }
 
-        private Sequence AnimateCurrencyText(int from, int to, TextMeshProUGUI text, Color color)
+
+        private Sequence AnimateAmountText(int from, int to, TextMeshProUGUI text, Color color)
         {
             const float DURATION = 0.3f;
             const float SCALE_UP = 1.4f;
-
-            
 
             int currentValue = from;
             int endValue = to;
@@ -114,46 +124,6 @@ namespace Gamebox
             sequence.OnComplete(() => text.color = Color.white);
 
             return sequence;
-        }
-
-
-
-
-
-        public void AnimateCoinsRollup(int coins, int particles, Vector2 fromCanvasPosition)
-        {
-            var coinsParticle = _coinsParticlePool.Get(container: _particleContainer);
-
-            (coinsParticle.transform as RectTransform).anchoredPosition = fromCanvasPosition;
-
-            coinsParticle.RemoveBurst(0);
-            coinsParticle.AddBurst(0, particles);
-
-            coinsParticle.Play();
-            Sound.Play(SoundName.ShowCoinsParticles);
-
-            _particleCoins[coinsParticle] = coins;
-
-            coinsParticle.OnFirstParticleFinished += OnFirstParticleFinished;
-            coinsParticle.OnLastParticleFinished += OnLastParticleFinished;
-        }
-
-        private void OnLastParticleFinished(ParticleImage particleImage)
-        {
-            particleImage.Stop();
-            _coinsParticlePool.Return(particleImage);
-            particleImage.OnLastParticleFinished -= OnLastParticleFinished;
-        }
-
-        private void OnFirstParticleFinished(ParticleImage particleImage)
-        {
-            Sound.Play(SoundName.CoinsParticlesApplyed);
-
-            var particleCoins = _particleCoins[particleImage];
-            currencyController.Item.EarnDisplayedCoins(particleCoins);
-            _particleCoins.Remove(particleImage);
-
-            particleImage.OnFirstParticleFinished -= OnFirstParticleFinished;
         }
 
 

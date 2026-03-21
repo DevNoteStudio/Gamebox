@@ -37,12 +37,10 @@ namespace Gamebox
 
         private void Display()
         {
-            var pipeline = IConfigs.Gamebox.ContentPipeline;
-
             CurrencyView.gameObject.SetActive(IGameState.Level >= 2);
             
-            LeadersButton.gameObject.SetActive(pipeline.IsAvailable(ContentKey.UnlockLeaderboard));
-            BoosterPanel.gameObject.SetActive(pipeline.IsAvailable(ContentKey.UnlockBoosterPanel));
+            LeadersButton.gameObject.SetActive(IConfigs.Gamebox.IsAvailable(UnlockKey.Leaderboard));
+            BoosterPanel.gameObject.SetActive(IGameState.Level >= IConfigs.Gamebox.BoosterPanelFromLevel);
 
         }
 

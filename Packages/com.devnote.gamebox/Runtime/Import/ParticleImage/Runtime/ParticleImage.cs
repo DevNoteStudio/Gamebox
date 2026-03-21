@@ -1103,7 +1103,7 @@ namespace AssetKits.ParticleImage
         /// <summary>
         /// Called when the first piece of a particle finishes.
         /// </summary>
-        public UnityEvent onFirstParticleFinished => _onFirstParticleFinish; public event Action<ParticleImage> OnFirstParticleFinished;
+        public UnityEvent onFirstParticleFinished => _onFirstParticleFinish; public event Action OnFirstParticleFinished;
 
         [SerializeField]
         private UnityEvent _onParticleFinish = new UnityEvent();
@@ -1111,12 +1111,12 @@ namespace AssetKits.ParticleImage
         /// <summary>
         /// Called when any piece of a particle finishes.
         /// </summary>
-        public UnityEvent onAnyParticleFinished => _onParticleFinish; public event Action<ParticleImage> OnAnyParticleFinished;
+        public UnityEvent onAnyParticleFinished => _onParticleFinish; public event Action OnAnyParticleFinished;
 
 
 
         [SerializeField]
-        private UnityEvent _onLastParticleFinish = new UnityEvent(); public event Action<ParticleImage> OnLastParticleFinished;
+        private UnityEvent _onLastParticleFinish = new UnityEvent(); public event Action OnLastParticleFinished;
 
         /// <summary>
         /// Called when the last piece of a particle finishes.
@@ -2742,19 +2742,19 @@ namespace AssetKits.ParticleImage
         private void OnFirstParticleFinish()
         {
             onFirstParticleFinished.Invoke();
-            OnFirstParticleFinished?.Invoke(this);
+            OnFirstParticleFinished?.Invoke();
         }
         
         private void OnAnyParticleFinish()
         {
             onAnyParticleFinished.Invoke();
-            OnAnyParticleFinished?.Invoke(this);
+            OnAnyParticleFinished?.Invoke();
         }
         
         private void OnLastParticleFinish()
         {
             onLastParticleFinished.Invoke();
-            OnLastParticleFinished?.Invoke(this);
+            OnLastParticleFinished?.Invoke();
         }
         
         private void OnParticleStop()

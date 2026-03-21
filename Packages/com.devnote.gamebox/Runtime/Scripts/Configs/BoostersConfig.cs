@@ -9,7 +9,7 @@ namespace Gamebox
         [Serializable] private struct BoosterData
         {
             public ItemKey itemKey;
-            public ContentKey contentKey;
+            public UnlockKey unlockKey;
             public int price;
             public int startAmount;
         }
@@ -21,8 +21,8 @@ namespace Gamebox
         public int GetBoosterPrice(ItemKey boosterItemKey)
             => _boosterData.FindOrException((data) => data.itemKey == boosterItemKey).price;
 
-        public ItemKey GetBoosterKey(ContentKey contentKey)
-            => _boosterData.FindOrException((data) => data.contentKey == contentKey).itemKey;
+        public ItemKey GetBoosterKey(UnlockKey unlockKey)
+            => _boosterData.FindOrException((data) => data.unlockKey == unlockKey).itemKey;
 
 
         public string GetBoosterHint(ItemKey boosterItemKey)
@@ -37,8 +37,8 @@ namespace Gamebox
             return boosterKeys;
         }
 
-        public ContentKey GetBoosterContentKey(ItemKey boosterItemKey)
-            => _boosterData.FindOrException(data => data.itemKey == boosterItemKey).contentKey;
+        public UnlockKey GetBoosterUnlockKey(ItemKey boosterItemKey)
+            => _boosterData.FindOrException(data => data.itemKey == boosterItemKey).unlockKey;
 
 
 
@@ -48,8 +48,8 @@ namespace Gamebox
 
             foreach (var boosterKey in allBoosterKeys)
             {
-                var contentKey = GetBoosterContentKey(boosterKey);
-                if (ContentPipeline.GetLevel(contentKey) == level)
+                var unlockKey = GetBoosterUnlockKey(boosterKey);
+                if (GetUnlockLevel(unlockKey) == level)
                 {
                     boosterItemKey = boosterKey;
                     return true;

@@ -81,9 +81,9 @@ namespace Gamebox
 
             _iconImage.LoadSprite(AssetLoader.LoadItemSprite(boosterItemKey));
 
-            var contentType = IConfigs.Gamebox.GetBoosterContentKey(boosterItemKey);
+            var unlockKey = IConfigs.Gamebox.GetBoosterUnlockKey(boosterItemKey);
 
-            bool isUnlocked = IConfigs.Gamebox.ContentPipeline.IsAvailable(contentType);
+            bool isUnlocked = IConfigs.Gamebox.IsAvailable(unlockKey);
 
             _lockObject.SetActive(!isUnlocked);
             _counterObject.SetActive(isUnlocked);
@@ -107,7 +107,7 @@ namespace Gamebox
             }
             else
             {
-                int unlockLevel = IConfigs.Gamebox.ContentPipeline.GetLevel(contentType);
+                int unlockLevel = IConfigs.Gamebox.GetUnlockLevel(unlockKey);
                 _unlockLevelText.text = Localization.GetLocalizedText("level_short")
                     .Replace("{VALUE}", unlockLevel.ToString());
             }
@@ -144,7 +144,7 @@ namespace Gamebox
                 // <-- Purchasing -->
                 if (currencyController.Item.TrySpendCoins(price))
                 {
-                    Sound.Play(SoundName.BuyBooster);
+                    IConfigs.AudioHub.BuyBooster?.Play();
                     _buyParticle.Play();
                     IGameState.Items.Add(BoosterItemKey, 1);
                 }
@@ -154,7 +154,7 @@ namespace Gamebox
                 {
                     ads.Item.ShowRewarded(onRewarded: () =>
                     {
-                        Sound.Play(SoundName.BuyBooster);
+                        IConfigs.AudioHub.BuyBooster?.Play();
                         _buyParticle.Play();
                         IGameState.Items.Add(BoosterItemKey, 1);
                     });
@@ -172,7 +172,7 @@ namespace Gamebox
                 if (_shineParticles.isPaused) _shineParticles.Play();
                 _shineParticles.StartEmission();
 
-                Sound.Play(SoundName.StartUsingBooster);
+                IConfigs.AudioHub.BoosterUsingStart?.Play();
             }
         }
 
@@ -188,7 +188,7 @@ namespace Gamebox
 
 
             _spendParticle.Play();
-            Sound.Play(SoundName.BoosterApplied);
+            IConfigs.AudioHub.BoosterUsingFinish?.Play();
             _useButton.image.raycastTarget = false;
 
             DOTween.Sequence()
@@ -197,38 +197,6 @@ namespace Gamebox
                 .OnComplete(() => _useButton.image.raycastTarget = true);
 
             _shineParticles.StopEmission();
-        }
-
-
-        public async void AnimateUnlock(float delay)
-        {
-            const float SHAKE_DURATION = 1.4f;
-            const float TO_SCALE = 1.4f;
-
-
-            _useButton.image.raycastTarget = false;
-            _lockObject.SetActive(true);
-            _counterObject.SetActive(false);
-            _priceObject.SetActive(false);
-
-
-            await UniTask.WaitForSeconds(delay);
-
-            Sound.Play(SoundName.BoosterUnlockStart);
-
-            DOTween.Sequence()
-                .Append(_baseRect.DOShakeAnchorPos(duration: SHAKE_DURATION, 
-                    strength: 25, vibrato: 17, fadeOut: false).SetEase(Ease.OutQuad))
-                .Join(_baseRect.DOScale(TO_SCALE, SHAKE_DURATION).SetEase(Ease.OutQuad))
-                .AppendCallback(() => 
-                {
-                    
-                    UpdateDisplay();
-                    _unlockParticle.Play();
-                    //Sound.Play(SoundName.BoosterUnlocked);
-                })
-                .Append(_baseRect.DOScale(1f, SHAKE_DURATION / 3f).SetEase(Ease.InQuad))
-                .OnComplete(() => _useButton.image.raycastTarget = true);
         }
 
 

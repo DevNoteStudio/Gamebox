@@ -29,6 +29,30 @@ MonoBehaviour:
     m_Address: Locations/2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 253f6fbfd630ed94d86344e5db0c1e58
+    m_Address: Unlocks/Booster1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a9777686e7e3c01499a5987124f71d02
+    m_Address: Unlocks/Booster2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c98b070ec0d180646936c53f62b90fb3
+    m_Address: Unlocks/Booster3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3af29382f31f1ed468e4b2c0c3a2cb33
+    m_Address: Unlocks/Leaderboard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: abd5a47b32782e24eaeb33799da8c581
+    m_Address: Unlocks/NoneFinish
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec6f64cf1f9676d479aff92dad3db716
+    m_Address: Unlocks/NoneStart
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
   m_SchemaSet:

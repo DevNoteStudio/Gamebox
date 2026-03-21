@@ -12,7 +12,8 @@
         "ParticleImage",
         "Unity.Addressables",
         "UniTask.Addressables",
-        "Unity.ResourceManager"
+        "Unity.ResourceManager",
+        "AudioHub"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

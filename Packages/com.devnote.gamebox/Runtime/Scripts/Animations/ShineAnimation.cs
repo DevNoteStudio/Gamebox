@@ -1,9 +1,5 @@
-using System.Collections.Generic;
-using DevNote;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Gamebox
 {
@@ -11,27 +7,26 @@ namespace Gamebox
     {
         [SerializeField] private Vector2 _fromToAlpha;
         [SerializeField] private float _loopDuration;
-        [SerializeField] private List<Image> _images;
-        [SerializeField] private List<TextMeshProUGUI> _texts;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
+        private Tween _tween;
 
         private void OnEnable()
         {
             var sequence = DOTween.Sequence().Attach(gameObject);
 
-            foreach (var image in _images)
-            {
-                image.color = image.color.SetAlpha(_fromToAlpha.x);
-                sequence.Join(image.DOFade(_fromToAlpha.y, _loopDuration / 2f).SetLoops(2, LoopType.Yoyo));
-            }
+            _canvasGroup.alpha = _fromToAlpha.x;
 
-            foreach (var text in _texts)
-            {
-                text.color = text.color.SetAlpha(_fromToAlpha.x);
-                sequence.Join(text.DOFade(_fromToAlpha.y, _loopDuration / 2f).SetLoops(2, LoopType.Yoyo));
-            }
+            _tween?.Kill();
+            _tween = DOTween.Sequence()
+                .Append(_canvasGroup.DOFade(_fromToAlpha.y, _loopDuration / 2f).SetEase(Ease.InOutQuad))
+                .Append(_canvasGroup.DOFade(_fromToAlpha.x, _loopDuration / 2f).SetEase(Ease.InOutQuad))
+                .SetLoops(-1);
+        }
 
-            sequence.SetLoops(-1, LoopType.Restart);
+        private void OnDisable()
+        {
+            _tween?.Kill();
         }
 
 

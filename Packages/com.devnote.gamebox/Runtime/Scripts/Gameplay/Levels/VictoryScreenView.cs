@@ -71,7 +71,7 @@ namespace Gamebox
 
         public void Display(int stars, int fromRating, int toRating, List<ItemPack> rewards)
         {
-            bool showBonus = IConfigs.Gamebox.ContentPipeline.IsAvailable(ContentKey.UnlockWinBonusRoulette);
+            bool showBonus = levelController.Item.CompletedLevel >= IConfigs.Gamebox.WinRouletteFromLevel;
 
             _stars = stars;
             _showBonus = showBonus;
@@ -98,7 +98,7 @@ namespace Gamebox
 
         public void AnimateShow()
         {
-            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => Sound.Play(SoundName.Win));
+            DOVirtual.DelayedCall(DELAY_BEFORE_VICTORY_SOUND, () => IConfigs.AudioHub.WinShow?.Play());
 
             _takeButton.gameObject.SetActive(false);
 
@@ -114,7 +114,7 @@ namespace Gamebox
 
                 .AppendCallback(() =>
                 {
-                    Sound.Play(SoundName.Confetti);
+                    IConfigs.AudioHub.WinConfetti?.Play();
                     _confettiParticles.ForEach(particle => particle.Play());
                 })
 
@@ -135,7 +135,7 @@ namespace Gamebox
                     {
                         _starFlashParticles[index].Play();
                         _starShineParticles[index].Play();
-                        Sound.Play(SoundName.Star(index + 1));
+                        IConfigs.AudioHub.WinStars[index]?.Play();
                     });
                 }
                 else _starImages[i].gameObject.SetActive(false);
@@ -154,7 +154,7 @@ namespace Gamebox
             if (_showBonus)
             {
                 sequence.AppendCallback(() => _roulette.StartSpin());
-                sequence.AppendCallback(() => Sound.Play(SoundName.Show));
+                sequence.AppendCallback(() => IConfigs.AudioHub.ShowElement?.Play());
                 sequence.Append(TweenHub.Show(_bonusRect));
                 sequence.AppendInterval(DELAY_AFTER_ROULETTE);
                 sequence.Append(TweenHub.Show(_skipButton.transform));
@@ -182,7 +182,7 @@ namespace Gamebox
 
             ads.Item.ShowRewarded(AdKey.VictoryRoulette, onRewarded: () =>
             {
-                Sound.Play(SoundName.RouletteStop);
+                IConfigs.AudioHub.RouletteStop?.Play();
                 ApplyRouletteBonus(sectorIndex);
             }, 
             callback: (status) =>

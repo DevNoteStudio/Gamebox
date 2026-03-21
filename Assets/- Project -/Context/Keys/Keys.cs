@@ -1,18 +1,15 @@
 using System.Collections.Generic;
 
 
-public enum ContentKey
+public enum UnlockKey
 {
-    StartInterstitial = 0,
+    NoneStart = 0,
+    NoneFinish = 1,
 
-    UnlockBooster1 = 1,
-    UnlockBooster2 = 2,
-    UnlockBooster3 = 3,
-
-    RateUs = 6,
-    UnlockLeaderboard = 7,
-    UnlockBoosterPanel = 8,
-    UnlockWinBonusRoulette = 9,
+    Booster1 = 2,
+    Booster2 = 3,
+    Booster3 = 4,
+    Leaderboard = 5,
 }
 
 

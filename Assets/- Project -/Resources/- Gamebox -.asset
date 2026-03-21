@@ -13,37 +13,32 @@ MonoBehaviour:
   m_Name: '- Gamebox -'
   m_EditorClassIdentifier: 
   <TestEnabled>k__BackingField: 1
-  <ContentPipeline>k__BackingField:
-    _content:
-    - level: 3
-      contentKey: 8
-    - level: 4
-      contentKey: 1
-    - level: 5
-      contentKey: 7
-    - level: 6
-      contentKey: 0
-    - level: 7
-      contentKey: 2
-    - level: 8
-      contentKey: 3
-    - level: 8
-      contentKey: 9
-    - level: 9
-      contentKey: 6
+  _unlocks:
+  - level: 2
+    unlockKey: 2
+  - level: 3
+    unlockKey: 3
+  - level: 4
+    unlockKey: 4
+  - level: 5
+    unlockKey: 5
   _boosterData:
   - itemKey: 10
-    contentKey: 1
+    unlockKey: 2
     price: 100
     startAmount: 3
   - itemKey: 11
-    contentKey: 2
+    unlockKey: 3
     price: 200
     startAmount: 3
   - itemKey: 12
-    contentKey: 3
+    unlockKey: 4
     price: 300
     startAmount: 3
+  <BoosterPanelFromLevel>k__BackingField: 2
+  <InterstitialsFromLevel>k__BackingField: 4
+  <WinRouletteFromLevel>k__BackingField: 5
+  _rateUsLevels: 060000000c000000
   <DelayBeforeShowWinScreen>k__BackingField: 1
   <LevelRewardCoins>k__BackingField: 100
   <ReviveAvailable>k__BackingField: 1
