@@ -89,8 +89,8 @@ namespace Gamebox
                     IConfigs.AudioHub.UnlockWindowShowCenterIcon?.Play();
                     _showParticle.Play();
                 })
-                .Append(_centerRect.DOLocalMoveY(CENTER_MOVE_FROM_TO_Y.y, CENTER_MOVE_DURATION).SetEase(Ease.OutBack))
-                .Join(_centerRect.DOScale(1f, CENTER_MOVE_DURATION).SetEase(Ease.OutBack))
+                .Append(_centerRect.DOLocalMoveY(CENTER_MOVE_FROM_TO_Y.y, CENTER_MOVE_DURATION).SetEase(Ease.OutQuad))
+                .Join(_centerRect.DOScale(1f, CENTER_MOVE_DURATION).SetEase(Ease.OutQuad))
 
                 // Show name and description
                 .AppendCallback(() => IConfigs.AudioHub.ShowElement?.Play())
