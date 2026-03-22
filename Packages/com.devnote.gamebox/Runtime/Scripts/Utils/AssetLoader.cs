@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DevNote;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -18,7 +19,19 @@ namespace Gamebox
 
 
         public static async UniTask<Sprite> LoadUnlockSprite(UnlockKey unlockKey)
-            => await Addressables.LoadAssetAsync<Sprite>($"Unlocks/{unlockKey}");
+        {
+            AssetReferenceT<Sprite> reference = null;
+
+            if (unlockKey == UnlockKey.NoneStart) 
+                reference = IConfigs.Gamebox.StartUnlockIconSpriteReference;
+
+            else if (unlockKey == UnlockKey.NoneFinish)
+                reference = IConfigs.Gamebox.FinishUnlockIconSpriteReference;
+
+            else reference = IConfigs.Gamebox.GetUnlockIconSpriteReference(unlockKey);
+
+            return await reference.LoadAssetWithKey();
+        }
 
 
 

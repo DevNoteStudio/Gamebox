@@ -13,15 +13,49 @@ MonoBehaviour:
   m_Name: '- Gamebox -'
   m_EditorClassIdentifier: 
   <TestEnabled>k__BackingField: 1
+  <StartUnlockIconSpriteReference>k__BackingField:
+    m_AssetGUID: abd5a47b32782e24eaeb33799da8c581
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <FinishUnlockIconSpriteReference>k__BackingField:
+    m_AssetGUID: ec6f64cf1f9676d479aff92dad3db716
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _unlocks:
   - level: 2
     unlockKey: 2
+    iconSpriteReference:
+      m_AssetGUID: 253f6fbfd630ed94d86344e5db0c1e58
+      m_SubObjectName: Booster1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
   - level: 3
     unlockKey: 3
+    iconSpriteReference:
+      m_AssetGUID: a9777686e7e3c01499a5987124f71d02
+      m_SubObjectName: Booster2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
   - level: 4
     unlockKey: 4
-  - level: 5
+    iconSpriteReference:
+      m_AssetGUID: c98b070ec0d180646936c53f62b90fb3
+      m_SubObjectName: Booster3
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+  - level: 6
     unlockKey: 5
+    iconSpriteReference:
+      m_AssetGUID: 3af29382f31f1ed468e4b2c0c3a2cb33
+      m_SubObjectName: Leaderboard
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
   _boosterData:
   - itemKey: 10
     unlockKey: 2

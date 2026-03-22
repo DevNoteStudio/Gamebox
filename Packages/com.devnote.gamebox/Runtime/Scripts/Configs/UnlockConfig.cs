@@ -1,5 +1,7 @@
 using System;
 using DevNote;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Gamebox
 {
@@ -9,6 +11,7 @@ namespace Gamebox
         {
             public int level;
             public UnlockKey unlockKey;
+            public AssetReferenceT<Sprite> iconSpriteReference;
         }
 
 
@@ -16,6 +19,9 @@ namespace Gamebox
 
         public string GetUnlockDescription(UnlockKey key) => Localization.GetLocalizedText($"{key}_unlock_desc");
 
+
+        public AssetReferenceT<Sprite> GetUnlockIconSpriteReference(UnlockKey unlockKey)
+            => GetUnlockData(unlockKey).iconSpriteReference;
 
 
         public bool TryGetLevelUnlockKey(int level, out UnlockKey previousKey, out UnlockKey currentKey, out UnlockKey nextKey)
@@ -53,7 +59,7 @@ namespace Gamebox
             int index = _unlocks.FindIndex((content) => content.unlockKey == key);
             if (index >= 0) return _unlocks[index];
 
-            else throw new Exception($"Content pipeline doesn't contain key \"{key}\"");
+            else throw new Exception($"Unlocks doesn't contain key \"{key}\"");
         }
 
 

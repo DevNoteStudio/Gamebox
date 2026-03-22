@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DevNote;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 namespace Gamebox
@@ -10,6 +11,10 @@ namespace Gamebox
     {
         [field: Header("Gamebox " + Info.VERSION), Space]
         [field: SerializeField] public bool TestEnabled { get; private set; }
+
+        [field: SerializeField] public AssetReferenceT<Sprite> StartUnlockIconSpriteReference { get; private set; }
+        [field: SerializeField] public AssetReferenceT<Sprite> FinishUnlockIconSpriteReference { get; private set; }
+
 
         [SerializeField] private List<LevelUnlock> _unlocks;
 
