@@ -17,7 +17,7 @@ namespace Gamebox
 
         public bool TryShowAdWarningWindow()
         {
-            if (!DevNote.IGameState.NoAdsPurchased && ads.Item.InterstitialAvailable)
+            if (!DevNote.IGameState.NoAdsPurchased && ads.Item.InterstitialAvailable && IConfigs.Gamebox.CanShowInterstitial)
             {
                 adWarningWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
                 return true;
