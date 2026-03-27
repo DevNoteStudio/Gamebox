@@ -15,12 +15,14 @@ namespace Gamebox
             adWarningWindowViewer = new(IConfigs.GetViewPrefab<AdWarningWindowView>());
         }
 
-        public void ShowAdWarningWindow()
+        public bool TryShowAdWarningWindow()
         {
-            if (DevNote.IGameState.NoAdsPurchased)
-                Debug.LogWarning($"{Info.LogPrefix} You try to show Ad Warning Window while No Ads is purchased");
-
-            else adWarningWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
+            if (!DevNote.IGameState.NoAdsPurchased && ads.Item.InterstitialAvailable)
+            {
+                adWarningWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
+                return true;
+            }
+            else return false;
         }
 
 

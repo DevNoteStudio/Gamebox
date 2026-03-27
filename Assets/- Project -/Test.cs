@@ -53,7 +53,7 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            adWarningController.Item.ShowAdWarningWindow();
+            adWarningController.Item.TryShowAdWarningWindow();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
