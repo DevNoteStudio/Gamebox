@@ -25,6 +25,15 @@ namespace Gamebox
 
         [SerializeField] private List<int> _rateUsLevels; public bool LevelIsRateUs(int level) => _rateUsLevels.Contains(level);
 
+        [field: SerializeField] public AdWarningWindowSettings AdWarningWindowSettings { get; private set; } 
+
+
+
+
+
+
+
+
 
         private List<ItemKey> _tutorialItems;
         private List<LocationData> _locations;

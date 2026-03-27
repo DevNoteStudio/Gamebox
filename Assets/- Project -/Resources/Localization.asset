@@ -757,3 +757,30 @@ MonoBehaviour:
         \u0430\u043B\u043C\u0430\u0437\u044B"
     - language: 1
       value: For each new star you receive, you will also receive diamonds
+  - key: ad_warning_title
+    _values:
+    - language: 0
+      value: "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u0430\u044F \u043F\u0430\u0443\u0437\u0430"
+    - language: 1
+      value: Ads break
+  - key: ad_warning_desc
+    _values:
+    - language: 0
+      value: "\u0418\u0433\u0440\u0430 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u0441\u044F
+        \u043F\u043E\u0441\u043B\u0435 \u043A\u043E\u0440\u043E\u0442\u043A\u043E\u0439
+        \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
+    - language: 1
+      value: The game will continue after a short ads
+  - key: ad_warning_timer_seconds
+    _values:
+    - language: 0
+      value: "\u0441\u0435\u043A"
+    - language: 1
+      value: sec
+  - key: ad_warning_button
+    _values:
+    - language: 0
+      value: "\u041E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u0437\u0430
+        {PRICE}"
+    - language: 1
+      value: Disable for {PRICE}

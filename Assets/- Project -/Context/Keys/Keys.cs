@@ -84,6 +84,7 @@ public enum AdKey
     LevelRevive = 1,
     VictoryRoulette = 2,
     LevelStartInterstitial = 3,
+    DuringLevelInterstitial = 4,
 
 }
 
@@ -111,5 +112,6 @@ public enum ProductKey
 public enum RemoteKey
 {
     Test = 0,
+    AdWarningDuration = 1,
 
 }

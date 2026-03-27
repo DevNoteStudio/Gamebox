@@ -5,14 +5,17 @@ using Gamebox;
 
 public class PurchaseHandler : MonoBehaviour, IPurchaseHandler
 {
-    List<ProductKey> IPurchaseHandler.ConsumableProductKeys => new();
+    List<ProductKey> IPurchaseHandler.PermanentProducts => new()
+    {
+        ProductKey.NoAds,
+    };
 
     void IPurchaseHandler.HandlePurchase(ProductKey productKey)
     {
         switch (productKey)
         {
             case ProductKey.NoAds:
-                DevNote.IGameState.NoAdsPurchased.Value = true;
+                DevNote.IGameState.NoAdsPurchased = true;
                 break;
 
             case ProductKey.Gems1: case ProductKey.Gems2: case ProductKey.Gems3:
@@ -27,11 +30,6 @@ public class PurchaseHandler : MonoBehaviour, IPurchaseHandler
         }
     }
 
-    bool IPurchaseHandler.ProductIsPurchased(ProductKey productKey) => productKey switch
-    {
-        ProductKey.NoAds => DevNote.IGameState.NoAdsPurchased.Value,
-        _ => false,
-    };
 
 }
 

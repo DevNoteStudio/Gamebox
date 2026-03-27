@@ -16,8 +16,12 @@ namespace Gamebox
         private readonly Holder<IAnalytics> analytics = new();
         private readonly Holder<ISave> save = new();
 
+
+
         public override async void RegisterContext()
         {
+            SetDefaultHandlers();
+
             MainCamera = _mainCamera;
 
             var gamebox = CreateGameboxRoot();
@@ -46,6 +50,7 @@ namespace Gamebox
             var leaders = Register(new LeadersController());
             var unlock = Register(new UnlockController(level));
             var effect = Register(new EffectController(level, unlock));
+            var adWarning = Register(new AdWarningController());
 
             var start = Register(new StartController(menu, level, popup));
 
@@ -63,6 +68,12 @@ namespace Gamebox
             gamebox.ConnectCamera(_mainCamera);
 
             return gamebox;
+        }
+
+
+        private void SetDefaultHandlers()
+        {
+            IRemote.SetDefaultHandler(RemoteKey.AdWarningDuration, () => "5");
         }
 
 

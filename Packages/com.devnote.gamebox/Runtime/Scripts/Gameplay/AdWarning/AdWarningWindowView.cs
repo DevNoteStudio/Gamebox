@@ -1,13 +1,25 @@
+using System;
 using DevNote;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 namespace Gamebox
 {
+    [Serializable] public struct AdWarningWindowSettings
+    {
+        public bool useIconShine;
+        public AssetReferenceSprite iconSpriteReference;
+    }
+
+
+
     public class AdWarningWindowView : Window
     {
         [SerializeField] private TextMeshProUGUI _timerText;
+        [SerializeField] private Image _iconImage;
+        [SerializeField] private GameObject _shineObject;
         [SerializeField] private Button _noAdsButton;
         [SerializeField] private TextMeshProUGUI _noAdsButtonText;
 
@@ -28,12 +40,15 @@ namespace Gamebox
 
         public AdWarningWindowView Display()
         {
-            var showNoAdsPrice = true;
+            var settings = IConfigs.Gamebox.AdWarningWindowSettings;
 
-            string priceText = $"<sprite=0> {purchase.Item.GetPriceString(ProductKey.NoAds)}";
-            string noPriceText = Localization.GetLocalizedText("ad_warning_disable_ads");
+            _shineObject.SetActive(settings.useIconShine);
 
-            _noAdsButtonText.text = showNoAdsPrice ? priceText : noPriceText;
+            if (settings.iconSpriteReference.RuntimeKeyIsValid())
+                _iconImage.LoadSprite(settings.iconSpriteReference.LoadAssetWithKey());
+
+            string priceText = purchase.Item.GetPriceString(ProductKey.NoAds);
+            _noAdsButtonText.text = $"<sprite=0> {Localization.GetLocalizedText("ad_warning_button").Replace("{PRICE}", priceText)}";
 
             StartTimer();
 
@@ -62,7 +77,7 @@ namespace Gamebox
         {
             _timerText.gameObject.SetActive(true);
 
-            _secondsLeft = 5f;// remote.Item.GetFloat(RemoteKey.AdWarningDuration);
+            _secondsLeft = remote.Item.GetFloat(RemoteKey.AdWarningDuration);
             _timerPaused = false;
         }
 
@@ -74,7 +89,7 @@ namespace Gamebox
             _secondsLeft -= Time.deltaTime;
 
             int secondsLeft = Mathf.CeilToInt(_secondsLeft);
-            _timerText.text = $"{secondsLeft} {Localization.GetLocalizedText("ad_timer_seconds")}";
+            _timerText.text = $"{secondsLeft} {Localization.GetLocalizedText("ad_warning_timer_seconds")}";
 
             if (secondsLeft <= 0)
             {

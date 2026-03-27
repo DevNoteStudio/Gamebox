@@ -11,6 +11,7 @@ public class Test : MonoBehaviour
     private readonly Holder<BoosterController> boosterController = new();
     private readonly Holder<CurrencyController> currencyController = new();
     private readonly Holder<UnlockController> unlockController = new();
+    private readonly Holder<AdWarningController> adWarningController = new();
 
 
     private void Awake()
@@ -52,7 +53,7 @@ public class Test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            //unlockController.Item.TryShowUnlockWindow(level: 5);
+            adWarningController.Item.ShowAdWarningWindow();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
