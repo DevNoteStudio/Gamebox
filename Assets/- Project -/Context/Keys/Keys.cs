@@ -113,5 +113,6 @@ public enum RemoteKey
 {
     Test = 0,
     AdWarningDuration = 1,
+    InterstitialCooldown = 2,
 
 }

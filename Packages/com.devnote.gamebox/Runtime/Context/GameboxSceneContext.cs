@@ -15,6 +15,7 @@ namespace Gamebox
         private readonly Holder<IPurchase> purchase = new();
         private readonly Holder<IAnalytics> analytics = new();
         private readonly Holder<ISave> save = new();
+        private readonly Holder<IRemote> remote = new();
 
 
 
@@ -29,7 +30,10 @@ namespace Gamebox
             new UI(gamebox.ScreenContainer, gamebox.FadeContainer, gamebox.Canvas);
             new TutorialPointer();
 
-            await UniTask.WaitUntil(() => save.Item.Initialized);
+            await UniTask.WaitUntil(() => save.Item.Initialized && remote.Item.Initialized);
+
+            IAds.InterstitialCooldown = remote.Item.GetFloat(RemoteKey.InterstitialCooldown);
+
 
             var rollup = Register(new RollupController());
             var league = Register(new LeagueController());
@@ -74,6 +78,7 @@ namespace Gamebox
         private void SetDefaultHandlers()
         {
             IRemote.SetDefaultHandler(RemoteKey.AdWarningDuration, () => "5");
+            IRemote.SetDefaultHandler(RemoteKey.InterstitialCooldown, () => "60");
         }
 
 
