@@ -28,7 +28,7 @@ namespace Gamebox
 
         public AdWarningWindowView Display()
         {
-            var showNoAdsPrice = remote.Item.GetBool(RemoteKey.ShowNoAdsPrice);
+            var showNoAdsPrice = true;
 
             string priceText = $"<sprite=0> {purchase.Item.GetPriceString(ProductKey.NoAds)}";
             string noPriceText = Localization.GetLocalizedText("ad_warning_disable_ads");
@@ -62,7 +62,7 @@ namespace Gamebox
         {
             _timerText.gameObject.SetActive(true);
 
-            _secondsLeft = remote.Item.GetFloat(RemoteKey.AdWarningDuration);
+            _secondsLeft = 5f;// remote.Item.GetFloat(RemoteKey.AdWarningDuration);
             _timerPaused = false;
         }
 
