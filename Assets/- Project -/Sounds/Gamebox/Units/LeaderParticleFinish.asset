@@ -15,10 +15,8 @@ MonoBehaviour:
   _clickToPlay: 0
   _channel: 1
   _playType: 2
-  _assemblyType: 0
-  _audioClip: {fileID: 8300000, guid: 8899c16d2d3df934b983d7a9d0aec6ad, type: 3}
   _audioClipReference:
-    m_AssetGUID: 
+    m_AssetGUID: 8899c16d2d3df934b983d7a9d0aec6ad
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

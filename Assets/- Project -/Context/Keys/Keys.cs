@@ -111,5 +111,7 @@ public enum ProductKey
 public enum RemoteKey
 {
     Test = 0,
+    ShowNoAdsPrice = 1,
+    AdWarningDuration = 2,
 
 }

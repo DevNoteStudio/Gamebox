@@ -1,4 +1,3 @@
-using System;
 using Coffee.UIExtensions;
 using Cysharp.Threading.Tasks;
 using DevNote;
@@ -199,8 +198,6 @@ namespace Gamebox
             _shineParticles.StopEmission();
         }
 
-
-        private void UpdateDisplay() => Display(BoosterItemKey);
 
     }
 }

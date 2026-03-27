@@ -10,21 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec417005c1808a544832a1ac4245ad65, type: 3}
-  m_Name: PointerEnter
+  m_Name: Click
   m_EditorClassIdentifier: 
   _clickToPlay: 0
   _channel: 1
   _playType: 2
-  _assemblyType: 0
-  _audioClip: {fileID: 8300000, guid: f4617d62fb48f5a4c8106ef021251de3, type: 3}
   _audioClipReference:
-    m_AssetGUID: 
+    m_AssetGUID: a297da88d57824249a61f1edcce09bcd
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _useRandomVolume: 0
-  _volume: 0.3
+  _volume: 0.7
   _randomVolume: {x: 0, y: 0}
   _useRandomPitch: 0
-  _pitch: 1.2
+  _pitch: 1
   _randomPitch: {x: 0, y: 0}

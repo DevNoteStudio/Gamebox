@@ -25,7 +25,10 @@ MonoBehaviour:
   <WinConfetti>k__BackingField: {fileID: 11400000, guid: 5df5e0e995fbea14ab1ed978d4b77330, type: 2}
   <RouletteTick>k__BackingField: {fileID: 11400000, guid: cefef3f961d388c44a1c931dcdff905d, type: 2}
   <RouletteStop>k__BackingField: {fileID: 11400000, guid: d0967578d5ec55745a6bda2d713411b7, type: 2}
-  <WinStars>k__BackingField: []
+  <WinStars>k__BackingField:
+  - {fileID: 11400000, guid: 9e1329d16b9d0f041959ef4517da0a3d, type: 2}
+  - {fileID: 11400000, guid: e2ff4eb3efa9d9840ab71e6855308635, type: 2}
+  - {fileID: 11400000, guid: 52d16061625147a428c7399491702846, type: 2}
   <LoseShow>k__BackingField: {fileID: 11400000, guid: 2616cbbab7c250447b1d6fd1b1c683da, type: 2}
   <Revive>k__BackingField: {fileID: 11400000, guid: bc03ac576ea66c249ba553e5b5709c8b, type: 2}
   <UnlockWindowProgressSliderFilling>k__BackingField: {fileID: 11400000, guid: 080a8953268c4b146b673630753495ab, type: 2}

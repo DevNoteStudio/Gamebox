@@ -53,6 +53,126 @@ MonoBehaviour:
     m_Address: Unlocks/NoneStart
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 25dbd0605953ace4bb47012ae17bb04e
+    m_Address: Assets/- Project -/Sounds/Sources/BoosterUnlocked.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f6e8e9fd82165134095917602d321737
+    m_Address: Assets/- Project -/Sounds/Sources/BoosterUnlockStart.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 97eb86bb484af0b4e9986782215a0069
+    m_Address: Assets/- Project -/Sounds/Sources/UnlockFillProgressIcon.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b1865afe9cd350b4496803a4fa993ec8
+    m_Address: Assets/- Project -/Sounds/Sources/UnlockProgressFill.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 85a1d2d5ebdfa1a4b988ca2196745d45
+    m_Address: Assets/- Project -/Sounds/Sources/UnlockShowIcon.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b2520fefad7f7a44cb081a0fd79e20fa
+    m_Address: Assets/- Project -/Sounds/Sources/UnlockShowProgressIcon.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c00b4a0ba8b8c2a4fb2e4c33ac6b2e3a
+    m_Address: Assets/- Project -/Sounds/Sources/ShowCoinsParticles.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 91c80e2dbb1fd8440aa17a23a2b1e2e4
+    m_Address: Assets/- Project -/Sounds/Sources/Confetti.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 023807747a4e67049af7a6e91ec6a0f7
+    m_Address: Assets/- Project -/Sounds/Sources/Lose.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 82eeabc7374620a48a3306d8e86e5842
+    m_Address: Assets/- Project -/Sounds/Sources/Star3.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a297da88d57824249a61f1edcce09bcd
+    m_Address: Assets/- Project -/Sounds/Sources/Click.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c37f53b3b2249b74eaf3ca8550689d71
+    m_Address: Assets/- Project -/Sounds/Sources/ShowLeaderParticle.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e3f93f964043ee4439503984cfa7ad35
+    m_Address: Assets/- Project -/Sounds/Sources/Hide.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e4a301335dd7748478c4013f9547ee21
+    m_Address: Assets/- Project -/Sounds/Sources/Star2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f4617d62fb48f5a4c8106ef021251de3
+    m_Address: Assets/- Project -/Sounds/Sources/PointerEnter.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 25ae45f3e9968b9448fd8f183a2d27de
+    m_Address: Assets/- Project -/Sounds/Sources/Star1.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 47d877d0cc704a64aadf07c954a4bc2a
+    m_Address: Assets/- Project -/Sounds/Sources/OpenClick.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8899c16d2d3df934b983d7a9d0aec6ad
+    m_Address: Assets/- Project -/Sounds/Sources/LeaderParticle.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1a8e37f4835b36940bcb84f4b38e2d7d
+    m_Address: Assets/- Project -/Sounds/Sources/ShowScoreParticles.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ba8b12c3f3f4349428eee660d70fa13d
+    m_Address: Assets/- Project -/Sounds/Sources/RouletteStop.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fbe9298293c50894fa8bc7ace18a8c3c
+    m_Address: Assets/- Project -/Sounds/Sources/BoosterApplied.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c5300f538a6ad14db4fa7741fb4ad7f
+    m_Address: Assets/- Project -/Sounds/Sources/CoinsParticlesApplyed.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc424cb6630df4546ab9027578833a1c
+    m_Address: Assets/- Project -/Sounds/Sources/StartUsingBooster2.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dcb3267ded77a8247be0dff2a9f7405c
+    m_Address: Assets/- Project -/Sounds/Sources/Show.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd3cda4baf377a745b8e7bce2340dec8
+    m_Address: Assets/- Project -/Sounds/Sources/ScoreCompletedFlashLine.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e4f8d50af748d8489f633915297e4b2
+    m_Address: Assets/- Project -/Sounds/Sources/BuyBooster.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e476508230f6aa4c85de231c7dcd25a
+    m_Address: Assets/- Project -/Sounds/Sources/RouletteTick.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ee8b3f68d28402a4cace529a4aed8feb
+    m_Address: Assets/- Project -/Sounds/Sources/AddScore.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4fc05b4496eb6bc4193728794bd99280
+    m_Address: Assets/- Project -/Sounds/Sources/Revive.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9f692786b9315594ba377bb2ba6d30f7
+    m_Address: Assets/- Project -/Sounds/Sources/Win.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b294c967ed82a344db069aa182e5b914, type: 2}
   m_SchemaSet:
