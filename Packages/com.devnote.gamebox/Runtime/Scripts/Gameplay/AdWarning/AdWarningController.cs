@@ -1,13 +1,14 @@
+using System;
 using DevNote;
-using UnityEngine;
 
 namespace Gamebox
 {
     public class AdWarningController
     {
-
         private readonly Viewer<AdWarningWindowView> adWarningWindowViewer;
         private readonly Holder<IAds> ads = new();
+
+        private Action _onWindowClosed;
 
 
         public AdWarningController()
@@ -15,10 +16,11 @@ namespace Gamebox
             adWarningWindowViewer = new(IConfigs.GetViewPrefab<AdWarningWindowView>());
         }
 
-        public bool TryShowAdWarningWindow()
+        public bool TryShowAdWarningWindow(Action onWindowClosed = null)
         {
             if (!DevNote.IGameState.NoAdsPurchased && ads.Item.InterstitialAvailable && IConfigs.Gamebox.CanShowInterstitial)
             {
+                _onWindowClosed = onWindowClosed;
                 adWarningWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
                 return true;
             }
@@ -33,7 +35,13 @@ namespace Gamebox
                 adWarningWindowViewer.ForceFadedHide();
 
                 if (showInterstitial)
-                    ads.Item.ShowInterstitial(AdKey.DuringLevelInterstitial);
+                {
+                    ads.Item.ShowInterstitial(AdKey.DuringLevelInterstitial, callback: (status) =>
+                    {
+                        _onWindowClosed?.Invoke();
+                    });
+                }
+                else _onWindowClosed?.Invoke();
             });
         }
 
