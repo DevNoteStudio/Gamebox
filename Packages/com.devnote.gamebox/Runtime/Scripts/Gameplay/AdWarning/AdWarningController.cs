@@ -10,6 +10,7 @@ namespace Gamebox
         private readonly Holder<IAds> ads = new();
 
         private Action _onWindowClosed;
+        private bool _adWarningWindowOpened = false;
 
 
         public AdWarningController(LevelController levelController)
@@ -31,6 +32,7 @@ namespace Gamebox
             {
                 _onWindowClosed = onWindowClosed;
                 adWarningWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
+                _adWarningWindowOpened = true;
                 return true;
             }
             else return false;
@@ -39,6 +41,8 @@ namespace Gamebox
 
         public void HideAdWarningWindow(bool showInterstitial)
         {
+            if (!_adWarningWindowOpened) return;
+
             adWarningWindowViewer.View.AnimateHide(onCompleted: () =>
             {
                 adWarningWindowViewer.ForceFadedHide();
@@ -52,6 +56,8 @@ namespace Gamebox
                 }
                 else _onWindowClosed?.Invoke();
             });
+
+            _adWarningWindowOpened = false;
         }
 
 
