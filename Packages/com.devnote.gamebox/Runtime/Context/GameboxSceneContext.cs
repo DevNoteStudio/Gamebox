@@ -54,7 +54,7 @@ namespace Gamebox
             var leaders = Register(new LeadersController());
             var unlock = Register(new UnlockController(level));
             var effect = Register(new EffectController(level, unlock));
-            var adWarning = Register(new AdWarningController());
+            var adWarning = Register(new AdWarningController(level));
 
             var start = Register(new StartController(menu, level, popup));
 

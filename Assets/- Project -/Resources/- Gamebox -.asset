@@ -70,7 +70,7 @@ MonoBehaviour:
     price: 300
     startAmount: 3
   <BoosterPanelFromLevel>k__BackingField: 2
-  <InterstitialsFromLevel>k__BackingField: 4
+  <InterstitialsFromLevel>k__BackingField: 1
   <WinRouletteFromLevel>k__BackingField: 5
   _rateUsLevels: 060000000c000000
   <AdWarningWindowSettings>k__BackingField:

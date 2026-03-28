@@ -11,10 +11,16 @@ namespace Gamebox
         private Action _onWindowClosed;
 
 
-        public AdWarningController()
+        public AdWarningController(LevelController levelController)
         {
             adWarningWindowViewer = new(IConfigs.GetViewPrefab<AdWarningWindowView>());
+
+            levelController.OnLevelCompleted += OnLevelFinished;
+            levelController.OnLevelLost += OnLevelFinished;
+            levelController.OnLevelExit += OnLevelFinished;
         }
+
+        private void OnLevelFinished() => HideAdWarningWindow(showInterstitial: false);
 
         public bool TryShowAdWarningWindow(Action onWindowClosed = null)
         {

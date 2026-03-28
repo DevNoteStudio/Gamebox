@@ -63,7 +63,7 @@ namespace Gamebox
         private List<int> _coinsPackPrices;
         
 
-        public bool CanShowInterstitial => IGameState.Levels.CurrentLevel >= _interstitialsFromLevel; 
+        public bool CanShowInterstitial => IGameState.Level >= _interstitialsFromLevel; 
         public bool MenuAvailable => IConfigs.Gamebox.GetLeagueType(IGameState.Rating.Value) >= _menuFromLeague;
 
 

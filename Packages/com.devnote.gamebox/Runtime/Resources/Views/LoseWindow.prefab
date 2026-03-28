@@ -1481,6 +1481,7 @@ GameObject:
   - component: {fileID: 5519908665165568422}
   - component: {fileID: 5519908665165568423}
   - component: {fileID: 5519908665165568421}
+  - component: {fileID: 7564480433397271831}
   m_Layer: 0
   m_Name: Shine
   m_TagString: Untagged
@@ -1560,9 +1561,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fromToAlpha: {x: 0.3, y: 1}
   _loopDuration: 2.5
-  _images:
-  - {fileID: 5519908665165568423}
-  _texts: []
+  _canvasGroup: {fileID: 7564480433397271831}
+--- !u!225 &7564480433397271831
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5519908665165568417}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5519908665306083036
 GameObject:
   m_ObjectHideFlags: 0
