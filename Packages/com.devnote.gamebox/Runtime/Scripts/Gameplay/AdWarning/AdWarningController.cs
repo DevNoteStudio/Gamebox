@@ -1,5 +1,6 @@
 using System;
 using DevNote;
+using UnityEngine;
 
 namespace Gamebox
 {
@@ -24,7 +25,9 @@ namespace Gamebox
 
         public bool TryShowAdWarningWindow(Action onWindowClosed = null)
         {
-            if (!DevNote.IGameState.NoAdsPurchased && ads.Item.InterstitialAvailable && IConfigs.Gamebox.CanShowInterstitial)
+            bool interstitialsUnlocked = IGameState.Level >= IConfigs.Gamebox.InterstitialsFromLevel;
+
+            if (!DevNote.IGameState.NoAdsPurchased && ads.Item.InterstitialAvailable && interstitialsUnlocked)
             {
                 _onWindowClosed = onWindowClosed;
                 adWarningWindowViewer.ShowFaded(UI.Container).Display().AnimateShow();
