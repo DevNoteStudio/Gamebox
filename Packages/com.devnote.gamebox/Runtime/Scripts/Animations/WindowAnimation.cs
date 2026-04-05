@@ -11,6 +11,7 @@ public class WindowAnimation : MonoBehaviour
 
     private Tween _currentTween;
 
+    private float WINDOW_SHOW_DURATION = 0.7f;
     private float UNDER_BUTTON_SHOW_DELAY = 1.5f;
 
     private void OnDisable() => _currentTween?.Kill();
@@ -22,7 +23,7 @@ public class WindowAnimation : MonoBehaviour
         _currentTween?.Kill();
 
         var sequence = DOTween.Sequence()
-            .Append(TweenHub.Show(_windowRect, playSound: true))
+            .Append(TweenHub.Show(_windowRect, duration: WINDOW_SHOW_DURATION, playSound: true))
             .AppendCallback(() => _canvasGroup.interactable = true);
 
         if (_underButtonRect != null)
