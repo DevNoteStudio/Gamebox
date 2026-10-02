@@ -4,7 +4,7 @@
 
 `v2.0.7` · Unity `2021.3` · пакет [`com.devnote.gamebox`](Packages/com.devnote.gamebox)
 
-**[Документация](https://docs.google.com/document/d/1ZvAXkh7m6u-Nsbw3vaTezsHXkiMNGBmHzVTE-nBs86w/edit?usp=sharing)**
+**[Документация](https://buildin.ai/share/6911875c-4ef4-4db5-afa3-76648a19088d?code=M50M76)**
 
 <br>
 
